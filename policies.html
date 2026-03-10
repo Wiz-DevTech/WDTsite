@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Policies — WizDevTech</title>
+<link rel="stylesheet" href="wdt-shared.css"/>
+<style>
+.policy-layout { display:grid; grid-template-columns:240px 1fr; gap:4rem; margin-top:3rem; align-items:start; }
+.policy-nav { position:sticky; top:calc(var(--nav-h) + 24px); }
+.policy-nav-title { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mid); margin-bottom:1rem; }
+.policy-nav ul { list-style:none; display:flex; flex-direction:column; border-left:1px solid var(--rule); }
+.policy-nav a { display:block; font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em; color:var(--muted); text-decoration:none; padding:0.6rem 1rem; border-left:2px solid transparent; margin-left:-1px; transition:color 0.2s, border-color 0.2s; }
+.policy-nav a:hover, .policy-nav a.active { color:var(--ink); border-left-color:var(--accent); }
+.policy-doc { display:flex; flex-direction:column; gap:3.5rem; }
+.policy-section { scroll-margin-top:calc(var(--nav-h) + 32px); }
+.policy-section h2 { font-family:var(--display); font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; color:var(--ink); margin-bottom:0.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--rule); }
+.policy-section h3 { font-family:var(--display); font-weight:600; font-size:1.05rem; color:var(--ink); margin:1.5rem 0 0.5rem; }
+.policy-section p { font-size:0.92rem; color:var(--muted); line-height:1.8; margin-bottom:0.75rem; }
+.policy-section ul { list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:0.75rem; }
+.policy-section li { font-size:0.9rem; color:var(--muted); padding-left:1.25rem; position:relative; line-height:1.7; }
+.policy-section li::before { content:'\2192'; position:absolute; left:0; color:var(--accent); font-family:var(--mono); font-size:0.7rem; }
+.policy-section a { color:var(--accent); text-decoration:none; }
+.policy-section a:hover { text-decoration:underline; }
+.policy-effective { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.08em; color:var(--mid); margin-bottom:1.5rem; }
+.policy-contact-box { background:var(--paper); border:1px solid var(--rule); padding:1.5rem; margin-top:1rem; }
+.policy-contact-box h4 { font-family:var(--display); font-weight:600; font-size:0.95rem; color:var(--ink); margin-bottom:0.5rem; }
+.policy-contact-box p { font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem; }
+.policy-contact-box a { font-family:var(--mono); font-size:0.78rem; color:var(--accent); text-decoration:none; }
+.policy-tabs { display:flex; gap:0; border-bottom:1px solid var(--rule); margin-bottom:3rem; }
+.policy-tab { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.75rem 1.25rem; cursor:pointer; border:none; background:none; color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.2s; }
+.policy-tab:hover { color:var(--ink); }
+.policy-tab.active { color:var(--ink); border-bottom-color:var(--accent); }
+@media(max-width:900px){ .policy-layout { grid-template-columns:1fr; } .policy-nav { position:static; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#what">What We Do</a></li>
+    <li><a href="careers.html">We're Hiring</a></li>
+    <li><a href="sales.html">Sales</a></li>
+    <li><a href="policies.html" class="active">Policies</a></li>
+    <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
+  <a href="index.html"      class="mobile-link">Home</a>
+  <a href="index.html#what" class="mobile-link">What We Do</a>
+  <a href="careers.html"    class="mobile-link">We're Hiring</a>
+  <a href="sales.html"      class="mobile-link">Sales</a>
+  <a href="policies.html"   class="mobile-link">Policies</a>
+  <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">WizDevTech</a><span>/</span> Policies</div>
+
+<div class="page-header">
+  <div class="container">
+    <span class="tag">Legal</span>
+    <h1>Policies &amp; <em>Legal.</em></h1>
+    <p>Our privacy, terms, and cookie policies. Legal questions contact <a href="/cdn-cgi/l/email-protection#64080103050824130d1e0001121001070c4a070b09" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="90fcf5f7f1fcd0e7f9eaf4f5e6e4f5f3f8bef3fffd">[email&#160;protected]</span></a>. Technical site issues contact <a href="/cdn-cgi/l/email-protection#7b080e0b0b14090f3b0c12011f1e0d0f1e181355181416" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="abd8dedbdbc4d9dfebdcc2d1cfcedddfcec8c385c8c4c6">[email&#160;protected]</span></a>.</p>
+  </div>
+</div>
+
+<section class="page-section cream" id="policies">
+  <div class="container">
+
+    <div class="policy-tabs">
+      <button class="policy-tab active" data-doc="privacy">Privacy Policy</button>
+      <button class="policy-tab" data-doc="terms">Terms of Service</button>
+      <button class="policy-tab" data-doc="cookies">Cookie Policy</button>
+    </div>
+
+    <div class="policy-layout">
+      <div class="policy-nav" id="policyNav">
+        <div class="policy-nav-title">On This Page</div>
+        <ul id="policyNavList"></ul>
+      </div>
+
+      <!-- PRIVACY -->
+      <div class="policy-doc" id="doc-privacy">
+        <div class="policy-effective">Effective date: January 1, 2024 &nbsp;&middot;&nbsp; Last updated: January 1, 2024</div>
+        <div class="policy-section" id="priv-intro">
+          <h2>Privacy Policy</h2>
+          <p>WizDevTech ("we," "our," "us") is committed to protecting your personal information. This policy explains what data we collect, how we use it, and your rights regarding that data.</p>
+        </div>
+        <div class="policy-section" id="priv-collect">
+          <h2>Information We Collect</h2>
+          <h3>Information you provide</h3>
+          <ul>
+            <li>Contact information (name, email, company) submitted via forms on this site</li>
+            <li>Project descriptions and business details submitted in execution request forms</li>
+            <li>Resume and application materials submitted via the careers form</li>
+            <li>Survey responses submitted via the site survey</li>
+          </ul>
+          <h3>Information collected automatically</h3>
+          <ul>
+            <li>Site visit data (pages visited, time on page, referral source) via Google Analytics 4</li>
+            <li>Behavioral analytics via Mixpanel to understand feature usage</li>
+            <li>Standard server logs including IP address, browser type, and device type</li>
+            <li>Cookies as described in our Cookie Policy</li>
+          </ul>
+        </div>
+        <div class="policy-section" id="priv-use">
+          <h2>How We Use Your Information</h2>
+          <ul>
+            <li>To respond to execution requests, sales inquiries, and job applications</li>
+            <li>To contact you about potential engagements or follow-up questions</li>
+            <li>To improve our website and services based on usage patterns</li>
+            <li>To process your inquiry through our CRM (HubSpot) for lead management</li>
+            <li>To send transactional communications related to an engagement</li>
+            <li>To comply with legal obligations</li>
+          </ul>
+          <p>We do not sell, rent, or trade your personal information to any third party for marketing purposes.</p>
+        </div>
+        <div class="policy-section" id="priv-share">
+          <h2>Information Sharing</h2>
+          <p>We share your information only with the following limited parties:</p>
+          <ul>
+            <li><strong>HubSpot</strong> &#8212; CRM platform used to manage leads and client communications</li>
+            <li><strong>Google Analytics</strong> &#8212; Anonymized site analytics (no personally identifiable data shared)</li>
+            <li><strong>Mixpanel</strong> &#8212; Product analytics for site behavior (pseudonymized)</li>
+            <li><strong>Legal authorities</strong> &#8212; When required by law or valid legal process</li>
+          </ul>
+        </div>
+        <div class="policy-section" id="priv-rights">
+          <h2>Your Rights</h2>
+          <p>Depending on your location, you may have the following rights:</p>
+          <ul>
+            <li>Access the personal information we hold about you</li>
+            <li>Request correction of inaccurate data</li>
+            <li>Request deletion of your personal information</li>
+            <li>Object to or restrict processing of your data</li>
+            <li>Request a portable copy of your data</li>
+            <li>Withdraw consent at any time where processing is consent-based</li>
+          </ul>
+          <div class="policy-contact-box">
+            <h4>Exercise Your Rights</h4>
+            <p>To make a data request, contact our legal team. We respond within 30 days.</p>
+            <a href="/cdn-cgi/l/email-protection#9bf7fefcfaf7dbecf2e1fffeedeffef8f3b5f8f4f6"><span class="__cf_email__" data-cfemail="fc90999b9d90bc8b958698998a88999f94d29f9391">[email&#160;protected]</span> &#8594;</a>
+          </div>
+        </div>
+        <div class="policy-section" id="priv-retention">
+          <h2>Data Retention</h2>
+          <p>We retain personal information for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements. Execution request data is retained for 3 years. Job application data is retained for 1 year unless you become an employee.</p>
+        </div>
+        <div class="policy-section" id="priv-security">
+          <h2>Security</h2>
+          <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. This includes encrypted transmission (HTTPS), access controls, and regular security reviews. However, no method of transmission over the internet is 100% secure.</p>
+        </div>
+        <div class="policy-section" id="priv-contact">
+          <h2>Contact</h2>
+          <div class="policy-contact-box">
+            <h4>Privacy &amp; Legal Inquiries</h4>
+            <p>For all privacy-related questions, data requests, or legal matters:</p>
+            <a href="/cdn-cgi/l/email-protection#38545d5f5954784f51425c5d4e4c5d5b50165b5755"><span class="__cf_email__" data-cfemail="96faf3f1f7fad6e1ffecf2f3e0e2f3f5feb8f5f9fb">[email&#160;protected]</span></a>
+          </div>
+          <div class="policy-contact-box" style="margin-top:1rem;">
+            <h4>Technical Site Issues</h4>
+            <p>For problems with the website, forms, or technical errors:</p>
+            <a href="/cdn-cgi/l/email-protection#780b0d0808170a0c380f11021c1d0e0c1d1b10561b1715"><span class="__cf_email__" data-cfemail="7a090f0a0a15080e3a0d13001e1f0c0e1f191254191517">[email&#160;protected]</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMS -->
+      <div class="policy-doc" id="doc-terms" style="display:none">
+        <div class="policy-effective">Effective date: January 1, 2024</div>
+        <div class="policy-section" id="terms-intro">
+          <h2>Terms of Service</h2>
+          <p>By accessing and using the WizDevTech website or engaging our services, you agree to be bound by these Terms of Service. Please read them carefully.</p>
+        </div>
+        <div class="policy-section" id="terms-services">
+          <h2>Services</h2>
+          <p>WizDevTech provides embedded execution services on a fixed-scope, time-limited basis. All engagements are subject to a separate Engagement Agreement that defines scope, deliverables, timeline, and compensation. These Terms of Service govern use of this website and general interactions.</p>
+          <ul>
+            <li>Services are delivered remotely by contract professionals</li>
+            <li>Each engagement has a defined start and end date agreed upon in writing</li>
+            <li>Deliverables are specified before work begins</li>
+            <li>WizDevTech does not provide ongoing retainer-based services</li>
+          </ul>
+        </div>
+        <div class="policy-section" id="terms-conduct">
+          <h2>Acceptable Use</h2>
+          <p>When using this website, you agree not to:</p>
+          <ul>
+            <li>Submit false or misleading information through any form</li>
+            <li>Use automated tools to scrape or extract content from this site</li>
+            <li>Attempt to gain unauthorized access to any systems or data</li>
+            <li>Use the site for any unlawful purpose</li>
+            <li>Interfere with the proper operation of the site</li>
+          </ul>
+        </div>
+        <div class="policy-section" id="terms-ip">
+          <h2>Intellectual Property</h2>
+          <p>All content on this website, including text, design, code, and branding, is the property of WizDevTech and protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without written permission.</p>
+          <p>Deliverables produced during an engagement are governed by the specific Engagement Agreement and may include a transfer of ownership to the client upon full payment.</p>
+        </div>
+        <div class="policy-section" id="terms-liability">
+          <h2>Limitation of Liability</h2>
+          <p>To the maximum extent permitted by applicable law, WizDevTech shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website or services. Our total liability in connection with any engagement shall not exceed the fees paid for that specific engagement.</p>
+        </div>
+        <div class="policy-section" id="terms-dispute">
+          <h2>Disputes</h2>
+          <p>Any disputes arising under these Terms or in connection with WizDevTech services shall first be addressed through good-faith negotiation. If unresolved, disputes shall be submitted to binding arbitration in accordance with applicable law. These Terms are governed by the laws of the jurisdiction in which WizDevTech operates.</p>
+        </div>
+        <div class="policy-section" id="terms-changes">
+          <h2>Changes to Terms</h2>
+          <p>We may update these Terms from time to time. Continued use of the site after changes are posted constitutes acceptance of the updated Terms. Material changes will be communicated via email to active clients.</p>
+        </div>
+        <div class="policy-section" id="terms-contact">
+          <h2>Contact</h2>
+          <div class="policy-contact-box">
+            <h4>Legal Questions</h4>
+            <p>For questions about these Terms or legal matters relating to WizDevTech:</p>
+            <a href="/cdn-cgi/l/email-protection#c7aba2a0a6ab87b0aebda3a2b1b3a2a4afe9a4a8aa"><span class="__cf_email__" data-cfemail="1b777e7c7a775b6c72617f7e6d6f7e787335787476">[email&#160;protected]</span> &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COOKIES -->
+      <div class="policy-doc" id="doc-cookies" style="display:none">
+        <div class="policy-effective">Effective date: January 1, 2024</div>
+        <div class="policy-section" id="cook-intro">
+          <h2>Cookie Policy</h2>
+          <p>This Cookie Policy explains how WizDevTech uses cookies and similar tracking technologies on our website. By using our site, you consent to the use of cookies as described below.</p>
+        </div>
+        <div class="policy-section" id="cook-what">
+          <h2>What Are Cookies</h2>
+          <p>Cookies are small text files stored on your device when you visit a website. They allow the site to recognize your browser and remember information about your visit. We use both session cookies (which expire when you close your browser) and persistent cookies (which remain for a set period).</p>
+        </div>
+        <div class="policy-section" id="cook-types">
+          <h2>Cookies We Use</h2>
+          <h3>Essential Cookies</h3>
+          <p>Required for the website to function properly. These cannot be disabled.</p>
+          <ul>
+            <li>Session management cookies</li>
+            <li>Form security tokens</li>
+            <li>User preference storage (local, not transmitted)</li>
+          </ul>
+          <h3>Analytics Cookies</h3>
+          <p>Help us understand how visitors use our site.</p>
+          <ul>
+            <li><strong>Google Analytics 4</strong> &#8212; Tracks page views, session duration, and user behavior. IP addresses are anonymized. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy &#8594;</a></li>
+            <li><strong>Mixpanel</strong> &#8212; Tracks site interactions and feature usage. Data is pseudonymized. <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank" rel="noopener">Mixpanel Privacy Policy &#8594;</a></li>
+          </ul>
+          <h3>CRM Cookies</h3>
+          <p>Used to manage lead tracking and form submission data.</p>
+          <ul>
+            <li><strong>HubSpot</strong> &#8212; Tracks form submissions and page visits for lead management. <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">HubSpot Privacy Policy &#8594;</a></li>
+          </ul>
+        </div>
+        <div class="policy-section" id="cook-control">
+          <h2>Managing Cookies</h2>
+          <p>You can control cookies through your browser settings. Most browsers allow you to:</p>
+          <ul>
+            <li>View what cookies are stored and delete them</li>
+            <li>Block third-party cookies</li>
+            <li>Block cookies from specific sites</li>
+            <li>Block all cookies (note: this may break some site functionality)</li>
+            <li>Clear all cookies when you close your browser</li>
+          </ul>
+          <p>For Google Analytics opt-out, you can use the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+        </div>
+        <div class="policy-section" id="cook-contact">
+          <h2>Contact</h2>
+          <div class="policy-contact-box">
+            <h4>Cookie Questions</h4>
+            <p>For questions about our use of cookies or tracking:</p>
+            <a href="/cdn-cgi/l/email-protection#a1cdc4c6c0cde1d6c8dbc5c4d7d5c4c2c98fc2cecc"><span class="__cf_email__" data-cfemail="204c4547414c6057495a444556544543480e434f4d">[email&#160;protected]</span> &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /policy-layout -->
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">What We Do</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="/cdn-cgi/l/email-protection#82eee7e5e3eec2f5ebf8e6e7f4f6e7e1eaace1edef"><span class="__cf_email__" data-cfemail="432f2624222f03342a392726353726202b6d202c2e">[email&#160;protected]</span></a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li><li><a href="policies.html#cookies">Cookie Policy</a></li></ul></div>
+      <div class="footer-col"><h4>Technical Support</h4><ul><li><a href="/cdn-cgi/l/email-protection#dcafa9acacb3aea89cabb5a6b8b9aaa8b9bfb4f2bfb3b1"><span class="__cf_email__" data-cfemail="d5a6a0a5a5baa7a195a2bcafb1b0a3a1b0b6bdfbb6bab8">[email&#160;protected]</span></a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
+      <span>&copy; 2024 WizDevTech. All rights reserved.</span>
+      <a href="index.html#form" class="btn btn-dark btn-arrow" style="padding:0.5rem 1rem;font-size:0.65rem;">Start Execution</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="wdt-shared.js"></script>
+<script>
+(function(){
+  'use strict';
+  WDT.initAnalytics();
+  WDT.initNav();
+  WDT.initReveal();
+  WDT.trackVisit('policies');
+
+  // Doc structures for nav generation
+  var docs = {
+    privacy: [
+      {id:'priv-intro',   label:'Overview'},
+      {id:'priv-collect', label:'Data We Collect'},
+      {id:'priv-use',     label:'How We Use It'},
+      {id:'priv-share',   label:'Data Sharing'},
+      {id:'priv-rights',  label:'Your Rights'},
+      {id:'priv-retention',label:'Retention'},
+      {id:'priv-security',label:'Security'},
+      {id:'priv-contact', label:'Contact'},
+    ],
+    terms: [
+      {id:'terms-intro',   label:'Overview'},
+      {id:'terms-services',label:'Services'},
+      {id:'terms-conduct', label:'Acceptable Use'},
+      {id:'terms-ip',      label:'Intellectual Property'},
+      {id:'terms-liability',label:'Liability'},
+      {id:'terms-dispute', label:'Disputes'},
+      {id:'terms-changes', label:'Changes'},
+      {id:'terms-contact', label:'Contact'},
+    ],
+    cookies: [
+      {id:'cook-intro',   label:'Overview'},
+      {id:'cook-what',    label:'What Are Cookies'},
+      {id:'cook-types',   label:'Cookies We Use'},
+      {id:'cook-control', label:'Managing Cookies'},
+      {id:'cook-contact', label:'Contact'},
+    ],
+  };
+
+  var currentDoc = 'privacy';
+
+  function buildNav(docKey){
+    var list = document.getElementById('policyNavList');
+    list.innerHTML = '';
+    docs[docKey].forEach(function(item){
+      var li = document.createElement('li');
+      var a  = document.createElement('a');
+      a.href = '#' + item.id;
+      a.textContent = item.label;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+
+  function showDoc(docKey){
+    Object.keys(docs).forEach(function(k){
+      var el = document.getElementById('doc-'+k);
+      if(el) el.style.display = (k === docKey) ? 'flex' : 'none';
+    });
+    buildNav(docKey);

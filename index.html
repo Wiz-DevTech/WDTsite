@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>WizDevTech — Embedded Execution</title>
+<link rel="stylesheet" href="wdt-shared.css"/>
+<style>
+/* ── HOME-SPECIFIC ── */
+.hero { display:grid; place-items:center; padding:140px 2.5rem 100px; position:relative; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; pointer-events:none;
+  background: repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(46,46,46,0.07) 59px,rgba(46,46,46,0.07) 60px),
+              repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(46,46,46,0.05) 59px,rgba(46,46,46,0.05) 60px); }
+.hero-inner { position:relative; max-width:860px; width:100%; text-align:center; }
+.hero-tag { display:inline-block; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.3rem 0.75rem; margin-bottom:2rem; opacity:0; animation:fadeUp 0.6s 0.2s forwards; }
+.hero h1 { font-family:var(--display); font-weight:800; font-size:clamp(2.4rem,6vw,4.5rem); line-height:1.05; letter-spacing:-0.03em; color:var(--ink); opacity:0; animation:fadeUp 0.6s 0.35s forwards; }
+.hero h1 em { font-style:normal; color:var(--accent); }
+.hero-sub { margin:1.5rem auto 0; font-size:1.05rem; color:var(--muted); max-width:560px; opacity:0; animation:fadeUp 0.6s 0.5s forwards; }
+.hero-actions { margin-top:2.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; opacity:0; animation:fadeUp 0.6s 0.65s forwards; }
+
+/* services */
+#what { background:var(--cream); }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:3.5rem; }
+.service-card { background:var(--cream); padding:2rem; position:relative; overflow:hidden; transition:background 0.25s; }
+.service-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width 0.35s; }
+.service-card:hover { background:var(--paper); }
+.service-card:hover::after { width:100%; }
+.svc-num { font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.1em; margin-bottom:1rem; }
+.service-card h3 { font-family:var(--display); font-weight:700; font-size:1.1rem; color:var(--ink); margin-bottom:0.75rem; }
+.service-card p { font-size:0.88rem; color:var(--muted); line-height:1.65; }
+.service-duration { display:inline-block; margin-top:1.25rem; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ghost); border:1px solid var(--rule); padding:0.2rem 0.5rem; }
+
+/* how */
+#how { background:var(--paper); }
+.how-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-top:3.5rem; }
+.how-item { display:flex; gap:1.25rem; padding:1.5rem; border:1px solid transparent; transition:border-color 0.25s,background 0.25s; }
+.how-item:hover { border-color:var(--rule); background:var(--cream); }
+.how-icon { width:40px; height:40px; flex-shrink:0; background:var(--ink); display:grid; place-items:center; color:var(--cream); font-family:var(--mono); font-size:0.72rem; }
+.how-item h3 { font-family:var(--display); font-weight:600; font-size:0.95rem; color:var(--ink); margin-bottom:0.4rem; }
+.how-item p { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+
+/* who */
+#who { background:var(--cream); }
+.who-cols { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3.5rem; }
+.who-col-label { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.35rem 0.65rem; margin-bottom:1.5rem; display:inline-block; }
+.who-col-label.yes { background:rgba(212,83,26,0.1); color:var(--accent); }
+.who-col-label.no  { background:rgba(90,90,90,0.1); color:var(--muted); }
+.who-list { list-style:none; display:flex; flex-direction:column; gap:1rem; }
+.who-list li { display:flex; gap:0.75rem; align-items:flex-start; padding-bottom:1rem; border-bottom:1px solid var(--rule); }
+.who-list li:last-child { border-bottom:none; padding-bottom:0; }
+.who-check { width:18px; height:18px; flex-shrink:0; border-radius:50%; display:grid; place-items:center; font-size:0.6rem; margin-top:2px; }
+.who-check.yes { background:var(--accent); color:#fff; }
+.who-check.no  { background:var(--rule); color:var(--muted); }
+.who-list strong { display:block; font-family:var(--display); font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:0.2rem; }
+.who-list span { font-size:0.82rem; color:var(--muted); }
+
+/* leadership */
+#leadership { background:var(--ink); }
+#leadership .section-label { color:var(--accent2); }
+#leadership .section-title { color:var(--cream); }
+.leader-card { display:flex; gap:3rem; align-items:flex-start; margin-top:3rem; flex-wrap:wrap; }
+.leader-avatar { width:96px; height:96px; background:var(--ink3); border:1px solid var(--rule); display:grid; place-items:center; font-family:var(--display); font-size:2rem; font-weight:800; color:var(--accent); flex-shrink:0; }
+.leader-info h3 { font-family:var(--display); font-weight:700; font-size:1.4rem; letter-spacing:-0.02em; color:var(--cream); margin-bottom:0.5rem; }
+.leader-info p { color:#8a8a8a; font-size:0.9rem; line-height:1.7; max-width:560px; }
+
+/* ── SITE SURVEY ── */
+#survey { background:var(--ink2); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+#survey .section-title { color:var(--cream); }
+#survey .section-label { color:var(--accent2); }
+.survey-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+.survey-q { margin-bottom:2rem; }
+.survey-q label { display:block; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ghost); margin-bottom:1rem; }
+.survey-options { display:flex; flex-wrap:wrap; gap:0.6rem; }
+.survey-option { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em; padding:0.5rem 0.9rem; border:1px solid var(--rule); color:var(--mid); background:transparent; cursor:pointer; transition:all 0.2s; }
+.survey-option:hover { border-color:var(--accent2); color:var(--accent2); }
+.survey-option.selected { background:var(--accent); border-color:var(--accent); color:#fff; }
+.survey-submit-row { margin-top:2rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+.survey-note { font-family:var(--mono); font-size:0.62rem; color:var(--muted); }
+#surveyThanks { display:none; font-family:var(--mono); font-size:0.8rem; color:var(--accent); letter-spacing:0.08em; }
+
+/* ── EXECUTION FORM ── */
+#form { background:var(--paper); }
+.form-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; margin-top:3.5rem; align-items:start; }
+.form-aside h3 { font-family:var(--display); font-weight:700; font-size:1.2rem; color:var(--ink); margin-bottom:1.25rem; }
+.aside-checks { display:flex; flex-direction:column; gap:0.8rem; }
+.aside-check { display:flex; gap:0.6rem; align-items:flex-start; font-size:0.85rem; color:var(--muted); }
+.aside-check::before { content:'\2192'; color:var(--accent); font-family:var(--mono); flex-shrink:0; margin-top:1px; }
+.aside-contact { margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--rule); }
+.aside-contact-label { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:0.9rem; }
+.aside-contact-link { display:flex; align-items:center; gap:0.6rem; font-family:var(--mono); font-size:0.8rem; color:var(--ink); text-decoration:none; margin-bottom:0.6rem; transition:color 0.2s; }
+.aside-contact-link:hover { color:var(--accent); }
+.c-dot { width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+.c-dot.infra { background:var(--muted); }
+.form-box { background:var(--cream); border:1px solid var(--rule); padding:2.5rem; }
+.form-title { font-family:var(--display); font-weight:700; font-size:1.2rem; color:var(--ink); margin-bottom:0.5rem; }
+.form-note { font-size:0.8rem; color:var(--muted); font-family:var(--mono); margin-bottom:2rem; }
+.char-counter { font-family:var(--mono); font-size:0.6rem; color:var(--mid); text-align:right; margin-top:0.3rem; }
+.char-counter.warn { color:var(--accent); }
+
+/* responsive home-specific */
+@media(max-width:900px){
+  .hero { padding:110px 1.5rem 72px; }
+  .hero-actions { flex-direction:column; align-items:center; }
+  .hero-actions .btn { width:100%; max-width:300px; justify-content:center; }
+  .how-grid { grid-template-columns:1fr; }
+  .who-cols { grid-template-columns:1fr; gap:2.5rem; }
+  .form-layout { grid-template-columns:1fr; }
+  .form-aside { order:2; } .form-box { order:1; }
+  .survey-grid { grid-template-columns:1fr; }
+}
+@media(max-width:768px){ .services-grid { grid-template-columns:1fr 1fr; } .leader-card { gap:1.5rem; } .leader-avatar { width:72px; height:72px; font-size:1.5rem; } }
+@media(max-width:600px){ .services-grid { grid-template-columns:1fr; } .form-box { padding:1.5rem; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
+  <ul class="nav-links">
+    <li><a href="#what"       data-section="what">What We Do</a></li>
+    <li><a href="#how"        data-section="how">How It Works</a></li>
+    <li><a href="#who"        data-section="who">Who It's For</a></li>
+    <li><a href="#leadership" data-section="leadership">Leadership</a></li>
+    <li><a href="careers.html">We're Hiring</a></li>
+    <li><a href="sales.html">Sales</a></li>
+    <li><a href="#form" class="nav-cta" data-section="form">Start Execution</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
+  <a href="#what"        class="mobile-link">What We Do</a>
+  <a href="#how"         class="mobile-link">How It Works</a>
+  <a href="#who"         class="mobile-link">Who It's For</a>
+  <a href="#leadership"  class="mobile-link">Leadership</a>
+  <a href="careers.html" class="mobile-link">We're Hiring</a>
+  <a href="sales.html"   class="mobile-link">Sales</a>
+  <a href="#form"        class="mobile-link cta-mob">&#8594; Start Execution</a>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Embedded Execution</div>
+    <h1>Teams who need things <em>finished.</em></h1>
+    <p class="hero-sub">We enter your existing systems, complete what's half-done, stabilize what's breaking, and exit cleanly. No vision, no teaching&#8212;just execution.</p>
+    <div class="hero-actions">
+      <a href="#form"  class="btn btn-primary btn-arrow">Start Execution</a>
+      <a href="#what"  class="btn btn-outline">See What We Do</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="what" class="page-section cream">
+  <div class="container">
+    <div class="section-label reveal">01 / What We Do</div>
+    <h2 class="section-title reveal rd1">Embedded execution inside active systems.</h2>
+    <p class="section-desc reveal rd2">Engagements are 2&#8211;6 weeks, scoped, and end with documented handoff.</p>
+    <div class="services-grid reveal rd2">
+      <div class="service-card"><div class="svc-num">01</div><h3>Finish Half-Built Systems</h3><p>Complete tools, documentation, boards, and setups that were started but never finished.</p><span class="service-duration">2&#8211;4 weeks</span></div>
+      <div class="service-card"><div class="svc-num">02</div><h3>Repair Breaking Workflows</h3><p>Fix automation and processes that are failing downstream. We enter after internal teams stall or vendors disengage.</p><span class="service-duration">varies</span></div>
+      <div class="service-card"><div class="svc-num">03</div><h3>Clean &amp; Handoff Data</h3><p>Migrate, organize, and structure data with clear documentation and training materials.</p><span class="service-duration">2&#8211;4 weeks</span></div>
+      <div class="service-card"><div class="svc-num">04</div><h3>Convert Notes to Tasks</h3><p>Transform meeting notes, voice memos, and scattered ideas into completed, trackable tasks.</p><span class="service-duration">1&#8211;2 weeks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="page-section paper">
+  <div class="container">
+    <div class="section-label reveal">02 / How It Works</div>
+    <h2 class="section-title reveal rd1">Our process eliminates ambiguity.</h2>
+    <p class="section-desc reveal rd2">These constraints ensure clean, professional execution without drama.</p>
+    <div class="how-grid">
+      <div class="how-item reveal rd1"><div class="how-icon">2&#8211;6</div><div><h3>Engagements are 2&#8211;6 weeks</h3><p>Scoped with clear start and end dates. Deliverables defined before work begins.</p></div></div>
+      <div class="how-item reveal rd2"><div class="how-icon">&#10003;</div><div><h3>Specific outcomes agreed upfront</h3><p>No scope creep. You know exactly what will be completed.</p></div></div>
+      <div class="how-item reveal rd1"><div class="how-icon">&#9881;</div><div><h3>We execute, we don't educate</h3><p>Your team stays focused. No training sessions included.</p></div></div>
+      <div class="how-item reveal rd2"><div class="how-icon">&#8593;</div><div><h3>Authority through completion</h3><p>Our influence comes from results, not presentations.</p></div></div>
+      <div class="how-item reveal rd1"><div class="how-icon">&#128196;</div><div><h3>Documented handoff required</h3><p>Every engagement includes documentation and knowledge transfer.</p></div></div>
+      <div class="how-item reveal rd2"><div class="how-icon">&#8804;2</div><div><h3>Limited meetings</h3><p>Max 2 meetings per week. Progress updates are written.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="who" class="page-section cream">
+  <div class="container">
+    <div class="section-label reveal">03 / Who It's For</div>
+    <h2 class="section-title reveal rd1">Specific criteria for successful engagements.</h2>
+    <p class="section-desc reveal rd2">If you don't fit these profiles, we're likely not the right partner.</p>
+    <div class="who-cols reveal rd2">
+      <div>
+        <span class="who-col-label yes">We Work Well With</span>
+        <ul class="who-list">
+          <li><div class="who-check yes">&#10003;</div><div><strong>Founders with stalled projects</strong><span>Specific unfinished systems, need completion within 60&#8211;90 days.</span></div></li>
+          <li><div class="who-check yes">&#10003;</div><div><strong>Teams under 20 people</strong><span>Lack specialized ops talent but have clear execution needs.</span></div></li>
+          <li><div class="who-check yes">&#10003;</div><div><strong>Documented work environments</strong><span>Value written processes, async communication, clear deliverables.</span></div></li>
+          <li><div class="who-check yes">&#10003;</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire execution specialists.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <span class="who-col-label no">We Don't Work With</span>
+        <ul class="who-list">
+          <li><div class="who-check no">&#10005;</div><div><strong>Strategy-only requests</strong><span>Clients who want advice or consulting without implementation.</span></div></li>
+          <li><div class="who-check no">&#10005;</div><div><strong>Team building or coaching</strong><span>Motivation, inspiration, or team development exercises.</span></div></li>
+          <li><div class="who-check no">&#10005;</div><div><strong>Open-ended retainers</strong><span>Advisory relationships without defined exit points.</span></div></li>
+          <li><div class="who-check no">&#10005;</div><div><strong>Cultural or identity work</strong><span>Branding, narrative building, or organizational philosophy.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership" class="page-section dark">
+  <div class="container">
+    <div class="section-label reveal">04 / Leadership</div>
+    <div class="leader-card reveal rd1">
+      <div class="leader-avatar">TM</div>
+      <div class="leader-info">
+        <h3>Teri Massey</h3>
+        <p>15+ years stabilizing broken systems and completing stalled projects. Specializes in entering complex situations after other vendors have failed, delivering specific outcomes, and documenting processes for handoff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE SURVEY -->
+<section id="survey" class="page-section">
+  <div class="container">
+    <div class="section-label reveal">Site Survey</div>
+    <h2 class="section-title light reveal rd1">Help us understand what you need.</h2>
+    <p class="section-desc light reveal rd2">Takes 60 seconds. Your answers help us improve our services and prioritize what to build next.</p>
+    <form id="surveyForm">
+      <div class="survey-grid">
+        <div class="survey-q reveal rd1">
+          <label>What type of support are you looking for?</label>
+          <div class="survey-options" data-q="serviceNeeded">
+            <button type="button" class="survey-option" data-v="finish-systems">Finish Half-Built Systems</button>
+            <button type="button" class="survey-option" data-v="repair-workflows">Repair Workflows</button>
+            <button type="button" class="survey-option" data-v="data-cleanup">Data Cleanup &amp; Handoff</button>
+            <button type="button" class="survey-option" data-v="notes-to-tasks">Notes to Tasks</button>
+            <button type="button" class="survey-option" data-v="not-sure">Not sure yet</button>
+          </div>
+        </div>
+        <div class="survey-q reveal rd2">
+          <label>What's your team size?</label>
+          <div class="survey-options" data-q="teamSize">
+            <button type="button" class="survey-option" data-v="solo">Solo / Founder</button>
+            <button type="button" class="survey-option" data-v="2-5">2&#8211;5 people</button>
+            <button type="button" class="survey-option" data-v="6-20">6&#8211;20 people</button>
+            <button type="button" class="survey-option" data-v="20+">20+ people</button>
+          </div>
+        </div>
+        <div class="survey-q reveal rd1">
+          <label>How urgent is your situation?</label>
+          <div class="survey-options" data-q="urgency">
+            <button type="button" class="survey-option" data-v="on-fire">On fire &#8212; need help now</button>
+            <button type="button" class="survey-option" data-v="soon">Within the next month</button>
+            <button type="button" class="survey-option" data-v="planning">Planning ahead (2&#8211;3 months)</button>
+            <button type="button" class="survey-option" data-v="exploring">Just exploring</button>
+          </div>
+        </div>
+        <div class="survey-q reveal rd2">
+          <label>Where did things break down?</label>
+          <div class="survey-options" data-q="executionType">
+            <button type="button" class="survey-option" data-v="vendor-left">Vendor left or disengaged</button>
+            <button type="button" class="survey-option" data-v="internal-stall">Internal team stalled</button>
+            <button type="button" class="survey-option" data-v="never-started">Never got started</button>
+            <button type="button" class="survey-option" data-v="started-messy">Started but got messy</button>
+          </div>
+        </div>
+      </div>
+      <div class="survey-submit-row reveal rd3">
+        <button type="submit" class="btn btn-primary btn-arrow">Submit Feedback</button>
+        <span class="survey-note">Anonymous &#183; No account needed</span>
+        <span id="surveyThanks">&#10003; Thanks &#8212; your feedback was recorded.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- EXECUTION FORM -->
+<section id="form" class="page-section paper">
+  <div class="container">
+    <div class="section-label reveal">05 / Start Execution</div>
+    <h2 class="section-title reveal rd1">Have Specific Unfinished Work?</h2>
+    <p class="section-desc reveal rd2">If you have defined problems and budget allocated, complete the form below.</p>
+    <div class="form-layout">
+      <div class="form-aside reveal rd2">
+        <h3>Before you submit</h3>
+        <div class="aside-checks">
+          <div class="aside-check">You have a defined, scoped problem&#8212;not a vague need for help.</div>
+          <div class="aside-check">Budget is allocated and approved.</div>
+          <div class="aside-check">You need execution, not advice or strategy.</div>
+          <div class="aside-check">You're prepared for a 2&#8211;6 week fixed engagement.</div>
+          <div class="aside-check">A decision maker is completing this form.</div>
+        </div>
+        <div class="aside-contact">
+          <div class="aside-contact-label">Prefer to reach out directly?</div>
+          <a href="/cdn-cgi/l/email-protection#2c48495a6c5b455648495a58494f44024f4341" class="aside-contact-link"><span class="c-dot"></span><span class="__cf_email__" data-cfemail="6d09081b2d1a041709081b19080e05430e0200">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#8be2e5edf9eacbfce2f1efeefdffeee8e3a5e8e4e6" class="aside-contact-link"><span class="c-dot infra"></span><span class="__cf_email__" data-cfemail="f0999e968291b087998a94958684959398de939f9d">[email&#160;protected]</span></a>
+        </div>
+      </div>
+      <div class="form-box reveal rd3">
+        <div class="form-title">Execution Request Form</div>
+        <div class="form-note">All fields required &middot; Response within 2 business days</div>
+        <form id="execForm" novalidate>
+          <div class="form-row-2">
+            <div class="form-row"><label class="form-label" for="firstName">First Name <span class="req">*</span></label><input type="text" class="form-control" id="firstName" name="firstName" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="firstNameErr">Required.</div></div>
+            <div class="form-row"><label class="form-label" for="lastName">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="lastNameErr">Required.</div></div>
+          </div>
+          <div class="form-row"><label class="form-label" for="email">Work Email <span class="req">*</span></label><input type="email" class="form-control" id="email" name="email" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="emailErr">Valid email required.</div></div>
+          <div class="form-row"><label class="form-label" for="company">Company <span class="req">*</span></label><input type="text" class="form-control" id="company" name="company" placeholder="Acme Corp" autocomplete="organization"/><div class="field-error" id="companyErr">Required.</div></div>
+          <div class="form-row-2">
+            <div class="form-row"><label class="form-label" for="timeline">Timeline <span class="req">*</span></label><select class="form-control" id="timeline" name="timeline"><option value="">Select timeline</option><option value="immediate">Immediate (within 2 weeks)</option><option value="short">Short-term (1&#8211;2 months)</option><option value="medium">Medium-term (2&#8211;4 months)</option><option value="long">Long-term (4+ months)</option></select><div class="field-error" id="timelineErr">Required.</div></div>
+            <div class="form-row"><label class="form-label" for="budget">Budget Range <span class="req">*</span></label><select class="form-control" id="budget" name="budget"><option value="">Select range</option><option value="under10">Under $10,000</option><option value="10to25">$10,000&#8211;$25,000</option><option value="25to50">$25,000&#8211;$50,000</option><option value="50to100">$50,000&#8211;$100,000</option><option value="over100">Over $100,000</option></select><div class="field-error" id="budgetErr">Required.</div></div>
+          </div>
+          <div class="form-row"><label class="form-label" for="description">Describe the work to be completed <span class="req">*</span></label><textarea class="form-control" id="description" name="description" placeholder="Be specific: what exists, what's broken or unfinished, and what done looks like." maxlength="500"></textarea><div class="char-counter" id="charCounter">0 / 500</div><div class="field-error" id="descriptionErr">Min 30 characters required.</div></div>
+          <button type="submit" class="btn-submit" id="submitBtn"><div class="spinner"></div><span class="btn-text">Submit Request &#8594;</span></button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">&#10003;</div>
+          <h3>Request Received</h3>
+          <p>We review each submission personally and respond within 2 business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>WizDevTech</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#what">What We Do</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#who">Who It's For</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="careers.html">We're Hiring</a></li>
+          <li><a href="sales.html">Sales</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#8ce8e9faccfbe5f6e8e9faf8e9efe4a2efe3e1"><span class="__cf_email__" data-cfemail="bbdfdecdfbccd2c1dfdecdcfded8d395d8d4d6">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#4e2720283c2f0e3927342a2b383a2b2d26602d2123"><span class="__cf_email__" data-cfemail="c8a1a6aebaa988bfa1b2acadbebcadaba0e6aba7a5">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#087b69646d7b487f61726c6d7e7c6d6b60266b6765"><span class="__cf_email__" data-cfemail="2251434e475162554b584647545647414a0c414d4f">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#5b282e2b2b34292f1b2c32213f3e2d2f3e383375383436"><span class="__cf_email__" data-cfemail="daa9afaaaab5a8ae9aadb3a0bebfacaebfb9b2f4b9b5b7">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#a6c5c7d4c3c3d4d5e6d1cfdcc2c3d0d2c3c5ce88c5c9cb"><span class="__cf_email__" data-cfemail="b3d0d2c1d6d6c1c0f3c4dac9d7d6c5c7d6d0db9dd0dcde">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#a8c4cdcfc9c4e8dfc1d2cccddedccdcbc086cbc7c5"><span class="__cf_email__" data-cfemail="7e121b191f123e0917041a1b080a1b1d16501d1113">[email&#160;protected]</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Technical Issues</h4>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#75060005051a070135021c0f1110030110161d5b161a18"><span class="__cf_email__" data-cfemail="f685838686998482b6819f8c9293808293959ed895999b">[email&#160;protected]</span></a></li>
+          <li><a href="policies.html">Privacy Policy</a></li>
+          <li><a href="policies.html#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
+      <span>&copy; 2024 WizDevTech. Embedded execution services.</span>
+      <a href="#form" class="btn btn-dark btn-arrow" style="padding:0.5rem 1rem;font-size:0.65rem;">Start Execution</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="analytics-badge" id="analyticsBadge"><span class="dot"></span><span id="visitCount">0 visits</span></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="wdt-shared.js"></script>
+<script>
+(function(){
+  'use strict';
+  WDT.initAnalytics();
+  WDT.initNav();
+  WDT.initReveal();
+  WDT.trackVisit('home');
+
+  // Active nav highlight
+  var sectionIds = ['home','what','how','who','leadership','survey','form'];
+  function highlightNav(){
+    var current = 'home';
+    sectionIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && window.scrollY >= el.offsetTop - 100) current = id;
+    });
+    document.querySelectorAll('.nav-links a[data-section]').forEach(function(a){
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', highlightNav, {passive:true});
+
+  // Survey
+  document.querySelectorAll('.survey-options').forEach(function(group){
+    group.querySelectorAll('.survey-option').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        group.querySelectorAll('.survey-option').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+      });
+    });
+  });
+
+  document.getElementById('surveyForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var answers = {};
+    document.querySelectorAll('.survey-options').forEach(function(g){
+      var sel = g.querySelector('.selected');
+      if(sel) answers[g.dataset.q] = sel.dataset.v;
+    });
+    WDT.trackSurvey(answers);
+    document.getElementById('surveyThanks').style.display = 'inline';
+    document.querySelector('#surveyForm .btn-primary').disabled = true;
+    WDT.toast('Survey submitted. Thank you!');
+  });
+
+  // Char counter
+  var desc = document.getElementById('description');
+  var ctr  = document.getElementById('charCounter');
+  if(desc) desc.addEventListener('input', function(){ var l=desc.value.length; ctr.textContent=l+' / 500'; ctr.classList.toggle('warn',l>420); });
+
+  // Form validation & submit
+  var isEmail = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+  function vf(id,eid,fn){
+    var el=document.getElementById(id), err=document.getElementById(eid);
+    if(!el||!err) return true;
+    var ok=fn(el.value.trim());
+    el.classList.toggle('error',!ok); el.classList.toggle('valid',ok); err.classList.toggle('show',!ok);
+    return ok;
+  }
+  var fields=[
+    {id:'firstName',eid:'firstNameErr',fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'lastName', eid:'lastNameErr', fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'email',    eid:'emailErr',    fn:isEmail,                         ev:'blur'},
+    {id:'company',  eid:'companyErr',  fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'timeline', eid:'timelineErr', fn:function(v){return v.length>0;},ev:'change'},
+    {id:'budget',   eid:'budgetErr',   fn:function(v){return v.length>0;},ev:'change'},
+    {id:'description',eid:'descriptionErr',fn:function(v){return v.length>=30;},ev:'blur'},
+  ];
+  fields.forEach(function(f){
+    var el=document.getElementById(f.id);
+    if(el) el.addEventListener(f.ev, function(){ vf(f.id,f.eid,f.fn); });
+  });
+
+  document.getElementById('execForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok=fields.map(function(f){ return vf(f.id,f.eid,f.fn); }).every(Boolean);

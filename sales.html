@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sales — WizDevTech</title>
+<link rel="stylesheet" href="wdt-shared.css"/>
+<style>
+/* SALES-SPECIFIC */
+.sales-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+.sales-card { background:var(--cream); border:1px solid var(--rule); padding:2rem; transition:border-color 0.25s, background 0.25s; position:relative; overflow:hidden; }
+.sales-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width 0.35s; }
+.sales-card:hover { border-color:var(--accent); background:var(--paper); }
+.sales-card:hover::after { width:100%; }
+.sales-card-icon { width:44px; height:44px; background:var(--ink); display:grid; place-items:center; font-size:1.2rem; margin-bottom:1.25rem; }
+.sales-card h3 { font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--ink); margin-bottom:0.6rem; }
+.sales-card p { font-size:0.87rem; color:var(--muted); line-height:1.65; }
+
+.pricing-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin-top:3rem; }
+.pricing-card { background:var(--cream); border:1px solid var(--rule); padding:2rem; position:relative; }
+.pricing-card.featured { background:var(--ink); border-color:var(--accent); }
+.pricing-badge { position:absolute; top:-1px; right:1.5rem; background:var(--accent); font-family:var(--mono); font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:#fff; padding:0.2rem 0.6rem; }
+.pricing-label { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:0.75rem; }
+.pricing-card.featured .pricing-label { color:var(--accent2); }
+.pricing-name { font-family:var(--display); font-weight:700; font-size:1.3rem; color:var(--ink); margin-bottom:0.4rem; }
+.pricing-card.featured .pricing-name { color:var(--cream); }
+.pricing-price { font-family:var(--display); font-weight:800; font-size:2.2rem; letter-spacing:-0.03em; color:var(--ink); margin-bottom:0.25rem; }
+.pricing-card.featured .pricing-price { color:var(--cream); }
+.pricing-price sup { font-size:1rem; vertical-align:super; font-weight:400; }
+.pricing-duration { font-family:var(--mono); font-size:0.65rem; color:var(--muted); margin-bottom:1.5rem; }
+.pricing-card.featured .pricing-duration { color:#8a8a8a; }
+.pricing-features { list-style:none; display:flex; flex-direction:column; gap:0.7rem; margin-bottom:2rem; }
+.pricing-features li { display:flex; gap:0.6rem; align-items:flex-start; font-size:0.84rem; color:var(--muted); }
+.pricing-card.featured .pricing-features li { color:#8a8a8a; }
+.pricing-features li::before { content:'&#10003;'; color:var(--accent); font-family:var(--mono); font-size:0.7rem; flex-shrink:0; margin-top:1px; }
+
+.process-steps { display:flex; gap:0; margin-top:3rem; position:relative; }
+.process-steps::before { content:''; position:absolute; top:24px; left:24px; right:24px; height:1px; background:var(--rule); }
+.process-step { flex:1; text-align:center; padding:0 1rem; position:relative; }
+.step-num { width:48px; height:48px; background:var(--ink); border:2px solid var(--cream); display:grid; place-items:center; font-family:var(--mono); font-size:0.75rem; color:var(--cream); margin:0 auto 1rem; position:relative; z-index:1; }
+.process-step.active .step-num { background:var(--accent); border-color:var(--accent); }
+.step-title { font-family:var(--display); font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:0.4rem; }
+.step-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+
+.sales-form-wrap { background:var(--cream); border:1px solid var(--rule); padding:2.5rem; }
+.sales-contact-bar { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2.5rem; }
+.contact-card { background:var(--paper); border:1px solid var(--rule); padding:1.5rem; }
+.contact-card h4 { font-family:var(--display); font-weight:700; font-size:1rem; color:var(--ink); margin-bottom:0.4rem; }
+.contact-card p { font-size:0.82rem; color:var(--muted); margin-bottom:0.75rem; }
+.contact-card a { font-family:var(--mono); font-size:0.75rem; color:var(--accent); text-decoration:none; }
+.contact-card a:hover { text-decoration:underline; }
+
+.stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:3rem; }
+.stat-item { background:var(--ink); padding:2rem; text-align:center; }
+.stat-num { font-family:var(--display); font-weight:800; font-size:2.5rem; letter-spacing:-0.04em; color:var(--accent); }
+.stat-label { font-family:var(--mono); font-size:0.63rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-top:0.35rem; }
+
+@media(max-width:900px){ .sales-grid { grid-template-columns:1fr; } .pricing-grid { grid-template-columns:1fr; } .process-steps { flex-direction:column; gap:1.5rem; } .process-steps::before { display:none; } .sales-contact-bar { grid-template-columns:1fr; } .stat-row { grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){ .stat-row { grid-template-columns:1fr; } .sales-form-wrap { padding:1.5rem; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#what">What We Do</a></li>
+    <li><a href="careers.html">We're Hiring</a></li>
+    <li><a href="policies.html">Policies</a></li>
+    <li><a href="sales.html" class="active">Sales</a></li>
+    <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
+  <a href="index.html"      class="mobile-link">Home</a>
+  <a href="index.html#what" class="mobile-link">What We Do</a>
+  <a href="careers.html"    class="mobile-link">We're Hiring</a>
+  <a href="policies.html"   class="mobile-link">Policies</a>
+  <a href="sales.html"      class="mobile-link">Sales</a>
+  <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">WizDevTech</a><span>/</span> Sales</div>
+
+<div class="page-header">
+  <div class="container">
+    <span class="tag">Sales</span>
+    <h1>Execution you can <em>buy.</em></h1>
+    <p>Fixed-scope engagements. Defined deliverables. Clear pricing. No retainers, no surprises. Contact our sales team at <a href="/cdn-cgi/l/email-protection#5724363b322417203e2d3332212332343f7934383a" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="98ebf9f4fdebd8eff1e2fcfdeeecfdfbf0b6fbf7f5">[email&#160;protected]</span></a>.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="page-section dark" id="stats">
+  <div class="container">
+    <div class="stat-row reveal">
+      <div class="stat-item"><div class="stat-num">2&#8211;6</div><div class="stat-label">Week Engagements</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Defined Before Start</div></div>
+      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Open-Ended Retainers</div></div>
+      <div class="stat-item"><div class="stat-num">&#8804;2</div><div class="stat-label">Meetings Per Week</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'RE BUYING -->
+<section class="page-section paper" id="offer">
+  <div class="container">
+    <div class="section-label reveal">What You're Buying</div>
+    <h2 class="section-title reveal rd1">Four execution services. All scoped. All delivered.</h2>
+    <p class="section-desc reveal rd2">Every engagement ends with a documented handoff. These aren't open-ended commitments&#8212;they're defined work packages.</p>
+    <div class="sales-grid">
+      <div class="sales-card reveal rd1"><div class="sales-card-icon">&#9881;</div><h3>Finish Half-Built Systems</h3><p>We complete tools, documentation, boards, and setups that were started but abandoned. Typical engagement 2&#8211;4 weeks. Ends with a working system and handoff documentation.</p></div>
+      <div class="sales-card reveal rd2"><div class="sales-card-icon">&#128295;</div><h3>Repair Breaking Workflows</h3><p>We enter after your automation fails downstream. Diagnose the root cause, rebuild reliably, document the logic. We start after stalls or vendor disengagement.</p></div>
+      <div class="sales-card reveal rd1"><div class="sales-card-icon">&#128196;</div><h3>Clean &amp; Handoff Data</h3><p>Migrate, organize, and structure your data. Every engagement ends with a process document and training materials your team can use independently.</p></div>
+      <div class="sales-card reveal rd2"><div class="sales-card-icon">&#10003;</div><h3>Convert Notes to Tasks</h3><p>Transform voice memos, meeting notes, and scattered ideas into completed trackable tasks in your system. 1&#8211;2 week engagements typical.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="page-section cream" id="pricing">
+  <div class="container">
+    <div class="section-label reveal">Pricing</div>
+    <h2 class="section-title reveal rd1">Fixed-scope pricing. No surprises.</h2>
+    <p class="section-desc reveal rd2">All engagements are scoped and priced before work begins. You know exactly what you're paying for.</p>
+    <div class="pricing-grid reveal rd2">
+      <div class="pricing-card">
+        <div class="pricing-label">Starter</div>
+        <div class="pricing-name">Focus Sprint</div>
+        <div class="pricing-price"><sup>$</sup>4,500</div>
+        <div class="pricing-duration">1&#8211;2 week engagement</div>
+        <ul class="pricing-features">
+          <li>Single defined deliverable</li>
+          <li>Notes-to-tasks conversion</li>
+          <li>Written progress updates</li>
+          <li>Documented handoff</li>
+          <li>Max 2 meetings</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-arrow" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <span class="pricing-badge">Most Common</span>
+        <div class="pricing-label">Standard</div>
+        <div class="pricing-name">Execution Block</div>
+        <div class="pricing-price"><sup>$</sup>12,000</div>
+        <div class="pricing-duration">3&#8211;4 week engagement</div>
+        <ul class="pricing-features">
+          <li>Full system or workflow engagement</li>
+          <li>Repair or complete defined scope</li>
+          <li>Written progress 3x/week</li>
+          <li>Full process documentation</li>
+          <li>Team handoff session</li>
+          <li>Max 2 meetings/week</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary btn-arrow" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-label">Complex</div>
+        <div class="pricing-name">Deep Engagement</div>
+        <div class="pricing-price"><sup>$</sup>25,000<sup style="font-size:0.8rem">+</sup></div>
+        <div class="pricing-duration">5&#8211;6 week engagement</div>
+        <ul class="pricing-features">
+          <li>Multi-system or multi-deliverable</li>
+          <li>Data migration + workflow repair</li>
+          <li>Daily written updates</li>
+          <li>Complete documentation suite</li>
+          <li>Extended handoff support</li>
+          <li>Custom scope defined upfront</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-arrow" style="width:100%;justify-content:center;">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SALES PROCESS -->
+<section class="page-section paper" id="process">
+  <div class="container">
+    <div class="section-label reveal">How Sales Works</div>
+    <h2 class="section-title reveal rd1">From inquiry to execution in 5 steps.</h2>
+    <div class="process-steps reveal rd2">
+      <div class="process-step active"><div class="step-num">01</div><div class="step-title">Inquiry</div><div class="step-desc">Submit the form or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0c3d1dcd5c3f0c7d9cad4d5c6c4d5d3d89ed3dfdd">[email&#160;protected]</a></div></div>
+      <div class="process-step"><div class="step-num">02</div><div class="step-title">Scoping Call</div><div class="step-desc">30-minute written brief or short call to define deliverables</div></div>
+      <div class="process-step"><div class="step-num">03</div><div class="step-title">Proposal</div><div class="step-desc">Fixed scope, deliverables, timeline, and price — in writing</div></div>
+      <div class="process-step"><div class="step-num">04</div><div class="step-title">Agreement</div><div class="step-desc">Sign and pay. Work starts within 2 business days.</div></div>
+      <div class="process-step"><div class="step-num">05</div><div class="step-title">Execution</div><div class="step-desc">We enter, complete, document, and hand off cleanly.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / FORM -->
+<section class="page-section cream" id="contact">
+  <div class="container">
+    <div class="section-label reveal">Contact Sales</div>
+    <h2 class="section-title reveal rd1">Talk to our sales team.</h2>
+    <p class="section-desc reveal rd2">Have a specific project in mind? Reach out directly or fill in the form. We respond within 1 business day.</p>
+
+    <div class="sales-contact-bar reveal rd2">
+      <div class="contact-card">
+        <h4>Sales Inquiries</h4>
+        <p>For new engagements, pricing questions, or scoping conversations.</p>
+        <a href="/cdn-cgi/l/email-protection#d5a6b4b9b0a695a2bcafb1b0a3a1b0b6bdfbb6bab8"><span class="__cf_email__" data-cfemail="681b09040d1b281f01120c0d1e1c0d0b00460b0705">[email&#160;protected]</span> &#8594;</a>
+      </div>
+      <div class="contact-card">
+        <h4>Technical Issues</h4>
+        <p>Problems with the site, client portal, or technical onboarding.</p>
+        <a href="/cdn-cgi/l/email-protection#760503060619040236011f0c1213000213151e5815191b"><span class="__cf_email__" data-cfemail="91e2e4e1e1fee3e5d1e6f8ebf5f4e7e5f4f2f9bff2fefc">[email&#160;protected]</span> &#8594;</a>
+      </div>
+    </div>
+
+    <div class="sales-form-wrap reveal rd3">
+      <div class="form-title">Sales Inquiry Form</div>
+      <div class="form-note">Responded to within 1 business day &middot; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0370626f667043746a796766757766606b2d606c6e">[email&#160;protected]</a></div>
+      <form id="salesForm" novalidate>
+        <div class="form-row-2">
+          <div class="form-row"><label class="form-label" for="sFirst">First Name <span class="req">*</span></label><input type="text" class="form-control" id="sFirst" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="sFirstErr">Required.</div></div>
+          <div class="form-row"><label class="form-label" for="sLast">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="sLast" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="sLastErr">Required.</div></div>
+        </div>
+        <div class="form-row"><label class="form-label" for="sEmail">Work Email <span class="req">*</span></label><input type="email" class="form-control" id="sEmail" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="sEmailErr">Valid email required.</div></div>
+        <div class="form-row"><label class="form-label" for="sCompany">Company <span class="req">*</span></label><input type="text" class="form-control" id="sCompany" placeholder="Acme Corp" autocomplete="organization"/><div class="field-error" id="sCompanyErr">Required.</div></div>
+        <div class="form-row-2">
+          <div class="form-row"><label class="form-label" for="sService">Service Interested In <span class="req">*</span></label>
+            <select class="form-control" id="sService">
+              <option value="">Select service</option>
+              <option>Finish Half-Built Systems</option>
+              <option>Repair Breaking Workflows</option>
+              <option>Clean &amp; Handoff Data</option>
+              <option>Convert Notes to Tasks</option>
+              <option>Not sure yet</option>
+            </select>
+            <div class="field-error" id="sServiceErr">Required.</div>
+          </div>
+          <div class="form-row"><label class="form-label" for="sBudget">Budget Range <span class="req">*</span></label>
+            <select class="form-control" id="sBudget">
+              <option value="">Select range</option>
+              <option>Under $10,000</option>
+              <option>$10,000&#8211;$25,000</option>
+              <option>$25,000&#8211;$50,000</option>
+              <option>Over $50,000</option>
+            </select>
+            <div class="field-error" id="sBudgetErr">Required.</div>
+          </div>
+        </div>
+        <div class="form-row"><label class="form-label" for="sMessage">Describe Your Need <span class="req">*</span></label><textarea class="form-control" id="sMessage" placeholder="What needs to get done? What's broken, stalled, or unfinished?" maxlength="500"></textarea><div class="char-counter" id="sMsgCounter">0 / 500</div><div class="field-error" id="sMessageErr">Min 20 characters required.</div></div>
+        <button type="submit" class="btn-submit" id="salesBtn"><div class="spinner"></div><span class="btn-text">Send Sales Inquiry &#8594;</span></button>
+      </form>
+      <div class="form-success" id="salesSuccess">
+        <div class="form-success-icon">&#10003;</div>
+        <h3>Inquiry Sent</h3>
+        <p>Your email client will open addressed to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cdbeaca1a8be8dbaa4b7a9a8bbb9a8aea5e3aea2a0">[email&#160;protected]</a>. Please send to complete your inquiry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">What We Do</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Sales</h4><ul><li><a href="/cdn-cgi/l/email-protection#7b081a171e083b0c12011f1e0d0f1e181355181416"><span class="__cf_email__" data-cfemail="780b19141d0b380f11021c1d0e0c1d1b10561b1715">[email&#160;protected]</span></a></li><li><a href="#pricing">Pricing</a></li><li><a href="#contact">Contact Sales</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="/cdn-cgi/l/email-protection#71020401011e03053106180b151407051412195f121e1c"><span class="__cf_email__" data-cfemail="9feceaefeff0edebdfe8f6e5fbfae9ebfafcf7b1fcf0f2">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#c0aca5a7a1ac80b7a9baa4a5b6b4a5a3a8eea3afad"><span class="__cf_email__" data-cfemail="5e323b393f321e2937243a3b282a3b3d36703d3133">[email&#160;protected]</span></a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
+      <span>&copy; 2024 WizDevTech. Fixed-scope execution.</span>
+      <a href="#contact" class="btn btn-dark btn-arrow" style="padding:0.5rem 1rem;font-size:0.65rem;">Contact Sales</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="wdt-shared.js"></script>
+<script>
+(function(){
+  'use strict';
+  WDT.initAnalytics();
+  WDT.initNav();
+  WDT.initReveal();
+  WDT.trackVisit('sales');
+
+  var isEmail = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+  function vf(id,eid,fn){ var el=document.getElementById(id),err=document.getElementById(eid); if(!el||!err) return true; var ok=fn(el.value.trim()); el.classList.toggle('error',!ok); el.classList.toggle('valid',ok); err.classList.toggle('show',!ok); return ok; }
+  var sFields=[
+    {id:'sFirst',  eid:'sFirstErr',   fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'sLast',   eid:'sLastErr',    fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'sEmail',  eid:'sEmailErr',   fn:isEmail,                         ev:'blur'},
+    {id:'sCompany',eid:'sCompanyErr', fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'sService',eid:'sServiceErr', fn:function(v){return v.length>0;},ev:'change'},
+    {id:'sBudget', eid:'sBudgetErr',  fn:function(v){return v.length>0;},ev:'change'},
+    {id:'sMessage',eid:'sMessageErr', fn:function(v){return v.length>=20;},ev:'blur'},
+  ];
+  sFields.forEach(function(f){ var el=document.getElementById(f.id); if(el) el.addEventListener(f.ev,function(){ vf(f.id,f.eid,f.fn); }); });
+
+  var smsg=document.getElementById('sMessage'), sctr=document.getElementById('sMsgCounter');
+  smsg.addEventListener('input', function(){ var l=smsg.value.length; sctr.textContent=l+' / 500'; sctr.classList.toggle('warn',l>420); });
+
+  doc
