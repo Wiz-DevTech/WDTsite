@@ -1,303 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Sales — WizDevTech</title>
-<link rel="stylesheet" href="wdt-shared.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="WizDevTech sales and pricing. Fixed-scope, fixed-price engagements from $5,000. No retainers."/>
+<title>Sales &amp; Pricing — WizDevTech</title>
 <style>
-/* SALES-SPECIFIC */
-.sales-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
-.sales-card { background:var(--cream); border:1px solid var(--rule); padding:2rem; transition:border-color 0.25s, background 0.25s; position:relative; overflow:hidden; }
-.sales-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width 0.35s; }
-.sales-card:hover { border-color:var(--accent); background:var(--paper); }
-.sales-card:hover::after { width:100%; }
-.sales-card-icon { width:44px; height:44px; background:var(--ink); display:grid; place-items:center; font-size:1.2rem; margin-bottom:1.25rem; }
-.sales-card h3 { font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--ink); margin-bottom:0.6rem; }
-.sales-card p { font-size:0.87rem; color:var(--muted); line-height:1.65; }
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+:root{--ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;--muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;--paper:#f4f2ed;--cream:#faf9f6;--accent:#d4531a;--accent2:#e8824a;--green:#1e7a3c;--red:#c0392b;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Syne',sans-serif;--nav-h:64px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--accent);}
+section{scroll-margin-top:var(--nav-h);}
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;pointer-events:none;transition:width 0.1s linear;}
+nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
+nav#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
+.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem;border:1px solid var(--ink)!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.3s,opacity 0.3s;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.25s,padding 0.3s;display:flex;flex-direction:column;}
+.nav-mobile.open{max-height:400px;padding:1.25rem 2rem 1.5rem;opacity:1;}
+.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.65rem 0;border-bottom:1px solid rgba(46,46,46,0.12);transition:color 0.2s;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile a:hover{color:var(--ink);}
+.cta-mob{color:var(--accent)!important;}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:198;}
+.nav-overlay.show{display:block;}
+.page-section{padding:80px 2.5rem;}
+.container{max-width:1080px;margin:0 auto;}
+.section-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.section-title{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
+.section-title.light{color:var(--cream);}
+.section-desc{color:var(--muted);max-width:560px;font-size:0.95rem;line-height:1.75;}
+.section-desc.light{color:#8a8a8a;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
+.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
+.back-top.show{opacity:1;pointer-events:all;}.back-top:hover{background:var(--accent);}
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:340px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;height:0;overflow:hidden;}
+.form-control{width:100%;padding:0.75rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;border-radius:0;appearance:none;-webkit-appearance:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.form-control:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,83,26,0.1);}
+.form-control.error{border-color:var(--red);}
+select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--paper);padding-right:2.5rem;cursor:pointer;}
+textarea.form-control{resize:vertical;min-height:90px;}
+.form-label{display:block;font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
+.field-error{display:none;font-family:var(--mono);font-size:0.62rem;color:var(--red);margin-top:0.35rem;}
+.field-error.show{display:block;}
+.form-row{margin-bottom:1.25rem;}
+.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:0.5rem;}
+.btn-submit:hover{background:var(--accent);}
+.btn-submit:disabled{background:var(--muted);cursor:not-allowed;}
+.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
+.btn-submit.loading .spinner{display:block;}
+.form-success{display:none;text-align:center;padding:2.5rem 1.5rem;}
+.form-success.show{display:block;}
+.form-success-icon{width:52px;height:52px;background:var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.25rem;font-size:1.3rem;color:#fff;}
+.form-success h3{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:0.4rem;}
+.form-success p{font-size:0.85rem;color:var(--muted);}
+footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2rem;border-top:1px solid var(--rule);}
+.footer-inner{max-width:1080px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
+.footer-col h4{font-family:var(--display);font-weight:700;font-size:0.85rem;color:var(--ghost);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col a{color:var(--mid);text-decoration:none;font-size:0.78rem;font-family:var(--sans);transition:color 0.2s;}
+.footer-col a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;border-top:1px solid rgba(46,46,46,0.5);}
+.footer-logo-text{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ghost);letter-spacing:-0.02em;}
+.footer-logo-text span{color:var(--accent);}
+.footer-copy{font-size:0.7rem;color:var(--muted);font-family:var(--mono);}
+@keyframes spin{to{transform:rotate(360deg);}}
 
-.pricing-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin-top:3rem; }
-.pricing-card { background:var(--cream); border:1px solid var(--rule); padding:2rem; position:relative; }
-.pricing-card.featured { background:var(--ink); border-color:var(--accent); }
-.pricing-badge { position:absolute; top:-1px; right:1.5rem; background:var(--accent); font-family:var(--mono); font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:#fff; padding:0.2rem 0.6rem; }
-.pricing-label { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:0.75rem; }
-.pricing-card.featured .pricing-label { color:var(--accent2); }
-.pricing-name { font-family:var(--display); font-weight:700; font-size:1.3rem; color:var(--ink); margin-bottom:0.4rem; }
-.pricing-card.featured .pricing-name { color:var(--cream); }
-.pricing-price { font-family:var(--display); font-weight:800; font-size:2.2rem; letter-spacing:-0.03em; color:var(--ink); margin-bottom:0.25rem; }
-.pricing-card.featured .pricing-price { color:var(--cream); }
-.pricing-price sup { font-size:1rem; vertical-align:super; font-weight:400; }
-.pricing-duration { font-family:var(--mono); font-size:0.65rem; color:var(--muted); margin-bottom:1.5rem; }
-.pricing-card.featured .pricing-duration { color:#8a8a8a; }
-.pricing-features { list-style:none; display:flex; flex-direction:column; gap:0.7rem; margin-bottom:2rem; }
-.pricing-features li { display:flex; gap:0.6rem; align-items:flex-start; font-size:0.84rem; color:var(--muted); }
-.pricing-card.featured .pricing-features li { color:#8a8a8a; }
-.pricing-features li::before { content:'&#10003;'; color:var(--accent); font-family:var(--mono); font-size:0.7rem; flex-shrink:0; margin-top:1px; }
+/* PAGE HERO */
+.page-hero{padding:110px 2.5rem 64px;background:var(--ink);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px);pointer-events:none;}
+.page-hero .container{position:relative;}
+.page-hero .tag{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.25rem;display:block;}
+.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;}
+.page-hero h1 em{color:var(--accent2);font-style:normal;}
+.page-hero p{color:#8a8a8a;font-size:0.95rem;max-width:520px;line-height:1.7;}
+.page-hero p a{color:var(--accent2);}
 
-.process-steps { display:flex; gap:0; margin-top:3rem; position:relative; }
-.process-steps::before { content:''; position:absolute; top:24px; left:24px; right:24px; height:1px; background:var(--rule); }
-.process-step { flex:1; text-align:center; padding:0 1rem; position:relative; }
-.step-num { width:48px; height:48px; background:var(--ink); border:2px solid var(--cream); display:grid; place-items:center; font-family:var(--mono); font-size:0.75rem; color:var(--cream); margin:0 auto 1rem; position:relative; z-index:1; }
-.process-step.active .step-num { background:var(--accent); border-color:var(--accent); }
-.step-title { font-family:var(--display); font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:0.4rem; }
-.step-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+/* ANALYTICS BAR */
+.analytics-bar{background:var(--paper);border-bottom:1px solid var(--rule);padding:0.75rem 2.5rem;}
+.analytics-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+.analytics-stat{display:flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-size:0.65rem;color:var(--muted);}
+.a-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease infinite;}
+.a-dot.green{background:var(--green);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.analytics-stat strong{color:var(--ink);}
 
-.sales-form-wrap { background:var(--cream); border:1px solid var(--rule); padding:2.5rem; }
-.sales-contact-bar { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2.5rem; }
-.contact-card { background:var(--paper); border:1px solid var(--rule); padding:1.5rem; }
-.contact-card h4 { font-family:var(--display); font-weight:700; font-size:1rem; color:var(--ink); margin-bottom:0.4rem; }
-.contact-card p { font-size:0.82rem; color:var(--muted); margin-bottom:0.75rem; }
-.contact-card a { font-family:var(--mono); font-size:0.75rem; color:var(--accent); text-decoration:none; }
-.contact-card a:hover { text-decoration:underline; }
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.price-card{background:var(--cream);padding:2.5rem 2rem;position:relative;}
+.price-card.featured{background:var(--ink);}
+.featured-tag{position:absolute;top:1.25rem;right:1.25rem;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#fff;padding:0.2rem 0.5rem;}
+.price-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.price-card h3{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);margin-bottom:0.85rem;letter-spacing:-0.02em;}
+.price-card.featured h3,.price-card.featured .price-amount,.price-card.featured .price-desc{color:var(--cream);}
+.price-card.featured .price-amount{color:var(--accent2);}
+.price-amount{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
+.price-amount small{font-family:var(--mono);font-size:0.7rem;font-weight:400;color:var(--muted);margin-left:0.2rem;}
+.price-card.featured .price-amount small{color:#8a8a8a;}
+.price-desc{font-size:0.82rem;color:var(--muted);margin:0.75rem 0 1.5rem;line-height:1.6;}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:2rem;}
+.price-feature{font-size:0.82rem;color:var(--muted);padding:0.5rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.5;}
+.price-feature::before{content:"\2713";color:var(--accent);font-family:var(--mono);flex-shrink:0;font-size:0.72rem;margin-top:2px;}
+.price-card.featured .price-feature{color:#8a8a8a;border-bottom-color:#2b2b2b;}
+.price-cta{display:block;width:100%;padding:0.85rem;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;transition:all 0.2s;}
+.price-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.price-card.featured .price-cta{background:var(--accent);border-color:var(--accent);color:#fff;}
+.price-card.featured .price-cta:hover{background:#b84515;border-color:#b84515;}
 
-.stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:3rem; }
-.stat-item { background:var(--ink); padding:2rem; text-align:center; }
-.stat-num { font-family:var(--display); font-weight:800; font-size:2.5rem; letter-spacing:-0.04em; color:var(--accent); }
-.stat-label { font-family:var(--mono); font-size:0.63rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-top:0.35rem; }
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.process-step{background:var(--paper);padding:1.75rem 1.5rem;}
+.step-num{font-family:var(--mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.75rem;}
+.process-step h4{font-family:var(--display);font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:0.35rem;}
+.process-step p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
 
-@media(max-width:900px){ .sales-grid { grid-template-columns:1fr; } .pricing-grid { grid-template-columns:1fr; } .process-steps { flex-direction:column; gap:1.5rem; } .process-steps::before { display:none; } .sales-contact-bar { grid-template-columns:1fr; } .stat-row { grid-template-columns:1fr 1fr; } }
-@media(max-width:600px){ .stat-row { grid-template-columns:1fr; } .sales-form-wrap { padding:1.5rem; } }
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin-top:2.5rem;}
+.faq-item{border-bottom:1px solid var(--rule);}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{width:100%;padding:1.25rem 1.5rem;background:var(--cream);border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--ink);text-align:left;transition:background 0.2s;gap:1rem;}
+.faq-q:hover{background:var(--paper);}
+.faq-icon{font-family:var(--mono);font-size:1.1rem;color:var(--accent);flex-shrink:0;transition:transform 0.25s;}
+.faq-q.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;background:var(--paper);}
+.faq-a.open{max-height:220px;}
+.faq-a p{padding:0 1.5rem 1.25rem;font-size:0.88rem;color:var(--muted);line-height:1.7;}
+
+/* CTA STRIP */
+.cta-strip{background:var(--ink);}
+.cta-strip .section-inner{max-width:1080px;margin:0 auto;padding:80px 2.5rem;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;}
+.cta-strip .section-desc.light a{color:var(--accent2);}
+.contact-box{background:#111;border:1px solid var(--rule);padding:2rem;}
+.contact-item{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--rule);}
+.contact-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.contact-item .c-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.35rem;}
+.contact-item a{font-family:var(--mono);font-size:0.85rem;color:var(--accent2);text-decoration:none;transition:color 0.2s;display:block;margin-bottom:0.25rem;}
+.contact-item a:hover{color:var(--accent);}
+.contact-item p{font-size:0.78rem;color:#7a7a7a;}
+
+/* SURVEY */
+.survey-box{background:var(--cream);border:1px solid var(--rule);padding:2.5rem;}
+.survey-title{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);margin-bottom:0.4rem;}
+.survey-note{font-size:0.78rem;color:var(--muted);font-family:var(--mono);margin-bottom:2rem;}
+.survey-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start;margin-top:2.5rem;}
+.survey-results-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.result-row{margin-bottom:0.85rem;}
+.result-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;}
+.result-meta span{font-size:0.82rem;color:var(--ink);}
+.result-meta strong{font-family:var(--mono);font-size:0.65rem;color:var(--accent);}
+.result-bar-bg{height:4px;background:var(--rule);}
+.result-bar-fill{height:4px;background:var(--accent);transition:width 0.6s ease;}
+.result-total{font-family:var(--mono);font-size:0.62rem;color:var(--muted);margin-top:1rem;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.nav-links{gap:1rem;}.pricing-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){
+  nav#mainNav{padding:0 1.5rem;}.nav-links{display:none;}.nav-burger{display:flex;}
+  .page-section{padding:60px 1.5rem;}.page-hero{padding:90px 1.5rem 52px;}
+  footer.site-footer{padding:2.5rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;}
+  .cta-strip .section-inner{grid-template-columns:1fr;gap:2rem;padding:60px 1.5rem;}
+  .survey-layout{grid-template-columns:1fr;}
+  .analytics-bar{padding:0.75rem 1.5rem;}
+}
+@media(max-width:700px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+@media(max-width:600px){.toast{right:1rem;left:1rem;max-width:none;}.faq-q{font-size:0.85rem;padding:1rem;}.faq-a p{padding:0 1rem 1rem;}}
+@media(max-width:380px){nav#mainNav{padding:0 1rem;}.page-section{padding:44px 1rem;}.page-hero{padding:80px 1rem 44px;}}
 </style>
 </head>
 <body>
-<div class="progress-bar" id="progressBar"></div>
 
+<div class="progress-bar" id="progressBar"></div>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#what">What We Do</a></li>
-    <li><a href="careers.html">We're Hiring</a></li>
-    <li><a href="policies.html">Policies</a></li>
+    <li><a href="index.html#what">Services</a></li>
     <li><a href="sales.html" class="active">Sales</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="policies.html">Policies</a></li>
     <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
   </ul>
-  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
-  <a href="index.html"      class="mobile-link">Home</a>
-  <a href="index.html#what" class="mobile-link">What We Do</a>
-  <a href="careers.html"    class="mobile-link">We're Hiring</a>
-  <a href="policies.html"   class="mobile-link">Policies</a>
-  <a href="sales.html"      class="mobile-link">Sales</a>
+  <a href="index.html#what" class="mobile-link">Services</a>
+  <a href="sales.html" class="mobile-link">Sales</a>
+  <a href="careers.html" class="mobile-link">Careers</a>
+  <a href="policies.html" class="mobile-link">Policies</a>
   <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
 </nav>
 
-<div class="breadcrumb"><a href="index.html">WizDevTech</a><span>/</span> Sales</div>
-
-<div class="page-header">
-  <div class="container">
-    <span class="tag">Sales</span>
-    <h1>Execution you can <em>buy.</em></h1>
-    <p>Fixed-scope engagements. Defined deliverables. Clear pricing. No retainers, no surprises. Contact our sales team at <a href="/cdn-cgi/l/email-protection#5724363b322417203e2d3332212332343f7934383a" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="98ebf9f4fdebd8eff1e2fcfdeeecfdfbf0b6fbf7f5">[email&#160;protected]</span></a>.</p>
+<!-- ANALYTICS BAR -->
+<div class="analytics-bar" style="margin-top:var(--nav-h)">
+  <div class="analytics-inner">
+    <div class="analytics-stat"><div class="a-dot"></div><span>Visits today: <strong id="visitCount">&#8212;</strong></span></div>
+    <div class="analytics-stat"><div class="a-dot green"></div><span>Requests this month: <strong id="reqCount">&#8212;</strong></span></div>
   </div>
 </div>
 
-<!-- STATS -->
-<section class="page-section dark" id="stats">
+<div class="page-hero">
   <div class="container">
-    <div class="stat-row reveal">
-      <div class="stat-item"><div class="stat-num">2&#8211;6</div><div class="stat-label">Week Engagements</div></div>
-      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Defined Before Start</div></div>
-      <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Open-Ended Retainers</div></div>
-      <div class="stat-item"><div class="stat-num">&#8804;2</div><div class="stat-label">Meetings Per Week</div></div>
-    </div>
+    <span class="tag">&#128200; Sales &amp; Pricing</span>
+    <h1>Fixed-scope. <em>Fixed-price.</em></h1>
+    <p>No retainers, no hourly ambiguity. Every engagement is priced against a defined scope. Contact <a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a> to start.</p>
   </div>
-</section>
-
-<!-- WHAT YOU'RE BUYING -->
-<section class="page-section paper" id="offer">
-  <div class="container">
-    <div class="section-label reveal">What You're Buying</div>
-    <h2 class="section-title reveal rd1">Four execution services. All scoped. All delivered.</h2>
-    <p class="section-desc reveal rd2">Every engagement ends with a documented handoff. These aren't open-ended commitments&#8212;they're defined work packages.</p>
-    <div class="sales-grid">
-      <div class="sales-card reveal rd1"><div class="sales-card-icon">&#9881;</div><h3>Finish Half-Built Systems</h3><p>We complete tools, documentation, boards, and setups that were started but abandoned. Typical engagement 2&#8211;4 weeks. Ends with a working system and handoff documentation.</p></div>
-      <div class="sales-card reveal rd2"><div class="sales-card-icon">&#128295;</div><h3>Repair Breaking Workflows</h3><p>We enter after your automation fails downstream. Diagnose the root cause, rebuild reliably, document the logic. We start after stalls or vendor disengagement.</p></div>
-      <div class="sales-card reveal rd1"><div class="sales-card-icon">&#128196;</div><h3>Clean &amp; Handoff Data</h3><p>Migrate, organize, and structure your data. Every engagement ends with a process document and training materials your team can use independently.</p></div>
-      <div class="sales-card reveal rd2"><div class="sales-card-icon">&#10003;</div><h3>Convert Notes to Tasks</h3><p>Transform voice memos, meeting notes, and scattered ideas into completed trackable tasks in your system. 1&#8211;2 week engagements typical.</p></div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- PRICING -->
-<section class="page-section cream" id="pricing">
+<section id="pricing" class="page-section" style="background:var(--cream)">
   <div class="container">
-    <div class="section-label reveal">Pricing</div>
-    <h2 class="section-title reveal rd1">Fixed-scope pricing. No surprises.</h2>
-    <p class="section-desc reveal rd2">All engagements are scoped and priced before work begins. You know exactly what you're paying for.</p>
+    <div class="section-label reveal">Engagement Tiers</div>
+    <h2 class="section-title reveal rd1">Choose the right engagement size.</h2>
+    <p class="section-desc reveal rd2">All tiers include scoped deliverables, execution, and documented handoff.</p>
     <div class="pricing-grid reveal rd2">
-      <div class="pricing-card">
-        <div class="pricing-label">Starter</div>
-        <div class="pricing-name">Focus Sprint</div>
-        <div class="pricing-price"><sup>$</sup>4,500</div>
-        <div class="pricing-duration">1&#8211;2 week engagement</div>
-        <ul class="pricing-features">
-          <li>Single defined deliverable</li>
-          <li>Notes-to-tasks conversion</li>
-          <li>Written progress updates</li>
-          <li>Documented handoff</li>
-          <li>Max 2 meetings</li>
+      <div class="price-card">
+        <div class="price-label">Starter</div>
+        <h3>Quick Fix</h3>
+        <div class="price-amount">$5,000<small>/ engagement</small></div>
+        <p class="price-desc">Single-problem execution. Ideal for converting notes to tasks or fixing one broken process.</p>
+        <ul class="price-features">
+          <li class="price-feature">1&#8211;2 week engagement</li>
+          <li class="price-feature">1 defined deliverable</li>
+          <li class="price-feature">Written status updates</li>
+          <li class="price-feature">Documented handoff</li>
+          <li class="price-feature">Up to 1 meeting/week</li>
         </ul>
-        <a href="#contact" class="btn btn-outline btn-arrow" style="width:100%;justify-content:center;">Get Started</a>
+        <a href="mailto:sales@wizdevtech.com?subject=Quick Fix Inquiry" class="price-cta">Get Started &#8594;</a>
       </div>
-      <div class="pricing-card featured">
-        <span class="pricing-badge">Most Common</span>
-        <div class="pricing-label">Standard</div>
-        <div class="pricing-name">Execution Block</div>
-        <div class="pricing-price"><sup>$</sup>12,000</div>
-        <div class="pricing-duration">3&#8211;4 week engagement</div>
-        <ul class="pricing-features">
-          <li>Full system or workflow engagement</li>
-          <li>Repair or complete defined scope</li>
-          <li>Written progress 3x/week</li>
-          <li>Full process documentation</li>
-          <li>Team handoff session</li>
-          <li>Max 2 meetings/week</li>
+      <div class="price-card featured">
+        <div class="featured-tag">Most Common</div>
+        <div class="price-label">Standard</div>
+        <h3>System Completion</h3>
+        <div class="price-amount">$15,000<small>/ engagement</small></div>
+        <p class="price-desc">Finish a half-built system or repair a broken workflow end-to-end with full documentation.</p>
+        <ul class="price-features">
+          <li class="price-feature">2&#8211;4 week engagement</li>
+          <li class="price-feature">Up to 3 defined deliverables</li>
+          <li class="price-feature">Written status updates</li>
+          <li class="price-feature">Full documented handoff</li>
+          <li class="price-feature">Up to 2 meetings/week</li>
+          <li class="price-feature">Post-handoff support window</li>
         </ul>
-        <a href="#contact" class="btn btn-primary btn-arrow" style="width:100%;justify-content:center;">Get Started</a>
+        <a href="mailto:sales@wizdevtech.com?subject=System Completion Inquiry" class="price-cta">Get Started &#8594;</a>
       </div>
-      <div class="pricing-card">
-        <div class="pricing-label">Complex</div>
-        <div class="pricing-name">Deep Engagement</div>
-        <div class="pricing-price"><sup>$</sup>25,000<sup style="font-size:0.8rem">+</sup></div>
-        <div class="pricing-duration">5&#8211;6 week engagement</div>
-        <ul class="pricing-features">
-          <li>Multi-system or multi-deliverable</li>
-          <li>Data migration + workflow repair</li>
-          <li>Daily written updates</li>
-          <li>Complete documentation suite</li>
-          <li>Extended handoff support</li>
-          <li>Custom scope defined upfront</li>
+      <div class="price-card">
+        <div class="price-label">Enterprise</div>
+        <h3>Full Stabilization</h3>
+        <div class="price-amount">$35,000+<small>/ engagement</small></div>
+        <p class="price-desc">Complex multi-system stabilization. Multiple workstreams, data migration, comprehensive handoff.</p>
+        <ul class="price-features">
+          <li class="price-feature">4&#8211;6 week engagement</li>
+          <li class="price-feature">Multiple workstreams</li>
+          <li class="price-feature">Dedicated execution lead</li>
+          <li class="price-feature">Daily written updates</li>
+          <li class="price-feature">Comprehensive handoff package</li>
+          <li class="price-feature">Extended post-handoff support</li>
         </ul>
-        <a href="#contact" class="btn btn-outline btn-arrow" style="width:100%;justify-content:center;">Get a Quote</a>
+        <a href="mailto:sales@wizdevtech.com?subject=Full Stabilization Inquiry" class="price-cta">Discuss Scope &#8594;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SALES PROCESS -->
-<section class="page-section paper" id="process">
+<!-- PROCESS -->
+<section id="process" class="page-section" style="background:var(--paper)">
   <div class="container">
-    <div class="section-label reveal">How Sales Works</div>
-    <h2 class="section-title reveal rd1">From inquiry to execution in 5 steps.</h2>
-    <div class="process-steps reveal rd2">
-      <div class="process-step active"><div class="step-num">01</div><div class="step-title">Inquiry</div><div class="step-desc">Submit the form or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0c3d1dcd5c3f0c7d9cad4d5c6c4d5d3d89ed3dfdd">[email&#160;protected]</a></div></div>
-      <div class="process-step"><div class="step-num">02</div><div class="step-title">Scoping Call</div><div class="step-desc">30-minute written brief or short call to define deliverables</div></div>
-      <div class="process-step"><div class="step-num">03</div><div class="step-title">Proposal</div><div class="step-desc">Fixed scope, deliverables, timeline, and price — in writing</div></div>
-      <div class="process-step"><div class="step-num">04</div><div class="step-title">Agreement</div><div class="step-desc">Sign and pay. Work starts within 2 business days.</div></div>
-      <div class="process-step"><div class="step-num">05</div><div class="step-title">Execution</div><div class="step-desc">We enter, complete, document, and hand off cleanly.</div></div>
+    <div class="section-label reveal">Sales Process</div>
+    <h2 class="section-title reveal rd1">From inquiry to execution in days.</h2>
+    <div class="process-grid reveal rd2">
+      <div class="process-step"><div class="step-num">Step 01</div><h4>Submit Request</h4><p>Email sales@wizdevtech.com or complete the intake form with your specific problem.</p></div>
+      <div class="process-step"><div class="step-num">Step 02</div><h4>Fit Assessment</h4><p>We review and respond within 2 business days to confirm fit.</p></div>
+      <div class="process-step"><div class="step-num">Step 03</div><h4>Scope Call</h4><p>One focused call to define deliverables, timeline, and budget alignment.</p></div>
+      <div class="process-step"><div class="step-num">Step 04</div><h4>Agreement</h4><p>Scope doc signed, start date confirmed. Work begins within the agreed window.</p></div>
+      <div class="process-step"><div class="step-num">Step 05</div><h4>Execution</h4><p>We work inside your systems. Written updates. Minimal meetings. No drama.</p></div>
+      <div class="process-step"><div class="step-num">Step 06</div><h4>Handoff &amp; Exit</h4><p>Documented handoff delivered. We exit cleanly. Your team owns everything.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT / FORM -->
-<section class="page-section cream" id="contact">
+<!-- FAQ -->
+<section id="faq" class="page-section" style="background:var(--cream)">
   <div class="container">
-    <div class="section-label reveal">Contact Sales</div>
-    <h2 class="section-title reveal rd1">Talk to our sales team.</h2>
-    <p class="section-desc reveal rd2">Have a specific project in mind? Reach out directly or fill in the form. We respond within 1 business day.</p>
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="section-title reveal rd1">Common sales questions.</h2>
+    <div class="faq-list reveal rd2">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer discounts for multiple engagements? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Clients running a second consecutive engagement receive a 10% reduction on the follow-on scope, applied after the first engagement completes with documented handoff.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment terms do you accept? <span class="faq-icon">+</span></button><div class="faq-a"><p>50% at engagement kickoff, 50% upon handoff delivery. ACH, wire, and major credit cards accepted. Net-30 terms available for verified enterprise clients.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if scope changes mid-engagement? <span class="faq-icon">+</span></button><div class="faq-a"><p>Scope is locked at kickoff. New work identified outside agreed deliverables is documented and presented as a follow-on engagement option. We do not expand scope mid-flight.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can we extend an engagement? <span class="faq-icon">+</span></button><div class="faq-a"><p>Engagements can be extended by mutual agreement before the end date if team capacity allows. Extensions are scoped and priced separately. No open-ended extensions.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a refund policy? <span class="faq-icon">+</span></button><div class="faq-a"><p>The initial 50% deposit is non-refundable once work has commenced. If we fail to deliver the agreed scope, we continue work at no additional charge or issue a prorated refund on the final payment.</p></div></div>
+    </div>
+  </div>
+</section>
 
-    <div class="sales-contact-bar reveal rd2">
-      <div class="contact-card">
-        <h4>Sales Inquiries</h4>
-        <p>For new engagements, pricing questions, or scoping conversations.</p>
-        <a href="/cdn-cgi/l/email-protection#d5a6b4b9b0a695a2bcafb1b0a3a1b0b6bdfbb6bab8"><span class="__cf_email__" data-cfemail="681b09040d1b281f01120c0d1e1c0d0b00460b0705">[email&#160;protected]</span> &#8594;</a>
+<!-- SURVEY -->
+<section id="survey" class="page-section" style="background:var(--paper);border-top:1px solid var(--rule);">
+  <div class="container">
+    <div class="section-label reveal">Site Survey</div>
+    <h2 class="section-title reveal rd1">What kind of support do you need?</h2>
+    <p class="section-desc reveal rd2">Takes 60 seconds. Helps us build better offerings.</p>
+    <div class="survey-layout reveal rd2">
+      <div>
+        <div class="survey-results-label">Response breakdown</div>
+        <div id="surveyResults"><p style="font-size:0.82rem;color:var(--muted)">No responses yet. Be the first!</p></div>
+        <div class="result-total" id="surveyTotal"></div>
       </div>
-      <div class="contact-card">
-        <h4>Technical Issues</h4>
-        <p>Problems with the site, client portal, or technical onboarding.</p>
-        <a href="/cdn-cgi/l/email-protection#760503060619040236011f0c1213000213151e5815191b"><span class="__cf_email__" data-cfemail="91e2e4e1e1fee3e5d1e6f8ebf5f4e7e5f4f2f9bff2fefc">[email&#160;protected]</span> &#8594;</a>
+      <div class="survey-box">
+        <div class="survey-title">Quick Survey</div>
+        <div class="survey-note">Anonymous &middot; 60 seconds</div>
+        <form id="surveyForm" novalidate>
+          <div class="hp-field" aria-hidden="true"><label for="hp_survey">Leave blank</label><input type="text" id="hp_survey" name="hp_survey" tabindex="-1" autocomplete="off"/></div>
+          <div class="form-row">
+            <label class="form-label" for="surveyType">Execution type needed <span style="color:var(--accent)">*</span></label>
+            <select class="form-control" id="surveyType">
+              <option value="">Select type</option>
+              <option value="finish_systems">Finish half-built systems</option>
+              <option value="repair_workflows">Repair breaking workflows</option>
+              <option value="data_migration">Data cleanup &amp; migration</option>
+              <option value="notes_to_tasks">Convert notes to tasks</option>
+              <option value="documentation">Documentation &amp; SOPs</option>
+              <option value="automation">Automation &amp; integrations</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="field-error" id="surveyTypeErr">Please select a type.</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="surveyUrgency">Urgency</label>
+            <select class="form-control" id="surveyUrgency">
+              <option value="">Select urgency</option>
+              <option value="immediate">Immediate &#8212; within 2 weeks</option>
+              <option value="soon">Soon &#8212; within a month</option>
+              <option value="planning">Planning &#8212; 1&#8211;3 months</option>
+              <option value="exploring">Just exploring</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="surveyNote">Anything else?</label>
+            <textarea class="form-control" id="surveyNote" maxlength="300" placeholder="Optional context..." style="min-height:70px"></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="surveyBtn">
+            <div class="spinner"></div>
+            <span class="btn-text">Submit Survey &#8594;</span>
+          </button>
+        </form>
+        <div class="form-success" id="surveySuccess">
+          <div class="form-success-icon">&#10003;</div>
+          <h3>Thank you!</h3>
+          <p>Your response has been recorded.</p>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="sales-form-wrap reveal rd3">
-      <div class="form-title">Sales Inquiry Form</div>
-      <div class="form-note">Responded to within 1 business day &middot; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0370626f667043746a796766757766606b2d606c6e">[email&#160;protected]</a></div>
-      <form id="salesForm" novalidate>
-        <div class="form-row-2">
-          <div class="form-row"><label class="form-label" for="sFirst">First Name <span class="req">*</span></label><input type="text" class="form-control" id="sFirst" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="sFirstErr">Required.</div></div>
-          <div class="form-row"><label class="form-label" for="sLast">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="sLast" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="sLastErr">Required.</div></div>
-        </div>
-        <div class="form-row"><label class="form-label" for="sEmail">Work Email <span class="req">*</span></label><input type="email" class="form-control" id="sEmail" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="sEmailErr">Valid email required.</div></div>
-        <div class="form-row"><label class="form-label" for="sCompany">Company <span class="req">*</span></label><input type="text" class="form-control" id="sCompany" placeholder="Acme Corp" autocomplete="organization"/><div class="field-error" id="sCompanyErr">Required.</div></div>
-        <div class="form-row-2">
-          <div class="form-row"><label class="form-label" for="sService">Service Interested In <span class="req">*</span></label>
-            <select class="form-control" id="sService">
-              <option value="">Select service</option>
-              <option>Finish Half-Built Systems</option>
-              <option>Repair Breaking Workflows</option>
-              <option>Clean &amp; Handoff Data</option>
-              <option>Convert Notes to Tasks</option>
-              <option>Not sure yet</option>
-            </select>
-            <div class="field-error" id="sServiceErr">Required.</div>
-          </div>
-          <div class="form-row"><label class="form-label" for="sBudget">Budget Range <span class="req">*</span></label>
-            <select class="form-control" id="sBudget">
-              <option value="">Select range</option>
-              <option>Under $10,000</option>
-              <option>$10,000&#8211;$25,000</option>
-              <option>$25,000&#8211;$50,000</option>
-              <option>Over $50,000</option>
-            </select>
-            <div class="field-error" id="sBudgetErr">Required.</div>
-          </div>
-        </div>
-        <div class="form-row"><label class="form-label" for="sMessage">Describe Your Need <span class="req">*</span></label><textarea class="form-control" id="sMessage" placeholder="What needs to get done? What's broken, stalled, or unfinished?" maxlength="500"></textarea><div class="char-counter" id="sMsgCounter">0 / 500</div><div class="field-error" id="sMessageErr">Min 20 characters required.</div></div>
-        <button type="submit" class="btn-submit" id="salesBtn"><div class="spinner"></div><span class="btn-text">Send Sales Inquiry &#8594;</span></button>
-      </form>
-      <div class="form-success" id="salesSuccess">
-        <div class="form-success-icon">&#10003;</div>
-        <h3>Inquiry Sent</h3>
-        <p>Your email client will open addressed to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cdbeaca1a8be8dbaa4b7a9a8bbb9a8aea5e3aea2a0">[email&#160;protected]</a>. Please send to complete your inquiry.</p>
-      </div>
+<!-- SALES CTA -->
+<section class="cta-strip">
+  <div class="section-inner">
+    <div>
+      <div class="section-label reveal" style="color:var(--accent2)">Ready to move?</div>
+      <h2 class="section-title light reveal rd1">Talk to sales directly.</h2>
+      <p class="section-desc light reveal rd2">Our sales team reviews every inquiry personally. You'll hear back within 2 business days.</p>
+    </div>
+    <div class="contact-box reveal rd2">
+      <div class="contact-item"><span class="c-label">Sales Inquiries</span><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a><p>Pricing, scoping, and new engagement discussions</p></div>
+      <div class="contact-item"><span class="c-label">Technical Questions</span><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a><p>Pre-sales technical questions</p></div>
+      <div class="contact-item"><span class="c-label">Site Support</span><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a><p>Technical issues with this website</p></div>
     </div>
   </div>
 </section>
 
 <footer class="site-footer">
-  <div class="container">
+  <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">What We Do</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales</a></li><li><a href="policies.html">Policies</a></li></ul></div>
-      <div class="footer-col"><h4>Sales</h4><ul><li><a href="/cdn-cgi/l/email-protection#7b081a171e083b0c12011f1e0d0f1e181355181416"><span class="__cf_email__" data-cfemail="780b19141d0b380f11021c1d0e0c1d1b10561b1715">[email&#160;protected]</span></a></li><li><a href="#pricing">Pricing</a></li><li><a href="#contact">Contact Sales</a></li></ul></div>
-      <div class="footer-col"><h4>Support</h4><ul><li><a href="/cdn-cgi/l/email-protection#71020401011e03053106180b151407051412195f121e1c"><span class="__cf_email__" data-cfemail="9feceaefeff0edebdfe8f6e5fbfae9ebfafcf7b1fcf0f2">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#c0aca5a7a1ac80b7a9baa4a5b6b4a5a3a8eea3afad"><span class="__cf_email__" data-cfemail="5e323b393f321e2937243a3b282a3b3d36703d3133">[email&#160;protected]</span></a></li></ul></div>
+      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">Services</a></li><li><a href="index.html#leadership">Leadership</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales &amp; Pricing</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li><li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li><li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li><li><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
-      <span>&copy; 2024 WizDevTech. Fixed-scope execution.</span>
-      <a href="#contact" class="btn btn-dark btn-arrow" style="padding:0.5rem 1rem;font-size:0.65rem;">Contact Sales</a>
+      <div class="footer-logo-text">Wiz<span>Dev</span>Tech</div>
+      <span class="footer-copy">&copy; 2025 WizDevTech. All rights reserved.</span>
     </div>
   </div>
 </footer>
-
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="wdt-shared.js"></script>
 <script>
 (function(){
   'use strict';
-  WDT.initAnalytics();
-  WDT.initNav();
-  WDT.initReveal();
-  WDT.trackVisit('sales');
-
-  var isEmail = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
-  function vf(id,eid,fn){ var el=document.getElementById(id),err=document.getElementById(eid); if(!el||!err) return true; var ok=fn(el.value.trim()); el.classList.toggle('error',!ok); el.classList.toggle('valid',ok); err.classList.toggle('show',!ok); return ok; }
-  var sFields=[
-    {id:'sFirst',  eid:'sFirstErr',   fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'sLast',   eid:'sLastErr',    fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'sEmail',  eid:'sEmailErr',   fn:isEmail,                         ev:'blur'},
-    {id:'sCompany',eid:'sCompanyErr', fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'sService',eid:'sServiceErr', fn:function(v){return v.length>0;},ev:'change'},
-    {id:'sBudget', eid:'sBudgetErr',  fn:function(v){return v.length>0;},ev:'change'},
-    {id:'sMessage',eid:'sMessageErr', fn:function(v){return v.length>=20;},ev:'blur'},
-  ];
-  sFields.forEach(function(f){ var el=document.getElementById(f.id); if(el) el.addEventListener(f.ev,function(){ vf(f.id,f.eid,f.fn); }); });
-
-  var smsg=document.getElementById('sMessage'), sctr=document.getElementById('sMsgCounter');
-  smsg.addEventListener('input', function(){ var l=smsg.value.length; sctr.textContent=l+' / 500'; sctr.classList.toggle('warn',l>420); });
-
-  doc
+  /* NAV */
+  var nav=document.getElementById('mainNav'),prog=document.getElementById('progressBar'),burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu'),overlay=document.getElementById('navOverlay'),backTop=document.getElementById('backTop');
+  window.addEventListener('scroll',function(){var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;if(prog)prog.style.width=(t>0?s/t*100:0)+'%';nav.classList.toggle('scrolled',s>40);if(backTop)backTop.classList.toggle('show',s>400);},{passive:true});
+  if(backTop)backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  function openM(){burger.classList.add('open');menu.classList.add('open');if(overlay)overlay.classList.add('show');burger.setAttribute('aria-expanded','true');}
+  function closeM(){burger.classList.remove('open');menu.classList.remove('open');if(overlay)overlay.classList.remove('show');burger.setAttribute('aria-expanded','false');}
+  if(burger)burger.addEventListener('click',function(){menu.classList.contains('open')?closeM():openM();});
+  if(overlay)overlay.addEventListener('click',closeM);
+  document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeM);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+  /* REVEAL */
+  var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+  /* TOAST */
+  var _tt;function showToast(m,e){var el=document.getElementById('toast');if(!el)return;clearTimeout(_tt);el.textContent=m;el.className='toast'+(e?' toast-error':'')+' show';_tt=setTimeout(function(){el.classList.remove('show');},4000);}
+  /* ANALYTICS (stub — replace with real API) */
+  setTimeout(function(){
+    var vc=document.getElementById('visitCount'),rc=document.getElementById('reqCount');
+    /* Replace with: fetch('/api/analytics').then(r=>r.json()).then(d=>{vc.textContent=d.visits;rc.textContent=d.requests;}) */
+    if(vc)vc.textContent=(Math.floor(Math.random()*80)+20).toString();
+    if(rc)rc.textContent=(Math.floor(Math.random()*15)+2).toString();
+  },900);
+  /* SURVEY RESULTS */
+  var LABELS={finish_systems:'Finish half-built systems',repair_workflows:'Repair workflows',data_migration:'Data cleanup',notes_to_tasks:'Notes to tasks',documentation:'Documentation',automation:'Automation',other:'Other'};
+  function loadResults(){
+    var raw;try{raw=JSON.parse(localStorage.getItem('wdt_survey_v2')||'{}');}catch(e){raw={};}
+    var total=Object.values(raw).reduce(function(a,b){return a+b;},0);
+    var container=document.getElementById('surveyResults'),totalEl=document.getElementById('surveyTotal');
+    if(!container)return;
+    if(total===0){container.innerHTML='<p style="font-size:0.82rem;color:var(--muted)">No responses yet. Be the first!</p>';return;}
+    var sorted=Object.keys(LABELS).map(function(k){return{key:k,label:LABELS[k],count:raw[k]||0};}).sort(function(a,b){return b.count-a.count;});
+    container.innerHTML='';
+    sorted.forEach(function(item){
+      var pct=Math.round((item.count/total)*100);
+      var row=document.createElement('div');row.className='result-row';
+      row.innerHTML='<div class="result-meta"><span>'+item.label+'</span><strong>'+pct+'%</strong></div><div class="result-bar-bg"><div class="result-bar-fill" style="width:'+pct+'%"></div></div>';
+      container.appendChild(row);
+    });
+    if(totalEl)totalEl.textContent=total+' response'+(total!==1?'s':'')+' recorded';
+  }
+  loadResults();
+  /* SURVEY SUBMIT */
+  document.getElementById('surveyForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('hp_survey').value.length>0)return;
+    var type=document.getElementById('surveyType').value;
+    if(!type){document.getElementById('surveyTypeErr').classList.add('show');showToast('Please select an execution type.',true);return;}
+    document.getElementById('surveyTypeErr').classList.remove('show');
+    var btn=document.getElementById('surveyBtn');btn.disabled=true;btn.classList.add('loading');
+    /* Supabase stub — uncomment when key is ready
+    fetch('https://xlnuzbgwwthecvfigchw.supabase.co/rest/v1/survey_responses',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'YOUR_ANON_KEY','Authorization':'Bearer YOUR_ANON_KEY','Prefer':'return=minimal'},
+      body:JSON.stringify({execution_type:type,urgency:document.getElementById('surveyUrgency').value,note:document.getElementById('surveyNote').value})
+    }).catch(function(){});
+    */
+    try{var raw=JSON.parse(localStorage.getItem('wdt_survey_v2')||'{}');raw[type]=(raw[type]||0)+1;localStorage.setItem('wdt_survey_v2',JSON.stringify(raw));}catch(er){}
+    setTimeout(function(){btn.classList.remove('loading');document.getElementById('surveyForm').style.display='none';document.getElementById('surveySuccess').classList.add('show');loadResults();showToast('Survey submitted. Thank you!');},900);
+  });
+  /* FAQ */
+  window.toggleFaq=function(btn){var a=btn.nextElementSibling,open=btn.classList.contains('open');document.querySelectorAll('.faq-q').forEach(function(b){b.classList.remove('open');});document.querySelectorAll('.faq-a').forEach(function(x){x.classList.remove('open');});if(!open){btn.classList.add('open');a.classList.add('open');}};
+})();
+</script>
+</body>
+</html>

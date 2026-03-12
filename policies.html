@@ -1,364 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="WizDevTech legal policies including Privacy Policy, Terms of Service, Cookie Policy, and Engagement Terms."/>
 <title>Policies — WizDevTech</title>
-<link rel="stylesheet" href="wdt-shared.css"/>
 <style>
-.policy-layout { display:grid; grid-template-columns:240px 1fr; gap:4rem; margin-top:3rem; align-items:start; }
-.policy-nav { position:sticky; top:calc(var(--nav-h) + 24px); }
-.policy-nav-title { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mid); margin-bottom:1rem; }
-.policy-nav ul { list-style:none; display:flex; flex-direction:column; border-left:1px solid var(--rule); }
-.policy-nav a { display:block; font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em; color:var(--muted); text-decoration:none; padding:0.6rem 1rem; border-left:2px solid transparent; margin-left:-1px; transition:color 0.2s, border-color 0.2s; }
-.policy-nav a:hover, .policy-nav a.active { color:var(--ink); border-left-color:var(--accent); }
-.policy-doc { display:flex; flex-direction:column; gap:3.5rem; }
-.policy-section { scroll-margin-top:calc(var(--nav-h) + 32px); }
-.policy-section h2 { font-family:var(--display); font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; color:var(--ink); margin-bottom:0.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--rule); }
-.policy-section h3 { font-family:var(--display); font-weight:600; font-size:1.05rem; color:var(--ink); margin:1.5rem 0 0.5rem; }
-.policy-section p { font-size:0.92rem; color:var(--muted); line-height:1.8; margin-bottom:0.75rem; }
-.policy-section ul { list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:0.75rem; }
-.policy-section li { font-size:0.9rem; color:var(--muted); padding-left:1.25rem; position:relative; line-height:1.7; }
-.policy-section li::before { content:'\2192'; position:absolute; left:0; color:var(--accent); font-family:var(--mono); font-size:0.7rem; }
-.policy-section a { color:var(--accent); text-decoration:none; }
-.policy-section a:hover { text-decoration:underline; }
-.policy-effective { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.08em; color:var(--mid); margin-bottom:1.5rem; }
-.policy-contact-box { background:var(--paper); border:1px solid var(--rule); padding:1.5rem; margin-top:1rem; }
-.policy-contact-box h4 { font-family:var(--display); font-weight:600; font-size:0.95rem; color:var(--ink); margin-bottom:0.5rem; }
-.policy-contact-box p { font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem; }
-.policy-contact-box a { font-family:var(--mono); font-size:0.78rem; color:var(--accent); text-decoration:none; }
-.policy-tabs { display:flex; gap:0; border-bottom:1px solid var(--rule); margin-bottom:3rem; }
-.policy-tab { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.75rem 1.25rem; cursor:pointer; border:none; background:none; color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.2s; }
-.policy-tab:hover { color:var(--ink); }
-.policy-tab.active { color:var(--ink); border-bottom-color:var(--accent); }
-@media(max-width:900px){ .policy-layout { grid-template-columns:1fr; } .policy-nav { position:static; } }
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+:root{--ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;--muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;--paper:#f4f2ed;--cream:#faf9f6;--accent:#d4531a;--accent2:#e8824a;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Syne',sans-serif;--nav-h:64px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--accent);}
+section{scroll-margin-top:calc(var(--nav-h) + 1rem);}
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;pointer-events:none;transition:width 0.1s linear;}
+nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
+nav#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
+.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem;border:1px solid var(--ink)!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.3s,opacity 0.3s;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.25s,padding 0.3s;display:flex;flex-direction:column;}
+.nav-mobile.open{max-height:400px;padding:1.25rem 2rem 1.5rem;opacity:1;}
+.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.65rem 0;border-bottom:1px solid rgba(46,46,46,0.12);transition:color 0.2s;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile a:hover{color:var(--ink);}
+.cta-mob{color:var(--accent)!important;}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:198;}
+.nav-overlay.show{display:block;}
+.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
+.back-top.show{opacity:1;pointer-events:all;}.back-top:hover{background:var(--accent);}
+footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2rem;border-top:1px solid var(--rule);}
+.footer-inner{max-width:1080px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
+.footer-col h4{font-family:var(--display);font-weight:700;font-size:0.85rem;color:var(--ghost);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col a{color:var(--mid);text-decoration:none;font-size:0.78rem;font-family:var(--sans);transition:color 0.2s;}
+.footer-col a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;border-top:1px solid rgba(46,46,46,0.5);}
+.footer-logo-text{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ghost);letter-spacing:-0.02em;}
+.footer-logo-text span{color:var(--accent);}
+.footer-copy{font-size:0.7rem;color:var(--muted);font-family:var(--mono);}
+
+/* PAGE HERO */
+.page-hero{padding:110px 2.5rem 64px;background:var(--ink);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px);pointer-events:none;}
+.page-hero .container{position:relative;max-width:1080px;margin:0 auto;}
+.page-hero .tag{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.25rem;display:block;}
+.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;}
+.page-hero h1 em{color:var(--accent2);font-style:normal;}
+.page-hero p{color:#8a8a8a;font-size:0.95rem;max-width:520px;line-height:1.7;}
+.page-hero p a{color:var(--accent2);}
+
+/* POLICY LAYOUT */
+.policy-wrap{max-width:1080px;margin:0 auto;padding:64px 2.5rem 80px;display:grid;grid-template-columns:210px 1fr;gap:4rem;align-items:start;}
+.policy-sidebar{position:sticky;top:calc(var(--nav-h)+1.5rem);}
+.sidebar-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.sidebar-nav{list-style:none;border:1px solid var(--rule);}
+.sidebar-nav li a{display:block;padding:0.75rem 1rem;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);transition:background 0.2s,color 0.2s;}
+.sidebar-nav li:last-child a{border-bottom:none;}
+.sidebar-nav li a:hover,.sidebar-nav li a.active{background:var(--paper);color:var(--accent);}
+.policy-content{display:flex;flex-direction:column;gap:4rem;}
+.policy-section{scroll-margin-top:calc(var(--nav-h)+1.5rem);}
+.policy-section h2{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.4rem;padding-bottom:0.75rem;border-bottom:1px solid var(--rule);}
+.policy-updated{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;color:var(--muted);margin-bottom:1.5rem;}
+.policy-section h3{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;}
+.policy-section p{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:0.75rem;}
+.policy-section ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.75rem;}
+.policy-section ul li{font-size:0.88rem;color:var(--muted);padding-left:1.25rem;position:relative;line-height:1.65;}
+.policy-section ul li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:0.7rem;}
+.contact-callout{background:var(--paper);border:1px solid var(--rule);padding:1.25rem 1.5rem;margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;}
+.contact-callout p{font-size:0.85rem;color:var(--muted);}
+.contact-callout a{font-family:var(--mono);font-size:0.78rem;color:var(--accent);text-decoration:none;transition:opacity 0.2s;}
+.contact-callout a:hover{opacity:0.75;}
+
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.nav-links{gap:1rem;}}
+@media(max-width:900px){
+  nav#mainNav{padding:0 1.5rem;}.nav-links{display:none;}.nav-burger{display:flex;}
+  .page-hero{padding:90px 1.5rem 52px;}
+  footer.site-footer{padding:2.5rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;}
+  .policy-wrap{grid-template-columns:1fr;gap:2rem;padding:48px 1.5rem 64px;}
+  .policy-sidebar{position:static;}
+}
+@media(max-width:700px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+@media(max-width:380px){nav#mainNav{padding:0 1rem;}.policy-wrap{padding:40px 1rem 56px;}.page-hero{padding:80px 1rem 44px;}}
 </style>
 </head>
 <body>
-<div class="progress-bar" id="progressBar"></div>
 
+<div class="progress-bar" id="progressBar"></div>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#what">What We Do</a></li>
-    <li><a href="careers.html">We're Hiring</a></li>
+    <li><a href="index.html#what">Services</a></li>
     <li><a href="sales.html">Sales</a></li>
+    <li><a href="careers.html">Careers</a></li>
     <li><a href="policies.html" class="active">Policies</a></li>
     <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
   </ul>
-  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
-  <a href="index.html"      class="mobile-link">Home</a>
-  <a href="index.html#what" class="mobile-link">What We Do</a>
-  <a href="careers.html"    class="mobile-link">We're Hiring</a>
-  <a href="sales.html"      class="mobile-link">Sales</a>
-  <a href="policies.html"   class="mobile-link">Policies</a>
+  <a href="index.html#what" class="mobile-link">Services</a>
+  <a href="sales.html" class="mobile-link">Sales</a>
+  <a href="careers.html" class="mobile-link">Careers</a>
+  <a href="policies.html" class="mobile-link">Policies</a>
   <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
 </nav>
 
-<div class="breadcrumb"><a href="index.html">WizDevTech</a><span>/</span> Policies</div>
-
-<div class="page-header">
+<div class="page-hero">
   <div class="container">
-    <span class="tag">Legal</span>
+    <span class="tag">&#9878;&#65039; Legal &amp; Policies</span>
     <h1>Policies &amp; <em>Legal.</em></h1>
-    <p>Our privacy, terms, and cookie policies. Legal questions contact <a href="/cdn-cgi/l/email-protection#64080103050824130d1e0001121001070c4a070b09" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="90fcf5f7f1fcd0e7f9eaf4f5e6e4f5f3f8bef3fffd">[email&#160;protected]</span></a>. Technical site issues contact <a href="/cdn-cgi/l/email-protection#7b080e0b0b14090f3b0c12011f1e0d0f1e181355181416" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="abd8dedbdbc4d9dfebdcc2d1cfcedddfcec8c385c8c4c6">[email&#160;protected]</span></a>.</p>
+    <p>All legal, privacy, and terms documentation. Questions? <a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></p>
   </div>
 </div>
 
-<section class="page-section cream" id="policies">
-  <div class="container">
+<div class="policy-wrap">
+  <!-- SIDEBAR NAV -->
+  <aside class="policy-sidebar">
+    <div class="sidebar-label">Jump to</div>
+    <ul class="sidebar-nav">
+      <li><a href="#privacy" class="pol-link">Privacy Policy</a></li>
+      <li><a href="#terms" class="pol-link">Terms of Service</a></li>
+      <li><a href="#cookies" class="pol-link">Cookie Policy</a></li>
+      <li><a href="#engagement" class="pol-link">Engagement Terms</a></li>
+      <li><a href="#contact-legal" class="pol-link">Contact Legal</a></li>
+    </ul>
+  </aside>
 
-    <div class="policy-tabs">
-      <button class="policy-tab active" data-doc="privacy">Privacy Policy</button>
-      <button class="policy-tab" data-doc="terms">Terms of Service</button>
-      <button class="policy-tab" data-doc="cookies">Cookie Policy</button>
-    </div>
+  <!-- CONTENT -->
+  <div class="policy-content">
 
-    <div class="policy-layout">
-      <div class="policy-nav" id="policyNav">
-        <div class="policy-nav-title">On This Page</div>
-        <ul id="policyNavList"></ul>
+    <section class="policy-section" id="privacy">
+      <h2>Privacy Policy</h2>
+      <div class="policy-updated">Last updated: January 1, 2025</div>
+      <p>WizDevTech respects your privacy and is committed to protecting personal information you share with us. This policy explains how we collect, use, and handle your data.</p>
+      <h3>Information We Collect</h3>
+      <ul>
+        <li>Contact information submitted via our forms (name, email, company)</li>
+        <li>Project details and engagement descriptions you provide</li>
+        <li>Technical data including IP address, browser type, and pages visited</li>
+        <li>Communications you send to our email addresses</li>
+      </ul>
+      <h3>How We Use Your Information</h3>
+      <ul>
+        <li>To assess and respond to execution requests and inquiries</li>
+        <li>To deliver contracted services within active engagements</li>
+        <li>To communicate project status and deliverables</li>
+        <li>To improve our services based on aggregate usage patterns</li>
+        <li>To comply with legal obligations</li>
+      </ul>
+      <h3>Data Sharing</h3>
+      <p>We do not sell, rent, or trade your personal information. We may share data with service providers who assist in operating our website, subject to confidentiality agreements. We may disclose information if required by law.</p>
+      <h3>Data Retention</h3>
+      <p>Engagement records are retained for 3 years following engagement conclusion. Contact form submissions are retained for 12 months. You may request deletion at any time by contacting <a href="mailto:legal@wizdevtech.com" style="color:var(--accent)">legal@wizdevtech.com</a>.</p>
+      <h3>Your Rights</h3>
+      <ul>
+        <li>Right to access your personal data we hold</li>
+        <li>Right to correct inaccurate data</li>
+        <li>Right to request deletion of your data</li>
+        <li>Right to data portability</li>
+        <li>Right to object to processing</li>
+      </ul>
+      <div class="contact-callout"><p>Privacy questions or data requests?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
+    </section>
+
+    <section class="policy-section" id="terms">
+      <h2>Terms of Service</h2>
+      <div class="policy-updated">Last updated: January 1, 2025</div>
+      <p>By accessing this website or engaging WizDevTech for services, you agree to these Terms of Service.</p>
+      <h3>Services</h3>
+      <p>WizDevTech provides embedded execution services on a fixed-scope, fixed-term basis. All services are governed by individual Scope of Work agreements executed prior to engagement commencement.</p>
+      <h3>Acceptable Use</h3>
+      <ul>
+        <li>You may not use this site for any unlawful purpose</li>
+        <li>You may not submit false or misleading information via our forms</li>
+        <li>You may not attempt to gain unauthorized access to our systems</li>
+        <li>You may not use automated tools to scrape or harvest site content</li>
+      </ul>
+      <h3>Intellectual Property</h3>
+      <p>All site content is the property of WizDevTech. Deliverables produced during a client engagement are governed by the individual Scope of Work, which typically transfers ownership to the client upon final payment.</p>
+      <h3>Limitation of Liability</h3>
+      <p>WizDevTech's liability for any claim shall not exceed the total fees paid for the specific engagement in question. We are not liable for indirect, incidental, or consequential damages.</p>
+      <h3>Governing Law</h3>
+      <p>These terms are governed by the laws specified in individual engagement agreements. Disputes shall be resolved through binding arbitration before resorting to litigation.</p>
+      <div class="contact-callout"><p>Legal questions or disputes?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
+    </section>
+
+    <section class="policy-section" id="cookies">
+      <h2>Cookie Policy</h2>
+      <div class="policy-updated">Last updated: January 1, 2025</div>
+      <p>This site uses a minimal set of cookies. We do not use advertising cookies or third-party tracking pixels.</p>
+      <h3>Cookies We Use</h3>
+      <ul>
+        <li><strong>Essential cookies:</strong> Required for basic site functionality. Cannot be disabled.</li>
+        <li><strong>Analytics cookies:</strong> Help us understand aggregate usage patterns. No personally identifiable information is collected.</li>
+        <li><strong>Survey data:</strong> Stored in localStorage (not transmitted) to display aggregate survey results.</li>
+      </ul>
+      <h3>Third-Party</h3>
+      <p>Google Fonts is loaded from Google's CDN, which may set performance cookies. We do not use Google Analytics, Facebook Pixel, or other marketing trackers by default.</p>
+      <h3>Managing Cookies</h3>
+      <p>You can control and delete cookies through your browser settings. Disabling essential cookies may affect site functionality.</p>
+      <div class="contact-callout"><p>Cookie or tracking concerns?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
+    </section>
+
+    <section class="policy-section" id="engagement">
+      <h2>Engagement Terms</h2>
+      <div class="policy-updated">Last updated: January 1, 2025</div>
+      <p>These terms supplement individual Scope of Work agreements and apply to all WizDevTech client engagements.</p>
+      <h3>Scope &amp; Deliverables</h3>
+      <p>All deliverables are defined in writing prior to engagement commencement. Work outside the agreed scope is documented and presented as a separate engagement option.</p>
+      <h3>Payment</h3>
+      <ul>
+        <li>50% of total fee due at engagement kickoff</li>
+        <li>Remaining 50% due upon handoff delivery</li>
+        <li>Late payments accrue interest at 1.5% per month</li>
+        <li>Non-payment may result in work stoppage</li>
+      </ul>
+      <h3>Confidentiality</h3>
+      <p>WizDevTech treats all client systems, data, and business information as strictly confidential. NDAs are available upon request prior to engagement.</p>
+      <h3>Client Responsibilities</h3>
+      <ul>
+        <li>Provide timely access to necessary systems and documentation</li>
+        <li>Designate a single point of contact for the engagement</li>
+        <li>Respond to written requests within 1 business day</li>
+        <li>Review and approve or reject deliverables within 3 business days</li>
+      </ul>
+      <h3>Termination</h3>
+      <p>Either party may terminate with 5 business days written notice. Client is responsible for payment for all work completed to the termination date.</p>
+      <div class="contact-callout"><p>Engagement terms questions?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
+    </section>
+
+    <section class="policy-section" id="contact-legal">
+      <h2>Contact Legal</h2>
+      <div class="policy-updated"></div>
+      <p>For legal inquiries, privacy requests, data deletion, NDAs, or policy questions, contact our legal team directly.</p>
+      <div style="background:var(--paper);border:1px solid var(--rule);padding:2rem;margin-top:1rem">
+        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Legal &amp; Compliance</div>
+        <a href="mailto:legal@wizdevtech.com" style="font-family:var(--mono);font-size:1rem;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.5rem">legal@wizdevtech.com</a>
+        <p>Response within 5 business days. For urgent matters, include "URGENT" in your subject line.</p>
       </div>
+      <p style="margin-top:1.5rem">Technical issues with this website: <a href="mailto:support@wizdevtech.com" style="color:var(--accent)">support@wizdevtech.com</a></p>
+    </section>
 
-      <!-- PRIVACY -->
-      <div class="policy-doc" id="doc-privacy">
-        <div class="policy-effective">Effective date: January 1, 2024 &nbsp;&middot;&nbsp; Last updated: January 1, 2024</div>
-        <div class="policy-section" id="priv-intro">
-          <h2>Privacy Policy</h2>
-          <p>WizDevTech ("we," "our," "us") is committed to protecting your personal information. This policy explains what data we collect, how we use it, and your rights regarding that data.</p>
-        </div>
-        <div class="policy-section" id="priv-collect">
-          <h2>Information We Collect</h2>
-          <h3>Information you provide</h3>
-          <ul>
-            <li>Contact information (name, email, company) submitted via forms on this site</li>
-            <li>Project descriptions and business details submitted in execution request forms</li>
-            <li>Resume and application materials submitted via the careers form</li>
-            <li>Survey responses submitted via the site survey</li>
-          </ul>
-          <h3>Information collected automatically</h3>
-          <ul>
-            <li>Site visit data (pages visited, time on page, referral source) via Google Analytics 4</li>
-            <li>Behavioral analytics via Mixpanel to understand feature usage</li>
-            <li>Standard server logs including IP address, browser type, and device type</li>
-            <li>Cookies as described in our Cookie Policy</li>
-          </ul>
-        </div>
-        <div class="policy-section" id="priv-use">
-          <h2>How We Use Your Information</h2>
-          <ul>
-            <li>To respond to execution requests, sales inquiries, and job applications</li>
-            <li>To contact you about potential engagements or follow-up questions</li>
-            <li>To improve our website and services based on usage patterns</li>
-            <li>To process your inquiry through our CRM (HubSpot) for lead management</li>
-            <li>To send transactional communications related to an engagement</li>
-            <li>To comply with legal obligations</li>
-          </ul>
-          <p>We do not sell, rent, or trade your personal information to any third party for marketing purposes.</p>
-        </div>
-        <div class="policy-section" id="priv-share">
-          <h2>Information Sharing</h2>
-          <p>We share your information only with the following limited parties:</p>
-          <ul>
-            <li><strong>HubSpot</strong> &#8212; CRM platform used to manage leads and client communications</li>
-            <li><strong>Google Analytics</strong> &#8212; Anonymized site analytics (no personally identifiable data shared)</li>
-            <li><strong>Mixpanel</strong> &#8212; Product analytics for site behavior (pseudonymized)</li>
-            <li><strong>Legal authorities</strong> &#8212; When required by law or valid legal process</li>
-          </ul>
-        </div>
-        <div class="policy-section" id="priv-rights">
-          <h2>Your Rights</h2>
-          <p>Depending on your location, you may have the following rights:</p>
-          <ul>
-            <li>Access the personal information we hold about you</li>
-            <li>Request correction of inaccurate data</li>
-            <li>Request deletion of your personal information</li>
-            <li>Object to or restrict processing of your data</li>
-            <li>Request a portable copy of your data</li>
-            <li>Withdraw consent at any time where processing is consent-based</li>
-          </ul>
-          <div class="policy-contact-box">
-            <h4>Exercise Your Rights</h4>
-            <p>To make a data request, contact our legal team. We respond within 30 days.</p>
-            <a href="/cdn-cgi/l/email-protection#9bf7fefcfaf7dbecf2e1fffeedeffef8f3b5f8f4f6"><span class="__cf_email__" data-cfemail="fc90999b9d90bc8b958698998a88999f94d29f9391">[email&#160;protected]</span> &#8594;</a>
-          </div>
-        </div>
-        <div class="policy-section" id="priv-retention">
-          <h2>Data Retention</h2>
-          <p>We retain personal information for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements. Execution request data is retained for 3 years. Job application data is retained for 1 year unless you become an employee.</p>
-        </div>
-        <div class="policy-section" id="priv-security">
-          <h2>Security</h2>
-          <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. This includes encrypted transmission (HTTPS), access controls, and regular security reviews. However, no method of transmission over the internet is 100% secure.</p>
-        </div>
-        <div class="policy-section" id="priv-contact">
-          <h2>Contact</h2>
-          <div class="policy-contact-box">
-            <h4>Privacy &amp; Legal Inquiries</h4>
-            <p>For all privacy-related questions, data requests, or legal matters:</p>
-            <a href="/cdn-cgi/l/email-protection#38545d5f5954784f51425c5d4e4c5d5b50165b5755"><span class="__cf_email__" data-cfemail="96faf3f1f7fad6e1ffecf2f3e0e2f3f5feb8f5f9fb">[email&#160;protected]</span></a>
-          </div>
-          <div class="policy-contact-box" style="margin-top:1rem;">
-            <h4>Technical Site Issues</h4>
-            <p>For problems with the website, forms, or technical errors:</p>
-            <a href="/cdn-cgi/l/email-protection#780b0d0808170a0c380f11021c1d0e0c1d1b10561b1715"><span class="__cf_email__" data-cfemail="7a090f0a0a15080e3a0d13001e1f0c0e1f191254191517">[email&#160;protected]</span></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- TERMS -->
-      <div class="policy-doc" id="doc-terms" style="display:none">
-        <div class="policy-effective">Effective date: January 1, 2024</div>
-        <div class="policy-section" id="terms-intro">
-          <h2>Terms of Service</h2>
-          <p>By accessing and using the WizDevTech website or engaging our services, you agree to be bound by these Terms of Service. Please read them carefully.</p>
-        </div>
-        <div class="policy-section" id="terms-services">
-          <h2>Services</h2>
-          <p>WizDevTech provides embedded execution services on a fixed-scope, time-limited basis. All engagements are subject to a separate Engagement Agreement that defines scope, deliverables, timeline, and compensation. These Terms of Service govern use of this website and general interactions.</p>
-          <ul>
-            <li>Services are delivered remotely by contract professionals</li>
-            <li>Each engagement has a defined start and end date agreed upon in writing</li>
-            <li>Deliverables are specified before work begins</li>
-            <li>WizDevTech does not provide ongoing retainer-based services</li>
-          </ul>
-        </div>
-        <div class="policy-section" id="terms-conduct">
-          <h2>Acceptable Use</h2>
-          <p>When using this website, you agree not to:</p>
-          <ul>
-            <li>Submit false or misleading information through any form</li>
-            <li>Use automated tools to scrape or extract content from this site</li>
-            <li>Attempt to gain unauthorized access to any systems or data</li>
-            <li>Use the site for any unlawful purpose</li>
-            <li>Interfere with the proper operation of the site</li>
-          </ul>
-        </div>
-        <div class="policy-section" id="terms-ip">
-          <h2>Intellectual Property</h2>
-          <p>All content on this website, including text, design, code, and branding, is the property of WizDevTech and protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without written permission.</p>
-          <p>Deliverables produced during an engagement are governed by the specific Engagement Agreement and may include a transfer of ownership to the client upon full payment.</p>
-        </div>
-        <div class="policy-section" id="terms-liability">
-          <h2>Limitation of Liability</h2>
-          <p>To the maximum extent permitted by applicable law, WizDevTech shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website or services. Our total liability in connection with any engagement shall not exceed the fees paid for that specific engagement.</p>
-        </div>
-        <div class="policy-section" id="terms-dispute">
-          <h2>Disputes</h2>
-          <p>Any disputes arising under these Terms or in connection with WizDevTech services shall first be addressed through good-faith negotiation. If unresolved, disputes shall be submitted to binding arbitration in accordance with applicable law. These Terms are governed by the laws of the jurisdiction in which WizDevTech operates.</p>
-        </div>
-        <div class="policy-section" id="terms-changes">
-          <h2>Changes to Terms</h2>
-          <p>We may update these Terms from time to time. Continued use of the site after changes are posted constitutes acceptance of the updated Terms. Material changes will be communicated via email to active clients.</p>
-        </div>
-        <div class="policy-section" id="terms-contact">
-          <h2>Contact</h2>
-          <div class="policy-contact-box">
-            <h4>Legal Questions</h4>
-            <p>For questions about these Terms or legal matters relating to WizDevTech:</p>
-            <a href="/cdn-cgi/l/email-protection#c7aba2a0a6ab87b0aebda3a2b1b3a2a4afe9a4a8aa"><span class="__cf_email__" data-cfemail="1b777e7c7a775b6c72617f7e6d6f7e787335787476">[email&#160;protected]</span> &#8594;</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- COOKIES -->
-      <div class="policy-doc" id="doc-cookies" style="display:none">
-        <div class="policy-effective">Effective date: January 1, 2024</div>
-        <div class="policy-section" id="cook-intro">
-          <h2>Cookie Policy</h2>
-          <p>This Cookie Policy explains how WizDevTech uses cookies and similar tracking technologies on our website. By using our site, you consent to the use of cookies as described below.</p>
-        </div>
-        <div class="policy-section" id="cook-what">
-          <h2>What Are Cookies</h2>
-          <p>Cookies are small text files stored on your device when you visit a website. They allow the site to recognize your browser and remember information about your visit. We use both session cookies (which expire when you close your browser) and persistent cookies (which remain for a set period).</p>
-        </div>
-        <div class="policy-section" id="cook-types">
-          <h2>Cookies We Use</h2>
-          <h3>Essential Cookies</h3>
-          <p>Required for the website to function properly. These cannot be disabled.</p>
-          <ul>
-            <li>Session management cookies</li>
-            <li>Form security tokens</li>
-            <li>User preference storage (local, not transmitted)</li>
-          </ul>
-          <h3>Analytics Cookies</h3>
-          <p>Help us understand how visitors use our site.</p>
-          <ul>
-            <li><strong>Google Analytics 4</strong> &#8212; Tracks page views, session duration, and user behavior. IP addresses are anonymized. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy &#8594;</a></li>
-            <li><strong>Mixpanel</strong> &#8212; Tracks site interactions and feature usage. Data is pseudonymized. <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank" rel="noopener">Mixpanel Privacy Policy &#8594;</a></li>
-          </ul>
-          <h3>CRM Cookies</h3>
-          <p>Used to manage lead tracking and form submission data.</p>
-          <ul>
-            <li><strong>HubSpot</strong> &#8212; Tracks form submissions and page visits for lead management. <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">HubSpot Privacy Policy &#8594;</a></li>
-          </ul>
-        </div>
-        <div class="policy-section" id="cook-control">
-          <h2>Managing Cookies</h2>
-          <p>You can control cookies through your browser settings. Most browsers allow you to:</p>
-          <ul>
-            <li>View what cookies are stored and delete them</li>
-            <li>Block third-party cookies</li>
-            <li>Block cookies from specific sites</li>
-            <li>Block all cookies (note: this may break some site functionality)</li>
-            <li>Clear all cookies when you close your browser</li>
-          </ul>
-          <p>For Google Analytics opt-out, you can use the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
-        </div>
-        <div class="policy-section" id="cook-contact">
-          <h2>Contact</h2>
-          <div class="policy-contact-box">
-            <h4>Cookie Questions</h4>
-            <p>For questions about our use of cookies or tracking:</p>
-            <a href="/cdn-cgi/l/email-protection#a1cdc4c6c0cde1d6c8dbc5c4d7d5c4c2c98fc2cecc"><span class="__cf_email__" data-cfemail="204c4547414c6057495a444556544543480e434f4d">[email&#160;protected]</span> &#8594;</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /policy-layout -->
   </div>
-</section>
+</div>
 
 <footer class="site-footer">
-  <div class="container">
+  <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">What We Do</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales</a></li><li><a href="policies.html">Policies</a></li></ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul><li><a href="/cdn-cgi/l/email-protection#82eee7e5e3eec2f5ebf8e6e7f4f6e7e1eaace1edef"><span class="__cf_email__" data-cfemail="432f2624222f03342a392726353726202b6d202c2e">[email&#160;protected]</span></a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li><li><a href="policies.html#cookies">Cookie Policy</a></li></ul></div>
-      <div class="footer-col"><h4>Technical Support</h4><ul><li><a href="/cdn-cgi/l/email-protection#dcafa9acacb3aea89cabb5a6b8b9aaa8b9bfb4f2bfb3b1"><span class="__cf_email__" data-cfemail="d5a6a0a5a5baa7a195a2bcafb1b0a3a1b0b6bdfbb6bab8">[email&#160;protected]</span></a></li></ul></div>
+      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">Services</a></li><li><a href="index.html#leadership">Leadership</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales &amp; Pricing</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li><li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li><li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li><li><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
-      <span>&copy; 2024 WizDevTech. All rights reserved.</span>
-      <a href="index.html#form" class="btn btn-dark btn-arrow" style="padding:0.5rem 1rem;font-size:0.65rem;">Start Execution</a>
+      <div class="footer-logo-text">Wiz<span>Dev</span>Tech</div>
+      <span class="footer-copy">&copy; 2025 WizDevTech. All rights reserved.</span>
     </div>
   </div>
 </footer>
-
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="wdt-shared.js"></script>
 <script>
 (function(){
   'use strict';
-  WDT.initAnalytics();
-  WDT.initNav();
-  WDT.initReveal();
-  WDT.trackVisit('policies');
-
-  // Doc structures for nav generation
-  var docs = {
-    privacy: [
-      {id:'priv-intro',   label:'Overview'},
-      {id:'priv-collect', label:'Data We Collect'},
-      {id:'priv-use',     label:'How We Use It'},
-      {id:'priv-share',   label:'Data Sharing'},
-      {id:'priv-rights',  label:'Your Rights'},
-      {id:'priv-retention',label:'Retention'},
-      {id:'priv-security',label:'Security'},
-      {id:'priv-contact', label:'Contact'},
-    ],
-    terms: [
-      {id:'terms-intro',   label:'Overview'},
-      {id:'terms-services',label:'Services'},
-      {id:'terms-conduct', label:'Acceptable Use'},
-      {id:'terms-ip',      label:'Intellectual Property'},
-      {id:'terms-liability',label:'Liability'},
-      {id:'terms-dispute', label:'Disputes'},
-      {id:'terms-changes', label:'Changes'},
-      {id:'terms-contact', label:'Contact'},
-    ],
-    cookies: [
-      {id:'cook-intro',   label:'Overview'},
-      {id:'cook-what',    label:'What Are Cookies'},
-      {id:'cook-types',   label:'Cookies We Use'},
-      {id:'cook-control', label:'Managing Cookies'},
-      {id:'cook-contact', label:'Contact'},
-    ],
-  };
-
-  var currentDoc = 'privacy';
-
-  function buildNav(docKey){
-    var list = document.getElementById('policyNavList');
-    list.innerHTML = '';
-    docs[docKey].forEach(function(item){
-      var li = document.createElement('li');
-      var a  = document.createElement('a');
-      a.href = '#' + item.id;
-      a.textContent = item.label;
-      li.appendChild(a);
-      list.appendChild(li);
-    });
+  var nav=document.getElementById('mainNav'),prog=document.getElementById('progressBar'),burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu'),overlay=document.getElementById('navOverlay'),backTop=document.getElementById('backTop');
+  window.addEventListener('scroll',function(){var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;if(prog)prog.style.width=(t>0?s/t*100:0)+'%';nav.classList.toggle('scrolled',s>40);if(backTop)backTop.classList.toggle('show',s>400);},{passive:true});
+  if(backTop)backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  function openM(){burger.classList.add('open');menu.classList.add('open');if(overlay)overlay.classList.add('show');burger.setAttribute('aria-expanded','true');}
+  function closeM(){burger.classList.remove('open');menu.classList.remove('open');if(overlay)overlay.classList.remove('show');burger.setAttribute('aria-expanded','false');}
+  if(burger)burger.addEventListener('click',function(){menu.classList.contains('open')?closeM():openM();});
+  if(overlay)overlay.addEventListener('click',closeM);
+  document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeM);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+  /* Sidebar active on scroll */
+  var ids=['privacy','terms','cookies','engagement','contact-legal'];
+  var links=document.querySelectorAll('.pol-link');
+  function updateSidebar(){
+    var sy=window.scrollY+120,active='';
+    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=sy)active=id;});
+    links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+active);});
   }
-
-  function showDoc(docKey){
-    Object.keys(docs).forEach(function(k){
-      var el = document.getElementById('doc-'+k);
-      if(el) el.style.display = (k === docKey) ? 'flex' : 'none';
-    });
-    buildNav(docKey);
+  window.addEventListener('scroll',updateSidebar,{passive:true});
+  updateSidebar();
+})();
+</script>
+</body>
+</html>

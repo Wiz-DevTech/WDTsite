@@ -1,403 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>We're Hiring — WizDevTech</title>
-<link rel="stylesheet" href="wdt-shared.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="WizDevTech is hiring remote execution specialists, engineers, and coordinators. All positions fully remote."/>
+<title>Careers — WizDevTech</title>
 <style>
-/* ── CAREERS-SPECIFIC ── */
-.positions-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
-.position-card {
-  background:var(--cream); border:1px solid var(--rule); padding:2rem;
-  position:relative; overflow:hidden; transition:border-color 0.25s, box-shadow 0.25s;
-  display:flex; flex-direction:column;
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+:root{--ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;--muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;--paper:#f4f2ed;--cream:#faf9f6;--accent:#d4531a;--accent2:#e8824a;--green:#1e7a3c;--red:#c0392b;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Syne',sans-serif;--nav-h:64px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--accent);}
+section{scroll-margin-top:var(--nav-h);}
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;pointer-events:none;transition:width 0.1s linear;}
+nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
+nav#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
+.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem;border:1px solid var(--ink)!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.3s,opacity 0.3s;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.25s,padding 0.3s;display:flex;flex-direction:column;}
+.nav-mobile.open{max-height:400px;padding:1.25rem 2rem 1.5rem;opacity:1;}
+.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.65rem 0;border-bottom:1px solid rgba(46,46,46,0.12);transition:color 0.2s;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile a:hover{color:var(--ink);}
+.cta-mob{color:var(--accent)!important;}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:198;}
+.nav-overlay.show{display:block;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.85rem 1.75rem;cursor:pointer;border:none;transition:all 0.2s;gap:0.5rem;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:#b84515;}
+.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:0.5rem;}
+.btn-submit:hover{background:var(--accent);}
+.btn-submit:disabled{background:var(--muted);cursor:not-allowed;}
+.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
+.btn-submit.loading .spinner{display:block;}
+.page-section{padding:80px 2.5rem;}
+.container{max-width:1080px;margin:0 auto;}
+.section-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.section-title{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
+.section-title.light{color:var(--cream);}
+.section-desc{color:var(--muted);max-width:560px;font-size:0.95rem;line-height:1.75;}
+.form-control{width:100%;padding:0.75rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;border-radius:0;appearance:none;-webkit-appearance:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.form-control:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,83,26,0.1);}
+.form-control.error{border-color:var(--red);}
+.form-control.valid{border-color:var(--green);}
+select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--paper);padding-right:2.5rem;cursor:pointer;}
+textarea.form-control{resize:vertical;min-height:100px;}
+.form-label{display:block;font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
+.form-label .req{color:var(--accent);}
+.field-error{display:none;font-family:var(--mono);font-size:0.62rem;color:var(--red);margin-top:0.35rem;}
+.field-error.show{display:block;}
+.form-row{margin-bottom:1.25rem;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-success{display:none;text-align:center;padding:2.5rem 1.5rem;}
+.form-success.show{display:block;}
+.form-success-icon{width:52px;height:52px;background:var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.25rem;font-size:1.3rem;color:#fff;}
+.form-success h3{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:0.4rem;}
+.form-success p{font-size:0.85rem;color:var(--muted);}
+.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;height:0;overflow:hidden;}
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:340px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.toast-error{border-left-color:var(--red);}
+.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
+.back-top.show{opacity:1;pointer-events:all;}
+.back-top:hover{background:var(--accent);}
+footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2rem;border-top:1px solid var(--rule);}
+.footer-inner{max-width:1080px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
+.footer-col h4{font-family:var(--display);font-weight:700;font-size:0.85rem;color:var(--ghost);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col a{color:var(--mid);text-decoration:none;font-size:0.78rem;font-family:var(--sans);transition:color 0.2s;}
+.footer-col a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;border-top:1px solid rgba(46,46,46,0.5);}
+.footer-logo-text{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ghost);letter-spacing:-0.02em;}
+.footer-logo-text span{color:var(--accent);}
+.footer-copy{font-size:0.7rem;color:var(--muted);font-family:var(--mono);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* PAGE HERO */
+.page-hero{padding:110px 2.5rem 64px;background:var(--ink);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px);pointer-events:none;}
+.page-hero .container{position:relative;}
+.page-hero .tag{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.25rem;display:block;}
+.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;}
+.page-hero h1 em{color:var(--accent2);font-style:normal;}
+.page-hero p{color:#8a8a8a;font-size:0.95rem;max-width:520px;line-height:1.7;}
+.page-hero p a{color:var(--accent2);}
+
+/* JOBS */
+.jobs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem;}
+.job-card{background:var(--cream);border:1px solid var(--rule);padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s,box-shadow 0.25s;cursor:pointer;}
+.job-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.3s;}
+.job-card:hover{border-color:var(--accent);box-shadow:4px 4px 0 rgba(212,83,26,0.15);}
+.job-card:hover::before{height:100%;}
+.job-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+.badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;}
+.badge-remote{background:rgba(212,83,26,0.1);color:var(--accent);}
+.badge-dept{background:var(--paper);color:var(--muted);border:1px solid var(--rule);}
+.job-card h3{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.6rem;}
+.job-card p{font-size:0.84rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem;}
+.job-details{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1.25rem;}
+.job-detail{font-family:var(--mono);font-size:0.65rem;color:var(--mid);display:flex;align-items:flex-start;gap:0.4rem;}
+.job-detail::before{content:'—';color:var(--accent);flex-shrink:0;}
+.job-apply{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);background:none;border:none;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:0.4rem;transition:gap 0.2s;}
+.job-apply:hover{gap:0.7rem;}
+
+/* PERKS */
+.perks-section{background:var(--ink);}
+.perks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.perk{background:var(--ink2);padding:1.75rem 1.5rem;}
+.perk-icon{font-size:1.4rem;margin-bottom:0.75rem;}
+.perk h4{font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--cream);margin-bottom:0.35rem;}
+.perk p{font-size:0.82rem;color:#7a7a7a;line-height:1.6;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.82);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--cream);border:1px solid var(--rule);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-header{padding:1.75rem 2rem 1.25rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+.modal-header h3{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);}
+.modal-role{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-top:0.3rem;}
+.modal-close{background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--muted);line-height:1;padding:4px;transition:color 0.2s;flex-shrink:0;}
+.modal-close:hover{color:var(--accent);}
+.modal-body{padding:1.75rem 2rem 2rem;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.nav-links{gap:1rem;}}
+@media(max-width:900px){
+  nav#mainNav{padding:0 1.5rem;}.nav-links{display:none;}.nav-burger{display:flex;}
+  .page-section{padding:60px 1.5rem;}.page-hero{padding:90px 1.5rem 52px;}
+  footer.site-footer{padding:2.5rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;}
 }
-.position-card:hover { border-color:var(--accent); box-shadow:0 4px 24px rgba(212,83,26,0.08); }
-.position-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--accent); transition:height 0.35s; }
-.position-card:hover::before { height:100%; }
-.pos-dept { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:0.75rem; }
-.pos-title { font-family:var(--display); font-weight:700; font-size:1.15rem; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.5rem; }
-.pos-type { display:inline-flex; align-items:center; gap:0.4rem; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--green); border:1px solid var(--green); padding:0.2rem 0.5rem; margin-bottom:1rem; }
-.pos-type::before { content:''; width:6px; height:6px; background:var(--green); border-radius:50%; }
-.pos-desc { font-size:0.88rem; color:var(--muted); line-height:1.65; flex:1; }
-.pos-skills { margin-top:1.25rem; }
-.pos-skills-label { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:0.6rem; }
-.pos-skill-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
-.skill-tag { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.05em; padding:0.2rem 0.5rem; background:var(--paper); border:1px solid var(--rule); color:var(--muted); }
-.pos-apply { margin-top:1.5rem; }
-.btn-apply { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--ink); color:var(--cream); border:none; padding:0.65rem 1.25rem; cursor:pointer; transition:background 0.2s; text-decoration:none; display:inline-block; }
-.btn-apply:hover { background:var(--accent); }
-
-/* dept filter */
-.dept-filter { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:2.5rem; }
-.dept-btn { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1rem; border:1px solid var(--rule); background:transparent; color:var(--muted); cursor:pointer; transition:all 0.2s; }
-.dept-btn:hover, .dept-btn.active { background:var(--ink); color:var(--cream); border-color:var(--ink); }
-.dept-btn.active { background:var(--accent); border-color:var(--accent); }
-
-/* apply form */
-.apply-form-wrap { background:var(--paper); border:1px solid var(--rule); padding:2.5rem; margin-top:3rem; }
-.apply-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
-.apply-header h3 { font-family:var(--display); font-weight:700; font-size:1.2rem; color:var(--ink); }
-#selectedRole { font-family:var(--mono); font-size:0.7rem; color:var(--accent); border:1px solid var(--accent); padding:0.3rem 0.7rem; }
-.file-upload { border:1px dashed var(--rule); padding:2rem; text-align:center; cursor:pointer; transition:border-color 0.2s; background:var(--cream); position:relative; }
-.file-upload:hover { border-color:var(--accent); }
-.file-upload input { position:absolute; inset:0; opacity:0; cursor:pointer; }
-.file-upload-icon { font-size:1.5rem; margin-bottom:0.5rem; }
-.file-upload-text { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; color:var(--muted); }
-.file-upload-name { font-family:var(--mono); font-size:0.72rem; color:var(--accent); margin-top:0.5rem; display:none; }
-
-/* why remote banner */
-.remote-banner { background:var(--ink3); border:1px solid var(--rule); padding:2.5rem; display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem; margin-top:3rem; }
-.remote-item { text-align:center; }
-.remote-icon { font-size:1.5rem; margin-bottom:0.75rem; }
-.remote-item h4 { font-family:var(--display); font-weight:700; font-size:0.95rem; color:var(--cream); margin-bottom:0.4rem; }
-.remote-item p { font-size:0.82rem; color:var(--mid); }
-
-@media(max-width:900px){ .positions-grid { grid-template-columns:1fr; } .remote-banner { grid-template-columns:1fr; } }
-@media(max-width:600px){ .apply-form-wrap { padding:1.5rem; } }
+@media(max-width:700px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+@media(max-width:600px){.form-row-2{grid-template-columns:1fr;}.toast{right:1rem;left:1rem;max-width:none;}.modal-header,.modal-body{padding:1.25rem;}}
+@media(max-width:380px){nav#mainNav{padding:0 1rem;}.page-section{padding:44px 1rem;}.page-hero{padding:80px 1rem 44px;}}
 </style>
 </head>
 <body>
-<div class="progress-bar" id="progressBar"></div>
 
+<div class="progress-bar" id="progressBar"></div>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#what">What We Do</a></li>
+    <li><a href="index.html#what">Services</a></li>
     <li><a href="sales.html">Sales</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
     <li><a href="policies.html">Policies</a></li>
-    <li><a href="careers.html" class="active">We're Hiring</a></li>
     <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
   </ul>
-  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
-  <a href="index.html"       class="mobile-link">Home</a>
-  <a href="index.html#what"  class="mobile-link">What We Do</a>
-  <a href="sales.html"       class="mobile-link">Sales</a>
-  <a href="policies.html"    class="mobile-link">Policies</a>
-  <a href="careers.html"     class="mobile-link">We're Hiring</a>
-  <a href="index.html#form"  class="mobile-link cta-mob">&#8594; Start Execution</a>
+  <a href="index.html#what" class="mobile-link">Services</a>
+  <a href="sales.html" class="mobile-link">Sales</a>
+  <a href="careers.html" class="mobile-link">Careers</a>
+  <a href="policies.html" class="mobile-link">Policies</a>
+  <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
 </nav>
 
-<div class="breadcrumb"><a href="index.html">WizDevTech</a><span>/</span> We're Hiring</div>
-
-<div class="page-header">
+<div class="page-hero">
   <div class="container">
-    <span class="tag">All Positions Remote</span>
-    <h1>We're <em>Hiring.</em></h1>
-    <p>We run lean, we work async, and we hire people who finish things. All roles are fully remote. No hybrid, no in-office requirements&#8212;ever.</p>
+    <span class="tag">&#128188; We're Hiring — All Remote</span>
+    <h1>Join the team that <em>finishes things.</em></h1>
+    <p>All positions are fully remote. We hire execution-focused professionals. Send resumes to <a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></p>
   </div>
 </div>
 
-<!-- REMOTE BENEFITS -->
-<section class="page-section dark" id="remote">
-  <div class="container">
-    <div class="remote-banner reveal">
-      <div class="remote-item"><div class="remote-icon">&#127758;</div><h4>100% Remote</h4><p>Work from anywhere in the world. All positions are permanently remote with no location restrictions.</p></div>
-      <div class="remote-item"><div class="remote-icon">&#128336;</div><h4>Async-First</h4><p>We communicate in writing. Meetings are rare and always optional. You own your schedule.</p></div>
-      <div class="remote-item"><div class="remote-icon">&#10003;</div><h4>Execution Culture</h4><p>No politics, no busywork. You're evaluated on what gets completed&#8212;nothing else.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- POSITIONS -->
-<section class="page-section paper" id="positions">
+<section id="positions" class="page-section" style="background:var(--cream)">
   <div class="container">
     <div class="section-label reveal">Open Positions</div>
-    <h2 class="section-title reveal rd1">8 Roles &#8212; All Fully Remote</h2>
-    <p class="section-desc reveal rd2">Identified based on our core service lines. Every role requires strong written communication and a bias toward finishing over planning.</p>
+    <h2 class="section-title reveal rd1">8 remote roles, all open now.</h2>
+    <p class="section-desc reveal rd2">Every role has a specific execution function. Click any card to apply.</p>
+    <div class="jobs-grid">
 
-    <div class="dept-filter reveal rd2">
-      <button class="dept-btn active" data-dept="all">All (8)</button>
-      <button class="dept-btn" data-dept="delivery">Delivery &amp; Execution (4)</button>
-      <button class="dept-btn" data-dept="sales">Sales (2)</button>
-      <button class="dept-btn" data-dept="support">Support (1)</button>
-      <button class="dept-btn" data-dept="analytics">Analytics &amp; Ops (1)</button>
+      <div class="job-card reveal rd1" onclick="openModal('Execution Specialist','Core Delivery')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Core Delivery</span></div>
+        <h3>Execution Specialist</h3>
+        <p>Our core operator role. You enter client systems mid-stream, assess what's broken or unfinished, and complete defined deliverables within a 2–6 week engagement.</p>
+        <div class="job-details">
+          <div class="job-detail">Full-time or contract</div>
+          <div class="job-detail">3+ years ops or project execution experience</div>
+          <div class="job-detail">Async-first, written communication preference</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd2" onclick="openModal('Systems Analyst','Core Delivery')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Core Delivery</span></div>
+        <h3>Systems Analyst</h3>
+        <p>You map what exists before we execute. Audit client workflows, identify gaps, and produce scoping documents that define engagement deliverables.</p>
+        <div class="job-details">
+          <div class="job-detail">Contract, per-engagement</div>
+          <div class="job-detail">Experience auditing SaaS or automation stacks</div>
+          <div class="job-detail">Strong written documentation skills required</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd1" onclick="openModal('Data Migration Engineer','Technical')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Technical</span></div>
+        <h3>Data Migration Engineer</h3>
+        <p>Clean, migrate, and structure client data between systems. Deliverables include the migrated dataset, validation reports, and documented processes.</p>
+        <div class="job-details">
+          <div class="job-detail">Contract, 2–4 week engagements</div>
+          <div class="job-detail">Proficient in SQL, CSV pipelines, spreadsheet tooling</div>
+          <div class="job-detail">Airtable, Notion, HubSpot, or similar experience</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd2" onclick="openModal('Automation &amp; Integration Engineer','Technical')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Technical</span></div>
+        <h3>Automation &amp; Integration Engineer</h3>
+        <p>Repair and complete broken automation workflows using Zapier, Make, n8n, and REST APIs. Fix what internal teams or previous vendors left unfinished.</p>
+        <div class="job-details">
+          <div class="job-detail">Contract, per-engagement</div>
+          <div class="job-detail">Zapier / Make / n8n proficiency required</div>
+          <div class="job-detail">REST API and webhook experience required</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd1" onclick="openModal('Technical Documentation Writer','Documentation')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Documentation</span></div>
+        <h3>Technical Documentation Writer</h3>
+        <p>Every engagement ends with handoff docs. You produce SOPs, process maps, and knowledge transfer materials that clients can use independently after we exit.</p>
+        <div class="job-details">
+          <div class="job-detail">Contract, attached to active engagements</div>
+          <div class="job-detail">Portfolio of technical SOPs or process docs required</div>
+          <div class="job-detail">Notion, Confluence, or equivalent experience</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd2" onclick="openModal('Project Intake Coordinator','Operations')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Operations</span></div>
+        <h3>Project Intake Coordinator</h3>
+        <p>Manage the front end of every engagement. Handle inbound requests, run scoping conversations, assess fit, and prepare new engagements for the delivery team.</p>
+        <div class="job-details">
+          <div class="job-detail">Full-time</div>
+          <div class="job-detail">2+ years client-facing ops or project coordination</div>
+          <div class="job-detail">Strong written communication, no fluff</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd1" onclick="openModal('Operations Manager','Operations')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Operations</span></div>
+        <h3>Operations Manager</h3>
+        <p>Oversee multiple active client engagements simultaneously. Ensure delivery timelines are met, escalate blockers, and maintain quality across the team.</p>
+        <div class="job-details">
+          <div class="job-detail">Full-time, senior role</div>
+          <div class="job-detail">5+ years managing delivery teams or engagements</div>
+          <div class="job-detail">Experience managing remote async-first teams</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
+      <div class="job-card reveal rd2" onclick="openModal('Sales Development Representative','Sales')">
+        <div class="job-tags"><span class="badge badge-remote">&#127760; Remote</span><span class="badge badge-dept">Sales</span></div>
+        <h3>Sales Development Representative</h3>
+        <p>Qualify inbound leads, run discovery conversations, and determine fit before handing off to leadership. Written-first outreach style preferred.</p>
+        <div class="job-details">
+          <div class="job-detail">Full-time</div>
+          <div class="job-detail">1–3 years B2B sales or SDR experience</div>
+          <div class="job-detail">Written-first outreach style preferred</div>
+        </div>
+        <button class="job-apply">Apply for this role &#8594;</button>
+      </div>
+
     </div>
-
-    <div class="positions-grid" id="positionsGrid">
-
-      <!-- 1 -->
-      <div class="position-card reveal" data-dept="delivery">
-        <div class="pos-dept">Delivery &amp; Execution</div>
-        <div class="pos-title">Embedded Operations Specialist</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Enter client environments, take ownership of stalled projects, and bring them to documented completion. You'll work inside Notion, Airtable, Monday, or whatever the client uses&#8212;no setup required on your end. Engagements are 2&#8211;6 weeks each.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">Notion</span><span class="skill-tag">Airtable</span><span class="skill-tag">Monday.com</span><span class="skill-tag">Async Ops</span><span class="skill-tag">Written Communication</span><span class="skill-tag">Project Execution</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Embedded Operations Specialist">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 2 -->
-      <div class="position-card reveal rd1" data-dept="delivery">
-        <div class="pos-dept">Delivery &amp; Execution</div>
-        <div class="pos-title">Workflow Automation Engineer</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Diagnose and repair broken automations that are causing downstream failures. You'll enter after teams have stalled or vendors have left. Expected to identify root cause, rebuild reliably, and document the logic for handoff.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">Zapier</span><span class="skill-tag">Make (Integromat)</span><span class="skill-tag">n8n</span><span class="skill-tag">API Integrations</span><span class="skill-tag">Debugging</span><span class="skill-tag">Documentation</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Workflow Automation Engineer">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 3 -->
-      <div class="position-card reveal rd2" data-dept="delivery">
-        <div class="pos-dept">Delivery &amp; Execution</div>
-        <div class="pos-title">Data Migration &amp; Cleanup Specialist</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Migrate, organize, and structure client data with clear documentation. Deliverables always include a handoff document and training material. Work spans CRM data, spreadsheet cleanup, and database migrations depending on engagement.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">SQL Basics</span><span class="skill-tag">Excel / Sheets</span><span class="skill-tag">CRM Data</span><span class="skill-tag">Data Cleaning</span><span class="skill-tag">Technical Writing</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Data Migration & Cleanup Specialist">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 4 -->
-      <div class="position-card reveal rd3" data-dept="delivery">
-        <div class="pos-dept">Delivery &amp; Execution</div>
-        <div class="pos-title">Technical Project Executor</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Transform scattered notes, voice memos, and briefs into completed, trackable deliverables. Engagements are 1&#8211;2 weeks. You'll take raw input from founders and operators and convert it into finished work inside their preferred task system.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">Task Systems</span><span class="skill-tag">Scope Management</span><span class="skill-tag">Async Communication</span><span class="skill-tag">Speed</span><span class="skill-tag">Organized Output</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Technical Project Executor">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 5 -->
-      <div class="position-card reveal" data-dept="sales">
-        <div class="pos-dept">Sales</div>
-        <div class="pos-title">Inbound Sales Coordinator</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">First point of contact for inbound execution requests from the site. Qualify leads, gather scoping information, and manage the pipeline from inquiry to signed engagement. All communication is written-first; calls are short and purposeful.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">CRM (HubSpot)</span><span class="skill-tag">Written Follow-up</span><span class="skill-tag">Lead Qualification</span><span class="skill-tag">Discovery</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Inbound Sales Coordinator">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 6 -->
-      <div class="position-card reveal rd1" data-dept="sales">
-        <div class="pos-dept">Sales</div>
-        <div class="pos-title">Account Executive (SMB)</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Close short-cycle B2B engagements with founders and ops leads at companies under 50 people. You'll manage the proposal-to-contract process, set clear scope expectations, and hand off to the delivery team cleanly. Commission-eligible.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">B2B Sales</span><span class="skill-tag">Short-cycle Deals</span><span class="skill-tag">Proposal Writing</span><span class="skill-tag">Ops/Tech Knowledge</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Account Executive (SMB)">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 7 -->
-      <div class="position-card reveal" data-dept="support">
-        <div class="pos-dept">Support</div>
-        <div class="pos-title">Client Technical Support Specialist</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Handle site issues, client onboarding questions, and technical troubleshooting tickets. You'll be the first line of support for clients experiencing technical friction during or after an engagement. All support is async by default.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">Troubleshooting</span><span class="skill-tag">Ticketing Systems</span><span class="skill-tag">Written Support</span><span class="skill-tag">Patience</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Client Technical Support Specialist">Apply for this Role &#8594;</a></div>
-      </div>
-
-      <!-- 8 -->
-      <div class="position-card reveal rd1" data-dept="analytics">
-        <div class="pos-dept">Analytics &amp; Operations</div>
-        <div class="pos-title">Analytics &amp; CRM Operations Associate</div>
-        <div class="pos-type">Full-time Remote</div>
-        <p class="pos-desc">Own site analytics, CRM data pipelines, visit tracking, and internal reporting. You'll manage GA4 and Mixpanel instrumentation, maintain HubSpot data hygiene, and surface insights to leadership on a weekly cadence.</p>
-        <div class="pos-skills">
-          <div class="pos-skills-label">Key Skills</div>
-          <div class="pos-skill-tags">
-            <span class="skill-tag">GA4</span><span class="skill-tag">Mixpanel</span><span class="skill-tag">HubSpot</span><span class="skill-tag">Pipedrive</span><span class="skill-tag">Reporting</span><span class="skill-tag">Data Hygiene</span>
-          </div>
-        </div>
-        <div class="pos-apply"><a href="#apply" class="btn-apply" data-role="Analytics & CRM Operations Associate">Apply for this Role &#8594;</a></div>
-      </div>
-
-    </div><!-- /positions-grid -->
   </div>
 </section>
 
-<!-- APPLICATION FORM -->
-<section class="page-section cream" id="apply">
+<section class="perks-section page-section">
   <div class="container">
-    <div class="section-label reveal">Apply</div>
-    <h2 class="section-title reveal rd1">Send Your Resume</h2>
-    <p class="section-desc reveal rd2">All resumes go to <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="096a687b6c6c7b7a497e60736d6c7f7d6c6a61276a6664">[email&#160;protected]</a></strong>. Fill out the form below and we'll open your email client with everything pre-filled.</p>
+    <div class="section-label reveal" style="color:var(--accent2)">Why WizDevTech</div>
+    <h2 class="section-title light reveal rd1">Built for remote-first operators.</h2>
+    <div class="perks-grid reveal rd2">
+      <div class="perk"><div class="perk-icon">&#127760;</div><h4>Fully Remote</h4><p>Every position, every role. Work from anywhere with reliable internet.</p></div>
+      <div class="perk"><div class="perk-icon">&#128197;</div><h4>Fixed Engagements</h4><p>Clear start and end dates. No open-ended chaos — you always know when work ends.</p></div>
+      <div class="perk"><div class="perk-icon">&#9997;&#65039;</div><h4>Async-First</h4><p>Max 2 meetings per week. Written updates are the standard.</p></div>
+      <div class="perk"><div class="perk-icon">&#128200;</div><h4>Results-Based</h4><p>Your influence comes from delivering outcomes, not from politics or tenure.</p></div>
+      <div class="perk"><div class="perk-icon">&#128203;</div><h4>Clear Scope</h4><p>Every engagement has defined deliverables. You know exactly what done looks like.</p></div>
+      <div class="perk"><div class="perk-icon">&#128172;</div><h4>No Fluff</h4><p>No culture decks, no alignment sessions. Well-scoped work and clean handoffs.</p></div>
+    </div>
+  </div>
+</section>
 
-    <div class="apply-form-wrap reveal rd2">
-      <div class="apply-header">
-        <h3>Application Form</h3>
-        <span id="selectedRole">No role selected</span>
+<!-- APPLY MODAL -->
+<div class="modal-overlay" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitle">Apply for Position</h3>
+        <div class="modal-role" id="modalRoleLabel"></div>
       </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body">
       <form id="applyForm" novalidate>
+        <input type="hidden" id="applyRole" name="role"/>
+        <input type="hidden" id="applyTimestamp" name="applyTimestamp"/>
+        <!-- HONEYPOT -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp_apply">Leave this blank</label>
+          <input type="text" id="hp_apply" name="hp_apply" tabindex="-1" autocomplete="off"/>
+        </div>
         <div class="form-row-2">
-          <div class="form-row"><label class="form-label" for="aFirstName">First Name <span class="req">*</span></label><input type="text" class="form-control" id="aFirstName" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="aFirstNameErr">Required.</div></div>
-          <div class="form-row"><label class="form-label" for="aLastName">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="aLastName" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="aLastNameErr">Required.</div></div>
-        </div>
-        <div class="form-row"><label class="form-label" for="aEmail">Email <span class="req">*</span></label><input type="email" class="form-control" id="aEmail" placeholder="jane@email.com" autocomplete="email"/><div class="field-error" id="aEmailErr">Valid email required.</div></div>
-        <div class="form-row"><label class="form-label" for="aRole">Position Applying For <span class="req">*</span></label>
-          <select class="form-control" id="aRole">
-            <option value="">Select a position</option>
-            <option>Embedded Operations Specialist</option>
-            <option>Workflow Automation Engineer</option>
-            <option>Data Migration &amp; Cleanup Specialist</option>
-            <option>Technical Project Executor</option>
-            <option>Inbound Sales Coordinator</option>
-            <option>Account Executive (SMB)</option>
-            <option>Client Technical Support Specialist</option>
-            <option>Analytics &amp; CRM Operations Associate</option>
-          </select>
-          <div class="field-error" id="aRoleErr">Please select a position.</div>
-        </div>
-        <div class="form-row"><label class="form-label" for="aLinkedin">LinkedIn Profile URL</label><input type="url" class="form-control" id="aLinkedin" placeholder="https://linkedin.com/in/yourname"/></div>
-        <div class="form-row">
-          <label class="form-label">Resume / CV <span class="req">*</span></label>
-          <div class="file-upload" id="fileUpload">
-            <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" aria-label="Upload resume"/>
-            <div class="file-upload-icon">&#128196;</div>
-            <div class="file-upload-text">Click to upload or drag &amp; drop &#183; PDF, DOC, DOCX</div>
-            <div class="file-upload-name" id="fileName"></div>
+          <div class="form-row">
+            <label class="form-label" for="applyFirst">First Name <span class="req" style="color:var(--accent)">*</span></label>
+            <input type="text" class="form-control" id="applyFirst" placeholder="Jane" autocomplete="given-name"/>
+            <div class="field-error" id="applyFirstErr">Required.</div>
           </div>
-          <div class="field-error" id="resumeErr">Please attach your resume.</div>
+          <div class="form-row">
+            <label class="form-label" for="applyLast">Last Name <span class="req" style="color:var(--accent)">*</span></label>
+            <input type="text" class="form-control" id="applyLast" placeholder="Smith" autocomplete="family-name"/>
+            <div class="field-error" id="applyLastErr">Required.</div>
+          </div>
         </div>
-        <div class="form-row"><label class="form-label" for="aCover">Why WizDevTech? <span class="req">*</span></label><textarea class="form-control" id="aCover" placeholder="Tell us what draws you to execution work and why you'd be a strong fit. Be specific." maxlength="600"></textarea><div class="char-counter" id="coverCounter">0 / 600</div><div class="field-error" id="aCoverErr">Min 50 characters required.</div></div>
-        <button type="submit" class="btn-submit" id="applyBtn"><div class="spinner"></div><span class="btn-text">Submit Application &#8594;</span></button>
+        <div class="form-row">
+          <label class="form-label" for="applyEmail">Email <span class="req" style="color:var(--accent)">*</span></label>
+          <input type="email" class="form-control" id="applyEmail" placeholder="jane@company.com" autocomplete="email"/>
+          <div class="field-error" id="applyEmailErr">Valid email required.</div>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="applyLinkedIn">LinkedIn Profile URL</label>
+          <input type="url" class="form-control" id="applyLinkedIn" placeholder="https://linkedin.com/in/yourprofile"/>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="applyWhy">Why this role? (2–4 sentences) <span class="req" style="color:var(--accent)">*</span></label>
+          <textarea class="form-control" id="applyWhy" maxlength="600" placeholder="Be specific about your relevant experience..."></textarea>
+          <div class="field-error" id="applyWhyErr">Please write at least 50 characters.</div>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="applyAvail">Availability <span class="req" style="color:var(--accent)">*</span></label>
+          <select class="form-control" id="applyAvail">
+            <option value="">Select availability</option>
+            <option value="immediate">Immediate</option>
+            <option value="2weeks">Within 2 weeks</option>
+            <option value="1month">Within 1 month</option>
+            <option value="negotiable">Negotiable</option>
+          </select>
+          <div class="field-error" id="applyAvailErr">Please select availability.</div>
+        </div>
+        <button type="submit" class="btn-submit" id="applySubmitBtn">
+          <div class="spinner"></div>
+          <span class="btn-text">Send Application &#8594;</span>
+        </button>
       </form>
       <div class="form-success" id="applySuccess">
         <div class="form-success-icon">&#10003;</div>
-        <h3>Application Submitted</h3>
-        <p>Your email client will open with a pre-filled message to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95f6f4e7f0f0e7e6d5e2fceff1f0e3e1f0f6fdbbf6faf8">[email&#160;protected]</a>. Please send it to complete your application.</p>
+        <h3>Application Ready</h3>
+        <p>Your email client should have opened with a pre-filled application to <strong>careers@wizdevtech.com</strong>. Attach your resume and send.</p>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <footer class="site-footer">
-  <div class="container">
+  <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">What We Do</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales</a></li><li><a href="policies.html">Policies</a></li></ul></div>
-      <div class="footer-col"><h4>Careers</h4><ul><li><a href="/cdn-cgi/l/email-protection#9bf8fae9fefee9e8dbecf2e1fffeedeffef8f3b5f8f4f6"><span class="__cf_email__" data-cfemail="d4b7b5a6b1b1a6a794a3bdaeb0b1a2a0b1b7bcfab7bbb9">[email&#160;protected]</span></a></li><li><a href="#positions">Open Positions</a></li><li><a href="#apply">Apply Now</a></li></ul></div>
-      <div class="footer-col"><h4>Support</h4><ul><li><a href="/cdn-cgi/l/email-protection#cab9bfbabaa5b8be8abda3b0aeafbcbeafa9a2e4a9a5a7"><span class="__cf_email__" data-cfemail="14676164647b666054637d6e7071626071777c3a777b79">[email&#160;protected]</span></a></li><li><a href="/cdn-cgi/l/email-protection#e08c8587818ca097899a84859694858388ce838f8d"><span class="__cf_email__" data-cfemail="375b5250565b77405e4d5352414352545f1954585a">[email&#160;protected]</span></a></li></ul></div>
+      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">Services</a></li><li><a href="index.html#leadership">Leadership</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales &amp; Pricing</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li><li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li><li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li><li><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
-      <span>&copy; 2024 WizDevTech. All positions remote.</span>
-      <a href="index.html#form" class="btn btn-dark btn-arrow" style="padding:0.5rem 1rem;font-size:0.65rem;">Start Execution</a>
+      <div class="footer-logo-text">Wiz<span>Dev</span>Tech</div>
+      <span class="footer-copy">&copy; 2025 WizDevTech. All rights reserved.</span>
     </div>
   </div>
 </footer>
-
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="wdt-shared.js"></script>
 <script>
 (function(){
   'use strict';
-  WDT.initAnalytics();
-  WDT.initNav();
-  WDT.initReveal();
-  WDT.trackVisit('careers');
 
-  // Dept filter
-  var allCards = document.querySelectorAll('.position-card');
-  document.querySelectorAll('.dept-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.dept-btn').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      var dept = btn.dataset.dept;
-      allCards.forEach(function(card){
-        card.style.display = (dept === 'all' || card.dataset.dept === dept) ? '' : 'none';
-      });
-    });
-  });
+  /* NAV */
+  var nav=document.getElementById('mainNav'),prog=document.getElementById('progressBar'),burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu'),overlay=document.getElementById('navOverlay'),backTop=document.getElementById('backTop');
+  window.addEventListener('scroll',function(){var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;if(prog)prog.style.width=(t>0?s/t*100:0)+'%';nav.classList.toggle('scrolled',s>40);if(backTop)backTop.classList.toggle('show',s>400);},{passive:true});
+  if(backTop)backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  function openM(){burger.classList.add('open');menu.classList.add('open');if(overlay)overlay.classList.add('show');burger.setAttribute('aria-expanded','true');menu.setAttribute('aria-hidden','false');}
+  function closeM(){burger.classList.remove('open');menu.classList.remove('open');if(overlay)overlay.classList.remove('show');burger.setAttribute('aria-expanded','false');menu.setAttribute('aria-hidden','true');}
+  if(burger)burger.addEventListener('click',function(){menu.classList.contains('open')?closeM():openM();});
+  if(overlay)overlay.addEventListener('click',closeM);
+  document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeM);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeM();closeModal();}});
 
-  // Apply button pre-fills role select
-  document.querySelectorAll('.btn-apply').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var role = btn.dataset.role;
-      var sel  = document.getElementById('aRole');
-      for(var i=0; i<sel.options.length; i++){
-        if(sel.options[i].text.indexOf(role) !== -1){ sel.selectedIndex = i; break; }
-      }
-      document.getElementById('selectedRole').textContent = role;
-    });
-  });
+  /* REVEAL */
+  var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
 
-  // Role select updates badge
-  document.getElementById('aRole').addEventListener('change', function(){
-    document.getElementById('selectedRole').textContent = this.value || 'No role selected';
-  });
+  /* TOAST */
+  var _tt;
+  function showToast(msg,isErr){var el=document.getElementById('toast');if(!el)return;clearTimeout(_tt);el.textContent=msg;el.className='toast'+(isErr?' toast-error':'')+' show';_tt=setTimeout(function(){el.classList.remove('show');},4000);}
 
-  // File upload display
-  document.getElementById('resumeFile').addEventListener('change', function(){
-    var fn = document.getElementById('fileName');
-    fn.style.display = this.files[0] ? 'block' : 'none';
-    fn.textContent   = this.files[0] ? '&#128196; ' + this.files[0].name : '';
-  });
+  /* MODAL */
+  window.openModal=function(role,dept){
+    document.getElementById('applyRole').value=role;
+    document.getElementById('modalRoleLabel').textContent=role+' — '+dept;
+    document.getElementById('applyTimestamp').value=Date.now().toString();
+    document.getElementById('applyForm').style.display='';
+    document.getElementById('applySuccess').classList.remove('show');
+    document.getElementById('applyModal').classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  function closeModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow='';}
+  document.getElementById('modalClose').addEventListener('click',closeModal);
+  document.getElementById('applyModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
-  // Cover counter
-  var cover = document.getElementById('aCover');
-  var cctr  = document.getElementById('coverCounter');
-  cover.addEventListener('input', function(){ var l=cover.value.length; cctr.textContent=l+' / 600'; cctr.classList.toggle('warn',l>520); });
-
-  // Validation
-  var isEmail = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
-  function vf(id,eid,fn){ var el=document.getElementById(id),err=document.getElementById(eid); if(!el||!err) return true; var ok=fn(el.value.trim()); el.classList.toggle('error',!ok); el.classList.toggle('valid',ok); err.classList.toggle('show',!ok); return ok; }
+  /* APPLY FORM */
+  var isEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);};
+  function vf(id,eid,fn){var el=document.getElementById(id),err=document.getElementById(eid);if(!el||!err)return true;var ok=fn(el.value.trim());el.classList.toggle('error',!ok);el.classList.toggle('valid',ok);err.classList.toggle('show',!ok);return ok;}
   var aFields=[
-    {id:'aFirstName',eid:'aFirstNameErr',fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'aLastName', eid:'aLastNameErr', fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'aEmail',    eid:'aEmailErr',    fn:isEmail,                         ev:'blur'},
-    {id:'aRole',     eid:'aRoleErr',     fn:function(v){return v.length>0;},ev:'change'},
-    {id:'aCover',    eid:'aCoverErr',    fn:function(v){return v.length>=50;},ev:'blur'},
+    {id:'applyFirst',eid:'applyFirstErr',fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'applyLast', eid:'applyLastErr', fn:function(v){return v.length>0;},ev:'blur'},
+    {id:'applyEmail',eid:'applyEmailErr',fn:isEmail,ev:'blur'},
+    {id:'applyWhy',  eid:'applyWhyErr',  fn:function(v){return v.length>=50;},ev:'blur'},
+    {id:'applyAvail',eid:'applyAvailErr',fn:function(v){return v.length>0;},ev:'change'},
   ];
-  aFields.forEach(function(f){ var el=document.getElementById(f.id); if(el) el.addEventListener(f.ev,function(){ vf(f.id,f.eid,f.fn); }); });
+  aFields.forEach(function(f){var el=document.getElementById(f.id);if(el)el.addEventListener(f.ev,function(){vf(f.id,f.eid,f.fn);});});
 
-  document.getElementById('applyForm').addEventListener('submit', function(e){
+  document.getElementById('applyForm').addEventListener('submit',function(e){
     e.preventDefault();
-    var resumeOk = document.getElementById('resumeFile').files.length > 0;
-    document.getElementById('resumeErr').classList.toggle('show', !resumeOk);
-    if(resumeOk) document.getElementById('resumeFile').classList.remove('error');
-    var allOk = aFields.map(function(f){ return vf(f.id,f.eid,f.fn); }).every(Boolean) && resumeOk;
-    if(!allOk){ WDT.toast('Please complete all required fields.',true); return; }
+    /* BOT CHECKS */
+    if(document.getElementById('hp_apply').value.length>0)return;
+    var ts=parseInt(document.getElementById('applyTimestamp').value||'0',10);
+    if(ts>0&&(Date.now()-ts)<3000)return;
+    var ok=aFields.map(function(f){return vf(f.id,f.eid,f.fn);}).every(Boolean);
+    if(!ok){showToast('Please complete all required fields.',true);return;}
+    var btn=document.getElementById('applySubmitBtn');
+    btn.disabled=true;btn.classList.add('loading');
+    var role=document.getElementById('applyRole').value;
+    var first=document.getElementById('applyFirst').value.trim();
+    var last=document.getElementById('applyLast').value.trim();
+    var email=document.getElementById('applyEmail').value.trim();
+    var li=document.getElementById('applyLinkedIn').value.trim();
+    var why=document.getElementById('applyWhy').value.trim();
+    var avail=document.getElementById('applyAvail').value;
+    var body=['Position: '+role,'Name: '+first+' '+last,'Email: '+email,'LinkedIn: '+(li||'Not provided'),'Availability: '+avail,'','Why this role:',why,'','-- Please attach your resume to this email --'].join('
+');
+    /* Supabase insert stub — uncomment when key is ready
+    fetch('https://xlnuzbgwwthecvfigchw.supabase.co/rest/v1/applications',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'YOUR_ANON_KEY','Authorization':'Bearer YOUR_ANON_KEY','Prefer':'return=minimal'},
+      body:JSON.stringify({role:role,first_name:first,last_name:last,email:email,linkedin:li,why_role:why,availability:avail})
+    }).catch(function(){});
+    */
+    setTimeout(function(){window.location.href='mailto:careers@wizdevtech.com?subject='+encodeURIComponent('Application: '+role+' — '+first+' '+last)+'&body='+encodeURIComponent(body);},400);
+    setTimeout(function(){btn.classList.remove('loading');document.getElementById('applyForm').style.display='none';document.getElementById('applySuccess').classList.add('show');showToast('Application ready — check your email client to send.');},1200);
+  });
 
-    var btn = document.getElementById('applyBtn');
-    btn.disabled=true; btn.classList.add('loading');
-
-    var g=function(id){ return document.getElementById(id).value.trim(); };
-    var role = g('aRole');
-    WDT.trackApplication(role);
-
-    var body=[
-      'Application for: '+role,
-      'Name: '+g('aFirstName')+' '+g('aLastName'),
-      'Email: '+g('aEmail'),
-     
+})();
+</script>
+</body>
+</html>
