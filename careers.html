@@ -271,7 +271,26 @@ textarea.form-control{resize:vertical;min-height:100px;}
 /* modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.85);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.25s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
-.modal{background:var(--cream);border:1px solid var(--rule);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal{background:var(--cream);border:1px solid var(--rule);max-width:680px;width:100%;max-height:92vh;overflow-y:auto;}
+/* file upload */
+.file-drop{border:1px dashed var(--ghost);background:var(--paper);padding:1.25rem 1rem;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;position:relative;}
+.file-drop:hover,.file-drop.dragover{border-color:var(--accent);background:var(--cream);}
+.file-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.file-drop-icon{font-size:1.4rem;margin-bottom:0.3rem;color:var(--ghost);}
+.file-drop-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.06em;color:var(--muted);}
+.file-drop-label strong{color:var(--accent);}
+.file-drop-sub{font-family:var(--mono);font-size:0.6rem;color:var(--ghost);margin-top:0.2rem;}
+.file-chosen{display:none;font-family:var(--mono);font-size:0.68rem;color:var(--green);margin-top:0.5rem;align-items:center;gap:0.4rem;}
+.file-chosen.show{display:flex;}
+.file-chosen-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:260px;}
+.file-remove{background:none;border:none;color:var(--red);cursor:pointer;font-size:0.75rem;padding:0 0.3rem;flex-shrink:0;}
+.upload-progress{height:2px;background:var(--ghost);margin-top:0.5rem;display:none;}
+.upload-progress-bar{height:100%;background:var(--accent);width:0%;transition:width 0.3s;}
+.upload-progress.show{display:block;}
+.form-section-title{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);padding:0.6rem 0 0.4rem;border-bottom:1px solid var(--ghost);margin-bottom:0.9rem;margin-top:1.1rem;}
+.form-section-title:first-child{margin-top:0;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+@media(max-width:480px){.form-row-2{grid-template-columns:1fr;}}
 .modal-header{padding:1.75rem 2rem 1.25rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;}
 .modal-header h3{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);}
 .modal-role-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-top:0.3rem;}
@@ -448,14 +467,104 @@ var SUPA = (function(){
       <form id="applyForm" novalidate>
         <input type="hidden" id="applyRole"/>
         <input type="hidden" id="applyDept"/>
+        <input type="hidden" id="applyResumeUrl"/>
+        <!-- honeypot -->
+        <div class="hp-trap" aria-hidden="true"><input type="text" id="hp_url" tabindex="-1" autocomplete="off"/><input type="text" id="hp_ref" tabindex="-1" autocomplete="off"/></div>
+
+        <!-- SECTION 1: Personal Info -->
+        <div class="form-section-title">Personal Information</div>
         <div class="form-row-2">
           <div class="form-row"><label for="applyFirst">First Name <span class="req">*</span></label><input type="text" class="form-control" id="applyFirst" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="applyFirstErr">Required.</div></div>
           <div class="form-row"><label for="applyLast">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="applyLast" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="applyLastErr">Required.</div></div>
         </div>
-        <div class="form-row"><label for="applyEmail">Email <span class="req">*</span></label><input type="email" class="form-control" id="applyEmail" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="applyEmailErr">Valid email required.</div></div>
+        <div class="form-row-2">
+          <div class="form-row"><label for="applyEmail">Email <span class="req">*</span></label><input type="email" class="form-control" id="applyEmail" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="applyEmailErr">Valid email required.</div></div>
+          <div class="form-row"><label for="applyPhone">Phone</label><input type="tel" class="form-control" id="applyPhone" placeholder="(555) 000-0000" autocomplete="tel"/></div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-row"><label for="applyCity">City <span class="req">*</span></label><input type="text" class="form-control" id="applyCity" placeholder="Austin" autocomplete="address-level2"/><div class="field-error" id="applyCityErr">Required.</div></div>
+          <div class="form-row"><label for="applyState">State <span class="req">*</span></label><input type="text" class="form-control" id="applyState" placeholder="TX" maxlength="2" autocomplete="address-level1"/><div class="field-error" id="applyStateErr">Required.</div></div>
+        </div>
+
+        <!-- SECTION 2: Work Details -->
+        <div class="form-section-title">Work Details</div>
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="applyExp">Years of Experience <span class="req">*</span></label>
+            <select class="form-control" id="applyExp">
+              <option value="">Select</option>
+              <option value="0-1">Less than 1 year</option>
+              <option value="1-3">1&#8211;3 years</option>
+              <option value="3-5">3&#8211;5 years</option>
+              <option value="5-10">5&#8211;10 years</option>
+              <option value="10+">10+ years</option>
+            </select>
+            <div class="field-error" id="applyExpErr">Required.</div>
+          </div>
+          <div class="form-row">
+            <label for="applyAvail">Availability <span class="req">*</span></label>
+            <select class="form-control" id="applyAvail">
+              <option value="">Select</option>
+              <option value="immediate">Immediate</option>
+              <option value="2weeks">Within 2 weeks</option>
+              <option value="1month">Within 1 month</option>
+              <option value="negotiable">Negotiable</option>
+            </select>
+            <div class="field-error" id="applyAvailErr">Required.</div>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="applyWorkType">Work Type Preference</label>
+            <select class="form-control" id="applyWorkType">
+              <option value="">Select</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="onsite">On-site</option>
+              <option value="any">No preference</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="applyHear">How did you hear about us?</label>
+            <select class="form-control" id="applyHear">
+              <option value="">Select</option>
+              <option value="search">Search engine</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="workmarket">WorkMarket</option>
+              <option value="fieldnation">Field Nation</option>
+              <option value="referral">Referral</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SECTION 3: Links -->
+        <div class="form-section-title">Links</div>
         <div class="form-row"><label for="applyLinkedIn">LinkedIn Profile URL</label><input type="url" class="form-control" id="applyLinkedIn" placeholder="https://linkedin.com/in/yourprofile"/></div>
-        <div class="form-row"><label for="applyWhy">Why this role? (2&#8211;4 sentences) <span class="req">*</span></label><textarea class="form-control" id="applyWhy" maxlength="600" placeholder="Be specific about your relevant experience..."></textarea><div class="field-error" id="applyWhyErr">Please write at least 50 characters.</div></div>
-        <div class="form-row"><label for="applyAvail">Availability <span class="req">*</span></label><select class="form-control" id="applyAvail"><option value="">Select availability</option><option value="immediate">Immediate</option><option value="2weeks">Within 2 weeks</option><option value="1month">Within 1 month</option><option value="negotiable">Negotiable</option></select><div class="field-error" id="applyAvailErr">Please select availability.</div></div>
+        <div class="form-row"><label for="applyPortfolio">Portfolio / GitHub URL</label><input type="url" class="form-control" id="applyPortfolio" placeholder="https://github.com/yourhandle"/></div>
+
+        <!-- SECTION 4: Resume -->
+        <div class="form-section-title">Resume <span class="req">*</span></div>
+        <div class="form-row">
+          <div class="file-drop" id="resumeDrop">
+            <input type="file" id="applyResume" accept=".pdf,.doc,.docx" aria-label="Upload resume"/>
+            <div class="file-drop-icon">&#128206;</div>
+            <div class="file-drop-label"><strong>Click to upload</strong> or drag &amp; drop</div>
+            <div class="file-drop-sub">PDF, DOC, DOCX &#8212; max 5 MB</div>
+          </div>
+          <div class="file-chosen" id="fileChosen">
+            <span class="file-chosen-name" id="fileChosenName"></span>
+            <button type="button" class="file-remove" id="fileRemove" aria-label="Remove file">&#10005;</button>
+          </div>
+          <div class="upload-progress" id="uploadProgress"><div class="upload-progress-bar" id="uploadBar"></div></div>
+          <div class="field-error" id="applyResumeErr">Please attach your resume.</div>
+        </div>
+
+        <!-- SECTION 5: Application -->
+        <div class="form-section-title">Application</div>
+        <div class="form-row"><label for="applyWhy">Why this role? <span class="req">*</span></label><textarea class="form-control" id="applyWhy" rows="4" maxlength="800" placeholder="Tell us what draws you to this specific role and what relevant experience you bring. 2&#8211;4 sentences."></textarea><div class="field-error" id="applyWhyErr">Please write at least 50 characters.</div></div>
+        <div class="form-row"><label for="applyCover">Additional Notes / Cover Letter <span style="font-family:var(--mono);font-size:0.6rem;color:var(--ghost)">(optional)</span></label><textarea class="form-control" id="applyCover" rows="3" maxlength="1200" placeholder="Anything else you want us to know..."></textarea></div>
+
         <button type="submit" class="btn-submit" id="applySubmitBtn"><div class="spinner"></div><span class="btn-text">Submit Application &#8594;</span></button>
       </form>
       <div class="form-success" id="applySuccess">
@@ -625,52 +734,140 @@ var SUPA = (function(){
   document.getElementById('applyModal').addEventListener('click',function(e){if(e.target===this) closeModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape') closeModal();});
 
-  /* validation */
+  /* ── FILE UPLOAD UI ── */
+  var resumeFile=null;
+  var resumeDrop=document.getElementById('resumeDrop');
+  var resumeInput=document.getElementById('applyResume');
+  var fileChosen=document.getElementById('fileChosen');
+  var fileChosenName=document.getElementById('fileChosenName');
+  var fileRemove=document.getElementById('fileRemove');
+
+  function setResumeFile(f){
+    if(!f) return;
+    var maxMB=5;
+    if(f.size>maxMB*1024*1024){window.showToast('File too large — max 5 MB','error');return;}
+    var allowed=['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if(!allowed.includes(f.type)&&!/\.(pdf|doc|docx)$/i.test(f.name)){window.showToast('Unsupported file type — use PDF, DOC, or DOCX','error');return;}
+    resumeFile=f;
+    fileChosenName.textContent=f.name;
+    fileChosen.classList.add('show');
+    document.getElementById('applyResumeErr').style.display='none';
+  }
+  resumeInput.addEventListener('change',function(){if(this.files[0])setResumeFile(this.files[0]);});
+  resumeDrop.addEventListener('dragover',function(e){e.preventDefault();this.classList.add('dragover');});
+  resumeDrop.addEventListener('dragleave',function(){this.classList.remove('dragover');});
+  resumeDrop.addEventListener('drop',function(e){e.preventDefault();this.classList.remove('dragover');if(e.dataTransfer.files[0])setResumeFile(e.dataTransfer.files[0]);});
+  fileRemove.addEventListener('click',function(){
+    resumeFile=null;resumeInput.value='';
+    fileChosen.classList.remove('show');fileChosenName.textContent='';
+    document.getElementById('applyResumeUrl').value='';
+  });
+
+  /* ── VALIDATION RULES ── */
   var rules=[
-    {id:'applyFirst',eid:'applyFirstErr',fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'applyLast', eid:'applyLastErr', fn:function(v){return v.length>0;},ev:'blur'},
-    {id:'applyEmail',eid:'applyEmailErr',fn:window.isEmail,                     ev:'blur'},
-    {id:'applyWhy',  eid:'applyWhyErr',  fn:function(v){return v.length>=50;},ev:'blur'},
-    {id:'applyAvail',eid:'applyAvailErr',fn:function(v){return v.length>0;},  ev:'change'},
+    {id:'applyFirst', eid:'applyFirstErr', fn:function(v){return v.length>0;},         ev:'blur'},
+    {id:'applyLast',  eid:'applyLastErr',  fn:function(v){return v.length>0;},         ev:'blur'},
+    {id:'applyEmail', eid:'applyEmailErr', fn:window.isEmail,                           ev:'blur'},
+    {id:'applyCity',  eid:'applyCityErr',  fn:function(v){return v.length>0;},         ev:'blur'},
+    {id:'applyState', eid:'applyStateErr', fn:function(v){return v.length>0;},         ev:'blur'},
+    {id:'applyExp',   eid:'applyExpErr',   fn:function(v){return v.length>0;},         ev:'change'},
+    {id:'applyAvail', eid:'applyAvailErr', fn:function(v){return v.length>0;},         ev:'change'},
+    {id:'applyWhy',   eid:'applyWhyErr',   fn:function(v){return v.length>=50;},       ev:'blur'},
   ];
   rules.forEach(function(r){
     var el=document.getElementById(r.id);
     if(el) el.addEventListener(r.ev,function(){window.vf(r.id,r.eid,r.fn);});
   });
 
-  /* submit → Supabase */
-  document.getElementById('applyForm').addEventListener('submit',function(e){
+  /* ── SUBMIT ── */
+  document.getElementById('applyForm').addEventListener('submit',async function(e){
     e.preventDefault();
-    var ok=rules.map(function(r){return window.vf(r.id,r.eid,r.fn);}).every(Boolean);
-    if(!ok){window.showToast('Please complete all required fields.','error');return;}
-    var btn=document.getElementById('applySubmitBtn');
-    btn.disabled=true;btn.classList.add('loading');
-    var payload={
-      role:         document.getElementById('applyRole').value,
-      first_name:   document.getElementById('applyFirst').value.trim(),
-      last_name:    document.getElementById('applyLast').value.trim(),
-      email:        document.getElementById('applyEmail').value.trim(),
-      linkedin:     document.getElementById('applyLinkedIn').value.trim(),
-      why:          document.getElementById('applyWhy').value.trim(),
-      availability: document.getElementById('applyAvail').value
-    };
+    var fieldOk=rules.map(function(r){return window.vf(r.id,r.eid,r.fn);}).every(Boolean);
+    var resumeOk=!!resumeFile||!!document.getElementById('applyResumeUrl').value;
+    if(!resumeOk){document.getElementById('applyResumeErr').style.display='block';}
+    if(!fieldOk||!resumeOk){window.showToast('Please complete all required fields.','error');return;}
     if(isBotApply()){
       document.getElementById('applyForm').style.display='none';
       document.getElementById('applySuccess').classList.add('show');
       return;
     }
-    SUPA.insert('applications', payload).then(function(res){
+    var btn=document.getElementById('applySubmitBtn');
+    btn.disabled=true;btn.classList.add('loading');
+
+    /* ── RESUME UPLOAD to Supabase Storage ── */
+    var resumeUrl=document.getElementById('applyResumeUrl').value;
+    if(resumeFile&&!resumeUrl){
+      try{
+        var ext=resumeFile.name.split('.').pop();
+        var safeName=Date.now()+'-'+(Math.random().toString(36).slice(2,8))+'.'+ext;
+        var prog=document.getElementById('uploadProgress');
+        var bar=document.getElementById('uploadBar');
+        prog.classList.add('show');
+        bar.style.width='30%';
+        var uploadRes=await fetch(
+          'https://xlnuzbgwwthecvfigchw.supabase.co/storage/v1/object/resumes/'+safeName,
+          {
+            method:'POST',
+            headers:{
+              'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ',
+              'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ',
+              'Content-Type':resumeFile.type||'application/octet-stream',
+              'x-upsert':'false'
+            },
+            body:resumeFile
+          }
+        );
+        bar.style.width='80%';
+        if(uploadRes.ok){
+          resumeUrl='https://xlnuzbgwwthecvfigchw.supabase.co/storage/v1/object/public/resumes/'+safeName;
+          document.getElementById('applyResumeUrl').value=resumeUrl;
+          bar.style.width='100%';
+        } else {
+          window.showToast('Resume upload failed \u2014 please email careers@wizdevtech.com with your resume attached.','error');
+          prog.classList.remove('show');bar.style.width='0%';
+          btn.disabled=false;btn.classList.remove('loading');
+          return;
+        }
+        setTimeout(function(){prog.classList.remove('show');bar.style.width='0%';},600);
+      }catch(err){
+        window.showToast('Upload error \u2014 please email careers@wizdevtech.com','error');
+        btn.disabled=false;btn.classList.remove('loading');
+        return;
+      }
+    }
+
+    /* ── INSERT application row ── */
+    var payload={
+      role:           document.getElementById('applyRole').value,
+      first_name:     document.getElementById('applyFirst').value.trim(),
+      last_name:      document.getElementById('applyLast').value.trim(),
+      email:          document.getElementById('applyEmail').value.trim(),
+      phone:          document.getElementById('applyPhone').value.trim(),
+      city:           document.getElementById('applyCity').value.trim(),
+      state:          document.getElementById('applyState').value.trim(),
+      experience:     document.getElementById('applyExp').value,
+      availability:   document.getElementById('applyAvail').value,
+      work_type:      document.getElementById('applyWorkType').value,
+      hear_about:     document.getElementById('applyHear').value,
+      linkedin:       document.getElementById('applyLinkedIn').value.trim(),
+      portfolio:      document.getElementById('applyPortfolio').value.trim(),
+      resume_url:     resumeUrl||null,
+      why:            document.getElementById('applyWhy').value.trim(),
+      cover_letter:   document.getElementById('applyCover').value.trim(),
+      source:         'careers_page'
+    };
+    SUPA.insert('applications',payload).then(function(res){
       btn.disabled=false;btn.classList.remove('loading');
-      if(res && res.ok){
+      if(res&&res.ok){
         document.getElementById('applyForm').style.display='none';
         document.getElementById('applySuccess').classList.add('show');
-        if(window.gtagEvent) window.gtagEvent('application_submit',{event_category:'careers',event_label:payload.role});
+        if(window.gtagEvent)window.gtagEvent('application_submit',{event_category:'careers',event_label:payload.role});
       } else {
-        window.showToast('Submission error — please email careers@wizdevtech.com','error');
+        window.showToast('Submission error \u2014 please email careers@wizdevtech.com','error');
       }
     }).catch(function(){
       btn.disabled=false;btn.classList.remove('loading');
-      window.showToast('Connection error — please email careers@wizdevtech.com','error');
+      window.showToast('Connection error \u2014 please email careers@wizdevtech.com','error');
     });
   });
 
