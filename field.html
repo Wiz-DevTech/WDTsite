@@ -671,7 +671,7 @@ footer{background:var(--ink);color:#888;}
         </div>
         <div class="dispatch-note">
           For urgent assignments, contact us directly:<br>
-          <a href="mailto:dispatch@wizdevtech.com" style="color:var(--accent)">dispatch@wizdevtech.com</a><br><br>
+          <a href="/cdn-cgi/l/email-protection#6e0a071d1e0f1a0d062e1907140a0b181a0b0d06400d0103" style="color:var(--accent)"><span class="__cf_email__" data-cfemail="2b4f42585b4a5f48436b5c42514f4e5d5f4e484305484446">[email&#160;protected]</span></a><br><br>
           Or assign directly through your WorkMarket or Field Nation portal using the IDs above.<br><br>
           Hourly rate: $52.00/hr on-site or virtual (platform rate). Direct engagement rates vary by scope.
         </div>
@@ -780,7 +780,7 @@ footer{background:var(--ink);color:#888;}
           <div class="form-success" id="dispatchSuccess">
             <div class="form-success-icon">✓</div>
             <h3>Inquiry received.</h3>
-            <p>We will respond within 2 business hours.<br>For urgent assignments: dispatch@wizdevtech.com</p>
+            <p>We will respond within 2 business hours.<br>For urgent assignments: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8aeee3f9faebfee9e2cafde3f0eeeffcfeefe9e2a4e9e5e7">[email&#160;protected]</a></p>
           </div>
         </div>
       </div>
@@ -820,24 +820,24 @@ footer{background:var(--ink);color:#888;}
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:dispatch@wizdevtech.com">dispatch@wizdevtech.com</a></li>
-        <li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li>
-        <li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li>
-        <li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#d8bcb1aba8b9acbbb098afb1a2bcbdaeacbdbbb0f6bbb7b5"><span class="__cf_email__" data-cfemail="3c58554f4c5d485f547c4b554658594a48595f54125f5351">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#5531302315223c2f3130232130363d7b363a38"><span class="__cf_email__" data-cfemail="92f6f7e4d2e5fbe8f6f7e4e6f7f1fabcf1fdff">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#acdfcdc0c9dfecdbc5d6c8c9dad8c9cfc482cfc3c1"><span class="__cf_email__" data-cfemail="d4a7b5b8b1a794a3bdaeb0b1a2a0b1b7bcfab7bbb9">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#b1d2d0c3d4d4c3c2f1c6d8cbd5d4c7c5d4d2d99fd2dedc"><span class="__cf_email__" data-cfemail="0b686a796e6e79784b7c62716f6e7d7f6e686325686466">[email&#160;protected]</span></a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>&#169; 2026 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
     <div class="footer-links">
-      <a href="mailto:support@wizdevtech.com">Technical Support</a>
+      <a href="/cdn-cgi/l/email-protection#74070104041b060034031d0e1011020011171c5a171b19">Technical Support</a>
       <a href="policies.html">Privacy &amp; Legal</a>
       <a href="index.html#form">Start Execution &#8594;</a>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 'use strict';
 
@@ -976,18 +976,26 @@ document.getElementById('dispatchSubmitBtn').addEventListener('click',async func
       })
     });
     if(res.ok){
-      document.querySelector('#dispatch .form-box').innerHTML='<div class="form-success" style="display:block"><div class="form-success-icon">✓</div><h3>Inquiry received.</h3><p>We will respond within 2 business hours.<br>For urgent assignments: dispatch@wizdevtech.com</p></div>';
+      document.querySelector('#dispatch .form-box').innerHTML='<div class="form-success" style="display:block"><div class="form-success-icon">&#10003;</div><h3>Inquiry received.</h3><p>We will respond within 2 business hours.<br>For urgent: dispatch@wizdevtech.com</p></div>';
       if(window.gtagEvent)window.gtagEvent('field_dispatch_submit',{event_category:'field',event_label:workType});
-    }else{toast('Submission error — please email dispatch@wizdevtech.com directly.');}
-  }catch(e){toast('Connection error — please email dispatch@wizdevtech.com directly.');}
+    }else{
+      var t=document.getElementById('toast');
+      t.textContent='Submission error — email dispatch@wizdevtech.com';t.classList.add('show');
+      setTimeout(function(){t.classList.remove('show');},4000);
+    }
+  }catch(e){
+    var t=document.getElementById('toast');
+    t.textContent='Connection error — email dispatch@wizdevtech.com';t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');},4000);
+  }
   btn.classList.remove('loading');
 });
 
 /* ── PAGE VIEW ── */
 try{
-  fetch(SUPABASE_URL+'/rest/v1/page_views',{
+  fetch('https://xlnuzbgwwthecvfigchw.supabase.co/rest/v1/page_views',{
     method:'POST',
-    headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Prefer':'return=minimal'},
+    headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ','Prefer':'return=minimal'},
     body:JSON.stringify({page:'field.html',referrer:document.referrer||'direct',user_agent:navigator.userAgent.slice(0,120)})
   });
 }catch(e){}

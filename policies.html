@@ -251,7 +251,7 @@ textarea.form-control{resize:vertical;min-height:100px;}
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav" role="navigation" aria-label="Main navigation">
+<nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
@@ -463,7 +463,7 @@ var SUPA = (function(){
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<footer role="contentinfo" id="siteFooter">
+<footer id="siteFooter">
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
@@ -475,7 +475,6 @@ var SUPA = (function(){
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#what">Services</a></li>
         <li><a href="index.html#leadership">Leadership</a></li>
-        <li><a href="field.html">Field Engineering</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>
     </div>
@@ -544,7 +543,8 @@ var SUPA = (function(){
       mobileMenu.classList.toggle('open',o);
       mobileMenu.setAttribute('aria-hidden',String(!o));
     });
-    document.querySelectorAll('.mobile-link').forEach(function(l){
-      l.addEventListener('click',function(){
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded','false
+
+})();
+</script>
+</body>
+</html>

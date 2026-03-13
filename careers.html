@@ -279,16 +279,12 @@ textarea.form-control{resize:vertical;min-height:100px;}
 .modal-close:hover{color:var(--accent);}
 .modal-body{padding:1.5rem 2rem 2rem;}
 @media(max-width:600px){.modal-header,.modal-body{padding:1.25rem;}}
-
-  /* honeypot — hidden from humans, bots fill it */
-  .hp-trap{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;pointer-events:none;tab-index:-1;}
-
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav" role="navigation" aria-label="Main navigation">
+<nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
@@ -450,17 +446,17 @@ var SUPA = (function(){
     </div>
     <div class="modal-body">
       <form id="applyForm" novalidate>
-        <input type="hidden" id="applyRole" aria-label="Role you are applying for"/>
-        <input type="hidden" id="applyDept" aria-label="Department"/>
+        <input type="hidden" id="applyRole"/>
+        <input type="hidden" id="applyDept"/>
         <div class="form-row-2">
-          <div class="form-row"><label for="applyFirst">First Name <span class="req">*</span></label><input type="text" class="form-control" id="applyFirst" aria-label="First name" aria-describedby="applyFirstErr" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="applyFirstErr">Required.</div></div>
-          <div class="form-row"><label for="applyLast">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="applyLast" aria-label="Last name" aria-describedby="applyLastErr" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="applyLastErr">Required.</div></div>
+          <div class="form-row"><label for="applyFirst">First Name <span class="req">*</span></label><input type="text" class="form-control" id="applyFirst" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="applyFirstErr">Required.</div></div>
+          <div class="form-row"><label for="applyLast">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="applyLast" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="applyLastErr">Required.</div></div>
         </div>
-        <div class="form-row"><label for="applyEmail">Email <span class="req">*</span></label><input type="email" class="form-control" id="applyEmail" aria-label="Email address" aria-describedby="applyEmailErr" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="applyEmailErr">Valid email required.</div></div>
-        <div class="form-row"><label for="applyLinkedIn">LinkedIn Profile URL</label><input type="url" class="form-control" id="applyLinkedIn" aria-label="LinkedIn profile URL (optional)" placeholder="https://linkedin.com/in/yourprofile"/></div>
-        <div class="form-row"><label for="applyWhy">Why this role? (2&#8211;4 sentences) <span class="req">*</span></label><textarea class="form-control" id="applyWhy" aria-label="Why you are a fit" aria-describedby="applyWhyErr" maxlength="600" placeholder="Be specific about your relevant experience..."></textarea><div class="field-error" id="applyWhyErr">Please write at least 50 characters.</div></div>
-        <div class="form-row"><label for="applyAvail">Availability <span class="req">*</span></label><select class="form-control" id="applyAvail" aria-label="Availability to start" aria-describedby="applyAvailErr"><option value="">Select availability</option><option value="immediate">Immediate</option><option value="2weeks">Within 2 weeks</option><option value="1month">Within 1 month</option><option value="negotiable">Negotiable</option></select><div class="field-error" id="applyAvailErr">Please select availability.</div></div>
-        <div class="hp-trap" aria-hidden="true"><label>Leave blank<input type="text" id="hp_url" name="website_url" tabindex="-1" autocomplete="off"/></label><label>Leave blank<input type="text" id="hp_ref" name="referral_code" tabindex="-1" autocomplete="off"/></label></div><button type="submit" class="btn-submit" id="applySubmitBtn"><div class="spinner"></div><span class="btn-text">Submit Application &#8594;</span></button>
+        <div class="form-row"><label for="applyEmail">Email <span class="req">*</span></label><input type="email" class="form-control" id="applyEmail" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="applyEmailErr">Valid email required.</div></div>
+        <div class="form-row"><label for="applyLinkedIn">LinkedIn Profile URL</label><input type="url" class="form-control" id="applyLinkedIn" placeholder="https://linkedin.com/in/yourprofile"/></div>
+        <div class="form-row"><label for="applyWhy">Why this role? (2&#8211;4 sentences) <span class="req">*</span></label><textarea class="form-control" id="applyWhy" maxlength="600" placeholder="Be specific about your relevant experience..."></textarea><div class="field-error" id="applyWhyErr">Please write at least 50 characters.</div></div>
+        <div class="form-row"><label for="applyAvail">Availability <span class="req">*</span></label><select class="form-control" id="applyAvail"><option value="">Select availability</option><option value="immediate">Immediate</option><option value="2weeks">Within 2 weeks</option><option value="1month">Within 1 month</option><option value="negotiable">Negotiable</option></select><div class="field-error" id="applyAvailErr">Please select availability.</div></div>
+        <button type="submit" class="btn-submit" id="applySubmitBtn"><div class="spinner"></div><span class="btn-text">Submit Application &#8594;</span></button>
       </form>
       <div class="form-success" id="applySuccess">
         <div class="form-success-icon">✓</div>
@@ -474,7 +470,7 @@ var SUPA = (function(){
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<footer role="contentinfo" id="siteFooter">
+<footer id="siteFooter">
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
@@ -486,7 +482,6 @@ var SUPA = (function(){
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#what">Services</a></li>
         <li><a href="index.html#leadership">Leadership</a></li>
-        <li><a href="field.html">Field Engineering</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>
     </div>
@@ -617,7 +612,7 @@ var SUPA = (function(){
   window.openModal=function(role,dept){
     document.getElementById('applyRole').value=role||'';
     document.getElementById('applyDept').value=dept||'';
-    document.getElementById('modalRoleLabel').textContent=dept+' &#8212; '+role;
+    document.getElementById('modalRoleLabel').textContent=dept+' — '+role;
     document.getElementById('applyForm').style.display='';
     document.getElementById('applySuccess').classList.remove('show');
     document.getElementById('applyModal').classList.add('open');
@@ -654,4 +649,39 @@ var SUPA = (function(){
       role:         document.getElementById('applyRole').value,
       first_name:   document.getElementById('applyFirst').value.trim(),
       last_name:    document.getElementById('applyLast').value.trim(),
-      email:        document.getEleme
+      email:        document.getElementById('applyEmail').value.trim(),
+      linkedin:     document.getElementById('applyLinkedIn').value.trim(),
+      why:          document.getElementById('applyWhy').value.trim(),
+      availability: document.getElementById('applyAvail').value
+    };
+    if(isBotApply()){
+      document.getElementById('applyForm').style.display='none';
+      document.getElementById('applySuccess').classList.add('show');
+      return;
+    }
+    SUPA.insert('applications', payload).then(function(res){
+      btn.disabled=false;btn.classList.remove('loading');
+      if(res && res.ok){
+        document.getElementById('applyForm').style.display='none';
+        document.getElementById('applySuccess').classList.add('show');
+        if(window.gtagEvent) window.gtagEvent('application_submit',{event_category:'careers',event_label:payload.role});
+      } else {
+        window.showToast('Submission error — please email careers@wizdevtech.com','error');
+      }
+    }).catch(function(){
+      btn.disabled=false;btn.classList.remove('loading');
+      window.showToast('Connection error — please email careers@wizdevtech.com','error');
+    });
+  });
+
+  /* honeypot check */
+  function isBotApply(){
+    var u=document.getElementById('hp_url');
+    var r=document.getElementById('hp_ref');
+    return (u&&u.value!=='')||(r&&r.value!=='');
+  }
+
+})();
+</script>
+</body>
+</html>
