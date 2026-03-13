@@ -341,12 +341,16 @@ textarea.form-control{resize:vertical;min-height:100px;}
 .not-this p{font-size:0.85rem;color:var(--muted);line-height:1.7;}
 .not-this p strong{color:var(--ink);}
 
+
+  /* honeypot — hidden from humans, bots fill it */
+  .hp-trap{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;pointer-events:none;tab-index:-1;}
+
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav">
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
@@ -484,11 +488,11 @@ var SUPA = (function(){
     <div class="sec-label reveal">FAQ</div>
     <h2 class="sec-title reveal rd1">Common sales questions.</h2>
     <div class="faq-list reveal rd2">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer discounts for multiple engagements?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Clients running a second consecutive engagement receive a 10% reduction on the follow-on scope, applied after the first engagement completes with documented handoff.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment terms do you accept?<span class="faq-icon">+</span></button><div class="faq-a"><p>50% at engagement kickoff, 50% upon handoff delivery. ACH, wire, and major credit cards accepted. Net-30 terms available for verified enterprise clients.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if scope changes mid-engagement?<span class="faq-icon">+</span></button><div class="faq-a"><p>Scope is locked at kickoff. New work outside agreed deliverables is documented and presented as a separate follow-on engagement option. We do not expand scope mid-flight.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can we extend an engagement?<span class="faq-icon">+</span></button><div class="faq-a"><p>Extensions are available by mutual agreement before the end date, provided team capacity allows. All extensions are scoped and priced separately.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<span class="faq-icon">+</span></button><div class="faq-a"><p>The initial 50% deposit is non-refundable once work has commenced. If we fail to deliver agreed scope, we continue at no additional charge or issue a prorated refund on the final payment.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do you offer discounts for multiple engagements?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Clients running a second consecutive engagement receive a 10% reduction on the follow-on scope, applied after the first engagement completes with documented handoff.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What payment terms do you accept?<span class="faq-icon">+</span></button><div class="faq-a"><p>50% at engagement kickoff, 50% upon handoff delivery. ACH, wire, and major credit cards accepted. Net-30 terms available for verified enterprise clients.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What happens if scope changes mid-engagement?<span class="faq-icon">+</span></button><div class="faq-a"><p>Scope is locked at kickoff. New work outside agreed deliverables is documented and presented as a separate follow-on engagement option. We do not expand scope mid-flight.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Can we extend an engagement?<span class="faq-icon">+</span></button><div class="faq-a"><p>Extensions are available by mutual agreement before the end date, provided team capacity allows. All extensions are scoped and priced separately.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is there a refund policy?<span class="faq-icon">+</span></button><div class="faq-a"><p>The initial 50% deposit is non-refundable once work has commenced. If we fail to deliver agreed scope, we continue at no additional charge or issue a prorated refund on the final payment.</p></div></div>
     </div>
   </div>
 </section>
@@ -537,7 +541,7 @@ var SUPA = (function(){
             <label for="surveyNote">Anything else? (optional)</label>
             <textarea class="form-control" id="surveyNote" maxlength="300" placeholder="Share any context..." style="min-height:70px"></textarea>
           </div>
-          <button type="submit" class="btn-submit" id="surveyBtn"><div class="spinner"></div><span class="btn-text">Submit Survey &#8594;</span></button>
+          <div class="hp-trap" aria-hidden="true"><label>Leave blank<input type="text" name="promo_code" tabindex="-1" autocomplete="off" id="hp_promo"/></label></div><button type="submit" class="btn-submit" id="surveyBtn"><div class="spinner"></div><span class="btn-text">Submit Survey &#8594;</span></button>
         </form>
         <div class="form-success" id="surveySuccess">
           <div class="form-success-icon">✓</div>
@@ -604,7 +608,7 @@ var SUPA = (function(){
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<footer id="siteFooter">
+<footer role="contentinfo" id="siteFooter">
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">Wiz<span>Dev</span>Tech</div>

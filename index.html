@@ -120,6 +120,18 @@
     gtag('config', 'G-2FF7SSE1TL');
     window.gtagEvent=function(n,p){gtag('event',n,p||{});};
   </script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Do you rescue legacy systems or just modern stacks?","acceptedAnswer":{"@type":"Answer","text":"Both. We work inside legacy systems, modern SaaS stacks, custom-built tools, and everything in between."}},
+      {"@type":"Question","name":"How is this different from hiring a contractor or dev agency?","acceptedAnswer":{"@type":"Answer","text":"Fixed scope, fixed price, defined end date. No retainer, no ongoing dependency, no hand-holding after handoff."}},
+      {"@type":"Question","name":"Can you take over a project mid-build from another vendor?","acceptedAnswer":{"@type":"Answer","text":"Yes. Vendor exit recovery and stalled project rescue account for the majority of our work."}},
+      {"@type":"Question","name":"What if our project has significant technical debt?","acceptedAnswer":{"@type":"Answer","text":"Technical debt is our normal operating environment. We work with what exists and scope which debt must be addressed to complete the engagement."}},
+      {"@type":"Question","name":"How quickly can an engagement start?","acceptedAnswer":{"@type":"Answer","text":"Typically within 5-10 business days of signed scope and initial payment."}},
+      {"@type":"Question","name":"What does the handoff look like at the end?","acceptedAnswer":{"@type":"Answer","text":"A documented handoff package: what was built, how it works, how to maintain it, and what was left untouched and why."}}
+    ]
+  }</script>
 
   <!-- ═══════════════════════════════════════════════
        SEO & META
@@ -374,12 +386,41 @@ textarea.form-control{resize:vertical;min-height:100px;}
 #surveyThanks { display:none; font-family:var(--mono); font-size:0.8rem; color:var(--accent2); letter-spacing:0.08em; }
 @media(max-width:900px){ .survey-grid { grid-template-columns:1fr; } }
 
+
+  /* honeypot — hidden from humans, bots fill it */
+  .hp-trap{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;pointer-events:none;tab-index:-1;}
+
+
+/* ── HOMEPAGE FAQ ── */
+#home-faq{background:var(--paper);}
+.hfaq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.hfaq-item{background:var(--cream);padding:1.75rem 1.5rem;}
+.hfaq-q{font-family:var(--display);font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:0.6rem;line-height:1.4;}
+.hfaq-a{font-family:var(--sans);font-size:0.82rem;color:var(--muted);line-height:1.65;}
+.hfaq-a strong{color:var(--ink);font-weight:600;}
+
+
+/* ── CASE STUDIES ── */
+#results{background:var(--ink2);}
+#results .sec-label{color:#888;}
+#results .sec-title{color:var(--cream);}
+#results .sec-desc{color:#888;}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#333;border:1px solid #333;margin-top:2.5rem;}
+.case-card{background:#1a1a1a;padding:1.75rem 1.5rem;position:relative;}
+.case-type{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.case-stat{font-family:var(--display);font-size:2rem;font-weight:700;color:var(--cream);line-height:1;margin-bottom:0.35rem;}
+.case-stat span{font-size:1rem;font-weight:400;color:#888;margin-left:4px;}
+.case-desc{font-family:var(--sans);font-size:0.8rem;color:#aaa;line-height:1.6;margin-bottom:1rem;}
+.case-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.case-tag{font-family:var(--mono);font-size:0.6rem;border:1px solid #333;color:#666;padding:0.2rem 0.5rem;letter-spacing:0.04em;}
+.case-anon{font-family:var(--mono);font-size:0.6rem;color:#444;margin-top:1.25rem;padding-top:1rem;border-top:1px solid #2a2a2a;}
+
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav">
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
@@ -447,7 +488,7 @@ var SUPA = (function(){
 <section id="what">
   <div class="sec">
     <div class="sec-label reveal">01 / What We Do</div>
-    <h2 class="sec-title reveal rd1">Embedded execution inside active systems.</h2>
+    <h2 class="sec-title reveal rd1">Embedded execution inside your existing systems.</h2>
     <p class="sec-desc reveal rd2">Engagements are 2&#8211;6 weeks, scoped, and end with documented handoff. We finish what others started.</p>
     <div class="services-grid reveal rd2">
       <div class="svc"><div class="svc-num">01</div><h3>Finish Half-Built Systems</h3><p>Complete tools, documentation, boards, and setups that were started but never finished.</p><span class="svc-dur">2&#8211;4 weeks</span></div>
@@ -462,7 +503,7 @@ var SUPA = (function(){
 <section id="how" class="how-bg">
   <div class="sec">
     <div class="sec-label reveal">02 / How It Works</div>
-    <h2 class="sec-title reveal rd1">Six constraints that define every engagement.</h2>
+    <h2 class="sec-title reveal rd1">Six constraints that define every engagement. No exceptions.</h2>
     <div class="constraints reveal rd2">
       <div class="constraint"><div class="constraint-num">01</div><h4>2&#8211;6 Week Engagements</h4><p>Fixed-term. We enter, execute, and exit. No open-ended arrangements.</p></div>
       <div class="constraint"><div class="constraint-num">02</div><h4>Outcomes Upfront</h4><p>Deliverables are defined before work starts. You know exactly what done looks like.</p></div>
@@ -478,7 +519,7 @@ var SUPA = (function(){
 <section id="who">
   <div class="sec">
     <div class="sec-label reveal">03 / Who It&#8217;s For</div>
-    <h2 class="sec-title reveal rd1">Right fit. Wrong fit.</h2>
+    <h2 class="sec-title reveal rd1">Who we work with. Who we don't.</h2>
     <div class="who-cols reveal rd2">
       <div class="who-col">
         <span class="who-col-label yes-label">✓ Good Fit</span>
@@ -506,7 +547,7 @@ var SUPA = (function(){
 <section id="leadership" class="leadership-bg">
   <div class="sec">
     <div class="sec-label reveal">04 / Leadership</div>
-    <h2 class="sec-title reveal rd1" style="color:var(--cream)">The person accountable.</h2>
+    <h2 class="sec-title reveal rd1" style="color:var(--cream)">Who leads your engagement.</h2>
     <div class="leader-card reveal rd2">
       <div class="leader-img">TM</div>
       <div class="leader-info">
@@ -537,11 +578,118 @@ var SUPA = (function(){
   </div>
 </section>
 
+<!-- RESULTS / CASE STUDIES -->
+<section id="results">
+  <div class="sec">
+    <div class="sec-label reveal">Completed Engagements</div>
+    <h2 class="sec-title reveal rd1">What execution actually looks like.</h2>
+    <p class="sec-desc reveal rd2">Anonymous by default. Details shared under NDA on request.</p>
+    <div class="case-grid reveal rd2">
+
+      <div class="case-card">
+        <div class="case-type">Vendor Exit Recovery</div>
+        <div class="case-stat">3 <span>weeks</span></div>
+        <div class="case-desc">Dev agency disengaged mid-build on a client intake and scheduling platform. 60% complete, zero documentation, no handoff. We audited the codebase, completed the remaining build, and delivered a documented system the internal team could maintain.</div>
+        <div class="case-tags">
+          <span class="case-tag">Node.js</span>
+          <span class="case-tag">PostgreSQL</span>
+          <span class="case-tag">REST API</span>
+          <span class="case-tag">Stalled build</span>
+        </div>
+        <div class="case-anon">&#9632; Midsize professional services firm &mdash; identity withheld</div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-type">Automation Rescue</div>
+        <div class="case-stat">11 <span>workflows restored</span></div>
+        <div class="case-desc">A broken Zapier and Make automation stack processing lead routing, CRM updates, and invoice triggers had been failing silently for 6 weeks. We mapped every broken path, repaired the logic, and rebuilt three workflows from scratch with error alerting in place.</div>
+        <div class="case-tags">
+          <span class="case-tag">Zapier</span>
+          <span class="case-tag">Make</span>
+          <span class="case-tag">HubSpot</span>
+          <span class="case-tag">Broken automation</span>
+        </div>
+        <div class="case-anon">&#9632; E-commerce operator &mdash; identity withheld</div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-type">Legacy System Stabilization</div>
+        <div class="case-stat">$0 <span>rebuild cost</span></div>
+        <div class="case-desc">A legacy data processing system built on aging Python scripts and manual exports was failing monthly. The team wanted to rebuild from scratch. We stabilized the existing system, documented the logic, and eliminated the manual steps — no rewrite required.</div>
+        <div class="case-tags">
+          <span class="case-tag">Python</span>
+          <span class="case-tag">Legacy system</span>
+          <span class="case-tag">Technical debt</span>
+          <span class="case-tag">Data pipeline</span>
+        </div>
+        <div class="case-anon">&#9632; Regional logistics company &mdash; identity withheld</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- HOMEPAGE FAQ -->
+<section id="home-faq">
+  <div class="sec">
+    <div class="sec-label reveal">FAQ</div>
+    <h2 class="sec-title reveal rd1">Common questions about how we work.</h2>
+    <p class="sec-desc reveal rd2">If your question isn&#8217;t here, email <a href="mailto:dev@wizdevtech.com" style="color:var(--accent)">dev@wizdevtech.com</a>.</p>
+    <div class="hfaq-grid reveal rd2" itemscope itemtype="https://schema.org/FAQPage">
+
+      <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="hfaq-q" itemprop="name">Do you rescue legacy systems or just modern stacks?</div>
+        <div class="hfaq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Both. We work inside <strong>legacy systems</strong>, modern SaaS stacks, custom-built tools, and everything in between. If it&#8217;s broken or unfinished, we can enter it. Our team&#8217;s background includes stabilizing systems built years ago that nobody wants to touch, as well as completing stalled greenfield builds.</span>
+        </div>
+      </div>
+
+      <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="hfaq-q" itemprop="name">How is this different from hiring a contractor or dev agency?</div>
+        <div class="hfaq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Contractors bill hourly and scope creeps. Agencies sell discovery phases. We enter with <strong>fixed scope</strong>, fixed price, and a defined end date. There&#8217;s no retainer, no ongoing dependency, and no hand-holding after handoff. You get a documented system, not a relationship.</span>
+        </div>
+      </div>
+
+      <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="hfaq-q" itemprop="name">Can you take over a project mid-build from another vendor?</div>
+        <div class="hfaq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes &#8212; this is our most common engagement type. <strong>Vendor exit recovery</strong> and <strong>stalled project rescue</strong> account for the majority of our work. We perform an intake audit in the first 48 hours, map what exists, identify what&#8217;s missing, and build a completion plan before we touch anything.</span>
+        </div>
+      </div>
+
+      <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="hfaq-q" itemprop="name">What if our project has significant technical debt?</div>
+        <div class="hfaq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text"><strong>Technical debt</strong> is the normal operating environment for us. We don&#8217;t require clean codebases or tidy documentation &#8212; we work with what exists. Our scoping process identifies which debt needs to be addressed to complete the engagement, and which can be left for later.</span>
+        </div>
+      </div>
+
+      <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="hfaq-q" itemprop="name">How quickly can an engagement start?</div>
+        <div class="hfaq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Typically <strong>within 5&#8211;10 business days</strong> of signed scope and initial payment. We run intake fast. If you have a defined problem and an approved budget, we can move immediately. Urgent situations can sometimes be accommodated sooner &#8212; contact us directly.</span>
+        </div>
+      </div>
+
+      <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div class="hfaq-q" itemprop="name">What does the handoff look like at the end?</div>
+        <div class="hfaq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">Every engagement ends with a <strong>documented handoff package</strong>: what was built, how it works, how to maintain it, and what we didn&#8217;t touch and why. Your team should be able to operate independently the day we exit. That&#8217;s the standard, not the exception.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- SITE SURVEY -->
 <section id="survey">
   <div class="sec">
     <div class="sec-label reveal">Site Survey</div>
-    <h2 class="sec-title reveal rd1">Help us understand what you need.</h2>
+    <h2 class="sec-title reveal rd1">Tell us what's stalled or broken.</h2>
     <p class="sec-desc reveal rd2">60 seconds. Your answers improve our services.</p>
     <form id="surveyForm">
       <div class="survey-grid">
@@ -597,7 +745,7 @@ var SUPA = (function(){
 <section id="form">
   <div class="sec">
     <div class="sec-label reveal">05 / Start Execution</div>
-    <h2 class="sec-title reveal rd1">Ready to finish something?</h2>
+    <h2 class="sec-title reveal rd1">Ready to rescue your stalled project?</h2>
     <p class="sec-desc reveal rd2">If you have defined problems and budget allocated, complete the form below.</p>
     <div class="form-layout">
       <div class="form-aside reveal rd2">
@@ -619,17 +767,17 @@ var SUPA = (function(){
         <div class="form-note">All fields required &middot; Response within 2 business days</div>
         <form id="execForm" novalidate>
           <div class="form-row-2">
-            <div class="form-row"><label for="firstName">First Name <span class="req">*</span></label><input type="text" class="form-control" id="firstName" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="firstNameErr">Required.</div></div>
-            <div class="form-row"><label for="lastName">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="lastName" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="lastNameErr">Required.</div></div>
+            <div class="form-row"><label for="firstName">First Name <span class="req">*</span></label><input type="text" class="form-control" id="firstName" aria-label="First name" aria-describedby="firstNameErr" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="firstNameErr">Required.</div></div>
+            <div class="form-row"><label for="lastName">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="lastName" aria-label="Last name" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="lastNameErr">Required.</div></div>
           </div>
-          <div class="form-row"><label for="emailField">Work Email <span class="req">*</span></label><input type="email" class="form-control" id="emailField" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="emailErr">Valid email required.</div></div>
-          <div class="form-row"><label for="company">Company <span class="req">*</span></label><input type="text" class="form-control" id="company" placeholder="Acme Corp" autocomplete="organization"/><div class="field-error" id="companyErr">Required.</div></div>
+          <div class="form-row"><label for="emailField">Work Email <span class="req">*</span></label><input type="email" class="form-control" id="emailField" aria-label="Work email address" aria-describedby="emailErr" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="emailErr">Valid email required.</div></div>
+          <div class="form-row"><label for="company">Company <span class="req">*</span></label><input type="text" class="form-control" id="company" aria-label="Company or organization name" placeholder="Acme Corp" autocomplete="organization"/><div class="field-error" id="companyErr">Required.</div></div>
           <div class="form-row-2">
-            <div class="form-row"><label for="timeline">Timeline <span class="req">*</span></label><select class="form-control" id="timeline"><option value="">Select timeline</option><option value="immediate">Immediate (within 2 weeks)</option><option value="short">Short-term (1&#8211;2 months)</option><option value="medium">Medium-term (2&#8211;4 months)</option><option value="long">Long-term (4+ months)</option></select><div class="field-error" id="timelineErr">Required.</div></div>
-            <div class="form-row"><label for="budget">Budget Range <span class="req">*</span></label><select class="form-control" id="budget"><option value="">Select range</option><option value="under10">Under $10,000</option><option value="10to25">$10,000&#8211;$25,000</option><option value="25to50">$25,000&#8211;$50,000</option><option value="50to100">$50,000&#8211;$100,000</option><option value="over100">Over $100,000</option></select><div class="field-error" id="budgetErr">Required.</div></div>
+            <div class="form-row"><label for="timeline">Timeline <span class="req">*</span></label><select class="form-control" id="timeline" aria-label="Project timeline"><option value="">Select timeline</option><option value="immediate">Immediate (within 2 weeks)</option><option value="short">Short-term (1&#8211;2 months)</option><option value="medium">Medium-term (2&#8211;4 months)</option><option value="long">Long-term (4+ months)</option></select><div class="field-error" id="timelineErr">Required.</div></div>
+            <div class="form-row"><label for="budget">Budget Range <span class="req">*</span></label><select class="form-control" id="budget" aria-label="Approximate budget range"><option value="">Select range</option><option value="under10">Under $10,000</option><option value="10to25">$10,000&#8211;$25,000</option><option value="25to50">$25,000&#8211;$50,000</option><option value="50to100">$50,000&#8211;$100,000</option><option value="over100">Over $100,000</option></select><div class="field-error" id="budgetErr">Required.</div></div>
           </div>
-          <div class="form-row"><label for="description">Describe the work to be completed <span class="req">*</span></label><textarea class="form-control" id="description" placeholder="Be specific: what exists, what&#8217;s broken or unfinished, and what done looks like." maxlength="500"></textarea><div class="char-counter" id="charCounter">0 / 500</div><div class="field-error" id="descriptionErr">Min 30 characters required.</div></div>
-          <button type="submit" class="btn-submit" id="submitBtn"><div class="spinner"></div><span class="btn-text">Submit Request &#8594;</span></button>
+          <div class="form-row"><label for="description">Describe the work to be completed <span class="req">*</span></label><textarea class="form-control" id="description" aria-label="Describe the work to be completed" aria-describedby="descriptionErr" placeholder="Be specific: what exists, what&#8217;s broken or unfinished, and what done looks like." maxlength="500"></textarea><div class="char-counter" id="charCounter">0 / 500</div><div class="field-error" id="descriptionErr">Min 30 characters required.</div></div>
+          <div class="hp-trap" aria-hidden="true"><label>Leave blank<input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off"/></label><label>Leave blank<input type="text" id="hp_company" name="company_name" tabindex="-1" autocomplete="off"/></label></div><button type="submit" class="btn-submit" id="submitBtn"><div class="spinner"></div><span class="btn-text">Submit Request &#8594;</span></button>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="form-success-icon">✓</div>
@@ -644,7 +792,7 @@ var SUPA = (function(){
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<footer id="siteFooter">
+<footer role="contentinfo" id="siteFooter">
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
