@@ -1,8 +1,5 @@
 # Cloudflare Pages — redirect rules
 
-# www → non-www canonical
-https://www.wizdevtech.com/* https://wizdevtech.com/:splat 301
-
 # Common alternate paths
 /hire           /careers.html   301
 /jobs           /careers.html   301
