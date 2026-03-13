@@ -1,0 +1,15 @@
+# WizDevTech — robots.txt
+# https://wizdevtech.com
+
+User-agent: *
+Allow: /
+
+# Block any private paths if added later
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://wizdevtech.com/sitemap.xml
+
+# Crawl-delay for considerate bots
+Crawl-delay: 10

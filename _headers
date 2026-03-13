@@ -1,0 +1,22 @@
+# Cloudflare Pages — HTTP headers for all pages
+# SEO, security, and performance
+
+/*
+  # Security headers (improves Google trust signals)
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-XSS-Protection: 1; mode=block
+
+  # Cache static assets aggressively
+  Cache-Control: public, max-age=3600
+
+/*.html
+  # HTML pages — shorter cache so updates propagate fast
+  Cache-Control: public, max-age=300, must-revalidate
+  Content-Type: text/html; charset=utf-8
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400

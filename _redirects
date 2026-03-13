@@ -1,0 +1,20 @@
+# Cloudflare Pages — redirect rules
+
+# www → non-www canonical (avoids duplicate content penalty)
+https://www.wizdevtech.com/* https://wizdevtech.com/:splat 301
+
+# Common typo / alternate paths
+/home           /               301
+/index          /               301
+/index.html     /               301
+/hire           /careers.html   301
+/jobs           /careers.html   301
+/work           /careers.html   301
+/pricing        /sales.html     301
+/price          /sales.html     301
+/services       /#what          301
+/privacy        /policies.html  301
+/terms          /policies.html  301
+/legal          /policies.html  301
+/contact        /#form          301
+/start          /#form          301
