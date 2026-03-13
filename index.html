@@ -425,6 +425,7 @@ textarea.form-control{resize:vertical;min-height:100px;}
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#what">Services</a></li>
+    <li><a href="field.html">Field Ops</a></li>
     <li><a href="sales.html">Sales</a></li>
     <li><a href="careers.html">Careers</a></li>
     <li><a href="policies.html">Policies</a></li>
@@ -437,6 +438,7 @@ textarea.form-control{resize:vertical;min-height:100px;}
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
   <a href="index.html" class="mobile-link">Home</a>
   <a href="index.html#what" class="mobile-link">Services</a>
+  <a href="field.html" class="mobile-link">Field Ops</a>
   <a href="sales.html" class="mobile-link">Sales</a>
   <a href="careers.html" class="mobile-link">Careers</a>
   <a href="policies.html" class="mobile-link">Policies</a>
@@ -635,7 +637,7 @@ var SUPA = (function(){
   <div class="sec">
     <div class="sec-label reveal">FAQ</div>
     <h2 class="sec-title reveal rd1">Common questions about how we work.</h2>
-    <p class="sec-desc reveal rd2">If your question isn&#8217;t here, email <a href="mailto:dev@wizdevtech.com" style="color:var(--accent)">dev@wizdevtech.com</a>.</p>
+    <p class="sec-desc reveal rd2">If your question isn&#8217;t here, email <a href="/cdn-cgi/l/email-protection#b9dddccff9ced0c3dddccfcddcdad197dad6d4" style="color:var(--accent)"><span class="__cf_email__" data-cfemail="7f1b1a093f0816051b1a090b1a1c17511c1012">[email&#160;protected]</span></a>.</p>
     <div class="hfaq-grid reveal rd2" itemscope itemtype="https://schema.org/FAQPage">
 
       <div class="hfaq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -804,6 +806,7 @@ var SUPA = (function(){
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#what">Services</a></li>
         <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="field.html">Field Engineering</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>
     </div>
@@ -837,7 +840,7 @@ var SUPA = (function(){
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   'use strict';
   var nav=document.getElementById('mainNav');
@@ -983,9 +986,4 @@ var SUPA = (function(){
   document.getElementById('execForm').addEventListener('submit',function(e){
     e.preventDefault();
     var ok=fields.map(function(f){return window.vf(f.id,f.eid,f.fn);}).every(Boolean);
-    if(!ok){window.showToast('Please complete all required fields.','error');return;}
-    var btn=document.getElementById('submitBtn');
-    btn.disabled=true;btn.classList.add('loading');
-    var payload={
-      first_name: document.getElementById('firstName').value.trim(),
-      last_name:  docu
+    if(!ok){window.showToast('Please complete all requir
