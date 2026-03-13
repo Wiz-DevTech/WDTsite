@@ -3,188 +3,254 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="WizDevTech sales and pricing. Fixed-scope, fixed-price engagements from $5,000. No retainers."/>
-<title>Sales &amp; Pricing — WizDevTech</title>
+<title>Sales &amp; Pricing &#8212; WizDevTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
-:root{--ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;--muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;--paper:#f4f2ed;--cream:#faf9f6;--accent:#d4531a;--accent2:#e8824a;--green:#1e7a3c;--red:#c0392b;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Syne',sans-serif;--nav-h:64px;}
+
+:root{
+  --ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;
+  --muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;
+  --paper:#f4f2ed;--cream:#faf9f6;
+  --accent:#d4531a;--accent2:#e8824a;
+  --green:#27ae60;--red:#c0392b;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --display:'Syne',sans-serif;
+  --nav-h:64px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--accent);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--accent);}
 section{scroll-margin-top:var(--nav-h);}
-.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;pointer-events:none;transition:width 0.1s linear;}
-nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
-nav#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
-.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;white-space:nowrap;}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:199;transition:width 0.08s linear;pointer-events:none;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
+#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
+.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;}
 .nav-logo span{color:var(--accent);}
-.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
-.nav-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.25s;}
 .nav-links a:hover,.nav-links a.active{color:var(--ink);}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem;border:1px solid var(--ink)!important;}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem!important;border:1px solid var(--ink)!important;transition:background 0.2s!important;}
 .nav-cta::after{display:none!important;}
-.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.3s,opacity 0.3s;}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-burger.open span:nth-child(2){opacity:0;}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.25s,padding 0.3s;display:flex;flex-direction:column;}
-.nav-mobile.open{max-height:400px;padding:1.25rem 2rem 1.5rem;opacity:1;}
-.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.65rem 0;border-bottom:1px solid rgba(46,46,46,0.12);transition:color 0.2s;}
-.nav-mobile a:last-child{border-bottom:none;}
-.nav-mobile a:hover{color:var(--ink);}
-.cta-mob{color:var(--accent)!important;}
-.nav-overlay{display:none;position:fixed;inset:0;z-index:198;}
-.nav-overlay.show{display:block;}
-.page-section{padding:80px 2.5rem;}
-.container{max-width:1080px;margin:0 auto;}
-.section-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-.section-title{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
-.section-title.light{color:var(--cream);}
-.section-desc{color:var(--muted);max-width:560px;font-size:0.95rem;line-height:1.75;}
-.section-desc.light{color:#8a8a8a;}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
-.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
-.back-top.show{opacity:1;pointer-events:all;}.back-top:hover{background:var(--accent);}
-.toast{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:340px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
-.toast.show{transform:translateY(0);opacity:1;}
-.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;height:0;overflow:hidden;}
-.form-control{width:100%;padding:0.75rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;border-radius:0;appearance:none;-webkit-appearance:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);padding:1.25rem 2rem;display:flex;flex-direction:column;gap:1rem;visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.25s,transform 0.25s,visibility 0.25s;}
+.nav-mobile.open{visibility:visible;opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-mobile a:hover{color:var(--accent);}
+
+/* PAGE HERO */
+.page-hero{padding:120px 2.5rem 72px;background:var(--ink);position:relative;overflow:hidden;margin-top:var(--nav-h);}
+.page-hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+.page-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.025) 59px,rgba(255,255,255,0.025) 60px);pointer-events:none;}
+.page-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;}
+.page-hero h1 em{font-style:normal;color:var(--accent2);}
+.page-hero p{margin-top:1.25rem;font-size:1rem;color:#8a8a8a;max-width:520px;}
+
+/* SECTION */
+.sec{max-width:1080px;margin:0 auto;padding:88px 2.5rem;}
+.sec-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.sec-title{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
+.sec-desc{color:var(--muted);font-size:0.95rem;line-height:1.75;max-width:600px;}
+
+/* FORMS */
+.form-box{background:var(--cream);border:1px solid var(--rule);padding:2.5rem;}
+.form-title{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:0.4rem;}
+.form-note{font-size:0.78rem;color:var(--muted);font-family:var(--mono);margin-bottom:2rem;}
+.form-row{margin-bottom:1.2rem;}
+.form-row label{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
+.req{color:var(--accent);}
+.form-control{width:100%;padding:0.72rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;appearance:none;border-radius:0;transition:border-color 0.2s,box-shadow 0.2s;}
 .form-control:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,83,26,0.1);}
 .form-control.error{border-color:var(--red);}
+.form-control.valid{border-color:var(--green);}
 select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--paper);padding-right:2.5rem;cursor:pointer;}
-textarea.form-control{resize:vertical;min-height:90px;}
-.form-label{display:block;font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
-.field-error{display:none;font-family:var(--mono);font-size:0.62rem;color:var(--red);margin-top:0.35rem;}
+textarea.form-control{resize:vertical;min-height:100px;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.field-error{display:none;font-family:var(--mono);font-size:0.6rem;color:var(--red);margin-top:0.3rem;}
 .field-error.show{display:block;}
-.form-row{margin-bottom:1.25rem;}
-.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:0.5rem;}
+.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;}
 .btn-submit:hover{background:var(--accent);}
 .btn-submit:disabled{background:var(--muted);cursor:not-allowed;}
 .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
 .btn-submit.loading .spinner{display:block;}
-.form-success{display:none;text-align:center;padding:2.5rem 1.5rem;}
+.btn-submit.loading .btn-text{opacity:0.7;}
+.form-success{display:none;text-align:center;padding:2.5rem;}
 .form-success.show{display:block;}
 .form-success-icon{width:52px;height:52px;background:var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.25rem;font-size:1.3rem;color:#fff;}
-.form-success h3{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:0.4rem;}
-.form-success p{font-size:0.85rem;color:var(--muted);}
-footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2rem;border-top:1px solid var(--rule);}
-.footer-inner{max-width:1080px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
-.footer-col h4{font-family:var(--display);font-weight:700;font-size:0.85rem;color:var(--ghost);margin-bottom:1rem;}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:300;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:320px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.error{border-left-color:var(--red);}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-size:1rem;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
+.back-top.show{opacity:1;pointer-events:all;}
+.back-top:hover{background:var(--accent);}
+
+/* FOOTER */
+#siteFooter{background:var(--ink2);color:var(--mid);padding:2.5rem 2.5rem 2rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:0.65rem;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;max-width:1080px;margin:0 auto 2.5rem;}
+.footer-logo{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ghost);letter-spacing:-0.02em;margin-bottom:0.75rem;}
+.footer-logo span{color:var(--accent);}
+.footer-tagline{color:var(--muted);font-size:0.78rem;line-height:1.6;font-family:var(--sans);max-width:220px;}
+.footer-col h4{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ghost);margin-bottom:1rem;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-.footer-col a{color:var(--mid);text-decoration:none;font-size:0.78rem;font-family:var(--sans);transition:color 0.2s;}
-.footer-col a:hover{color:var(--accent);}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;border-top:1px solid rgba(46,46,46,0.5);}
-.footer-logo-text{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ghost);letter-spacing:-0.02em;}
-.footer-logo-text span{color:var(--accent);}
-.footer-copy{font-size:0.7rem;color:var(--muted);font-family:var(--mono);}
+.footer-col ul a{color:var(--muted);text-decoration:none;transition:color 0.2s;font-size:0.75rem;font-family:var(--sans);}
+.footer-col ul a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;padding-top:1.5rem;border-top:1px solid var(--rule);max-width:1080px;margin:0 auto;}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap;}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
+
 @keyframes spin{to{transform:rotate(360deg);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 
-/* PAGE HERO */
-.page-hero{padding:110px 2.5rem 64px;background:var(--ink);position:relative;overflow:hidden;}
-.page-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px);pointer-events:none;}
-.page-hero .container{position:relative;}
-.page-hero .tag{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.25rem;display:block;}
-.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;}
-.page-hero h1 em{color:var(--accent2);font-style:normal;}
-.page-hero p{color:#8a8a8a;font-size:0.95rem;max-width:520px;line-height:1.7;}
-.page-hero p a{color:var(--accent2);}
+/* RESPONSIVE */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  #mainNav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .sec{padding:64px 1.5rem;}
+  .page-hero{padding:100px 1.5rem 60px;}
+  #siteFooter{padding:2rem 1.5rem 1.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .form-row-2{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .toast{right:1rem;left:1rem;max-width:none;}
+  .nav-mobile{padding:1.25rem 1.5rem;}
+}
+@media(max-width:380px){.sec{padding:52px 1rem;}.page-hero{padding:90px 1rem 52px;}#mainNav{padding:0 1rem;}}
 
-/* ANALYTICS BAR */
-.analytics-bar{background:var(--paper);border-bottom:1px solid var(--rule);padding:0.75rem 2.5rem;}
-.analytics-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
-.analytics-stat{display:flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-size:0.65rem;color:var(--muted);}
-.a-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease infinite;}
+
+/* analytics bar */
+.analytics-bar{background:var(--paper);border-bottom:1px solid var(--rule);padding:0.85rem 0;margin-top:var(--nav-h);}
+.analytics-inner{max-width:1080px;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+.a-stat{display:flex;align-items:center;gap:0.55rem;}
+.a-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite;flex-shrink:0;}
 .a-dot.green{background:var(--green);}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.analytics-stat strong{color:var(--ink);}
+.a-stat span{font-family:var(--mono);font-size:0.68rem;color:var(--muted);}
+.a-stat strong{color:var(--ink);}
+.a-powered{margin-left:auto;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
 
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
-.price-card{background:var(--cream);padding:2.5rem 2rem;position:relative;}
-.price-card.featured{background:var(--ink);}
-.featured-tag{position:absolute;top:1.25rem;right:1.25rem;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#fff;padding:0.2rem 0.5rem;}
-.price-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-.price-card h3{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);margin-bottom:0.85rem;letter-spacing:-0.02em;}
-.price-card.featured h3,.price-card.featured .price-amount,.price-card.featured .price-desc{color:var(--cream);}
-.price-card.featured .price-amount{color:var(--accent2);}
-.price-amount{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
-.price-amount small{font-family:var(--mono);font-size:0.7rem;font-weight:400;color:var(--muted);margin-left:0.2rem;}
-.price-card.featured .price-amount small{color:#8a8a8a;}
-.price-desc{font-size:0.82rem;color:var(--muted);margin:0.75rem 0 1.5rem;line-height:1.6;}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:2rem;}
-.price-feature{font-size:0.82rem;color:var(--muted);padding:0.5rem 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.5;}
-.price-feature::before{content:"\2713";color:var(--accent);font-family:var(--mono);flex-shrink:0;font-size:0.72rem;margin-top:2px;}
-.price-card.featured .price-feature{color:#8a8a8a;border-bottom-color:#2b2b2b;}
-.price-cta{display:block;width:100%;padding:0.85rem;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;transition:all 0.2s;}
-.price-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
-.price-card.featured .price-cta{background:var(--accent);border-color:var(--accent);color:#fff;}
-.price-card.featured .price-cta:hover{background:#b84515;border-color:#b84515;}
+/* pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:3rem;}
+.pricing-card{background:var(--cream);padding:2.5rem 2rem;position:relative;}
+.pricing-card.featured{background:var(--ink);}
+.feat-tag{position:absolute;top:1.25rem;right:1.25rem;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#fff;padding:0.2rem 0.5rem;}
+.p-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.pricing-card h3{font-family:var(--display);font-weight:700;font-size:1.2rem;margin-bottom:1rem;letter-spacing:-0.02em;}
+.pricing-card:not(.featured) h3{color:var(--ink);}
+.featured h3{color:var(--cream);}
+.p-amount{font-family:var(--display);font-weight:800;font-size:2.1rem;letter-spacing:-0.03em;line-height:1;}
+.pricing-card:not(.featured) .p-amount{color:var(--ink);}
+.featured .p-amount{color:var(--accent2);}
+.p-amount span{font-family:var(--mono);font-size:0.72rem;font-weight:400;color:var(--muted);margin-left:0.2rem;}
+.p-desc{font-size:0.82rem;color:var(--muted);margin:0.75rem 0 1.5rem;line-height:1.6;}
+.featured .p-desc{color:#8a8a8a;}
+.p-feats{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:2rem;}
+.p-feat{font-size:0.83rem;padding:0.45rem 0;border-bottom:1px solid var(--rule);display:flex;gap:0.5rem;align-items:flex-start;}
+.pricing-card:not(.featured) .p-feat{color:var(--muted);border-color:var(--rule);}
+.featured .p-feat{color:#8a8a8a;border-color:#2b2b2b;}
+.p-feat::before{content:"&#10003;";color:var(--accent);font-family:var(--mono);font-size:0.72rem;flex-shrink:0;margin-top:2px;}
+.featured .p-feat::before{color:var(--accent2);}
+.p-cta{display:block;width:100%;padding:0.85rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;text-decoration:none;border:1px solid var(--ink);cursor:pointer;background:transparent;transition:all 0.2s;}
+.pricing-card:not(.featured) .p-cta{color:var(--ink);}
+.pricing-card:not(.featured) .p-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.featured .p-cta{background:var(--accent);border-color:var(--accent);color:#fff;}
+.featured .p-cta:hover{background:#b84515;border-color:#b84515;}
 
-/* PROCESS */
-.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+/* process */
+.process-bg{background:var(--paper);}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
 .process-step{background:var(--paper);padding:1.75rem 1.5rem;}
 .step-num{font-family:var(--mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.75rem;}
-.process-step h4{font-family:var(--display);font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:0.35rem;}
+.process-step h4{font-family:var(--display);font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:0.3rem;}
 .process-step p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
 
-/* FAQ */
-.faq-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin-top:2.5rem;}
+/* faq */
+.faq-list{border:1px solid var(--rule);margin-top:2.5rem;}
 .faq-item{border-bottom:1px solid var(--rule);}
 .faq-item:last-child{border-bottom:none;}
-.faq-q{width:100%;padding:1.25rem 1.5rem;background:var(--cream);border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--ink);text-align:left;transition:background 0.2s;gap:1rem;}
+.faq-q{width:100%;padding:1.2rem 1.5rem;background:var(--cream);border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:600;font-size:0.92rem;color:var(--ink);text-align:left;gap:1rem;transition:background 0.2s;}
 .faq-q:hover{background:var(--paper);}
-.faq-icon{font-family:var(--mono);font-size:1.1rem;color:var(--accent);flex-shrink:0;transition:transform 0.25s;}
+.faq-icon{font-family:var(--mono);font-size:1rem;color:var(--accent);flex-shrink:0;transition:transform 0.25s;}
 .faq-q.open .faq-icon{transform:rotate(45deg);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;background:var(--paper);}
 .faq-a.open{max-height:220px;}
 .faq-a p{padding:0 1.5rem 1.25rem;font-size:0.88rem;color:var(--muted);line-height:1.7;}
 
-/* CTA STRIP */
-.cta-strip{background:var(--ink);}
-.cta-strip .section-inner{max-width:1080px;margin:0 auto;padding:80px 2.5rem;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;}
-.cta-strip .section-desc.light a{color:var(--accent2);}
+/* survey */
+.survey-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;margin-top:2.5rem;align-items:start;}
+.survey-bar-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.survey-bar-row{margin-bottom:0.85rem;}
+.survey-bar-top{display:flex;justify-content:space-between;margin-bottom:0.3rem;}
+.survey-bar-name{font-size:0.82rem;color:var(--ink);}
+.survey-bar-pct{font-family:var(--mono);font-size:0.65rem;color:var(--accent);}
+.survey-bar-track{height:4px;background:var(--rule);}
+.survey-bar-fill{height:4px;background:var(--accent);transition:width 0.7s ease;}
+.survey-total{font-family:var(--mono);font-size:0.6rem;color:var(--muted);margin-top:1.25rem;}
+
+/* sales contact */
+.sales-cta-bg{background:var(--ink);}
+.sales-cta-bg .sec-title{color:var(--cream);}
+.sales-cta-bg .sec-label{color:var(--accent2);}
+.sales-contact-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;}
 .contact-box{background:#111;border:1px solid var(--rule);padding:2rem;}
-.contact-item{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--rule);}
-.contact-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.contact-item .c-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.35rem;}
-.contact-item a{font-family:var(--mono);font-size:0.85rem;color:var(--accent2);text-decoration:none;transition:color 0.2s;display:block;margin-bottom:0.25rem;}
+.contact-item{margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid var(--rule);}
+.contact-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.contact-item label{display:block;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;}
+.contact-item a{font-family:var(--mono);font-size:0.85rem;color:var(--accent2);text-decoration:none;transition:color 0.2s;display:block;}
 .contact-item a:hover{color:var(--accent);}
-.contact-item p{font-size:0.78rem;color:#7a7a7a;}
+.contact-item p{font-size:0.77rem;color:#7a7a7a;margin-top:0.2rem;}
 
-/* SURVEY */
-.survey-box{background:var(--cream);border:1px solid var(--rule);padding:2.5rem;}
-.survey-title{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);margin-bottom:0.4rem;}
-.survey-note{font-size:0.78rem;color:var(--muted);font-family:var(--mono);margin-bottom:2rem;}
-.survey-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start;margin-top:2.5rem;}
-.survey-results-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-.result-row{margin-bottom:0.85rem;}
-.result-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;}
-.result-meta span{font-size:0.82rem;color:var(--ink);}
-.result-meta strong{font-family:var(--mono);font-size:0.65rem;color:var(--accent);}
-.result-bar-bg{height:4px;background:var(--rule);}
-.result-bar-fill{height:4px;background:var(--accent);transition:width 0.6s ease;}
-.result-total{font-family:var(--mono);font-size:0.62rem;color:var(--muted);margin-top:1rem;}
+@media(max-width:900px){.survey-layout{grid-template-columns:1fr;}.sales-contact-layout{grid-template-columns:1fr;}}
 
-/* RESPONSIVE */
-@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.nav-links{gap:1rem;}.pricing-grid{grid-template-columns:1fr;}}
-@media(max-width:900px){
-  nav#mainNav{padding:0 1.5rem;}.nav-links{display:none;}.nav-burger{display:flex;}
-  .page-section{padding:60px 1.5rem;}.page-hero{padding:90px 1.5rem 52px;}
-  footer.site-footer{padding:2.5rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;}
-  .cta-strip .section-inner{grid-template-columns:1fr;gap:2rem;padding:60px 1.5rem;}
-  .survey-layout{grid-template-columns:1fr;}
-  .analytics-bar{padding:0.75rem 1.5rem;}
-}
-@media(max-width:700px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
-@media(max-width:600px){.toast{right:1rem;left:1rem;max-width:none;}.faq-q{font-size:0.85rem;padding:1rem;}.faq-a p{padding:0 1rem 1rem;}}
-@media(max-width:380px){nav#mainNav{padding:0 1rem;}.page-section{padding:44px 1rem;}.page-hero{padding:80px 1rem 44px;}}
+/* ── NAICS / CREDENTIALS STRIP ── */
+.naics-strip{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.25rem 0;}
+.naics-inner{max-width:1080px;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+.naics-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.naics-codes{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.naics-code{font-family:var(--mono);font-size:0.7rem;color:var(--ink);background:var(--cream);border:1px solid var(--rule);padding:0.2rem 0.6rem;letter-spacing:0.05em;}
+.naics-code span{color:var(--accent);}
+.naics-duns{margin-left:auto;font-family:var(--mono);font-size:0.65rem;color:var(--muted);}
+.naics-duns strong{color:var(--ink);}
+
+/* ── MARKET POSITION SECTION ── */
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.market-card{background:var(--cream);padding:1.75rem;}
+.market-card h4{font-family:var(--display);font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.5rem;}
+.market-card p{font-size:0.82rem;color:var(--muted);line-height:1.65;}
+.not-this{background:var(--paper);border:1px solid var(--rule);padding:1.5rem 2rem;margin-top:2.5rem;display:flex;align-items:flex-start;gap:1.25rem;}
+.not-this-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:2px;}
+.not-this p{font-size:0.85rem;color:var(--muted);line-height:1.7;}
+.not-this p strong{color:var(--ink);}
+
 </style>
 </head>
 <body>
@@ -192,9 +258,10 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
 <div class="progress-bar" id="progressBar"></div>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
     <li><a href="index.html#what">Services</a></li>
-    <li><a href="sales.html" class="active">Sales</a></li>
+    <li><a href="sales.html">Sales</a></li>
     <li><a href="careers.html">Careers</a></li>
     <li><a href="policies.html">Policies</a></li>
     <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
@@ -203,137 +270,157 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="nav-overlay" id="navOverlay"></div>
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
+  <a href="index.html" class="mobile-link">Home</a>
   <a href="index.html#what" class="mobile-link">Services</a>
   <a href="sales.html" class="mobile-link">Sales</a>
   <a href="careers.html" class="mobile-link">Careers</a>
   <a href="policies.html" class="mobile-link">Policies</a>
-  <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
+  <a href="index.html#form" class="mobile-link" style="color:var(--accent)">&#8594; Start Execution</a>
 </nav>
 
-<!-- ANALYTICS BAR -->
-<div class="analytics-bar" style="margin-top:var(--nav-h)">
-  <div class="analytics-inner">
-    <div class="analytics-stat"><div class="a-dot"></div><span>Visits today: <strong id="visitCount">&#8212;</strong></span></div>
-    <div class="analytics-stat"><div class="a-dot green"></div><span>Requests this month: <strong id="reqCount">&#8212;</strong></span></div>
+<script>
+/* ═══════════════════════════════════════════════════
+   WizDevTech — Supabase Client
+   URL:  https://xlnuzbgwwthecvfigchw.supabase.co
+   ═══════════════════════════════════════════════════ */
+var SUPA = (function(){
+  var URL = 'https://xlnuzbgwwthecvfigchw.supabase.co';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ';
+
+  function insert(table, data){
+    return fetch(URL + '/rest/v1/' + table, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': KEY,
+        'Authorization': 'Bearer ' + KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+  }
+
+  return { insert: insert };
+})();
+</script>
+
+
+<!-- NAICS / Registration strip -->
+<div class="naics-strip">
+  <div class="naics-inner">
+    <div class="naics-label">NAICS Classification</div>
+    <div class="naics-codes">
+      <div class="naics-code"><span>541511</span> Custom Programming</div>
+      <div class="naics-code"><span>541512</span> Systems Design</div>
+      <div class="naics-code"><span>518210</span> Data Processing</div>
+      <div class="naics-code"><span>561499</span> Business Support</div>
+      <div class="naics-code"><span>541519</span> Computer Services</div>
+    </div>
+    <div class="naics-duns">D-U-N-S <strong>144936954</strong></div>
   </div>
 </div>
 
-<div class="page-hero">
-  <div class="container">
-    <span class="tag">&#128200; Sales &amp; Pricing</span>
+<!-- Analytics bar -->
+<div class="analytics-bar">
+  <div class="analytics-inner">
+    <div class="a-stat"><div class="a-dot"></div><span>Site visits today: <strong id="visitCount">&#8212;</strong></span></div>
+    <div class="a-stat"><div class="a-dot green"></div><span>Execution requests this month: <strong id="reqCount">&#8212;</strong></span></div>
+    <div class="a-powered">&#9679; Live via Supabase</div>
+  </div>
+</div>
+
+<div class="page-hero" style="margin-top:0">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-label">&#128200; Sales &amp; Pricing</div>
     <h1>Fixed-scope. <em>Fixed-price.</em></h1>
-    <p>No retainers, no hourly ambiguity. Every engagement is priced against a defined scope. Contact <a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a> to start.</p>
+    <p>No retainers, no hourly billing ambiguity. Every engagement is priced against a defined scope. Contact <a href="/cdn-cgi/l/email-protection#35465459504675425c4f5150434150565d1b565a58" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="04776568617744736d7e6061727061676c2a676b69">[email&#160;protected]</span></a> to start.</p>
   </div>
 </div>
 
 <!-- PRICING -->
-<section id="pricing" class="page-section" style="background:var(--cream)">
-  <div class="container">
-    <div class="section-label reveal">Engagement Tiers</div>
-    <h2 class="section-title reveal rd1">Choose the right engagement size.</h2>
-    <p class="section-desc reveal rd2">All tiers include scoped deliverables, execution, and documented handoff.</p>
+<section id="pricing">
+  <div class="sec">
+    <div class="sec-label reveal">Engagement Tiers</div>
+    <h2 class="sec-title reveal rd1">Choose the right engagement size.</h2>
+    <p class="sec-desc reveal rd2">All tiers include scoped deliverables, execution, and documented handoff.</p>
     <div class="pricing-grid reveal rd2">
-      <div class="price-card">
-        <div class="price-label">Starter</div>
-        <h3>Quick Fix</h3>
-        <div class="price-amount">$5,000<small>/ engagement</small></div>
-        <p class="price-desc">Single-problem execution. Ideal for converting notes to tasks or fixing one broken process.</p>
-        <ul class="price-features">
-          <li class="price-feature">1&#8211;2 week engagement</li>
-          <li class="price-feature">1 defined deliverable</li>
-          <li class="price-feature">Written status updates</li>
-          <li class="price-feature">Documented handoff</li>
-          <li class="price-feature">Up to 1 meeting/week</li>
-        </ul>
-        <a href="mailto:sales@wizdevtech.com?subject=Quick Fix Inquiry" class="price-cta">Get Started &#8594;</a>
+      <div class="pricing-card">
+        <div class="p-label">Starter</div><h3>Quick Fix</h3>
+        <div class="p-amount">$5,000<span>/ engagement</span></div>
+        <p class="p-desc">For single-problem execution. Ideal for converting notes to tasks or fixing one broken process.</p>
+        <ul class="p-feats"><li class="p-feat">1&#8211;2 week engagement</li><li class="p-feat">1 defined deliverable</li><li class="p-feat">Written status updates</li><li class="p-feat">Documented handoff</li><li class="p-feat">Up to 1 meeting/week</li></ul>
+        <a href="/cdn-cgi/l/email-protection#d3a0b2bfb6a093a4baa9b7b6a5a7b6b0bbfdb0bcbeeca0a6b1b9b6b0a7ee82a6bab0b8f395baabf396bdb4b2b4b6beb6bda7f39abda2a6baa1aa" class="p-cta">Get Started &#8594;</a>
       </div>
-      <div class="price-card featured">
-        <div class="featured-tag">Most Common</div>
-        <div class="price-label">Standard</div>
-        <h3>System Completion</h3>
-        <div class="price-amount">$15,000<small>/ engagement</small></div>
-        <p class="price-desc">Finish a half-built system or repair a broken workflow end-to-end with full documentation.</p>
-        <ul class="price-features">
-          <li class="price-feature">2&#8211;4 week engagement</li>
-          <li class="price-feature">Up to 3 defined deliverables</li>
-          <li class="price-feature">Written status updates</li>
-          <li class="price-feature">Full documented handoff</li>
-          <li class="price-feature">Up to 2 meetings/week</li>
-          <li class="price-feature">Post-handoff support window</li>
-        </ul>
-        <a href="mailto:sales@wizdevtech.com?subject=System Completion Inquiry" class="price-cta">Get Started &#8594;</a>
+      <div class="pricing-card featured">
+        <div class="feat-tag">Most Common</div>
+        <div class="p-label">Standard</div><h3>System Completion</h3>
+        <div class="p-amount">$15,000<span>/ engagement</span></div>
+        <p class="p-desc">Finish a half-built system or repair a broken workflow end-to-end with full documentation.</p>
+        <ul class="p-feats"><li class="p-feat">2&#8211;4 week engagement</li><li class="p-feat">Up to 3 defined deliverables</li><li class="p-feat">Written status updates</li><li class="p-feat">Full documented handoff</li><li class="p-feat">Up to 2 meetings/week</li><li class="p-feat">Post-handoff support window</li></ul>
+        <a href="/cdn-cgi/l/email-protection#7704161b120437001e0d1312010312141f5914181a480402151d1214034a240e0403121a5734181a071b12031e1819573219101610121a121903573e1906021e050e" class="p-cta">Get Started &#8594;</a>
       </div>
-      <div class="price-card">
-        <div class="price-label">Enterprise</div>
-        <h3>Full Stabilization</h3>
-        <div class="price-amount">$35,000+<small>/ engagement</small></div>
-        <p class="price-desc">Complex multi-system stabilization. Multiple workstreams, data migration, comprehensive handoff.</p>
-        <ul class="price-features">
-          <li class="price-feature">4&#8211;6 week engagement</li>
-          <li class="price-feature">Multiple workstreams</li>
-          <li class="price-feature">Dedicated execution lead</li>
-          <li class="price-feature">Daily written updates</li>
-          <li class="price-feature">Comprehensive handoff package</li>
-          <li class="price-feature">Extended post-handoff support</li>
-        </ul>
-        <a href="mailto:sales@wizdevtech.com?subject=Full Stabilization Inquiry" class="price-cta">Discuss Scope &#8594;</a>
+      <div class="pricing-card">
+        <div class="p-label">Enterprise</div><h3>Full Stabilization</h3>
+        <div class="p-amount">$35,000+<span>/ engagement</span></div>
+        <p class="p-desc">Complex multi-system stabilization with dedicated execution lead and comprehensive handoff.</p>
+        <ul class="p-feats"><li class="p-feat">4&#8211;6 week engagement</li><li class="p-feat">Multiple deliverable workstreams</li><li class="p-feat">Dedicated execution lead</li><li class="p-feat">Daily written status updates</li><li class="p-feat">Comprehensive handoff package</li><li class="p-feat">Extended post-handoff support</li></ul>
+        <a href="/cdn-cgi/l/email-protection#92e1f3fef7e1d2e5fbe8f6f7e4e6f7f1fabcf1fdffade1e7f0f8f7f1e6afd4e7fefeb2c1e6f3f0fbfefbe8f3e6fbfdfcb2dbfce3e7fbe0eb" class="p-cta">Discuss Scope &#8594;</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section id="process" class="page-section" style="background:var(--paper)">
-  <div class="container">
-    <div class="section-label reveal">Sales Process</div>
-    <h2 class="section-title reveal rd1">From inquiry to execution in days.</h2>
-    <div class="process-grid reveal rd2">
-      <div class="process-step"><div class="step-num">Step 01</div><h4>Submit Request</h4><p>Email sales@wizdevtech.com or complete the intake form with your specific problem.</p></div>
-      <div class="process-step"><div class="step-num">Step 02</div><h4>Fit Assessment</h4><p>We review and respond within 2 business days to confirm fit.</p></div>
-      <div class="process-step"><div class="step-num">Step 03</div><h4>Scope Call</h4><p>One focused call to define deliverables, timeline, and budget alignment.</p></div>
-      <div class="process-step"><div class="step-num">Step 04</div><h4>Agreement</h4><p>Scope doc signed, start date confirmed. Work begins within the agreed window.</p></div>
-      <div class="process-step"><div class="step-num">Step 05</div><h4>Execution</h4><p>We work inside your systems. Written updates. Minimal meetings. No drama.</p></div>
-      <div class="process-step"><div class="step-num">Step 06</div><h4>Handoff &amp; Exit</h4><p>Documented handoff delivered. We exit cleanly. Your team owns everything.</p></div>
+<section class="process-bg" id="process">
+  <div class="sec">
+    <div class="sec-label reveal">How Sales Works</div>
+    <h2 class="sec-title reveal rd1">From inquiry to execution in days.</h2>
+    <div class="process-steps reveal rd2">
+      <div class="process-step"><div class="step-num">Step 01</div><h4>Submit Request</h4><p>Complete the intake form or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2251434e475162554b584647545647414a0c414d4f">[email&#160;protected]</a>.</p></div>
+      <div class="process-step"><div class="step-num">Step 02</div><h4>Fit Assessment</h4><p>We respond within 2 business days to confirm fit.</p></div>
+      <div class="process-step"><div class="step-num">Step 03</div><h4>Scope Call</h4><p>One focused call to define deliverables and timeline.</p></div>
+      <div class="process-step"><div class="step-num">Step 04</div><h4>Agreement &amp; Kickoff</h4><p>Scope doc signed. Execution begins within the agreed window.</p></div>
+      <div class="process-step"><div class="step-num">Step 05</div><h4>Execution</h4><p>We work inside your systems. Written updates. Zero drama.</p></div>
+      <div class="process-step"><div class="step-num">Step 06</div><h4>Handoff &amp; Exit</h4><p>Documented handoff delivered. We exit cleanly.</p></div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="page-section" style="background:var(--cream)">
-  <div class="container">
-    <div class="section-label reveal">FAQ</div>
-    <h2 class="section-title reveal rd1">Common sales questions.</h2>
+<section id="faq">
+  <div class="sec">
+    <div class="sec-label reveal">FAQ</div>
+    <h2 class="sec-title reveal rd1">Common sales questions.</h2>
     <div class="faq-list reveal rd2">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer discounts for multiple engagements? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Clients running a second consecutive engagement receive a 10% reduction on the follow-on scope, applied after the first engagement completes with documented handoff.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment terms do you accept? <span class="faq-icon">+</span></button><div class="faq-a"><p>50% at engagement kickoff, 50% upon handoff delivery. ACH, wire, and major credit cards accepted. Net-30 terms available for verified enterprise clients.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if scope changes mid-engagement? <span class="faq-icon">+</span></button><div class="faq-a"><p>Scope is locked at kickoff. New work identified outside agreed deliverables is documented and presented as a follow-on engagement option. We do not expand scope mid-flight.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can we extend an engagement? <span class="faq-icon">+</span></button><div class="faq-a"><p>Engagements can be extended by mutual agreement before the end date if team capacity allows. Extensions are scoped and priced separately. No open-ended extensions.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a refund policy? <span class="faq-icon">+</span></button><div class="faq-a"><p>The initial 50% deposit is non-refundable once work has commenced. If we fail to deliver the agreed scope, we continue work at no additional charge or issue a prorated refund on the final payment.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer discounts for multiple engagements?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Clients running a second consecutive engagement receive a 10% reduction on the follow-on scope, applied after the first engagement completes with documented handoff.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment terms do you accept?<span class="faq-icon">+</span></button><div class="faq-a"><p>50% at engagement kickoff, 50% upon handoff delivery. ACH, wire, and major credit cards accepted. Net-30 terms available for verified enterprise clients.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if scope changes mid-engagement?<span class="faq-icon">+</span></button><div class="faq-a"><p>Scope is locked at kickoff. New work outside agreed deliverables is documented and presented as a separate follow-on engagement option. We do not expand scope mid-flight.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can we extend an engagement?<span class="faq-icon">+</span></button><div class="faq-a"><p>Extensions are available by mutual agreement before the end date, provided team capacity allows. All extensions are scoped and priced separately.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<span class="faq-icon">+</span></button><div class="faq-a"><p>The initial 50% deposit is non-refundable once work has commenced. If we fail to deliver agreed scope, we continue at no additional charge or issue a prorated refund on the final payment.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- SURVEY -->
-<section id="survey" class="page-section" style="background:var(--paper);border-top:1px solid var(--rule);">
-  <div class="container">
-    <div class="section-label reveal">Site Survey</div>
-    <h2 class="section-title reveal rd1">What kind of support do you need?</h2>
-    <p class="section-desc reveal rd2">Takes 60 seconds. Helps us build better offerings.</p>
+<!-- SITE SURVEY -->
+<section id="survey">
+  <div class="sec">
+    <div class="sec-label reveal">Site Survey</div>
+    <h2 class="sec-title reveal rd1">What kind of support do you need?</h2>
+    <p class="sec-desc reveal rd2">60 seconds. Helps us understand demand and build better offerings.</p>
     <div class="survey-layout reveal rd2">
       <div>
-        <div class="survey-results-label">Response breakdown</div>
-        <div id="surveyResults"><p style="font-size:0.82rem;color:var(--muted)">No responses yet. Be the first!</p></div>
-        <div class="result-total" id="surveyTotal"></div>
+        <div class="survey-bar-label">Live responses from Supabase</div>
+        <div id="surveyResults"><div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted)">Loading&#8230;</div></div>
+        <div class="survey-total" id="surveyTotal"></div>
       </div>
-      <div class="survey-box">
-        <div class="survey-title">Quick Survey</div>
-        <div class="survey-note">Anonymous &middot; 60 seconds</div>
+      <div class="form-box">
+        <div class="form-title">Quick Survey</div>
+        <div class="form-note">Anonymous &#183; 60 seconds</div>
         <form id="surveyForm" novalidate>
-          <div class="hp-field" aria-hidden="true"><label for="hp_survey">Leave blank</label><input type="text" id="hp_survey" name="hp_survey" tabindex="-1" autocomplete="off"/></div>
           <div class="form-row">
-            <label class="form-label" for="surveyType">Execution type needed <span style="color:var(--accent)">*</span></label>
+            <label for="surveyType">What type of execution do you need most? <span class="req">*</span></label>
             <select class="form-control" id="surveyType">
               <option value="">Select type</option>
               <option value="finish_systems">Finish half-built systems</option>
@@ -347,132 +434,283 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
             <div class="field-error" id="surveyTypeErr">Please select a type.</div>
           </div>
           <div class="form-row">
-            <label class="form-label" for="surveyUrgency">Urgency</label>
+            <label for="surveyUrgency">How urgent is your need?</label>
             <select class="form-control" id="surveyUrgency">
               <option value="">Select urgency</option>
               <option value="immediate">Immediate &#8212; within 2 weeks</option>
               <option value="soon">Soon &#8212; within a month</option>
-              <option value="planning">Planning &#8212; 1&#8211;3 months</option>
+              <option value="planning">Planning &#8212; 1&#8211;3 months out</option>
               <option value="exploring">Just exploring</option>
             </select>
           </div>
           <div class="form-row">
-            <label class="form-label" for="surveyNote">Anything else?</label>
-            <textarea class="form-control" id="surveyNote" maxlength="300" placeholder="Optional context..." style="min-height:70px"></textarea>
+            <label for="surveyNote">Anything else? (optional)</label>
+            <textarea class="form-control" id="surveyNote" maxlength="300" placeholder="Share any context..." style="min-height:70px"></textarea>
           </div>
-          <button type="submit" class="btn-submit" id="surveyBtn">
-            <div class="spinner"></div>
-            <span class="btn-text">Submit Survey &#8594;</span>
-          </button>
+          <button type="submit" class="btn-submit" id="surveyBtn"><div class="spinner"></div><span class="btn-text">Submit Survey &#8594;</span></button>
         </form>
         <div class="form-success" id="surveySuccess">
           <div class="form-success-icon">&#10003;</div>
-          <h3>Thank you!</h3>
-          <p>Your response has been recorded.</p>
+          <h3 style="font-family:var(--display);font-weight:700;margin-bottom:0.5rem">Thank you!</h3>
+          <p style="font-size:0.88rem;color:var(--muted)">Your response has been recorded in our database.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SALES CTA -->
-<section class="cta-strip">
-  <div class="section-inner">
-    <div>
-      <div class="section-label reveal" style="color:var(--accent2)">Ready to move?</div>
-      <h2 class="section-title light reveal rd1">Talk to sales directly.</h2>
-      <p class="section-desc light reveal rd2">Our sales team reviews every inquiry personally. You'll hear back within 2 business days.</p>
+
+<!-- MARKET POSITION -->
+<section id="market">
+  <div class="sec">
+    <div class="sec-label reveal">Market Position</div>
+    <h2 class="sec-title reveal rd1">Where we fit. What we&#8217;re not.</h2>
+    <p class="sec-desc reveal rd2">WizDevTech occupies the gap between traditional consulting and staff augmentation &#8212; a productized execution model with fixed scope, fixed deliverables, and a clean exit.</p>
+
+    <div class="market-grid reveal rd2">
+      <div class="market-card">
+        <h4>&#128200; Demand Drivers</h4>
+        <p>This model thrives when organizations can&#8217;t justify full-time specialized hires but have real operational backlogs. Post-2022 headcount reductions left many teams with half-finished systems and no internal capacity to complete them.</p>
+      </div>
+      <div class="market-card">
+        <h4>&#128203; Productized Services</h4>
+        <p>Unlike open-ended consulting, our engagements are repeatable and packaged &#8212; defined entry points, defined deliverables, defined exit. Shorter deal cycles and faster procurement decisions.</p>
+      </div>
+      <div class="market-card">
+        <h4>&#128179; Revenue Model</h4>
+        <p>$5K&#8211;$100K+ engagement windows with 2&#8211;6 week timelines. Procurement typically flows through discretionary operational budgets rather than capital expenditure &#8212; reducing approval friction.</p>
+      </div>
+      <div class="market-card">
+        <h4>&#127919; Competitive Posture</h4>
+        <p>Sharp ICP deliberately trades volume for conversion quality. Firms who need strategy, discovery, or open-ended support are redirected &#8212; keeping the pipeline qualified and engagement success rates high.</p>
+      </div>
     </div>
-    <div class="contact-box reveal rd2">
-      <div class="contact-item"><span class="c-label">Sales Inquiries</span><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a><p>Pricing, scoping, and new engagement discussions</p></div>
-      <div class="contact-item"><span class="c-label">Technical Questions</span><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a><p>Pre-sales technical questions</p></div>
-      <div class="contact-item"><span class="c-label">Site Support</span><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a><p>Technical issues with this website</p></div>
+
+    <div class="not-this reveal rd2">
+      <div class="not-this-label">&#10005; Not This</div>
+      <p>WizDevTech is not a management consulting firm (NAICS 541611) and is not a marketing consultancy (NAICS 541613). We do not advise, coach, or run open-ended engagements. <strong>We execute against defined scope and exit cleanly.</strong> If you need a strategic partner or discovery process before committing to scoped work, we&#8217;re not the right fit &#8212; and we&#8217;ll tell you that upfront.</p>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">Services</a></li><li><a href="index.html#leadership">Leadership</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales &amp; Pricing</a></li><li><a href="policies.html">Policies</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li><li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li><li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li><li><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></li></ul></div>
-      <div class="footer-col"><h4>Support</h4><ul><li><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-logo-text">Wiz<span>Dev</span>Tech</div>
-      <span class="footer-copy">&copy; 2025 WizDevTech. All rights reserved.</span>
+<!-- SALES CTA -->
+<section class="sales-cta-bg" id="contact-sales">
+  <div class="sec">
+    <div class="sales-contact-layout">
+      <div>
+        <div class="sec-label" style="color:var(--accent2)">Ready to move?</div>
+        <h2 class="sec-title" style="color:var(--cream)">Talk to sales directly.</h2>
+        <p style="color:#8a8a8a;font-size:0.95rem;line-height:1.75;max-width:420px;margin-top:0.75rem">Our team qualifies every inquiry personally. No automated funnels. You&#8217;ll hear back within 2 business days.</p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-item"><label>Sales Inquiries</label><a href="/cdn-cgi/l/email-protection#34475558514774435d4e5051424051575c1a575b59"><span class="__cf_email__" data-cfemail="6a190b060f192a1d03100e0f1c1e0f090244090507">[email&#160;protected]</span></a><p>Pricing, scoping, and new engagement discussions</p></div>
+        <div class="contact-item"><label>Technical Questions</label><a href="/cdn-cgi/l/email-protection#4f2b2a390f3826352b2a393b2a2c27612c2022"><span class="__cf_email__" data-cfemail="aacecfdceaddc3d0cecfdcdecfc9c284c9c5c7">[email&#160;protected]</span></a><p>Pre-sales technical questions about execution approach</p></div>
+        <div class="contact-item"><label>Technical Support</label><a href="/cdn-cgi/l/email-protection#9cefe9ececf3eee8dcebf5e6f8f9eae8f9fff4b2fff3f1"><span class="__cf_email__" data-cfemail="bbc8cecbcbd4c9cffbccd2c1dfdecdcfded8d395d8d4d6">[email&#160;protected]</span></a><p>Site issues or post-engagement support requests</p></div>
+      </div>
     </div>
   </div>
-</footer>
+</section>
+
 <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
+<footer id="siteFooter">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
+      <p class="footer-tagline">Embedded execution for teams who need things finished.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#what">Services</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="sales.html">Sales &amp; Pricing</a></li>
+        <li><a href="policies.html">Privacy Policy</a></li>
+        <li><a href="policies.html#terms">Terms of Service</a></li>
+        <li><a href="policies.html#cookies">Cookie Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#d0b4b5a690a7b9aab4b5a6a4b5b3b8feb3bfbd"><span class="__cf_email__" data-cfemail="96f2f3e0d6e1ffecf2f3e0e2f3f5feb8f5f9fb">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#3b485a575e487b4c52415f5e4d4f5e585315585456"><span class="__cf_email__" data-cfemail="2754464b425467504e5d4342515342444f0944484a">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#96f5f7e4f3f3e4e5d6e1ffecf2f3e0e2f3f5feb8f5f9fb"><span class="__cf_email__" data-cfemail="accfcddec9c9dedfecdbc5d6c8c9dad8c9cfc482cfc3c1">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#790a0c0909160b0d390e10031d1c0f0d1c1a11571a1614"><span class="__cf_email__" data-cfemail="a9dadcd9d9c6dbdde9dec0d3cdccdfddcccac187cac6c4">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#c5a9a0a2a4a985b2acbfa1a0b3b1a0a6adeba6aaa8"><span class="__cf_email__" data-cfemail="f09c9597919cb087998a94958684959398de939f9d">[email&#160;protected]</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <div class="footer-links">
+      <a href="/cdn-cgi/l/email-protection#62111712120d101622150b180607141607010a4c010d0f">Technical Support</a>
+      <a href="policies.html">Privacy &amp; Legal</a>
+      <a href="index.html#form">Start Execution &#8594;</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   'use strict';
-  /* NAV */
-  var nav=document.getElementById('mainNav'),prog=document.getElementById('progressBar'),burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu'),overlay=document.getElementById('navOverlay'),backTop=document.getElementById('backTop');
-  window.addEventListener('scroll',function(){var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;if(prog)prog.style.width=(t>0?s/t*100:0)+'%';nav.classList.toggle('scrolled',s>40);if(backTop)backTop.classList.toggle('show',s>400);},{passive:true});
-  if(backTop)backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-  function openM(){burger.classList.add('open');menu.classList.add('open');if(overlay)overlay.classList.add('show');burger.setAttribute('aria-expanded','true');}
-  function closeM(){burger.classList.remove('open');menu.classList.remove('open');if(overlay)overlay.classList.remove('show');burger.setAttribute('aria-expanded','false');}
-  if(burger)burger.addEventListener('click',function(){menu.classList.contains('open')?closeM():openM();});
-  if(overlay)overlay.addEventListener('click',closeM);
-  document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeM);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
-  /* REVEAL */
-  var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target);}});},{threshold:0.08});
-  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
-  /* TOAST */
-  var _tt;function showToast(m,e){var el=document.getElementById('toast');if(!el)return;clearTimeout(_tt);el.textContent=m;el.className='toast'+(e?' toast-error':'')+' show';_tt=setTimeout(function(){el.classList.remove('show');},4000);}
-  /* ANALYTICS (stub — replace with real API) */
-  setTimeout(function(){
-    var vc=document.getElementById('visitCount'),rc=document.getElementById('reqCount');
-    /* Replace with: fetch('/api/analytics').then(r=>r.json()).then(d=>{vc.textContent=d.visits;rc.textContent=d.requests;}) */
-    if(vc)vc.textContent=(Math.floor(Math.random()*80)+20).toString();
-    if(rc)rc.textContent=(Math.floor(Math.random()*15)+2).toString();
-  },900);
-  /* SURVEY RESULTS */
-  var LABELS={finish_systems:'Finish half-built systems',repair_workflows:'Repair workflows',data_migration:'Data cleanup',notes_to_tasks:'Notes to tasks',documentation:'Documentation',automation:'Automation',other:'Other'};
-  function loadResults(){
-    var raw;try{raw=JSON.parse(localStorage.getItem('wdt_survey_v2')||'{}');}catch(e){raw={};}
-    var total=Object.values(raw).reduce(function(a,b){return a+b;},0);
-    var container=document.getElementById('surveyResults'),totalEl=document.getElementById('surveyTotal');
-    if(!container)return;
-    if(total===0){container.innerHTML='<p style="font-size:0.82rem;color:var(--muted)">No responses yet. Be the first!</p>';return;}
-    var sorted=Object.keys(LABELS).map(function(k){return{key:k,label:LABELS[k],count:raw[k]||0};}).sort(function(a,b){return b.count-a.count;});
-    container.innerHTML='';
-    sorted.forEach(function(item){
-      var pct=Math.round((item.count/total)*100);
-      var row=document.createElement('div');row.className='result-row';
-      row.innerHTML='<div class="result-meta"><span>'+item.label+'</span><strong>'+pct+'%</strong></div><div class="result-bar-bg"><div class="result-bar-fill" style="width:'+pct+'%"></div></div>';
-      container.appendChild(row);
-    });
-    if(totalEl)totalEl.textContent=total+' response'+(total!==1?'s':'')+' recorded';
-  }
-  loadResults();
-  /* SURVEY SUBMIT */
-  document.getElementById('surveyForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    if(document.getElementById('hp_survey').value.length>0)return;
-    var type=document.getElementById('surveyType').value;
-    if(!type){document.getElementById('surveyTypeErr').classList.add('show');showToast('Please select an execution type.',true);return;}
-    document.getElementById('surveyTypeErr').classList.remove('show');
-    var btn=document.getElementById('surveyBtn');btn.disabled=true;btn.classList.add('loading');
-    /* Supabase stub — uncomment when key is ready
-    fetch('https://xlnuzbgwwthecvfigchw.supabase.co/rest/v1/survey_responses',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'YOUR_ANON_KEY','Authorization':'Bearer YOUR_ANON_KEY','Prefer':'return=minimal'},
-      body:JSON.stringify({execution_type:type,urgency:document.getElementById('surveyUrgency').value,note:document.getElementById('surveyNote').value})
-    }).catch(function(){});
-    */
-    try{var raw=JSON.parse(localStorage.getItem('wdt_survey_v2')||'{}');raw[type]=(raw[type]||0)+1;localStorage.setItem('wdt_survey_v2',JSON.stringify(raw));}catch(er){}
-    setTimeout(function(){btn.classList.remove('loading');document.getElementById('surveyForm').style.display='none';document.getElementById('surveySuccess').classList.add('show');loadResults();showToast('Survey submitted. Thank you!');},900);
+  var nav=document.getElementById('mainNav');
+  var progress=document.getElementById('progressBar');
+  var backTop=document.getElementById('backTop');
+  var burger=document.getElementById('burger');
+  var mobileMenu=document.getElementById('mobileMenu');
+  var toast=document.getElementById('toast');
+  var toastTimer;
+
+  /* active nav page highlight */
+  var page=window.location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-links a,.nav-mobile a').forEach(function(a){
+    var h=a.getAttribute('href')||'';
+    if(h===page||(page===''&&h==='index.html')||(h===page)) a.classList.add('active');
   });
-  /* FAQ */
-  window.toggleFaq=function(btn){var a=btn.nextElementSibling,open=btn.classList.contains('open');document.querySelectorAll('.faq-q').forEach(function(b){b.classList.remove('open');});document.querySelectorAll('.faq-a').forEach(function(x){x.classList.remove('open');});if(!open){btn.classList.add('open');a.classList.add('open');}};
+
+  /* scroll */
+  window.addEventListener('scroll',function(){
+    var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;
+    if(progress) progress.style.width=(t>0?(s/t*100):0)+'%';
+    if(nav) nav.classList.toggle('scrolled',s>40);
+    if(backTop) backTop.classList.toggle('show',s>400);
+  },{passive:true});
+  if(backTop) backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* burger */
+  if(burger){
+    burger.addEventListener('click',function(){
+      var o=burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded',String(o));
+      mobileMenu.classList.toggle('open',o);
+      mobileMenu.setAttribute('aria-hidden',String(!o));
+    });
+    document.querySelectorAll('.mobile-link').forEach(function(l){
+      l.addEventListener('click',function(){
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden','true');
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(mobileMenu.classList.contains('open')&&!nav.contains(e.target)&&!mobileMenu.contains(e.target)){
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
+
+  /* reveal */
+  var reveals=document.querySelectorAll('.reveal');
+  if(reveals.length){
+    var ro=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+    },{threshold:0.1});
+    reveals.forEach(function(el){ro.observe(el);});
+  }
+
+  /* toast */
+  window.showToast=function(msg,type,dur){
+    clearTimeout(toastTimer);
+    if(!toast) return;
+    toast.textContent=msg;
+    toast.className='toast'+(type==='error'?' error':'')+' show';
+    toastTimer=setTimeout(function(){toast.classList.remove('show');},dur||3500);
+  };
+
+  /* field validator */
+  window.isEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);};
+  window.vf=function(id,eid,fn){
+    var el=document.getElementById(id),err=document.getElementById(eid);
+    if(!el) return true;
+    var ok=fn(el.value.trim());
+    el.classList.toggle('error',!ok);
+    el.classList.toggle('valid',ok);
+    if(err) err.classList.toggle('show',!ok);
+    return ok;
+  };
+
+  /* page view tracking */
+  SUPA.insert('page_views',{
+    page: window.location.pathname||'/',
+    referrer: document.referrer||'direct',
+    user_agent: navigator.userAgent
+  }).catch(function(){});
 })();
 </script>
-</body>
-</html>
+
+
+<script>
+(function(){
+  var SUPA_URL='https://xlnuzbgwwthecvfigchw.supabase.co';
+  var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ';
+
+  /* ── load analytics counts from Supabase ── */
+  function loadAnalytics(){
+    /* visits today */
+    var today=new Date().toISOString().slice(0,10);
+    fetch(SUPA_URL+'/rest/v1/page_views?select=id&created_at=gte.'+today+'T00:00:00Z',{
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    }).then(function(r){return r.json();}).then(function(d){
+      var el=document.getElementById('visitCount');
+      if(el&&Array.isArray(d)) el.textContent=d.length;
+    }).catch(function(){});
+    /* requests this month */
+    var monthStart=new Date().toISOString().slice(0,7)+'-01T00:00:00Z';
+    fetch(SUPA_URL+'/rest/v1/leads?select=id&created_at=gte.'+monthStart,{
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    }).then(function(r){return r.json();}).then(function(d){
+      var el=document.getElementById('reqCount');
+      if(el&&Array.isArray(d)) el.textContent=d.length;
+    }).catch(function(){});
+  }
+  loadAnalytics();
+
+  /* ── load survey results from Supabase ── */
+  var LABELS={
+    finish_systems:'Finish half-built systems',
+    repair_workflows:'Repair breaking workflows',
+    data_migration:'Data cleanup & migration',
+    notes_to_tasks:'Convert notes to tasks',
+    documentation:'Documentation & SOPs',
+    automation:'Automation & integrations',
+    other:'Other'
+  };
+  function loadSurveyResults(){
+    fetch(SUPA_URL+'/rest/v1/survey_responses?select=execution_type',{
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    }).then(function(r){return r.json();}).then(function(data){
+      if(!Array.isArray(data)||data.length===0){
+        document.getElementById('surveyResults').innerHTML='<div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted)">No responses yet. Be the first!</div>';
+        return;
+      }
+      var counts={};
+      data.forEach(function(row){counts[row.execution_type]=(counts[row.execution_type]||0)+1;});
+      var total=data.length;
+      var sorted=Object.keys(LABELS).map(function(k){return {key:k,label:LABELS[k],count:counts[k]||0};}).sort(function(a,b){return b.count-a.count;});
+      var html='';
+      sorted.forEach(function(item){
+        var pct=Math.round((item.count/total)*100);
+        html+='<div class="survey-bar-row"><div class="survey-bar-top"><span class="survey-bar-name">'+item.label+'</span><span class="survey-bar-pct">'+pct+'%</span></div><div class="survey-bar-track"><div class="survey-bar-fill" style="width:'+pct+'%"></div></div></div>';
+      });
+      document.getElementById('surveyResults').innerHTML=html;
+      document.getElementById('surveyTotal').textContent=total+' response'+(total!==1?'s':'')+' recorded';
+    }).catch(function(){
+      document.getElementById('surveyResults').innerHTML='<div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted)">Could not load results.</div>';
+    });
+  }
+  loadSurveyResults();
+
+  /* ── survey submit ── */
+  document.getElementById('surveyType').addEventListener('change',function(){
+    window.vf('surveyType','surveyTyp

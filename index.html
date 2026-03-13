@@ -3,232 +3,251 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="WizDevTech — Embedded execution for teams who need things finished. 2-6 week engagements, scoped deliverables, clean handoff."/>
-<title>WizDevTech — Embedded Execution</title>
+<title>WizDevTech &#8212; Embedded Execution</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
-:root{--ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;--muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;--paper:#f4f2ed;--cream:#faf9f6;--accent:#d4531a;--accent2:#e8824a;--green:#1e7a3c;--red:#c0392b;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Syne',sans-serif;--nav-h:64px;}
+
+:root{
+  --ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;
+  --muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;
+  --paper:#f4f2ed;--cream:#faf9f6;
+  --accent:#d4531a;--accent2:#e8824a;
+  --green:#27ae60;--red:#c0392b;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --display:'Syne',sans-serif;
+  --nav-h:64px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--accent);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--accent);}
 section{scroll-margin-top:var(--nav-h);}
 
 /* PROGRESS */
-.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;pointer-events:none;transition:width 0.1s linear;}
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:199;transition:width 0.08s linear;pointer-events:none;}
 
 /* NAV */
-nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
-nav#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
-.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;white-space:nowrap;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
+#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
+.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;}
 .nav-logo span{color:var(--accent);}
-.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
-.nav-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.25s;}
 .nav-links a:hover,.nav-links a.active{color:var(--ink);}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem;border:1px solid var(--ink)!important;}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem!important;border:1px solid var(--ink)!important;transition:background 0.2s!important;}
 .nav-cta::after{display:none!important;}
-.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.3s,opacity 0.3s;}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-burger.open span:nth-child(2){opacity:0;}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.25s,padding 0.3s;display:flex;flex-direction:column;}
-.nav-mobile.open{max-height:400px;padding:1.25rem 2rem 1.5rem;opacity:1;}
-.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.65rem 0;border-bottom:1px solid rgba(46,46,46,0.12);transition:color 0.2s;}
-.nav-mobile a:last-child{border-bottom:none;}
-.nav-mobile a:hover{color:var(--ink);}
-.cta-mob{color:var(--accent)!important;}
-.nav-overlay{display:none;position:fixed;inset:0;z-index:198;}
-.nav-overlay.show{display:block;}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);padding:1.25rem 2rem;display:flex;flex-direction:column;gap:1rem;visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.25s,transform 0.25s,visibility 0.25s;}
+.nav-mobile.open{visibility:visible;opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-mobile a:hover{color:var(--accent);}
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.85rem 1.75rem;cursor:pointer;border:none;transition:all 0.2s;gap:0.5rem;}
-.btn-primary{background:var(--accent);color:#fff;}
-.btn-primary:hover{background:#b84515;}
-.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--ink3);}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
-.btn-arrow::after{content:' \2192';transition:transform 0.2s;}
-.btn-arrow:hover::after{transform:translateX(4px);}
+/* PAGE HERO */
+.page-hero{padding:120px 2.5rem 72px;background:var(--ink);position:relative;overflow:hidden;margin-top:var(--nav-h);}
+.page-hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+.page-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.025) 59px,rgba(255,255,255,0.025) 60px);pointer-events:none;}
+.page-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;}
+.page-hero h1 em{font-style:normal;color:var(--accent2);}
+.page-hero p{margin-top:1.25rem;font-size:1rem;color:#8a8a8a;max-width:520px;}
 
-/* SECTIONS */
-.page-section{padding:80px 2.5rem;}
-.page-section.dark{background:var(--ink2);}
-.page-section.paper{background:var(--paper);}
-.container{max-width:1080px;margin:0 auto;}
-.section-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-.section-title{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
-.section-title.light{color:var(--cream);}
-.section-desc{color:var(--muted);max-width:560px;font-size:0.95rem;line-height:1.75;}
-.section-desc.light{color:#8a8a8a;}
+/* SECTION */
+.sec{max-width:1080px;margin:0 auto;padding:88px 2.5rem;}
+.sec-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.sec-title{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
+.sec-desc{color:var(--muted);font-size:0.95rem;line-height:1.75;max-width:600px;}
 
 /* FORMS */
-.form-control{width:100%;padding:0.75rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;border-radius:0;appearance:none;-webkit-appearance:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.form-box{background:var(--cream);border:1px solid var(--rule);padding:2.5rem;}
+.form-title{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:0.4rem;}
+.form-note{font-size:0.78rem;color:var(--muted);font-family:var(--mono);margin-bottom:2rem;}
+.form-row{margin-bottom:1.2rem;}
+.form-row label{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
+.req{color:var(--accent);}
+.form-control{width:100%;padding:0.72rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;appearance:none;border-radius:0;transition:border-color 0.2s,box-shadow 0.2s;}
 .form-control:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,83,26,0.1);}
 .form-control.error{border-color:var(--red);}
 .form-control.valid{border-color:var(--green);}
 select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--paper);padding-right:2.5rem;cursor:pointer;}
-textarea.form-control{resize:vertical;min-height:110px;}
-.form-label{display:block;font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
-.form-label .req{color:var(--accent);}
-.field-error{display:none;font-family:var(--mono);font-size:0.62rem;color:var(--red);margin-top:0.35rem;}
-.field-error.show{display:block;}
-.form-row{margin-bottom:1.25rem;}
+textarea.form-control{resize:vertical;min-height:100px;}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:0.5rem;}
+.field-error{display:none;font-family:var(--mono);font-size:0.6rem;color:var(--red);margin-top:0.3rem;}
+.field-error.show{display:block;}
+.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;}
 .btn-submit:hover{background:var(--accent);}
 .btn-submit:disabled{background:var(--muted);cursor:not-allowed;}
 .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
 .btn-submit.loading .spinner{display:block;}
-.form-success{display:none;text-align:center;padding:3rem 2rem;}
+.btn-submit.loading .btn-text{opacity:0.7;}
+.form-success{display:none;text-align:center;padding:2.5rem;}
 .form-success.show{display:block;}
-.form-success-icon{width:56px;height:56px;background:var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.5rem;font-size:1.4rem;color:#fff;}
-.form-success h3{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:0.5rem;}
-.form-success p{font-size:0.88rem;color:var(--muted);}
-/* HONEYPOT — invisible to humans, bots fill it */
-.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;height:0;overflow:hidden;tab-index:-1;}
+.form-success-icon{width:52px;height:52px;background:var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.25rem;font-size:1.3rem;color:#fff;}
 
 /* TOAST */
-.toast{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:340px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:300;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:320px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
 .toast.show{transform:translateY(0);opacity:1;}
-.toast.toast-error{border-left-color:var(--red);}
+.toast.error{border-left-color:var(--red);}
 
 /* BACK TO TOP */
-.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
+.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-size:1rem;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
 .back-top.show{opacity:1;pointer-events:all;}
 .back-top:hover{background:var(--accent);}
 
 /* FOOTER */
-footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2rem;border-top:1px solid var(--rule);}
-.footer-inner{max-width:1080px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
-.footer-col h4{font-family:var(--display);font-weight:700;font-size:0.85rem;color:var(--ghost);margin-bottom:1rem;}
+#siteFooter{background:var(--ink2);color:var(--mid);padding:2.5rem 2.5rem 2rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:0.65rem;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;max-width:1080px;margin:0 auto 2.5rem;}
+.footer-logo{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ghost);letter-spacing:-0.02em;margin-bottom:0.75rem;}
+.footer-logo span{color:var(--accent);}
+.footer-tagline{color:var(--muted);font-size:0.78rem;line-height:1.6;font-family:var(--sans);max-width:220px;}
+.footer-col h4{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ghost);margin-bottom:1rem;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-.footer-col a{color:var(--mid);text-decoration:none;font-size:0.78rem;font-family:var(--sans);transition:color 0.2s;}
-.footer-col a:hover{color:var(--accent);}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;border-top:1px solid rgba(46,46,46,0.5);}
-.footer-logo-text{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ghost);letter-spacing:-0.02em;}
-.footer-logo-text span{color:var(--accent);}
-.footer-copy{font-size:0.7rem;color:var(--muted);font-family:var(--mono);}
+.footer-col ul a{color:var(--muted);text-decoration:none;transition:color 0.2s;font-size:0.75rem;font-family:var(--sans);}
+.footer-col ul a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;padding-top:1.5rem;border-top:1px solid var(--rule);max-width:1080px;margin:0 auto;}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap;}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.5s ease,transform 0.5s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 @keyframes spin{to{transform:rotate(360deg);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 
-/* ── HOME SPECIFIC ── */
-.hero{padding:140px 2.5rem 96px;position:relative;overflow:hidden;display:grid;place-items:center;}
-.hero-bg{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(46,46,46,0.07) 59px,rgba(46,46,46,0.07) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(46,46,46,0.05) 59px,rgba(46,46,46,0.05) 60px);}
-.hero-inner{position:relative;max-width:860px;width:100%;text-align:center;}
+/* RESPONSIVE */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  #mainNav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .sec{padding:64px 1.5rem;}
+  .page-hero{padding:100px 1.5rem 60px;}
+  #siteFooter{padding:2rem 1.5rem 1.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .form-row-2{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .toast{right:1rem;left:1rem;max-width:none;}
+  .nav-mobile{padding:1.25rem 1.5rem;}
+}
+@media(max-width:380px){.sec{padding:52px 1rem;}.page-hero{padding:90px 1rem 52px;}#mainNav{padding:0 1rem;}}
+
+
+/* ── HOME PAGE EXTRAS ── */
+.hero{display:grid;place-items:center;padding:140px 2.5rem 100px;position:relative;overflow:hidden;margin-top:var(--nav-h);}
+.hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(46,46,46,0.07) 59px,rgba(46,46,46,0.07) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(46,46,46,0.05) 59px,rgba(46,46,46,0.05) 60px);pointer-events:none;}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
 .hero-tag{display:inline-block;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.3rem 0.75rem;margin-bottom:2rem;opacity:0;animation:fadeUp 0.6s 0.2s forwards;}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);opacity:0;animation:fadeUp 0.6s 0.35s forwards;}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.8rem,6vw,5rem);line-height:1.02;letter-spacing:-0.035em;color:var(--ink);opacity:0;animation:fadeUp 0.6s 0.35s forwards;}
 .hero h1 em{font-style:normal;color:var(--accent);}
-.hero-sub{margin:1.5rem auto 0;font-size:1rem;color:var(--muted);max-width:540px;opacity:0;animation:fadeUp 0.6s 0.5s forwards;}
-.hero-actions{margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.6s 0.65s forwards;}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:560px;margin-top:1.5rem;line-height:1.7;margin-left:auto;margin-right:auto;opacity:0;animation:fadeUp 0.6s 0.5s forwards;}
+.hero-actions{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp 0.6s 0.65s forwards;}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.85rem 1.6rem;cursor:pointer;border:none;transition:all 0.2s;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:#b84515;}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--ink3);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
 
 /* services */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:3rem;}
-.service-card{background:var(--cream);padding:2rem;position:relative;overflow:hidden;transition:background 0.25s;}
-.service-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.35s;}
-.service-card:hover{background:var(--paper);}
-.service-card:hover::after{width:100%;}
-.svc-num{font-family:var(--mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1rem;}
-.service-card h3{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.75rem;}
-.service-card p{font-size:0.85rem;color:var(--muted);line-height:1.65;}
-.service-duration{display:inline-block;margin-top:1.25rem;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ghost);border:1px solid var(--rule);padding:0.2rem 0.5rem;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.svc{background:var(--cream);padding:2rem;position:relative;transition:background 0.2s;}
+.svc:hover{background:var(--paper);}
+.svc-num{font-family:var(--mono);font-size:0.6rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1rem;}
+.svc h3{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:0.5rem;}
+.svc p{font-size:0.84rem;color:var(--muted);line-height:1.65;}
+.svc-dur{display:inline-block;margin-top:1rem;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ghost);border:1px solid var(--rule);padding:0.2rem 0.5rem;}
 
-/* how */
-.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;}
-.how-item{display:flex;gap:1.25rem;padding:1.5rem;border:1px solid transparent;transition:border-color 0.25s,background 0.25s;}
-.how-item:hover{border-color:var(--rule);background:var(--cream);}
-.how-icon{width:40px;height:40px;flex-shrink:0;background:var(--ink);display:grid;place-items:center;color:var(--cream);font-family:var(--mono);font-size:0.72rem;}
-.how-item h3{font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;}
-.how-item p{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+/* how it works */
+.how-bg{background:var(--paper);}
+.constraints{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.constraint{background:var(--cream);padding:1.75rem;}
+.constraint-num{font-family:var(--mono);font-size:0.6rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.75rem;}
+.constraint h4{font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--ink);margin-bottom:0.35rem;}
+.constraint p{font-size:0.82rem;color:var(--muted);line-height:1.65;}
+.how-bg .sec-title,.how-bg .sec-label{}
+.how-bg .sec-title{color:var(--ink);}
+.how-bg .sec-label{color:var(--accent);}
 
 /* who */
-.who-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
-.who-col-label{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.65rem;margin-bottom:1.5rem;display:inline-block;}
-.who-col-label.yes{background:rgba(212,83,26,0.1);color:var(--accent);}
-.who-col-label.no{background:rgba(90,90,90,0.1);color:var(--muted);}
-.who-list{list-style:none;display:flex;flex-direction:column;gap:0;}
-.who-list li{display:flex;gap:0.75rem;align-items:flex-start;padding:0.85rem 0;border-bottom:1px solid var(--rule);}
-.who-list li:last-child{border-bottom:none;}
-.who-check{width:18px;height:18px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;font-size:0.6rem;margin-top:2px;}
-.who-check.yes{background:var(--accent);color:#fff;}
-.who-check.no{background:var(--rule);color:var(--muted);}
-.who-list strong{display:block;font-family:var(--display);font-weight:600;font-size:0.88rem;color:var(--ink);margin-bottom:0.2rem;}
-.who-list span{font-size:0.82rem;color:var(--muted);}
+.who-cols{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.who-col{background:var(--cream);padding:2rem;}
+.who-col-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.65rem;margin-bottom:1.5rem;display:inline-block;}
+.yes-label{background:rgba(39,174,96,0.1);color:var(--green);}
+.no-label{background:rgba(192,57,43,0.1);color:var(--red);}
+.who-list{list-style:none;display:flex;flex-direction:column;gap:1rem;}
+.who-item{display:flex;align-items:flex-start;gap:0.75rem;}
+.who-check{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-size:0.65rem;margin-top:2px;}
+.who-check.yes{background:rgba(39,174,96,0.15);color:var(--green);}
+.who-check.no{background:rgba(192,57,43,0.1);color:var(--red);}
+.who-item strong{display:block;font-size:0.88rem;color:var(--ink);margin-bottom:0.2rem;}
+.who-item span{font-size:0.8rem;color:var(--muted);}
 
 /* leadership */
-.leader-card{display:flex;gap:2.5rem;align-items:flex-start;margin-top:2.5rem;flex-wrap:wrap;}
-.leader-avatar{width:88px;height:88px;flex-shrink:0;background:var(--ink3);border:1px solid var(--rule);display:grid;place-items:center;font-family:var(--display);font-size:1.8rem;font-weight:800;color:var(--accent);}
-.leader-info h3{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.5rem;}
-.leader-info p{color:#8a8a8a;font-size:0.9rem;line-height:1.7;max-width:560px;}
+.leadership-bg{background:var(--ink);}
+.leadership-bg .sec-title{color:var(--cream);}
+.leadership-bg .sec-label{color:var(--accent2);}
+.leader-card{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start;margin-top:2.5rem;border:1px solid var(--rule);background:var(--ink2);}
+.leader-img{background:var(--ink3);aspect-ratio:1;display:grid;place-items:center;font-family:var(--display);font-size:3rem;font-weight:800;color:var(--accent);}
+.leader-info{padding:2rem 2rem 2rem 0;}
+.leader-name{font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--cream);letter-spacing:-0.02em;}
+.leader-title{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);margin:0.4rem 0 1.25rem;}
+.leader-bio{font-size:0.88rem;color:#8a8a8a;line-height:1.75;}
 
-/* survey */
-#survey{background:var(--ink2);border-top:1px solid var(--rule);}
-.survey-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
-.survey-q{margin-bottom:1.75rem;}
-.survey-q label{display:block;font-family:var(--mono);font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:0.85rem;}
-.survey-options{display:flex;flex-wrap:wrap;gap:0.5rem;}
-.survey-option{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.06em;padding:0.5rem 0.85rem;border:1px solid var(--rule);color:var(--mid);background:transparent;cursor:pointer;transition:all 0.2s;}
-.survey-option:hover{border-color:var(--accent2);color:var(--accent2);}
-.survey-option.selected{background:var(--accent);border-color:var(--accent);color:#fff;}
-.survey-submit-row{margin-top:1.75rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-.survey-note{font-family:var(--mono);font-size:0.62rem;color:var(--muted);}
-#surveyThanks{display:none;font-family:var(--mono);font-size:0.78rem;color:var(--accent);}
-
-/* execution form */
-.form-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:3.5rem;margin-top:3rem;align-items:start;}
-.form-aside h3{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:1.25rem;}
-.aside-checks{display:flex;flex-direction:column;gap:0.85rem;}
-.aside-check{display:flex;gap:0.6rem;align-items:flex-start;font-size:0.85rem;color:var(--muted);}
-.aside-check::before{content:'\2192';color:var(--accent);font-family:var(--mono);flex-shrink:0;margin-top:1px;}
-.aside-contact{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule);}
-.aside-contact-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.85rem;}
-.aside-contact-link{display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.78rem;color:var(--ink);text-decoration:none;margin-bottom:0.6rem;transition:color 0.2s;}
+/* form section */
+#form{background:var(--paper);}
+.form-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;margin-top:3.5rem;align-items:start;}
+.form-aside h3{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:1.25rem;}
+.aside-checks{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;}
+.aside-check{display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:var(--muted);}
+.aside-check::before{content:'&#10003;';color:var(--accent);font-family:var(--mono);font-size:0.7rem;flex-shrink:0;}
+.aside-contact{border-top:1px solid var(--rule);padding-top:1.5rem;}
+.aside-contact-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.9rem;}
+.aside-contact-link{display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.78rem;color:var(--muted);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;}
 .aside-contact-link:hover{color:var(--accent);}
 .c-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-.c-dot.infra{background:var(--muted);}
-.form-box{background:var(--cream);border:1px solid var(--rule);padding:2.5rem;}
-.form-title{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);margin-bottom:0.4rem;}
-.form-note{font-size:0.78rem;color:var(--muted);font-family:var(--mono);margin-bottom:2rem;}
+.c-dot.infra{background:var(--mid);}
 .char-counter{font-family:var(--mono);font-size:0.6rem;color:var(--mid);text-align:right;margin-top:0.3rem;}
 .char-counter.warn{color:var(--accent);}
 
-/* ── RESPONSIVE HOME ── */
-@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.nav-links{gap:1rem;}}
 @media(max-width:900px){
-  nav#mainNav{padding:0 1.5rem;}
-  .nav-links{display:none;}
-  .nav-burger{display:flex;}
-  .page-section{padding:60px 1.5rem;}
-  footer.site-footer{padding:2.5rem 1.5rem 2rem;}
-  .footer-top{grid-template-columns:1fr 1fr;}
-  .hero{padding:110px 1.5rem 72px;}
-  .hero-actions{flex-direction:column;align-items:center;}
-  .hero-actions .btn{width:100%;max-width:300px;}
-  .how-grid{grid-template-columns:1fr;}
-  .who-cols{grid-template-columns:1fr;gap:2rem;}
-  .form-layout{grid-template-columns:1fr;gap:2rem;}
-  .form-aside{order:2;}.form-box{order:1;}
-  .survey-grid{grid-template-columns:1fr;}
+  .who-cols{grid-template-columns:1fr;}
+  .leader-card{grid-template-columns:1fr;}
+  .leader-img{aspect-ratio:3/1;}
+  .leader-info{padding:0 1.5rem 1.5rem;}
+  .form-layout{grid-template-columns:1fr;}
 }
-@media(max-width:700px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
-@media(max-width:600px){
-  .form-row-2{grid-template-columns:1fr;}
-  .services-grid{grid-template-columns:1fr;}
-  .form-box{padding:1.5rem;}
-  .toast{right:1rem;left:1rem;max-width:none;}
-  .back-top{bottom:1.25rem;left:1.25rem;}
-}
-@media(max-width:380px){nav#mainNav{padding:0 1rem;}.page-section{padding:44px 1rem;}.hero{padding:96px 1rem 60px;}}
+
+/* ── SITE SURVEY ── */
+#survey { background:var(--ink2); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+#survey .sec-label { color:var(--accent2); }
+#survey .sec-title { color:var(--cream); }
+#survey .sec-desc  { color:#8a8a8a; }
+.survey-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+.survey-q { margin-bottom:2rem; }
+.survey-q label { display:block; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ghost); margin-bottom:1rem; }
+.survey-options { display:flex; flex-wrap:wrap; gap:0.6rem; }
+.survey-option { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em; padding:0.5rem 0.9rem; border:1px solid var(--rule); color:var(--mid); background:transparent; cursor:pointer; transition:all 0.2s; }
+.survey-option:hover { border-color:var(--accent2); color:var(--accent2); }
+.survey-option.selected { background:var(--accent); border-color:var(--accent); color:#fff; }
+.survey-submit-row { margin-top:2rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+.survey-note { font-family:var(--mono); font-size:0.62rem; color:var(--muted); }
+#surveyThanks { display:none; font-family:var(--mono); font-size:0.8rem; color:var(--accent2); letter-spacing:0.08em; }
+@media(max-width:900px){ .survey-grid { grid-template-columns:1fr; } }
+
 </style>
 </head>
 <body>
@@ -236,97 +255,120 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
 <div class="progress-bar" id="progressBar"></div>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
-  <ul class="nav-links">
-    <li><a href="#what" data-section="what">Services</a></li>
-    <li><a href="#how" data-section="how">How It Works</a></li>
-    <li><a href="#who" data-section="who">Who It's For</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#what">Services</a></li>
     <li><a href="sales.html">Sales</a></li>
     <li><a href="careers.html">Careers</a></li>
-    <li><a href="#form" class="nav-cta" data-section="form">Start Execution</a></li>
+    <li><a href="policies.html">Policies</a></li>
+    <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="nav-overlay" id="navOverlay"></div>
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
-  <a href="#what" class="mobile-link">Services</a>
-  <a href="#how" class="mobile-link">How It Works</a>
-  <a href="#who" class="mobile-link">Who It's For</a>
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="index.html#what" class="mobile-link">Services</a>
   <a href="sales.html" class="mobile-link">Sales</a>
   <a href="careers.html" class="mobile-link">Careers</a>
-  <a href="#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
+  <a href="policies.html" class="mobile-link">Policies</a>
+  <a href="index.html#form" class="mobile-link" style="color:var(--accent)">&#8594; Start Execution</a>
 </nav>
 
+<script>
+/* ═══════════════════════════════════════════════════
+   WizDevTech — Supabase Client
+   URL:  https://xlnuzbgwwthecvfigchw.supabase.co
+   ═══════════════════════════════════════════════════ */
+var SUPA = (function(){
+  var URL = 'https://xlnuzbgwwthecvfigchw.supabase.co';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ';
+
+  function insert(table, data){
+    return fetch(URL + '/rest/v1/' + table, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': KEY,
+        'Authorization': 'Bearer ' + KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+  }
+
+  return { insert: insert };
+})();
+</script>
+
 <!-- HERO -->
-<section id="home" class="hero">
+<section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-tag">Embedded Execution</div>
     <h1>Teams who need things <em>finished.</em></h1>
-    <p class="hero-sub">We enter your existing systems, complete what's half-done, stabilize what's breaking, and exit cleanly. No vision, no teaching&#8212;just execution.</p>
+    <p class="hero-sub">We enter your existing systems, complete what&#8217;s half-done, stabilize what&#8217;s breaking, and exit cleanly. No vision, no teaching&#8212;just execution.</p>
     <div class="hero-actions">
-      <a href="#form" class="btn btn-primary btn-arrow">Start Execution</a>
+      <a href="#form" class="btn btn-primary">Start Execution &#8594;</a>
       <a href="#what" class="btn btn-outline">See What We Do</a>
     </div>
   </div>
 </section>
 
 <!-- WHAT WE DO -->
-<section id="what" class="page-section" style="background:var(--cream)">
-  <div class="container">
-    <div class="section-label reveal">01 / What We Do</div>
-    <h2 class="section-title reveal rd1">Embedded execution inside active systems.</h2>
-    <p class="section-desc reveal rd2">Engagements are 2&#8211;6 weeks, scoped, and end with documented handoff. We finish what others started.</p>
+<section id="what">
+  <div class="sec">
+    <div class="sec-label reveal">01 / What We Do</div>
+    <h2 class="sec-title reveal rd1">Embedded execution inside active systems.</h2>
+    <p class="sec-desc reveal rd2">Engagements are 2&#8211;6 weeks, scoped, and end with documented handoff. We finish what others started.</p>
     <div class="services-grid reveal rd2">
-      <div class="service-card"><div class="svc-num">01</div><h3>Finish Half-Built Systems</h3><p>Complete tools, documentation, boards, and setups that were started but never finished.</p><span class="service-duration">2&#8211;4 weeks</span></div>
-      <div class="service-card"><div class="svc-num">02</div><h3>Repair Breaking Workflows</h3><p>Fix automation and processes that are failing downstream. We enter after internal teams stall or vendors disengage.</p><span class="service-duration">varies</span></div>
-      <div class="service-card"><div class="svc-num">03</div><h3>Clean &amp; Handoff Data</h3><p>Migrate, organize, and structure data with clear documentation and training materials.</p><span class="service-duration">2&#8211;4 weeks</span></div>
-      <div class="service-card"><div class="svc-num">04</div><h3>Convert Notes to Tasks</h3><p>Transform meeting notes, voice memos, and scattered ideas into completed, trackable tasks.</p><span class="service-duration">1&#8211;2 weeks</span></div>
+      <div class="svc"><div class="svc-num">01</div><h3>Finish Half-Built Systems</h3><p>Complete tools, documentation, boards, and setups that were started but never finished.</p><span class="svc-dur">2&#8211;4 weeks</span></div>
+      <div class="svc"><div class="svc-num">02</div><h3>Repair Breaking Workflows</h3><p>Fix automation and processes that are failing downstream. We enter after internal teams stall or vendors disengage.</p><span class="svc-dur">varies</span></div>
+      <div class="svc"><div class="svc-num">03</div><h3>Clean &amp; Handoff Data</h3><p>Migrate, organize, and structure data with clear documentation and training materials.</p><span class="svc-dur">2&#8211;4 weeks</span></div>
+      <div class="svc"><div class="svc-num">04</div><h3>Convert Notes to Tasks</h3><p>Transform meeting notes, voice memos, and scattered ideas into completed, trackable tasks.</p><span class="svc-dur">1&#8211;2 weeks</span></div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how" class="page-section paper">
-  <div class="container">
-    <div class="section-label reveal">02 / How It Works</div>
-    <h2 class="section-title reveal rd1">Our process eliminates ambiguity.</h2>
-    <p class="section-desc reveal rd2">These constraints ensure clean, professional execution without drama.</p>
-    <div class="how-grid">
-      <div class="how-item reveal rd1"><div class="how-icon">2&#8211;6</div><div><h3>Engagements are 2&#8211;6 weeks</h3><p>Scoped with clear start and end dates. Deliverables defined before work begins.</p></div></div>
-      <div class="how-item reveal rd2"><div class="how-icon">&#10003;</div><div><h3>Specific outcomes agreed upfront</h3><p>No scope creep. You know exactly what will be completed.</p></div></div>
-      <div class="how-item reveal rd1"><div class="how-icon">&#9881;</div><div><h3>We execute, we don't educate</h3><p>Your team stays focused. No training sessions included.</p></div></div>
-      <div class="how-item reveal rd2"><div class="how-icon">&#8593;</div><div><h3>Authority through completion</h3><p>Our influence comes from results, not presentations.</p></div></div>
-      <div class="how-item reveal rd1"><div class="how-icon">&#128196;</div><div><h3>Documented handoff required</h3><p>Every engagement ends with documentation and knowledge transfer.</p></div></div>
-      <div class="how-item reveal rd2"><div class="how-icon">&#8804;2</div><div><h3>Limited meetings</h3><p>Max 2 meetings per week. Progress updates are written, not verbal.</p></div></div>
+<section id="how" class="how-bg">
+  <div class="sec">
+    <div class="sec-label reveal">02 / How It Works</div>
+    <h2 class="sec-title reveal rd1">Six constraints that define every engagement.</h2>
+    <div class="constraints reveal rd2">
+      <div class="constraint"><div class="constraint-num">01</div><h4>2&#8211;6 Week Engagements</h4><p>Fixed-term. We enter, execute, and exit. No open-ended arrangements.</p></div>
+      <div class="constraint"><div class="constraint-num">02</div><h4>Outcomes Upfront</h4><p>Deliverables are defined before work starts. You know exactly what done looks like.</p></div>
+      <div class="constraint"><div class="constraint-num">03</div><h4>Execute, Not Educate</h4><p>We do the work. We don&#8217;t coach your team or run workshops during the engagement.</p></div>
+      <div class="constraint"><div class="constraint-num">04</div><h4>Authority Through Completion</h4><p>Our influence comes from delivering results, not from titles or relationships.</p></div>
+      <div class="constraint"><div class="constraint-num">05</div><h4>Documented Handoff</h4><p>Every engagement ends with documentation your team can use without us.</p></div>
+      <div class="constraint"><div class="constraint-num">06</div><h4>&#8804;2 Meetings/Week</h4><p>Maximum two meetings per week. Everything else is written updates and async work.</p></div>
     </div>
   </div>
 </section>
 
 <!-- WHO IT'S FOR -->
-<section id="who" class="page-section" style="background:var(--cream)">
-  <div class="container">
-    <div class="section-label reveal">03 / Who It's For</div>
-    <h2 class="section-title reveal rd1">Specific criteria for successful engagements.</h2>
-    <p class="section-desc reveal rd2">If you don't fit these profiles, we're likely not the right partner.</p>
+<section id="who">
+  <div class="sec">
+    <div class="sec-label reveal">03 / Who It&#8217;s For</div>
+    <h2 class="sec-title reveal rd1">Right fit. Wrong fit.</h2>
     <div class="who-cols reveal rd2">
-      <div>
-        <span class="who-col-label yes">We Work Well With</span>
+      <div class="who-col">
+        <span class="who-col-label yes-label">&#10003; Good Fit</span>
         <ul class="who-list">
-          <li><div class="who-check yes">&#10003;</div><div><strong>Founders with stalled projects</strong><span>Specific unfinished systems, need completion within 60&#8211;90 days.</span></div></li>
-          <li><div class="who-check yes">&#10003;</div><div><strong>Teams under 20 people</strong><span>Lack specialized ops talent but have clear execution needs.</span></div></li>
-          <li><div class="who-check yes">&#10003;</div><div><strong>Documented work environments</strong><span>Value written processes, async communication, clear deliverables.</span></div></li>
-          <li><div class="who-check yes">&#10003;</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire execution specialists.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Teams with defined problems</strong><span>You know what&#8217;s broken, just not how to fix it.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Leaders who want outcomes</strong><span>You care about results, not process theater.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Organizations mid-execution</strong><span>Something was started and stalled. We finish it.</span></div></li>
         </ul>
       </div>
-      <div>
-        <span class="who-col-label no">We Don't Work With</span>
+      <div class="who-col">
+        <span class="who-col-label no-label">&#10005; Not a Fit</span>
         <ul class="who-list">
-          <li><div class="who-check no">&#10005;</div><div><strong>Strategy-only requests</strong><span>Clients who want advice or consulting without implementation.</span></div></li>
-          <li><div class="who-check no">&#10005;</div><div><strong>Team building or coaching</strong><span>Motivation, inspiration, or team development exercises.</span></div></li>
-          <li><div class="who-check no">&#10005;</div><div><strong>Open-ended retainers</strong><span>Advisory relationships without defined exit points.</span></div></li>
-          <li><div class="who-check no">&#10005;</div><div><strong>Cultural or identity work</strong><span>Branding, narrative building, or organizational philosophy.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Teams still exploring options</strong><span>We execute against defined scope, not open-ended discovery.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Organizations needing strategy</strong><span>We implement strategy. We don&#8217;t create it.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Clients who need hand-holding</strong><span>We work best with teams that can operate independently post-handoff.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>No defined budget or timeline</strong><span>Every engagement requires scoped commitment before we start.</span></div></li>
         </ul>
       </div>
     </div>
@@ -334,30 +376,32 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
 </section>
 
 <!-- LEADERSHIP -->
-<section id="leadership" class="page-section dark">
-  <div class="container">
-    <div class="section-label reveal">04 / Leadership</div>
-    <div class="leader-card reveal rd1">
-      <div class="leader-avatar">TM</div>
+<section id="leadership" class="leadership-bg">
+  <div class="sec">
+    <div class="sec-label reveal">04 / Leadership</div>
+    <h2 class="sec-title reveal rd1" style="color:var(--cream)">The person accountable.</h2>
+    <div class="leader-card reveal rd2">
+      <div class="leader-img">TM</div>
       <div class="leader-info">
-        <h3>Teri Massey</h3>
-        <p>15+ years stabilizing broken systems and completing stalled projects. Specializes in entering complex situations after other vendors have failed, delivering specific outcomes, and documenting processes for handoff.</p>
+        <div class="leader-name">Teri Massey</div>
+        <div class="leader-title">Founder &amp; Executive Director</div>
+        <p class="leader-bio">Teri built WizDevTech around a single observation: most organizations don&#8217;t fail from lack of strategy&#8212;they fail from lack of execution. With a background in operational systems and embedded delivery, she created an engagement model built entirely around completing defined work within defined windows. No retainers, no ambiguity, no scope creep.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SITE SURVEY -->
-<section id="survey" class="page-section dark" style="border-top:1px solid var(--rule);">
-  <div class="container">
-    <div class="section-label reveal">Site Survey</div>
-    <h2 class="section-title light reveal rd1">Help us understand what you need.</h2>
-    <p class="section-desc light reveal rd2">60 seconds. Your answers improve our services.</p>
+<section id="survey">
+  <div class="sec">
+    <div class="sec-label reveal">Site Survey</div>
+    <h2 class="sec-title reveal rd1">Help us understand what you need.</h2>
+    <p class="sec-desc reveal rd2">60 seconds. Your answers improve our services.</p>
     <form id="surveyForm">
       <div class="survey-grid">
         <div class="survey-q reveal rd1">
           <label>What type of support are you looking for?</label>
-          <div class="survey-options" data-q="serviceNeeded">
+          <div class="survey-options" data-q="service_needed">
             <button type="button" class="survey-option" data-v="finish-systems">Finish Half-Built Systems</button>
             <button type="button" class="survey-option" data-v="repair-workflows">Repair Workflows</button>
             <button type="button" class="survey-option" data-v="data-cleanup">Data Cleanup</button>
@@ -366,8 +410,8 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
           </div>
         </div>
         <div class="survey-q reveal rd2">
-          <label>What's your team size?</label>
-          <div class="survey-options" data-q="teamSize">
+          <label>What&#8217;s your team size?</label>
+          <div class="survey-options" data-q="team_size">
             <button type="button" class="survey-option" data-v="solo">Solo / Founder</button>
             <button type="button" class="survey-option" data-v="2-5">2&#8211;5 people</button>
             <button type="button" class="survey-option" data-v="6-20">6&#8211;20 people</button>
@@ -385,378 +429,269 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
         </div>
         <div class="survey-q reveal rd2">
           <label>Where did things break down?</label>
-          <div class="survey-options" data-q="executionType">
+          <div class="survey-options" data-q="breakdown">
             <button type="button" class="survey-option" data-v="vendor-left">Vendor left</button>
-            <button type="button" class="survey-option" data-v="internal-stall">Team stalled</button>
+            <button type="button" class="survey-option" data-v="team-stalled">Team stalled</button>
             <button type="button" class="survey-option" data-v="never-started">Never started</button>
-            <button type="button" class="survey-option" data-v="started-messy">Got messy</button>
+            <button type="button" class="survey-option" data-v="got-messy">Got messy</button>
           </div>
         </div>
       </div>
       <div class="survey-submit-row reveal rd3">
-        <button type="submit" class="btn btn-primary btn-arrow">Submit Feedback</button>
+        <button type="submit" class="btn btn-primary">Submit Feedback &#8594;</button>
         <span class="survey-note">Anonymous &#183; No account needed</span>
-        <span id="surveyThanks">&#10003; Thanks &#8212; recorded.</span>
+        <span id="surveyThanks">&#10003; Thanks &#8212; your feedback was recorded.</span>
       </div>
     </form>
   </div>
 </section>
 
+
 <!-- EXECUTION REQUEST FORM -->
-<section id="form" class="page-section paper">
-  <div class="container">
-    <div class="section-label reveal">05 / Start Execution</div>
-    <h2 class="section-title reveal rd1">Ready to get specific work finished?</h2>
-    <p class="section-desc reveal rd2">Complete the form below. We review every submission personally and respond within 2 business days.</p>
+<section id="form">
+  <div class="sec">
+    <div class="sec-label reveal">05 / Start Execution</div>
+    <h2 class="sec-title reveal rd1">Ready to finish something?</h2>
+    <p class="sec-desc reveal rd2">If you have defined problems and budget allocated, complete the form below.</p>
     <div class="form-layout">
       <div class="form-aside reveal rd2">
         <h3>Before you submit</h3>
         <div class="aside-checks">
-          <div class="aside-check">You have a defined, scoped problem&#8212;not a vague need for help.</div>
-          <div class="aside-check">Budget is allocated and approved.</div>
-          <div class="aside-check">You need execution, not advice or strategy.</div>
-          <div class="aside-check">You're prepared for a 2&#8211;6 week fixed engagement.</div>
+          <div class="aside-check">You have a specific, defined problem.</div>
+          <div class="aside-check">Budget is approved and allocated.</div>
           <div class="aside-check">A decision maker is completing this form.</div>
+          <div class="aside-check">You can start within 30 days.</div>
         </div>
         <div class="aside-contact">
           <div class="aside-contact-label">Prefer to reach out directly?</div>
-          <a href="mailto:dev@wizdevtech.com" class="aside-contact-link"><span class="c-dot"></span>dev@wizdevtech.com</a>
-          <a href="mailto:infra@wizdevtech.com" class="aside-contact-link"><span class="c-dot infra"></span>infra@wizdevtech.com</a>
+          <a href="/cdn-cgi/l/email-protection#6400011224130d1e0001121001070c4a070b09" class="aside-contact-link"><span class="c-dot"></span><span class="__cf_email__" data-cfemail="e98d8c9fa99e80938d8c9f9d8c8a81c78a8684">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#1871767e6a79586f71627c7d6e6c7d7b70367b7775" class="aside-contact-link"><span class="c-dot infra"></span><span class="__cf_email__" data-cfemail="fc95929a8e9dbc8b958698998a88999f94d29f9391">[email&#160;protected]</span></a>
         </div>
       </div>
       <div class="form-box reveal rd3">
         <div class="form-title">Execution Request Form</div>
         <div class="form-note">All fields required &middot; Response within 2 business days</div>
-        <form id="execForm" novalidate autocomplete="on">
-          <!-- HONEYPOT: bots fill this, humans don't see it -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="hp_name">Leave this blank</label>
-            <input type="text" id="hp_name" name="hp_name" tabindex="-1" autocomplete="off"/>
-          </div>
-          <!-- TIMESTAMP: too-fast submissions = bot -->
-          <input type="hidden" id="formTimestamp" name="formTimestamp"/>
-
+        <form id="execForm" novalidate>
           <div class="form-row-2">
-            <div class="form-row">
-              <label class="form-label" for="firstName">First Name <span class="req">*</span></label>
-              <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Jane" autocomplete="given-name"/>
-              <div class="field-error" id="firstNameErr">Required.</div>
-            </div>
-            <div class="form-row">
-              <label class="form-label" for="lastName">Last Name <span class="req">*</span></label>
-              <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith" autocomplete="family-name"/>
-              <div class="field-error" id="lastNameErr">Required.</div>
-            </div>
+            <div class="form-row"><label for="firstName">First Name <span class="req">*</span></label><input type="text" class="form-control" id="firstName" placeholder="Jane" autocomplete="given-name"/><div class="field-error" id="firstNameErr">Required.</div></div>
+            <div class="form-row"><label for="lastName">Last Name <span class="req">*</span></label><input type="text" class="form-control" id="lastName" placeholder="Smith" autocomplete="family-name"/><div class="field-error" id="lastNameErr">Required.</div></div>
           </div>
-          <div class="form-row">
-            <label class="form-label" for="email">Work Email <span class="req">*</span></label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="jane@company.com" autocomplete="email"/>
-            <div class="field-error" id="emailErr">Valid email required.</div>
-          </div>
-          <div class="form-row">
-            <label class="form-label" for="company">Company <span class="req">*</span></label>
-            <input type="text" class="form-control" id="company" name="company" placeholder="Acme Corp" autocomplete="organization"/>
-            <div class="field-error" id="companyErr">Required.</div>
-          </div>
+          <div class="form-row"><label for="emailField">Work Email <span class="req">*</span></label><input type="email" class="form-control" id="emailField" placeholder="jane@company.com" autocomplete="email"/><div class="field-error" id="emailErr">Valid email required.</div></div>
+          <div class="form-row"><label for="company">Company <span class="req">*</span></label><input type="text" class="form-control" id="company" placeholder="Acme Corp" autocomplete="organization"/><div class="field-error" id="companyErr">Required.</div></div>
           <div class="form-row-2">
-            <div class="form-row">
-              <label class="form-label" for="timeline">Timeline <span class="req">*</span></label>
-              <select class="form-control" id="timeline" name="timeline">
-                <option value="">Select timeline</option>
-                <option value="immediate">Immediate (within 2 weeks)</option>
-                <option value="short">Short-term (1&#8211;2 months)</option>
-                <option value="medium">Medium-term (2&#8211;4 months)</option>
-                <option value="long">Long-term (4+ months)</option>
-              </select>
-              <div class="field-error" id="timelineErr">Required.</div>
-            </div>
-            <div class="form-row">
-              <label class="form-label" for="budget">Budget Range <span class="req">*</span></label>
-              <select class="form-control" id="budget" name="budget">
-                <option value="">Select range</option>
-                <option value="under10">Under $10,000</option>
-                <option value="10to25">$10,000&#8211;$25,000</option>
-                <option value="25to50">$25,000&#8211;$50,000</option>
-                <option value="50to100">$50,000&#8211;$100,000</option>
-                <option value="over100">Over $100,000</option>
-              </select>
-              <div class="field-error" id="budgetErr">Required.</div>
-            </div>
+            <div class="form-row"><label for="timeline">Timeline <span class="req">*</span></label><select class="form-control" id="timeline"><option value="">Select timeline</option><option value="immediate">Immediate (within 2 weeks)</option><option value="short">Short-term (1&#8211;2 months)</option><option value="medium">Medium-term (2&#8211;4 months)</option><option value="long">Long-term (4+ months)</option></select><div class="field-error" id="timelineErr">Required.</div></div>
+            <div class="form-row"><label for="budget">Budget Range <span class="req">*</span></label><select class="form-control" id="budget"><option value="">Select range</option><option value="under10">Under $10,000</option><option value="10to25">$10,000&#8211;$25,000</option><option value="25to50">$25,000&#8211;$50,000</option><option value="50to100">$50,000&#8211;$100,000</option><option value="over100">Over $100,000</option></select><div class="field-error" id="budgetErr">Required.</div></div>
           </div>
-          <div class="form-row">
-            <label class="form-label" for="description">Describe the work to be completed <span class="req">*</span></label>
-            <textarea class="form-control" id="description" name="description" placeholder="Be specific: what exists, what's broken or unfinished, and what done looks like." maxlength="500"></textarea>
-            <div class="char-counter" id="charCounter">0 / 500</div>
-            <div class="field-error" id="descriptionErr">Min 30 characters required.</div>
-          </div>
-          <button type="submit" class="btn-submit" id="submitBtn">
-            <div class="spinner"></div>
-            <span class="btn-text">Submit Request &#8594;</span>
-          </button>
+          <div class="form-row"><label for="description">Describe the work to be completed <span class="req">*</span></label><textarea class="form-control" id="description" placeholder="Be specific: what exists, what&#8217;s broken or unfinished, and what done looks like." maxlength="500"></textarea><div class="char-counter" id="charCounter">0 / 500</div><div class="field-error" id="descriptionErr">Min 30 characters required.</div></div>
+          <button type="submit" class="btn-submit" id="submitBtn"><div class="spinner"></div><span class="btn-text">Submit Request &#8594;</span></button>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="form-success-icon">&#10003;</div>
-          <h3>Request Received</h3>
-          <p>We review each submission personally and respond within 2 business days.</p>
+          <h3 style="font-family:var(--display);font-weight:700;margin-bottom:0.5rem">Request Received</h3>
+          <p style="font-size:0.88rem;color:var(--muted)">Saved to our system. We&#8217;ll respond within 2 business days.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-col">
-        <h4>WizDevTech</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#what">Services</a></li>
-          <li><a href="#leadership">Leadership</a></li>
-          <li><a href="#form">Start Execution</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="careers.html">We're Hiring</a></li>
-          <li><a href="sales.html">Sales &amp; Pricing</a></li>
-          <li><a href="policies.html">Policies</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li>
-          <li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li>
-          <li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li>
-          <li><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a></li>
-          <li><a href="policies.html">Privacy Policy</a></li>
-          <li><a href="policies.html#terms">Terms of Service</a></li>
-        </ul>
-      </div>
+<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer id="siteFooter">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
+      <p class="footer-tagline">Embedded execution for teams who need things finished.</p>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-logo-text">Wiz<span>Dev</span>Tech</div>
-      <span class="footer-copy">&copy; 2025 WizDevTech. All rights reserved.</span>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#what">Services</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="sales.html">Sales &amp; Pricing</a></li>
+        <li><a href="policies.html">Privacy Policy</a></li>
+        <li><a href="policies.html#terms">Terms of Service</a></li>
+        <li><a href="policies.html#cookies">Cookie Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#94f0f1e2d4e3fdeef0f1e2e0f1f7fcbaf7fbf9"><span class="__cf_email__" data-cfemail="81e5e4f7c1f6e8fbe5e4f7f5e4e2e9afe2eeec">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#85f6e4e9e0f6c5f2ecffe1e0f3f1e0e6edabe6eae8"><span class="__cf_email__" data-cfemail="84f7e5e8e1f7c4f3edfee0e1f2f0e1e7ecaae7ebe9">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#caa9abb8afafb8b98abda3b0aeafbcbeafa9a2e4a9a5a7"><span class="__cf_email__" data-cfemail="ddbebcafb8b8afae9daab4a7b9b8aba9b8beb5f3beb2b0">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#55262025253a272115223c2f3130232130363d7b363a38"><span class="__cf_email__" data-cfemail="fa898f8a8a95888eba8d93809e9f8c8e9f9992d4999597">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#7f131a181e133f0816051b1a090b1a1c17511c1012"><span class="__cf_email__" data-cfemail="54383133353814233d2e3031222031373c7a373b39">[email&#160;protected]</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <div class="footer-links">
+      <a href="/cdn-cgi/l/email-protection#f784828787988583b7809e8d9392818392949fd994989a">Technical Support</a>
+      <a href="policies.html">Privacy &amp; Legal</a>
+      <a href="index.html#form">Start Execution &#8594;</a>
     </div>
   </div>
 </footer>
 
-<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function(){
+  'use strict';
+  var nav=document.getElementById('mainNav');
+  var progress=document.getElementById('progressBar');
+  var backTop=document.getElementById('backTop');
+  var burger=document.getElementById('burger');
+  var mobileMenu=document.getElementById('mobileMenu');
+  var toast=document.getElementById('toast');
+  var toastTimer;
+
+  /* active nav page highlight */
+  var page=window.location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-links a,.nav-mobile a').forEach(function(a){
+    var h=a.getAttribute('href')||'';
+    if(h===page||(page===''&&h==='index.html')||(h===page)) a.classList.add('active');
+  });
+
+  /* scroll */
+  window.addEventListener('scroll',function(){
+    var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;
+    if(progress) progress.style.width=(t>0?(s/t*100):0)+'%';
+    if(nav) nav.classList.toggle('scrolled',s>40);
+    if(backTop) backTop.classList.toggle('show',s>400);
+  },{passive:true});
+  if(backTop) backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* burger */
+  if(burger){
+    burger.addEventListener('click',function(){
+      var o=burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded',String(o));
+      mobileMenu.classList.toggle('open',o);
+      mobileMenu.setAttribute('aria-hidden',String(!o));
+    });
+    document.querySelectorAll('.mobile-link').forEach(function(l){
+      l.addEventListener('click',function(){
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden','true');
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(mobileMenu.classList.contains('open')&&!nav.contains(e.target)&&!mobileMenu.contains(e.target)){
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
+
+  /* reveal */
+  var reveals=document.querySelectorAll('.reveal');
+  if(reveals.length){
+    var ro=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+    },{threshold:0.1});
+    reveals.forEach(function(el){ro.observe(el);});
+  }
+
+  /* toast */
+  window.showToast=function(msg,type,dur){
+    clearTimeout(toastTimer);
+    if(!toast) return;
+    toast.textContent=msg;
+    toast.className='toast'+(type==='error'?' error':'')+' show';
+    toastTimer=setTimeout(function(){toast.classList.remove('show');},dur||3500);
+  };
+
+  /* field validator */
+  window.isEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);};
+  window.vf=function(id,eid,fn){
+    var el=document.getElementById(id),err=document.getElementById(eid);
+    if(!el) return true;
+    var ok=fn(el.value.trim());
+    el.classList.toggle('error',!ok);
+    el.classList.toggle('valid',ok);
+    if(err) err.classList.toggle('show',!ok);
+    return ok;
+  };
+
+  /* page view tracking */
+  SUPA.insert('page_views',{
+    page: window.location.pathname||'/',
+    referrer: document.referrer||'direct',
+    user_agent: navigator.userAgent
+  }).catch(function(){});
+})();
+</script>
+
 
 <script>
 (function(){
-  'use strict';
-
-  /* ── NAV ── */
-  var nav     = document.getElementById('mainNav');
-  var prog    = document.getElementById('progressBar');
-  var burger  = document.getElementById('burger');
-  var menu    = document.getElementById('mobileMenu');
-  var overlay = document.getElementById('navOverlay');
-  var backTop = document.getElementById('backTop');
-
-  window.addEventListener('scroll', function(){
-    var s = window.scrollY, t = document.body.scrollHeight - window.innerHeight;
-    if(prog) prog.style.width = t > 0 ? (s/t*100)+'%' : '0%';
-    nav.classList.toggle('scrolled', s > 40);
-    if(backTop) backTop.classList.toggle('show', s > 400);
-  }, {passive:true});
-
-  if(backTop) backTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
-
-  function openMenu()  { burger.classList.add('open'); menu.classList.add('open'); if(overlay) overlay.classList.add('show'); burger.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); }
-  function closeMenu() { burger.classList.remove('open'); menu.classList.remove('open'); if(overlay) overlay.classList.remove('show'); burger.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }
-  if(burger) burger.addEventListener('click', function(){ menu.classList.contains('open') ? closeMenu() : openMenu(); });
-  if(overlay) overlay.addEventListener('click', closeMenu);
-  document.querySelectorAll('.mobile-link').forEach(function(l){ l.addEventListener('click', closeMenu); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
-
-  /* ── ACTIVE NAV ── */
-  var sectionIds = ['home','what','how','who','leadership','survey','form'];
-  function highlightNav(){
-    var current = 'home';
-    sectionIds.forEach(function(id){
-      var el = document.getElementById(id);
-      if(el && window.scrollY >= el.offsetTop - 120) current = id;
-    });
-    document.querySelectorAll('.nav-links a[data-section]').forEach(function(a){
-      a.classList.toggle('active', a.dataset.section === current);
-    });
-  }
-  window.addEventListener('scroll', highlightNav, {passive:true});
-
-  /* ── REVEAL ── */
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }});
-  }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
-
-  /* ── TOAST ── */
-  var _tt;
-  function showToast(msg, isErr, dur){
-    var el = document.getElementById('toast');
-    if(!el) return;
-    clearTimeout(_tt);
-    el.textContent = msg;
-    el.className = 'toast' + (isErr?' toast-error':'') + ' show';
-    _tt = setTimeout(function(){ el.classList.remove('show'); }, dur||4000);
-  }
 
   /* ── SURVEY ── */
-  document.querySelectorAll('.survey-options').forEach(function(g){
-    g.querySelectorAll('.survey-option').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        g.querySelectorAll('.survey-option').forEach(function(b){ b.classList.remove('selected'); });
+  document.querySelectorAll('.survey-options').forEach(function(group){
+    group.querySelectorAll('.survey-option').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        group.querySelectorAll('.survey-option').forEach(function(b){b.classList.remove('selected');});
         btn.classList.add('selected');
       });
     });
   });
-  document.getElementById('surveyForm').addEventListener('submit', function(e){
+
+  document.getElementById('surveyForm').addEventListener('submit',function(e){
     e.preventDefault();
-    var answers = {};
+    var answers={};
     document.querySelectorAll('.survey-options').forEach(function(g){
-      var sel = g.querySelector('.selected');
-      if(sel) answers[g.dataset.q] = sel.dataset.v;
+      var sel=g.querySelector('.selected');
+      if(sel) answers[g.dataset.q]=sel.dataset.v;
     });
-    /* Store locally; replace with POST to /api/crm/survey when Supabase is wired */
-    try{
-      var existing = JSON.parse(localStorage.getItem('wdt_surveys')||'[]');
-      existing.push({ts: new Date().toISOString(), answers: answers});
-      localStorage.setItem('wdt_surveys', JSON.stringify(existing.slice(-50)));
-    }catch(err){}
-    document.getElementById('surveyThanks').style.display = 'inline';
-    document.querySelector('#surveyForm .btn-primary').disabled = true;
-    showToast('Survey submitted. Thank you!');
+    /* POST to Supabase survey_responses */
+    SUPA.insert('survey_responses',{
+      execution_type: answers.service_needed||null,
+      urgency:        answers.urgency||null,
+      note:           JSON.stringify({team_size:answers.team_size||null,breakdown:answers.breakdown||null})
+    }).catch(function(){});
+    document.getElementById('surveyThanks').style.display='inline';
+    document.querySelector('#surveyForm .btn-primary').disabled=true;
+    window.showToast('Survey submitted. Thank you!');
   });
 
-  /* ── CHAR COUNTER ── */
-  var desc = document.getElementById('description');
-  var ctr  = document.getElementById('charCounter');
-  if(desc) desc.addEventListener('input', function(){
-    var l = desc.value.length;
-    ctr.textContent = l + ' / 500';
-    ctr.classList.toggle('warn', l > 420);
-  });
+  /* char counter */
+  var desc=document.getElementById('description');
+  var ctr=document.getElementById('charCounter');
+  if(desc) desc.addEventListener('input',function(){var l=desc.value.length;ctr.textContent=l+' / 500';ctr.classList.toggle('warn',l>420);});
 
-  /* ── FORM: set timestamp on load (bot detection) ── */
-  var tsEl = document.getElementById('formTimestamp');
-  if(tsEl) tsEl.value = Date.now().toString();
-
-  /* ── FORM VALIDATION ── */
-  var isEmail = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); };
-  function vf(id, eid, fn){
-    var el = document.getElementById(id), err = document.getElementById(eid);
-    if(!el||!err) return true;
-    var ok = fn(el.value.trim());
-    el.classList.toggle('error',!ok); el.classList.toggle('valid',ok); err.classList.toggle('show',!ok);
-    return ok;
-  }
-  var fields = [
-    {id:'firstName', eid:'firstNameErr',   fn:function(v){return v.length>0;},      ev:'blur'},
-    {id:'lastName',  eid:'lastNameErr',    fn:function(v){return v.length>0;},      ev:'blur'},
-    {id:'email',     eid:'emailErr',       fn:isEmail,                               ev:'blur'},
-    {id:'company',   eid:'companyErr',     fn:function(v){return v.length>0;},      ev:'blur'},
-    {id:'timeline',  eid:'timelineErr',    fn:function(v){return v.length>0;},      ev:'change'},
-    {id:'budget',    eid:'budgetErr',      fn:function(v){return v.length>0;},      ev:'change'},
-    {id:'description',eid:'descriptionErr',fn:function(v){return v.length>=30;},    ev:'blur'},
+  /* validation rules */
+  var fields=[
+    {id:'firstName',  eid:'firstNameErr',  fn:function(v){return v.length>0;},   ev:'blur'},
+    {id:'lastName',   eid:'lastNameErr',   fn:function(v){return v.length>0;},   ev:'blur'},
+    {id:'emailField', eid:'emailErr',      fn:window.isEmail,                       ev:'blur'},
+    {id:'company',    eid:'companyErr',    fn:function(v){return v.length>0;},   ev:'blur'},
+    {id:'timeline',   eid:'timelineErr',   fn:function(v){return v.length>0;},   ev:'change'},
+    {id:'budget',     eid:'budgetErr',     fn:function(v){return v.length>0;},   ev:'change'},
+    {id:'description',eid:'descriptionErr',fn:function(v){return v.length>=30;}, ev:'blur'},
   ];
   fields.forEach(function(f){
-    var el = document.getElementById(f.id);
-    if(el) el.addEventListener(f.ev, function(){ vf(f.id,f.eid,f.fn); });
+    var el=document.getElementById(f.id);
+    if(el) el.addEventListener(f.ev,function(){window.vf(f.id,f.eid,f.fn);});
   });
 
-  /* ── FORM SUBMIT ── */
-  document.getElementById('execForm').addEventListener('submit', function(e){
+  /* form submit → Supabase */
+  document.getElementById('execForm').addEventListener('submit',function(e){
     e.preventDefault();
-
-    /* BOT CHECK 1: honeypot filled = bot */
-    var hp = document.getElementById('hp_name');
-    if(hp && hp.value.length > 0){ console.warn('Bot detected: honeypot filled'); return; }
-
-    /* BOT CHECK 2: submitted too fast (under 3 seconds = bot) */
-    var ts = parseInt(document.getElementById('formTimestamp').value||'0', 10);
-    if(ts > 0 && (Date.now() - ts) < 3000){ console.warn('Bot detected: submitted too fast'); return; }
-
-    var ok = fields.map(function(f){ return vf(f.id,f.eid,f.fn); }).every(Boolean);
-    if(!ok){ showToast('Please fix the errors above.', true); return; }
-
-    var btn = document.getElementById('submitBtn');
-    btn.disabled = true; btn.classList.add('loading');
-
-    var data = {
-      firstName:   document.getElementById('firstName').value.trim(),
-      lastName:    document.getElementById('lastName').value.trim(),
-      email:       document.getElementById('email').value.trim(),
-      company:     document.getElementById('company').value.trim(),
-      timeline:    document.getElementById('timeline').value,
-      budget:      document.getElementById('budget').value,
-      description: document.getElementById('description').value.trim(),
-      form_type:   'execution_request',
-      submittedAt: new Date().toISOString()
-    };
-
-    /* ── Supabase insert (replace URL + KEY when ready) ──
-    fetch('https://xlnuzbgwwthecvfigchw.supabase.co/rest/v1/leads', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': 'YOUR_ANON_KEY',
-        'Authorization': 'Bearer YOUR_ANON_KEY',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(function(r){
-      if(!r.ok) throw new Error('Supabase error ' + r.status);
-      showSuccess();
-    })
-    .catch(function(err){
-      console.error('Supabase failed:', err);
-      fallbackMailto(data);
-    });
-    */
-
-    /* Fallback: mailto until Supabase key is added */
-    fallbackMailto(data);
-
-    function fallbackMailto(d){
-      var body = [
-        'Name: '+d.firstName+' '+d.lastName,
-        'Email: '+d.email,
-        'Company: '+d.company,
-        'Timeline: '+d.timeline,
-        'Budget: '+d.budget,
-        '',
-        'Description:',
-        d.description
-      ].join('\n');
-      setTimeout(function(){
-        window.location.href = 'mailto:dev@wizdevtech.com'
-          +'?cc=infra@wizdevtech.com'
-          +'&subject='+encodeURIComponent('Execution Request — '+d.company)
-          +'&body='+encodeURIComponent(body);
-      }, 400);
-      setTimeout(showSuccess, 1200);
-    }
-
-    function showSuccess(){
-      btn.classList.remove('loading');
-      document.getElementById('execForm').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-      showToast('Request submitted. We\'ll be in touch within 2 business days.');
-    }
-  });
-
-})();
-</script>
-</body>
-</html>
+    var ok=fields.map(function(f){return window.vf(f.id,f.eid,f.fn);}).every(Boolean);
+    if(!ok){window.showToast('Please complete all required fields.','error');return;}
+    var btn=document.getElementById('submitBtn');
+    btn.disabled=true;btn.classList.add('loading');
+    var payload={
+      first_name: document.getElementById('firstName').value.trim(),
+      last_name:  docu

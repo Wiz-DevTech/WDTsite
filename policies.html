@@ -3,98 +3,170 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="WizDevTech legal policies including Privacy Policy, Terms of Service, Cookie Policy, and Engagement Terms."/>
-<title>Policies — WizDevTech</title>
+<title>Policies &#8212; WizDevTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
-:root{--ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;--muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;--paper:#f4f2ed;--cream:#faf9f6;--accent:#d4531a;--accent2:#e8824a;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Syne',sans-serif;--nav-h:64px;}
+
+:root{
+  --ink:#0d0d0d;--ink2:#1a1a1a;--ink3:#2b2b2b;--rule:#2e2e2e;
+  --muted:#5a5a5a;--mid:#8a8a8a;--ghost:#c8c8c8;
+  --paper:#f4f2ed;--cream:#faf9f6;
+  --accent:#d4531a;--accent2:#e8824a;
+  --green:#27ae60;--red:#c0392b;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --display:'Syne',sans-serif;
+  --nav-h:64px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--accent);}
-section{scroll-margin-top:calc(var(--nav-h) + 1rem);}
-.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;pointer-events:none;transition:width 0.1s linear;}
-nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
-nav#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
-.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;white-space:nowrap;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--accent);}
+section{scroll-margin-top:var(--nav-h);}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:199;transition:width 0.08s linear;pointer-events:none;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav-h);background:var(--cream);border-bottom:1px solid transparent;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;}
+#mainNav.scrolled{border-color:var(--rule);background:rgba(250,249,246,0.97);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--rule);}
+.nav-logo{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;}
 .nav-logo span{color:var(--accent);}
-.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none;}
-.nav-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.25s;}
 .nav-links a:hover,.nav-links a.active{color:var(--ink);}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem;border:1px solid var(--ink)!important;}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.4rem 0.9rem!important;border:1px solid var(--ink)!important;transition:background 0.2s!important;}
 .nav-cta::after{display:none!important;}
-.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;color:#fff!important;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:201;}
+.nav-cta:hover{background:var(--accent)!important;border-color:var(--accent)!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.3s,opacity 0.3s;}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-burger.open span:nth-child(2){opacity:0;}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.25s,padding 0.3s;display:flex;flex-direction:column;}
-.nav-mobile.open{max-height:400px;padding:1.25rem 2rem 1.5rem;opacity:1;}
-.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.65rem 0;border-bottom:1px solid rgba(46,46,46,0.12);transition:color 0.2s;}
-.nav-mobile a:last-child{border-bottom:none;}
-.nav-mobile a:hover{color:var(--ink);}
-.cta-mob{color:var(--accent)!important;}
-.nav-overlay{display:none;position:fixed;inset:0;z-index:198;}
-.nav-overlay.show{display:block;}
-.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
-.back-top.show{opacity:1;pointer-events:all;}.back-top:hover{background:var(--accent);}
-footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2rem;border-top:1px solid var(--rule);}
-.footer-inner{max-width:1080px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
-.footer-col h4{font-family:var(--display);font-weight:700;font-size:0.85rem;color:var(--ghost);margin-bottom:1rem;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-.footer-col a{color:var(--mid);text-decoration:none;font-size:0.78rem;font-family:var(--sans);transition:color 0.2s;}
-.footer-col a:hover{color:var(--accent);}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;border-top:1px solid rgba(46,46,46,0.5);}
-.footer-logo-text{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--ghost);letter-spacing:-0.02em;}
-.footer-logo-text span{color:var(--accent);}
-.footer-copy{font-size:0.7rem;color:var(--muted);font-family:var(--mono);}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--rule);padding:1.25rem 2rem;display:flex;flex-direction:column;gap:1rem;visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.25s,transform 0.25s,visibility 0.25s;}
+.nav-mobile.open{visibility:visible;opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-mobile a{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-mobile a:hover{color:var(--accent);}
 
 /* PAGE HERO */
-.page-hero{padding:110px 2.5rem 64px;background:var(--ink);position:relative;overflow:hidden;}
-.page-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px);pointer-events:none;}
-.page-hero .container{position:relative;max-width:1080px;margin:0 auto;}
-.page-hero .tag{font-family:var(--mono);font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.25rem;display:block;}
-.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;}
-.page-hero h1 em{color:var(--accent2);font-style:normal;}
-.page-hero p{color:#8a8a8a;font-size:0.95rem;max-width:520px;line-height:1.7;}
-.page-hero p a{color:var(--accent2);}
+.page-hero{padding:120px 2.5rem 72px;background:var(--ink);position:relative;overflow:hidden;margin-top:var(--nav-h);}
+.page-hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+.page-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.03) 59px,rgba(255,255,255,0.03) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.025) 59px,rgba(255,255,255,0.025) 60px);pointer-events:none;}
+.page-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;}
+.page-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:#fff;}
+.page-hero h1 em{font-style:normal;color:var(--accent2);}
+.page-hero p{margin-top:1.25rem;font-size:1rem;color:#8a8a8a;max-width:520px;}
 
-/* POLICY LAYOUT */
-.policy-wrap{max-width:1080px;margin:0 auto;padding:64px 2.5rem 80px;display:grid;grid-template-columns:210px 1fr;gap:4rem;align-items:start;}
-.policy-sidebar{position:sticky;top:calc(var(--nav-h)+1.5rem);}
-.sidebar-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-.sidebar-nav{list-style:none;border:1px solid var(--rule);}
-.sidebar-nav li a{display:block;padding:0.75rem 1rem;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);transition:background 0.2s,color 0.2s;}
-.sidebar-nav li:last-child a{border-bottom:none;}
-.sidebar-nav li a:hover,.sidebar-nav li a.active{background:var(--paper);color:var(--accent);}
-.policy-content{display:flex;flex-direction:column;gap:4rem;}
-.policy-section{scroll-margin-top:calc(var(--nav-h)+1.5rem);}
-.policy-section h2{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.4rem;padding-bottom:0.75rem;border-bottom:1px solid var(--rule);}
-.policy-updated{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;color:var(--muted);margin-bottom:1.5rem;}
-.policy-section h3{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;}
-.policy-section p{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:0.75rem;}
-.policy-section ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.75rem;}
-.policy-section ul li{font-size:0.88rem;color:var(--muted);padding-left:1.25rem;position:relative;line-height:1.65;}
-.policy-section ul li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:0.7rem;}
-.contact-callout{background:var(--paper);border:1px solid var(--rule);padding:1.25rem 1.5rem;margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;}
-.contact-callout p{font-size:0.85rem;color:var(--muted);}
-.contact-callout a{font-family:var(--mono);font-size:0.78rem;color:var(--accent);text-decoration:none;transition:opacity 0.2s;}
-.contact-callout a:hover{opacity:0.75;}
+/* SECTION */
+.sec{max-width:1080px;margin:0 auto;padding:88px 2.5rem;}
+.sec-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.sec-title{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1rem;}
+.sec-desc{color:var(--muted);font-size:0.95rem;line-height:1.75;max-width:600px;}
 
-@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.nav-links{gap:1rem;}}
+/* FORMS */
+.form-box{background:var(--cream);border:1px solid var(--rule);padding:2.5rem;}
+.form-title{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:0.4rem;}
+.form-note{font-size:0.78rem;color:var(--muted);font-family:var(--mono);margin-bottom:2rem;}
+.form-row{margin-bottom:1.2rem;}
+.form-row label{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
+.req{color:var(--accent);}
+.form-control{width:100%;padding:0.72rem 1rem;font-family:var(--sans);font-size:0.9rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);outline:none;appearance:none;border-radius:0;transition:border-color 0.2s,box-shadow 0.2s;}
+.form-control:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,83,26,0.1);}
+.form-control.error{border-color:var(--red);}
+.form-control.valid{border-color:var(--green);}
+select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--paper);padding-right:2.5rem;cursor:pointer;}
+textarea.form-control{resize:vertical;min-height:100px;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.field-error{display:none;font-family:var(--mono);font-size:0.6rem;color:var(--red);margin-top:0.3rem;}
+.field-error.show{display:block;}
+.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;}
+.btn-submit:hover{background:var(--accent);}
+.btn-submit:disabled{background:var(--muted);cursor:not-allowed;}
+.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
+.btn-submit.loading .spinner{display:block;}
+.btn-submit.loading .btn-text{opacity:0.7;}
+.form-success{display:none;text-align:center;padding:2.5rem;}
+.form-success.show{display:block;}
+.form-success-icon{width:52px;height:52px;background:var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.25rem;font-size:1.3rem;color:#fff;}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:300;background:var(--ink);color:var(--cream);padding:1rem 1.5rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;border-left:3px solid var(--accent);max-width:320px;transform:translateY(16px);opacity:0;pointer-events:none;transition:transform 0.3s,opacity 0.3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.error{border-left-color:var(--red);}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:2rem;left:2rem;z-index:150;width:40px;height:40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-size:1rem;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
+.back-top.show{opacity:1;pointer-events:all;}
+.back-top:hover{background:var(--accent);}
+
+/* FOOTER */
+#siteFooter{background:var(--ink2);color:var(--mid);padding:2.5rem 2.5rem 2rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:0.65rem;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;max-width:1080px;margin:0 auto 2.5rem;}
+.footer-logo{font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ghost);letter-spacing:-0.02em;margin-bottom:0.75rem;}
+.footer-logo span{color:var(--accent);}
+.footer-tagline{color:var(--muted);font-size:0.78rem;line-height:1.6;font-family:var(--sans);max-width:220px;}
+.footer-col h4{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ghost);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col ul a{color:var(--muted);text-decoration:none;transition:color 0.2s;font-size:0.75rem;font-family:var(--sans);}
+.footer-col ul a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;padding-top:1.5rem;border-top:1px solid var(--rule);max-width:1080px;margin:0 auto;}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap;}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s;}.rd2{transition-delay:0.2s;}.rd3{transition-delay:0.3s;}
+
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}}
 @media(max-width:900px){
-  nav#mainNav{padding:0 1.5rem;}.nav-links{display:none;}.nav-burger{display:flex;}
-  .page-hero{padding:90px 1.5rem 52px;}
-  footer.site-footer{padding:2.5rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;}
-  .policy-wrap{grid-template-columns:1fr;gap:2rem;padding:48px 1.5rem 64px;}
-  .policy-sidebar{position:static;}
+  #mainNav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .sec{padding:64px 1.5rem;}
+  .page-hero{padding:100px 1.5rem 60px;}
+  #siteFooter{padding:2rem 1.5rem 1.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:700px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
-@media(max-width:380px){nav#mainNav{padding:0 1rem;}.policy-wrap{padding:40px 1rem 56px;}.page-hero{padding:80px 1rem 44px;}}
+@media(max-width:600px){
+  .form-row-2{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .toast{right:1rem;left:1rem;max-width:none;}
+  .nav-mobile{padding:1.25rem 1.5rem;}
+}
+@media(max-width:380px){.sec{padding:52px 1rem;}.page-hero{padding:90px 1rem 52px;}#mainNav{padding:0 1rem;}}
+
+.policy-layout{display:grid;grid-template-columns:210px 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.pol-nav{position:sticky;top:calc(var(--nav-h) + 1.5rem);}
+.pol-nav-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.pol-nav ul{list-style:none;border:1px solid var(--rule);}
+.pol-nav ul a{display:block;padding:0.7rem 1rem;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);transition:background 0.2s,color 0.2s;}
+.pol-nav ul li:last-child a{border-bottom:none;}
+.pol-nav ul a:hover,.pol-nav ul a.active{background:var(--paper);color:var(--accent);}
+.pol-content{display:flex;flex-direction:column;gap:4rem;}
+.pol-sec{scroll-margin-top:calc(var(--nav-h) + 1rem);}
+.pol-sec h2{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-0.02em;color:var(--ink);padding-bottom:0.75rem;border-bottom:1px solid var(--rule);margin-bottom:0.5rem;}
+.pol-updated{font-family:var(--mono);font-size:0.62rem;color:var(--muted);margin-bottom:1.5rem;}
+.pol-sec h3{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;}
+.pol-sec p{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:0.75rem;}
+.pol-sec ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.75rem;}
+.pol-sec ul li{font-size:0.88rem;color:var(--muted);padding-left:1.25rem;position:relative;line-height:1.65;}
+.pol-sec ul li::before{content:'&#8594;';position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:0.7rem;}
+.pol-contact{background:var(--paper);border:1px solid var(--rule);padding:1.5rem;margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.pol-contact p{font-size:0.85rem;color:var(--muted);}
+.pol-contact a{font-family:var(--mono);font-size:0.78rem;color:var(--accent);text-decoration:none;}
+.pol-contact a:hover{opacity:0.7;}
+@media(max-width:860px){.policy-layout{grid-template-columns:1fr;}.pol-nav{position:static;}}
 </style>
 </head>
 <body>
@@ -102,204 +174,301 @@ footer.site-footer{background:var(--ink2);color:var(--mid);padding:3rem 2.5rem 2
 <div class="progress-bar" id="progressBar"></div>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Wiz<span>Dev</span>Tech</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
     <li><a href="index.html#what">Services</a></li>
     <li><a href="sales.html">Sales</a></li>
     <li><a href="careers.html">Careers</a></li>
-    <li><a href="policies.html" class="active">Policies</a></li>
+    <li><a href="policies.html">Policies</a></li>
     <li><a href="index.html#form" class="nav-cta">Start Execution</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="nav-overlay" id="navOverlay"></div>
 <nav class="nav-mobile" id="mobileMenu" aria-hidden="true">
+  <a href="index.html" class="mobile-link">Home</a>
   <a href="index.html#what" class="mobile-link">Services</a>
   <a href="sales.html" class="mobile-link">Sales</a>
   <a href="careers.html" class="mobile-link">Careers</a>
   <a href="policies.html" class="mobile-link">Policies</a>
-  <a href="index.html#form" class="mobile-link cta-mob">&#8594; Start Execution</a>
+  <a href="index.html#form" class="mobile-link" style="color:var(--accent)">&#8594; Start Execution</a>
 </nav>
 
+<script>
+/* ═══════════════════════════════════════════════════
+   WizDevTech — Supabase Client
+   URL:  https://xlnuzbgwwthecvfigchw.supabase.co
+   ═══════════════════════════════════════════════════ */
+var SUPA = (function(){
+  var URL = 'https://xlnuzbgwwthecvfigchw.supabase.co';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsbnV6Ymd3d3RoZWN2ZmlnY2h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNjgzMzgsImV4cCI6MjA4ODc0NDMzOH0.dHAf3LyaZrzmAxfAvbZNc64lq7a-kBvlRYpgRMFqGdQ';
+
+  function insert(table, data){
+    return fetch(URL + '/rest/v1/' + table, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': KEY,
+        'Authorization': 'Bearer ' + KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+  }
+
+  return { insert: insert };
+})();
+</script>
+
 <div class="page-hero">
-  <div class="container">
-    <span class="tag">&#9878;&#65039; Legal &amp; Policies</span>
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-label">&#9878; Legal &amp; Policies</div>
     <h1>Policies &amp; <em>Legal.</em></h1>
-    <p>All legal, privacy, and terms documentation. Questions? <a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></p>
+    <p>All legal, privacy, and terms documentation for WizDevTech. Questions? <a href="/cdn-cgi/l/email-protection#6e020b090f022e1907140a0b181a0b0d06400d0103" style="color:var(--accent2)"><span class="__cf_email__" data-cfemail="49252c2e2825093e20332d2c3f3d2c2a21672a2624">[email&#160;protected]</span></a></p>
   </div>
 </div>
 
-<div class="policy-wrap">
-  <!-- SIDEBAR NAV -->
-  <aside class="policy-sidebar">
-    <div class="sidebar-label">Jump to</div>
-    <ul class="sidebar-nav">
-      <li><a href="#privacy" class="pol-link">Privacy Policy</a></li>
-      <li><a href="#terms" class="pol-link">Terms of Service</a></li>
-      <li><a href="#cookies" class="pol-link">Cookie Policy</a></li>
-      <li><a href="#engagement" class="pol-link">Engagement Terms</a></li>
-      <li><a href="#contact-legal" class="pol-link">Contact Legal</a></li>
-    </ul>
-  </aside>
-
-  <!-- CONTENT -->
-  <div class="policy-content">
-
-    <section class="policy-section" id="privacy">
-      <h2>Privacy Policy</h2>
-      <div class="policy-updated">Last updated: January 1, 2025</div>
-      <p>WizDevTech respects your privacy and is committed to protecting personal information you share with us. This policy explains how we collect, use, and handle your data.</p>
-      <h3>Information We Collect</h3>
-      <ul>
-        <li>Contact information submitted via our forms (name, email, company)</li>
-        <li>Project details and engagement descriptions you provide</li>
-        <li>Technical data including IP address, browser type, and pages visited</li>
-        <li>Communications you send to our email addresses</li>
-      </ul>
-      <h3>How We Use Your Information</h3>
-      <ul>
-        <li>To assess and respond to execution requests and inquiries</li>
-        <li>To deliver contracted services within active engagements</li>
-        <li>To communicate project status and deliverables</li>
-        <li>To improve our services based on aggregate usage patterns</li>
-        <li>To comply with legal obligations</li>
-      </ul>
-      <h3>Data Sharing</h3>
-      <p>We do not sell, rent, or trade your personal information. We may share data with service providers who assist in operating our website, subject to confidentiality agreements. We may disclose information if required by law.</p>
-      <h3>Data Retention</h3>
-      <p>Engagement records are retained for 3 years following engagement conclusion. Contact form submissions are retained for 12 months. You may request deletion at any time by contacting <a href="mailto:legal@wizdevtech.com" style="color:var(--accent)">legal@wizdevtech.com</a>.</p>
-      <h3>Your Rights</h3>
-      <ul>
-        <li>Right to access your personal data we hold</li>
-        <li>Right to correct inaccurate data</li>
-        <li>Right to request deletion of your data</li>
-        <li>Right to data portability</li>
-        <li>Right to object to processing</li>
-      </ul>
-      <div class="contact-callout"><p>Privacy questions or data requests?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
-    </section>
-
-    <section class="policy-section" id="terms">
-      <h2>Terms of Service</h2>
-      <div class="policy-updated">Last updated: January 1, 2025</div>
-      <p>By accessing this website or engaging WizDevTech for services, you agree to these Terms of Service.</p>
-      <h3>Services</h3>
-      <p>WizDevTech provides embedded execution services on a fixed-scope, fixed-term basis. All services are governed by individual Scope of Work agreements executed prior to engagement commencement.</p>
-      <h3>Acceptable Use</h3>
-      <ul>
-        <li>You may not use this site for any unlawful purpose</li>
-        <li>You may not submit false or misleading information via our forms</li>
-        <li>You may not attempt to gain unauthorized access to our systems</li>
-        <li>You may not use automated tools to scrape or harvest site content</li>
-      </ul>
-      <h3>Intellectual Property</h3>
-      <p>All site content is the property of WizDevTech. Deliverables produced during a client engagement are governed by the individual Scope of Work, which typically transfers ownership to the client upon final payment.</p>
-      <h3>Limitation of Liability</h3>
-      <p>WizDevTech's liability for any claim shall not exceed the total fees paid for the specific engagement in question. We are not liable for indirect, incidental, or consequential damages.</p>
-      <h3>Governing Law</h3>
-      <p>These terms are governed by the laws specified in individual engagement agreements. Disputes shall be resolved through binding arbitration before resorting to litigation.</p>
-      <div class="contact-callout"><p>Legal questions or disputes?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
-    </section>
-
-    <section class="policy-section" id="cookies">
-      <h2>Cookie Policy</h2>
-      <div class="policy-updated">Last updated: January 1, 2025</div>
-      <p>This site uses a minimal set of cookies. We do not use advertising cookies or third-party tracking pixels.</p>
-      <h3>Cookies We Use</h3>
-      <ul>
-        <li><strong>Essential cookies:</strong> Required for basic site functionality. Cannot be disabled.</li>
-        <li><strong>Analytics cookies:</strong> Help us understand aggregate usage patterns. No personally identifiable information is collected.</li>
-        <li><strong>Survey data:</strong> Stored in localStorage (not transmitted) to display aggregate survey results.</li>
-      </ul>
-      <h3>Third-Party</h3>
-      <p>Google Fonts is loaded from Google's CDN, which may set performance cookies. We do not use Google Analytics, Facebook Pixel, or other marketing trackers by default.</p>
-      <h3>Managing Cookies</h3>
-      <p>You can control and delete cookies through your browser settings. Disabling essential cookies may affect site functionality.</p>
-      <div class="contact-callout"><p>Cookie or tracking concerns?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
-    </section>
-
-    <section class="policy-section" id="engagement">
-      <h2>Engagement Terms</h2>
-      <div class="policy-updated">Last updated: January 1, 2025</div>
-      <p>These terms supplement individual Scope of Work agreements and apply to all WizDevTech client engagements.</p>
-      <h3>Scope &amp; Deliverables</h3>
-      <p>All deliverables are defined in writing prior to engagement commencement. Work outside the agreed scope is documented and presented as a separate engagement option.</p>
-      <h3>Payment</h3>
-      <ul>
-        <li>50% of total fee due at engagement kickoff</li>
-        <li>Remaining 50% due upon handoff delivery</li>
-        <li>Late payments accrue interest at 1.5% per month</li>
-        <li>Non-payment may result in work stoppage</li>
-      </ul>
-      <h3>Confidentiality</h3>
-      <p>WizDevTech treats all client systems, data, and business information as strictly confidential. NDAs are available upon request prior to engagement.</p>
-      <h3>Client Responsibilities</h3>
-      <ul>
-        <li>Provide timely access to necessary systems and documentation</li>
-        <li>Designate a single point of contact for the engagement</li>
-        <li>Respond to written requests within 1 business day</li>
-        <li>Review and approve or reject deliverables within 3 business days</li>
-      </ul>
-      <h3>Termination</h3>
-      <p>Either party may terminate with 5 business days written notice. Client is responsible for payment for all work completed to the termination date.</p>
-      <div class="contact-callout"><p>Engagement terms questions?</p><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a></div>
-    </section>
-
-    <section class="policy-section" id="contact-legal">
-      <h2>Contact Legal</h2>
-      <div class="policy-updated"></div>
-      <p>For legal inquiries, privacy requests, data deletion, NDAs, or policy questions, contact our legal team directly.</p>
-      <div style="background:var(--paper);border:1px solid var(--rule);padding:2rem;margin-top:1rem">
-        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Legal &amp; Compliance</div>
-        <a href="mailto:legal@wizdevtech.com" style="font-family:var(--mono);font-size:1rem;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.5rem">legal@wizdevtech.com</a>
-        <p>Response within 5 business days. For urgent matters, include "URGENT" in your subject line.</p>
+<section id="policies-main">
+  <div class="sec">
+    <div class="policy-layout">
+      <div class="pol-nav reveal">
+        <div class="pol-nav-label">Jump to</div>
+        <ul>
+          <li><a href="#privacy" class="pol-link">Privacy Policy</a></li>
+          <li><a href="#terms" class="pol-link">Terms of Service</a></li>
+          <li><a href="#cookies" class="pol-link">Cookie Policy</a></li>
+          <li><a href="#engagement" class="pol-link">Engagement Terms</a></li>
+          <li><a href="#credentials" class="pol-link">Business Registration</a></li>
+          <li><a href="#contact-legal" class="pol-link">Contact Legal</a></li>
+        </ul>
       </div>
-      <p style="margin-top:1.5rem">Technical issues with this website: <a href="mailto:support@wizdevtech.com" style="color:var(--accent)">support@wizdevtech.com</a></p>
-    </section>
+      <div class="pol-content">
 
-  </div>
-</div>
+        <div class="pol-sec" id="privacy">
+          <h2>Privacy Policy</h2><div class="pol-updated">Last updated: January 1, 2024</div>
+          <p>WizDevTech respects your privacy and is committed to protecting the personal information you share with us.</p>
+          <h3>Information We Collect</h3>
+          <ul><li>Contact information submitted via our forms (name, email, company)</li><li>Project details and engagement descriptions you provide</li><li>Technical data including IP address and pages visited (via Supabase analytics)</li><li>Communications you send to our email addresses</li></ul>
+          <h3>How We Use Your Information</h3>
+          <ul><li>To assess and respond to execution requests and inquiries</li><li>To deliver contracted services within active engagements</li><li>To communicate project status and deliverables</li><li>To improve our services based on aggregate usage patterns</li><li>To comply with legal obligations</li></ul>
+          <h3>Data Sharing</h3>
+          <p>We do not sell, rent, or trade your personal information to third parties. We may share data with service providers who assist in delivering services, subject to confidentiality agreements.</p>
+          <h3>Data Retention</h3>
+          <p>Engagement records are retained for 3 years following conclusion. Contact form submissions are retained for 12 months. Request deletion at any time by contacting <a href="/cdn-cgi/l/email-protection#94f8f1f3f5f8d4e3fdeef0f1e2e0f1f7fcbaf7fbf9" style="color:var(--accent)"><span class="__cf_email__" data-cfemail="a2cec7c5c3cee2d5cbd8c6c7d4d6c7c1ca8cc1cdcf">[email&#160;protected]</span></a>.</p>
+          <h3>Your Rights</h3>
+          <ul><li>Right to access your personal data</li><li>Right to correct inaccurate data</li><li>Right to request deletion</li><li>Right to data portability</li><li>Right to object to processing</li></ul>
+          <div class="pol-contact"><p>Privacy questions or data requests?</p><a href="/cdn-cgi/l/email-protection#cba7aeacaaa78bbca2b1afaebdbfaea8a3e5a8a4a6"><span class="__cf_email__" data-cfemail="19757c7e7875596e70637d7c6f6d7c7a71377a7674">[email&#160;protected]</span> &#8594;</a></div>
+        </div>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-col"><h4>WizDevTech</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#what">Services</a></li><li><a href="index.html#leadership">Leadership</a></li><li><a href="index.html#form">Start Execution</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="careers.html">We're Hiring</a></li><li><a href="sales.html">Sales &amp; Pricing</a></li><li><a href="policies.html">Policies</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:dev@wizdevtech.com">dev@wizdevtech.com</a></li><li><a href="mailto:sales@wizdevtech.com">sales@wizdevtech.com</a></li><li><a href="mailto:careers@wizdevtech.com">careers@wizdevtech.com</a></li><li><a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com</a></li></ul></div>
-      <div class="footer-col"><h4>Support</h4><ul><li><a href="mailto:support@wizdevtech.com">support@wizdevtech.com</a></li><li><a href="policies.html">Privacy Policy</a></li><li><a href="policies.html#terms">Terms of Service</a></li></ul></div>
+        <div class="pol-sec" id="terms">
+          <h2>Terms of Service</h2><div class="pol-updated">Last updated: January 1, 2024</div>
+          <p>By accessing this website or engaging WizDevTech for services, you agree to these Terms of Service.</p>
+          <h3>Services</h3>
+          <p>WizDevTech provides embedded execution services on a fixed-scope, fixed-term basis. All services are governed by individual Scope of Work agreements executed prior to engagement commencement.</p>
+          <h3>Acceptable Use</h3>
+          <ul><li>You may not use this site for any unlawful purpose</li><li>You may not submit false or misleading information via our forms</li><li>You may not attempt to gain unauthorized access to our systems</li><li>You may not use automated tools to scrape or harvest site content</li></ul>
+          <h3>Intellectual Property</h3>
+          <p>All site content is the property of WizDevTech. Deliverables produced during client engagements transfer ownership to the client upon final payment, as specified in the Scope of Work.</p>
+          <h3>Limitation of Liability</h3>
+          <p>WizDevTech&#8217;s liability for any claim shall not exceed the total fees paid for the specific engagement in question. We are not liable for indirect or consequential damages.</p>
+          <div class="pol-contact"><p>Legal questions or disputes?</p><a href="/cdn-cgi/l/email-protection#f9959c9e9895b98e90839d9c8f8d9c9a91d79a9694"><span class="__cf_email__" data-cfemail="016d6466606d4176687b656477756462692f626e6c">[email&#160;protected]</span> &#8594;</a></div>
+        </div>
+
+        <div class="pol-sec" id="cookies">
+          <h2>Cookie Policy</h2><div class="pol-updated">Last updated: January 1, 2024</div>
+          <p>This site uses a minimal set of cookies. We do not use advertising cookies or third-party tracking pixels.</p>
+          <h3>Cookies &amp; Storage We Use</h3>
+          <ul><li><strong>Essential cookies:</strong> Required for basic site functionality.</li><li><strong>Analytics:</strong> Page views logged to Supabase (no PII). Used to display aggregate visit counts.</li><li><strong>Google Fonts CDN:</strong> May set performance cookies from Google&#8217;s servers.</li></ul>
+          <h3>Managing Cookies</h3>
+          <p>You can control cookies through your browser settings. Disabling essential cookies may affect site functionality.</p>
+          <div class="pol-contact"><p>Cookie or tracking concerns?</p><a href="/cdn-cgi/l/email-protection#28444d4f4944685f41524c4d5e5c4d4b40064b4745"><span class="__cf_email__" data-cfemail="dfb3bab8beb39fa8b6a5bbbaa9abbabcb7f1bcb0b2">[email&#160;protected]</span> &#8594;</a></div>
+        </div>
+
+        <div class="pol-sec" id="engagement">
+          <h2>Engagement Terms</h2><div class="pol-updated">Last updated: January 1, 2024</div>
+          <p>These terms supplement individual Scope of Work agreements and apply to all WizDevTech client engagements.</p>
+          <h3>Scope &amp; Deliverables</h3>
+          <p>All deliverables are defined in writing prior to engagement commencement. Work outside agreed scope is documented and presented as a separate engagement option.</p>
+          <h3>Payment</h3>
+          <ul><li>50% of total fee due at kickoff</li><li>Remaining 50% due upon handoff delivery</li><li>Late payments accrue interest at 1.5% per month</li><li>Non-payment may result in work stoppage</li></ul>
+          <h3>Confidentiality</h3>
+          <p>WizDevTech treats all client systems, data, and business information as strictly confidential. NDAs are available upon request prior to engagement.</p>
+          <h3>Client Responsibilities</h3>
+          <ul><li>Provide timely access to necessary systems and documentation</li><li>Designate a single point of contact</li><li>Respond to written requests within 1 business day</li><li>Review deliverables within 3 business days of submission</li></ul>
+          <div class="pol-contact"><p>Engagement terms questions?</p><a href="/cdn-cgi/l/email-protection#412d2426202d0136283b252437352422296f222e2c"><span class="__cf_email__" data-cfemail="b4d8d1d3d5d8f4c3ddced0d1c2c0d1d7dc9ad7dbd9">[email&#160;protected]</span> &#8594;</a></div>
+        </div>
+
+
+        <div class="pol-sec" id="credentials">
+          <h2>Business Registration &amp; Classification</h2>
+          <div class="pol-updated">DUNS: 144936954 &nbsp;&middot;&nbsp; EIN on file &mdash; available upon verified request</div>
+
+          <h3>Business Identifiers</h3>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1.5rem;margin-bottom:1.25rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+              <div>
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">D-U-N-S Number</div>
+                <div style="font-family:var(--mono);font-size:1rem;color:var(--ink);font-weight:500">144936954</div>
+              </div>
+              <div>
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">EIN</div>
+                <div style="font-family:var(--mono);font-size:0.85rem;color:var(--muted)">Available upon verified request</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Primary NAICS Classification</h3>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.25rem;">
+            <div style="background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:1rem 1.25rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                <div style="font-family:var(--mono);font-size:0.88rem;color:var(--accent);font-weight:500">541511</div>
+                <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(212,83,26,0.1);color:var(--accent);padding:0.15rem 0.5rem">Primary</div>
+              </div>
+              <div style="font-size:0.88rem;color:var(--ink);font-weight:500;margin:0.3rem 0 0.2rem">Custom Computer Programming Services</div>
+              <div style="font-size:0.8rem;color:var(--muted)">Core service: finishing half-built software tools, automations, and technical systems inside client environments.</div>
+            </div>
+          </div>
+
+          <h3>Secondary NAICS Codes</h3>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem;">
+            <div style="background:var(--paper);border:1px solid var(--rule);padding:0.9rem 1.25rem;display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+              <div style="font-family:var(--mono);font-size:0.85rem;color:var(--ink);font-weight:500;min-width:60px">541512</div>
+              <div><div style="font-size:0.85rem;color:var(--ink)">Computer Systems Design Services</div><div style="font-size:0.78rem;color:var(--muted);margin-top:0.15rem">Workflow repair and systems stabilization engagements.</div></div>
+            </div>
+            <div style="background:var(--paper);border:1px solid var(--rule);padding:0.9rem 1.25rem;display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+              <div style="font-family:var(--mono);font-size:0.85rem;color:var(--ink);font-weight:500;min-width:60px">518210</div>
+              <div><div style="font-size:0.85rem;color:var(--ink)">Data Processing and Related Services</div><div style="font-size:0.78rem;color:var(--muted);margin-top:0.15rem">Data migration, cleanup, and structured handoff work.</div></div>
+            </div>
+            <div style="background:var(--paper);border:1px solid var(--rule);padding:0.9rem 1.25rem;display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+              <div style="font-family:var(--mono);font-size:0.85rem;color:var(--ink);font-weight:500;min-width:60px">561499</div>
+              <div><div style="font-size:0.85rem;color:var(--ink)">All Other Business Support Services</div><div style="font-size:0.78rem;color:var(--muted);margin-top:0.15rem">Notes-to-tasks and operational execution services.</div></div>
+            </div>
+            <div style="background:var(--paper);border:1px solid var(--rule);padding:0.9rem 1.25rem;display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+              <div style="font-family:var(--mono);font-size:0.85rem;color:var(--ink);font-weight:500;min-width:60px">541519</div>
+              <div><div style="font-size:0.85rem;color:var(--ink)">Other Computer Related Services</div><div style="font-size:0.78rem;color:var(--muted);margin-top:0.15rem">Catch-all for technical execution work outside programming and design.</div></div>
+            </div>
+          </div>
+
+          <h3>Government Procurement</h3>
+          <p>WizDevTech registers under NAICS 541511 as primary for SAM.gov purposes, with 541512 and 518210 as secondary codes. Under SBA size standards for NAICS 541511 (annual receipts threshold: $34M), WizDevTech qualifies as a small business for federal procurement purposes.</p>
+
+          <h3>Excluded Classifications</h3>
+          <p>WizDevTech does not operate under NAICS 541611 (Management Consulting) or 541613 (Marketing Consulting). These are deliberately excluded from our positioning. We execute against defined scope &mdash; we do not provide advisory, strategic, or consulting services.</p>
+
+          <div class="pol-contact">
+            <p>Procurement or vendor registration questions?</p>
+            <a href="mailto:legal@wizdevtech.com">legal@wizdevtech.com &#8594;</a>
+          </div>
+        </div>
+
+        <div class="pol-sec" id="contact-legal">
+          <h2>Contact Legal</h2>
+          <p>For all legal inquiries, privacy requests, data deletion requests, NDAs, or policy questions, contact our legal team directly.</p>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:2rem;margin-top:1rem">
+            <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Legal &amp; Compliance</div>
+            <a href="/cdn-cgi/l/email-protection#18747d7f7974586f71627c7d6e6c7d7b70367b7775" style="font-family:var(--mono);font-size:1rem;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.5rem"><span class="__cf_email__" data-cfemail="d1bdb4b6b0bd91a6b8abb5b4a7a5b4b2b9ffb2bebc">[email&#160;protected]</span></a>
+            <p style="font-size:0.82rem;color:var(--muted)">Response within 5 business days. Include &#8220;URGENT&#8221; in subject for time-sensitive matters.</p>
+          </div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem">Technical issues with this website: <a href="/cdn-cgi/l/email-protection#94e7e1e4e4fbe6e0d4e3fdeef0f1e2e0f1f7fcbaf7fbf9" style="color:var(--accent)"><span class="__cf_email__" data-cfemail="d9aaaca9a9b6abad99aeb0a3bdbcafadbcbab1f7bab6b4">[email&#160;protected]</span></a></p>
+        </div>
+
+      </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-logo-text">Wiz<span>Dev</span>Tech</div>
-      <span class="footer-copy">&copy; 2025 WizDevTech. All rights reserved.</span>
+  </div>
+</section>
+
+<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer id="siteFooter">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Wiz<span>Dev</span>Tech</div>
+      <p class="footer-tagline">Embedded execution for teams who need things finished.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#what">Services</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="sales.html">Sales &amp; Pricing</a></li>
+        <li><a href="policies.html">Privacy Policy</a></li>
+        <li><a href="policies.html#terms">Terms of Service</a></li>
+        <li><a href="policies.html#cookies">Cookie Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#a9cdccdfe9dec0d3cdccdfddcccac187cac6c4"><span class="__cf_email__" data-cfemail="6d09081b2d1a041709081b19080e05430e0200">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#ef9c8e838a9caf9886958b8a999b8a8c87c18c8082"><span class="__cf_email__" data-cfemail="0b786a676e784b7c62716f6e7d7f6e686325686466">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#9bf8fae9fefee9e8dbecf2e1fffeedeffef8f3b5f8f4f6"><span class="__cf_email__" data-cfemail="caa9abb8afafb8b98abda3b0aeafbcbeafa9a2e4a9a5a7">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#176462676778656357607e6d7372616372747f3974787a"><span class="__cf_email__" data-cfemail="7d0e080d0d120f093d0a140719180b09181e15531e1210">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#a9c5cccec8c5e9dec0d3cdccdfddcccac187cac6c4"><span class="__cf_email__" data-cfemail="b2ded7d5d3def2c5dbc8d6d7c4c6d7d1da9cd1dddf">[email&#160;protected]</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <div class="footer-links">
+      <a href="/cdn-cgi/l/email-protection#8af9fffafae5f8fecafde3f0eeeffcfeefe9e2a4e9e5e7">Technical Support</a>
+      <a href="policies.html">Privacy &amp; Legal</a>
+      <a href="index.html#form">Start Execution &#8594;</a>
     </div>
   </div>
 </footer>
-<button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   'use strict';
-  var nav=document.getElementById('mainNav'),prog=document.getElementById('progressBar'),burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu'),overlay=document.getElementById('navOverlay'),backTop=document.getElementById('backTop');
-  window.addEventListener('scroll',function(){var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;if(prog)prog.style.width=(t>0?s/t*100:0)+'%';nav.classList.toggle('scrolled',s>40);if(backTop)backTop.classList.toggle('show',s>400);},{passive:true});
-  if(backTop)backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-  function openM(){burger.classList.add('open');menu.classList.add('open');if(overlay)overlay.classList.add('show');burger.setAttribute('aria-expanded','true');}
-  function closeM(){burger.classList.remove('open');menu.classList.remove('open');if(overlay)overlay.classList.remove('show');burger.setAttribute('aria-expanded','false');}
-  if(burger)burger.addEventListener('click',function(){menu.classList.contains('open')?closeM():openM();});
-  if(overlay)overlay.addEventListener('click',closeM);
-  document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeM);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
-  /* Sidebar active on scroll */
-  var ids=['privacy','terms','cookies','engagement','contact-legal'];
-  var links=document.querySelectorAll('.pol-link');
-  function updateSidebar(){
-    var sy=window.scrollY+120,active='';
-    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=sy)active=id;});
-    links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+active);});
-  }
-  window.addEventListener('scroll',updateSidebar,{passive:true});
-  updateSidebar();
-})();
-</script>
-</body>
-</html>
+  var nav=document.getElementById('mainNav');
+  var progress=document.getElementById('progressBar');
+  var backTop=document.getElementById('backTop');
+  var burger=document.getElementById('burger');
+  var mobileMenu=document.getElementById('mobileMenu');
+  var toast=document.getElementById('toast');
+  var toastTimer;
+
+  /* active nav page highlight */
+  var page=window.location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-links a,.nav-mobile a').forEach(function(a){
+    var h=a.getAttribute('href')||'';
+    if(h===page||(page===''&&h==='index.html')||(h===page)) a.classList.add('active');
+  });
+
+  /* scroll */
+  window.addEventListener('scroll',function(){
+    var s=window.scrollY,t=document.body.scrollHeight-window.innerHeight;
+    if(progress) progress.style.width=(t>0?(s/t*100):0)+'%';
+    if(nav) nav.classList.toggle('scrolled',s>40);
+    if(backTop) backTop.classList.toggle('show',s>400);
+  },{passive:true});
+  if(backTop) backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* burger */
+  if(burger){
+    burger.addEventListener('click',function(){
+      var o=burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded',String(o));
+      mobileMenu.classList.toggle('open',o);
+      mobileMenu.setAttribute('aria-hidden',String(!o));
+    });
+    document.querySelectorAll('.mobile-link').forEach(function(l){
+      l.addEventListener('click',function(){
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden','true');
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(mobileMenu.classList.contains('open')&&!nav.contains(e.target)&
