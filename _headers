@@ -9,6 +9,9 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-XSS-Protection: 1; mode=block
 
+  # HSTS — enforce HTTPS
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
   # Cache static assets aggressively
   Cache-Control: public, max-age=3600
 

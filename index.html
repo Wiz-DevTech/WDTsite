@@ -87,15 +87,37 @@
         }
       }</script>
 
-  <!-- Google Analytics GA4
-       Replace GA_MEASUREMENT_ID with your G-XXXXXXXXXX
-       Get it at: analytics.google.com → Admin → Data Streams -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script type="application/ld+json">{
+        "@context":"https://schema.org",
+        "@type":"Person",
+        "name":"Teri Massey",
+        "jobTitle":"Founder & Executive Director",
+        "worksFor":{"@type":"Organization","name":"WizDevTech","url":"https://wizdevtech.com"},
+        "knowsAbout":["operational systems","embedded delivery","workflow automation","systems stabilization","software project completion","data migration"],
+        "url":"https://wizdevtech.com/#leadership"
+      }</script>
+
+  <script type="application/ld+json">{
+        "@context":"https://schema.org",
+        "@type":"ProfessionalService",
+        "name":"WizDevTech",
+        "url":"https://wizdevtech.com",
+        "description":"Embedded execution firm specializing in completing stalled software projects, repairing broken automation workflows, data migrations, and systems stabilization. Fixed-scope 2–6 week engagements with documented handoff.",
+        "serviceType":["stalled project rescue","broken workflow repair","data migration","software project completion","systems stabilization","automation repair","devops execution"],
+        "areaServed":"United States",
+        "priceRange":"$$$",
+        "email":"sales@wizdevtech.com",
+        "founder":{"@type":"Person","name":"Teri Massey"},
+        "knowsAbout":["Zapier","Make","n8n","Notion","Airtable","CI/CD pipelines","AWS","Terraform","Python","SaaS builds","CRM migration","data cleanup"]
+      }</script>
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FF7SSE1TL"></script>
   <script>
     window.dataLayer=window.dataLayer||[];
     function gtag(){dataLayer.push(arguments);}
     gtag('js',new Date());
-    gtag('config','GA_MEASUREMENT_ID',{anonymize_ip:true,send_page_view:true});
+    gtag('config','G-2FF7SSE1TL',{anonymize_ip:true,send_page_view:true});
     window.gtagEvent=function(n,p){gtag('event',n,p||{});};
   </script>
 
@@ -413,6 +435,7 @@ var SUPA = (function(){
     <div class="hero-tag">Embedded Execution</div>
     <h1>Teams who need things <em>finished.</em></h1>
     <p class="hero-sub">We enter your existing systems, complete what&#8217;s half-done, stabilize what&#8217;s breaking, and exit cleanly. No vision, no teaching&#8212;just execution.</p>
+    <p class="hero-sub" style="margin-top:0.75rem;font-size:0.82rem;color:var(--ghost);">Zapier &middot; Make &middot; Notion &middot; Airtable &middot; Python &middot; AWS &middot; CI/CD &middot; CRM migrations &middot; SaaS builds &middot; data cleanup</p>
     <div class="hero-actions">
       <a href="#form" class="btn btn-primary">Start Execution &#8594;</a>
       <a href="#what" class="btn btn-outline">See What We Do</a>
@@ -490,7 +513,26 @@ var SUPA = (function(){
         <div class="leader-name">Teri Massey</div>
         <div class="leader-title">Founder &amp; Executive Director</div>
         <p class="leader-bio">Teri built WizDevTech around a single observation: most organizations don&#8217;t fail from lack of strategy&#8212;they fail from lack of execution. With a background in operational systems and embedded delivery, she created an engagement model built entirely around completing defined work within defined windows. No retainers, no ambiguity, no scope creep.</p>
+        <p class="leader-bio" style="margin-top:0.75rem;">Her work spans rescuing stalled software builds, repairing broken automation stacks, completing abandoned vendor implementations, and stabilizing data migrations for small businesses and scaling teams across the United States.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT WE FIX — SEO/AI clarity section -->
+<section id="fix" style="background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+  <div class="sec">
+    <div class="sec-label reveal">Systems &amp; Problems We Solve</div>
+    <h2 class="sec-title reveal rd1">What we commonly fix.</h2>
+    <p class="sec-desc reveal rd2">We specialize in completing and stabilizing the following types of stalled or broken work. If your situation appears below, we can likely help.</p>
+    <div class="constraints reveal rd2" style="margin-top:2rem;">
+      <div class="constraint"><h4>Stalled Software Projects</h4><p>Half-built apps, incomplete SaaS builds, and abandoned development projects that need a team to finish them on a fixed timeline.</p></div>
+      <div class="constraint"><h4>Broken Automation Workflows</h4><p>Failed or fragile automations in Zapier, Make, n8n, or custom scripts. We repair broken workflow logic, reconnect integrations, and document how everything works.</p></div>
+      <div class="constraint"><h4>Data Migrations Gone Wrong</h4><p>Incomplete or messy data migrations between CRMs, databases, spreadsheets, or platforms. We clean, structure, and complete the move with a documented handoff.</p></div>
+      <div class="constraint"><h4>Abandoned Vendor Implementations</h4><p>Implementations started by a vendor or contractor who disengaged. We pick up mid-stream and complete the defined scope.</p></div>
+      <div class="constraint"><h4>Failing CI/CD Pipelines</h4><p>Broken deployment pipelines, infrastructure drift, and unstable DevOps setups. We stabilize and document so your team can maintain it independently.</p></div>
+      <div class="constraint"><h4>Notion, Airtable &amp; Ops Stack Buildouts</h4><p>Unfinished internal tools — Notion workspaces, Airtable bases, dashboards — started but never fully configured or handed off.</p></div>
     </div>
   </div>
 </section>
@@ -638,7 +680,7 @@ var SUPA = (function(){
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <span>&#169; 2025 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
     <div class="footer-links">
       <a href="/cdn-cgi/l/email-protection#f784828787988583b7809e8d9392818392949fd994989a">Technical Support</a>
       <a href="policies.html">Privacy &amp; Legal</a>

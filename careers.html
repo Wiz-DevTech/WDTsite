@@ -61,20 +61,30 @@
         "jobLocationType":"TELECOMMUTE",
         "employmentType":["FULL_TIME","CONTRACTOR"],
         "datePosted":"2024-01-01",
-        "validThrough":"2025-12-31",
+        "validThrough":"2026-12-31",
         "applicantLocationRequirements":{"@type":"Country","name":"United States"},
         "baseSalary":{"@type":"MonetaryAmount","currency":"USD","value":{"@type":"QuantitativeValue","minValue":60000,"maxValue":120000,"unitText":"YEAR"}}
       }</script>
 
-  <!-- Google Analytics GA4
-       Replace GA_MEASUREMENT_ID with your G-XXXXXXXXXX
-       Get it at: analytics.google.com → Admin → Data Streams -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script type="application/ld+json">{
+        "@context":"https://schema.org",
+        "@type":"ProfessionalService",
+        "name":"WizDevTech",
+        "url":"https://wizdevtech.com",
+        "description":"Embedded execution firm completing stalled software projects, repairing broken workflows, data migrations, and systems stabilization. Fixed-scope 2-6 week engagements.",
+        "serviceType":["stalled project rescue","broken workflow repair","data migration","software project completion","systems stabilization","automation repair"],
+        "areaServed":"United States",
+        "email":"sales@wizdevtech.com",
+        "founder":{"@type":"Person","name":"Teri Massey"}
+      }</script>
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FF7SSE1TL"></script>
   <script>
     window.dataLayer=window.dataLayer||[];
     function gtag(){dataLayer.push(arguments);}
     gtag('js',new Date());
-    gtag('config','GA_MEASUREMENT_ID',{anonymize_ip:true,send_page_view:true});
+    gtag('config','G-2FF7SSE1TL',{anonymize_ip:true,send_page_view:true});
     window.gtagEvent=function(n,p){gtag('event',n,p||{});};
   </script>
 
@@ -494,7 +504,7 @@ var SUPA = (function(){
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <span>&#169; 2025 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
     <div class="footer-links">
       <a href="/cdn-cgi/l/email-protection#c5b6b0b5b5aab7b185b2acbfa1a0b3b1a0a6adeba6aaa8">Technical Support</a>
       <a href="policies.html">Privacy &amp; Legal</a>
