@@ -98,6 +98,35 @@
     gtag('config','G-2FF7SSE1TL',{anonymize_ip:true,send_page_view:true});
     window.gtagEvent=function(n,p){gtag('event',n,p||{});};
   </script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Teri Massey",
+    "jobTitle":"Founder & Executive Director",
+    "worksFor":{"@type":"Organization","name":"WizDevTech","url":"https://wizdevtech.com"},
+    "description":"15+ years stabilizing broken systems and completing stalled projects. Specializes in entering complex situations after other vendors have failed, delivering specific outcomes, and documenting processes for handoff.",
+    "knowsAbout":["workflow automation repair","data migration","systems stabilization","stalled software rescue","CI/CD pipelines","Zapier","Make","Notion","Airtable","Python","AWS"]
+  }</script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"WizDevTech",
+    "url":"https://wizdevtech.com",
+    "description":"Embedded execution firm specializing in finishing stalled software projects, repairing broken automation workflows, cleaning and migrating data, and stabilizing failing systems. Fixed-scope 2–6 week engagements.",
+    "priceRange":"$5,000–$100,000+",
+    "areaServed":"United States",
+    "knowsAbout":[
+      "stalled software project rescue","broken workflow repair","Zapier automation fix",
+      "Make automation repair","n8n workflow completion","data migration and cleanup",
+      "Notion build completion","Airtable setup","CI/CD pipeline stabilization",
+      "Python script completion","AWS infrastructure","legacy system stabilization",
+      "abandoned SaaS build completion","vendor implementation rescue"
+    ],
+    "serviceType":[
+      "Stalled Project Rescue","Workflow Automation Repair","Data Migration",
+      "Systems Stabilization","Technical Debt Cleanup","Embedded Execution"
+    ]
+  }</script>
 
   <!-- ═══════════════════════════════════════════════
        SEO & META
@@ -317,7 +346,7 @@ textarea.form-control{resize:vertical;min-height:100px;}
 .form-aside h3{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:1.25rem;}
 .aside-checks{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;}
 .aside-check{display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:var(--muted);}
-.aside-check::before{content:'&#10003;';color:var(--accent);font-family:var(--mono);font-size:0.7rem;flex-shrink:0;}
+.aside-check::before{content:'✓';color:var(--accent);font-family:var(--mono);font-size:0.7rem;flex-shrink:0;}
 .aside-contact{border-top:1px solid var(--rule);padding-top:1.5rem;}
 .aside-contact-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.9rem;}
 .aside-contact-link{display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.78rem;color:var(--muted);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;}
@@ -351,6 +380,21 @@ textarea.form-control{resize:vertical;min-height:100px;}
 .survey-note { font-family:var(--mono); font-size:0.62rem; color:var(--muted); }
 #surveyThanks { display:none; font-family:var(--mono); font-size:0.8rem; color:var(--accent2); letter-spacing:0.08em; }
 @media(max-width:900px){ .survey-grid { grid-template-columns:1fr; } }
+
+
+/* ── WHAT WE FIX ── */
+#fix{background:var(--cream);}
+.fix-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.5rem;}
+.fix-card{background:var(--paper);padding:1.5rem;}
+.fix-card-icon{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+.fix-card h4{font-family:var(--display);font-weight:600;font-size:0.92rem;color:var(--ink);margin-bottom:0.5rem;}
+.fix-card ul{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.fix-card ul li{font-family:var(--mono);font-size:0.68rem;color:var(--muted);display:flex;align-items:flex-start;gap:0.4rem;}
+.fix-card ul li::before{content:'→';color:var(--accent);flex-shrink:0;}
+.fix-stack{margin-top:2.5rem;padding:1.5rem 2rem;background:var(--paper);border:1px solid var(--rule);}
+.fix-stack-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.fix-stack-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.fix-tag{font-family:var(--mono);font-size:0.68rem;color:var(--ink);background:var(--cream);border:1px solid var(--rule);padding:0.25rem 0.65rem;letter-spacing:0.04em;}
 
 </style>
 </head>
@@ -413,6 +457,7 @@ var SUPA = (function(){
     <div class="hero-tag">Embedded Execution</div>
     <h1>Teams who need things <em>finished.</em></h1>
     <p class="hero-sub">We enter your existing systems, complete what&#8217;s half-done, stabilize what&#8217;s breaking, and exit cleanly. No vision, no teaching&#8212;just execution.</p>
+      <p class="hero-sub" style="font-size:0.78rem;font-family:var(--mono);letter-spacing:0.04em;color:#6a6a6a;margin-top:0.75rem;">Zapier &middot; Make &middot; n8n &middot; Airtable &middot; Notion &middot; Python &middot; AWS &middot; CI/CD &middot; REST APIs &middot; HubSpot &middot; SQL</p>
     <div class="hero-actions">
       <a href="#form" class="btn btn-primary">Start Execution &#8594;</a>
       <a href="#what" class="btn btn-outline">See What We Do</a>
@@ -458,21 +503,21 @@ var SUPA = (function(){
     <h2 class="sec-title reveal rd1">Right fit. Wrong fit.</h2>
     <div class="who-cols reveal rd2">
       <div class="who-col">
-        <span class="who-col-label yes-label">&#10003; Good Fit</span>
+        <span class="who-col-label yes-label">✓ Good Fit</span>
         <ul class="who-list">
-          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire.</span></div></li>
-          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Teams with defined problems</strong><span>You know what&#8217;s broken, just not how to fix it.</span></div></li>
-          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Leaders who want outcomes</strong><span>You care about results, not process theater.</span></div></li>
-          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Organizations mid-execution</strong><span>Something was started and stalled. We finish it.</span></div></li>
+          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire.</span></div></li>
+          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Teams with defined problems</strong><span>You know what&#8217;s broken, just not how to fix it.</span></div></li>
+          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Leaders who want outcomes</strong><span>You care about results, not process theater.</span></div></li>
+          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Organizations mid-execution</strong><span>Something was started and stalled. We finish it.</span></div></li>
         </ul>
       </div>
       <div class="who-col">
-        <span class="who-col-label no-label">&#10005; Not a Fit</span>
+        <span class="who-col-label no-label">✕ Not a Fit</span>
         <ul class="who-list">
-          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Teams still exploring options</strong><span>We execute against defined scope, not open-ended discovery.</span></div></li>
-          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Organizations needing strategy</strong><span>We implement strategy. We don&#8217;t create it.</span></div></li>
-          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Clients who need hand-holding</strong><span>We work best with teams that can operate independently post-handoff.</span></div></li>
-          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>No defined budget or timeline</strong><span>Every engagement requires scoped commitment before we start.</span></div></li>
+          <li class="who-item"><div class="who-check no">✕</div><div><strong>Teams still exploring options</strong><span>We execute against defined scope, not open-ended discovery.</span></div></li>
+          <li class="who-item"><div class="who-check no">✕</div><div><strong>Organizations needing strategy</strong><span>We implement strategy. We don&#8217;t create it.</span></div></li>
+          <li class="who-item"><div class="who-check no">✕</div><div><strong>Clients who need hand-holding</strong><span>We work best with teams that can operate independently post-handoff.</span></div></li>
+          <li class="who-item"><div class="who-check no">✕</div><div><strong>No defined budget or timeline</strong><span>Every engagement requires scoped commitment before we start.</span></div></li>
         </ul>
       </div>
     </div>
@@ -489,7 +534,7 @@ var SUPA = (function(){
       <div class="leader-info">
         <div class="leader-name">Teri Massey</div>
         <div class="leader-title">Founder &amp; Executive Director</div>
-        <p class="leader-bio">Teri built WizDevTech around a single observation: most organizations don&#8217;t fail from lack of strategy&#8212;they fail from lack of execution. With a background in operational systems and embedded delivery, she created an engagement model built entirely around completing defined work within defined windows. No retainers, no ambiguity, no scope creep.</p>
+        <p class="leader-bio">Teri built WizDevTech around a single observation: most organizations don&#8217;t fail from lack of strategy&#8212;they fail from lack of execution. With 15+ years stabilizing broken systems and rescuing stalled builds across industries, she created an engagement model built entirely around completing defined work within defined windows. Her background spans automation stack repair, data migration, vendor exit recovery, and CI/CD stabilization. No retainers, no ambiguity, no scope creep.</p>
       </div>
     </div>
   </div>
@@ -544,9 +589,95 @@ var SUPA = (function(){
       <div class="survey-submit-row reveal rd3">
         <button type="submit" class="btn btn-primary">Submit Feedback &#8594;</button>
         <span class="survey-note">Anonymous &#183; No account needed</span>
-        <span id="surveyThanks">&#10003; Thanks &#8212; your feedback was recorded.</span>
+        <span id="surveyThanks">✓ Thanks &#8212; your feedback was recorded.</span>
       </div>
     </form>
+  </div>
+</section>
+
+
+<!-- WHAT WE COMMONLY FIX -->
+<section id="fix">
+  <div class="sec">
+    <div class="sec-label reveal">What We Fix</div>
+    <h2 class="sec-title reveal rd1">Common problems we&#8217;re brought in to solve.</h2>
+    <p class="sec-desc reveal rd2">If any of these match your situation, you&#8217;re a fit.</p>
+    <div class="fix-grid reveal rd2">
+      <div class="fix-card">
+        <div class="fix-card-icon">Stalled Builds</div>
+        <h4>Half-finished software projects</h4>
+        <ul>
+          <li>Abandoned SaaS builds</li>
+          <li>Incomplete internal tools</li>
+          <li>Dev team left mid-build</li>
+          <li>Vendor disengaged</li>
+        </ul>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-icon">Broken Automation</div>
+        <h4>Workflow automation failures</h4>
+        <ul>
+          <li>Broken Zapier workflows</li>
+          <li>Failing Make / n8n automations</li>
+          <li>API integrations down</li>
+          <li>Webhooks not firing</li>
+        </ul>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-icon">Data Chaos</div>
+        <h4>Data migration &amp; cleanup</h4>
+        <ul>
+          <li>CRM migration gone wrong</li>
+          <li>Airtable / Notion restructure</li>
+          <li>Duplicate &amp; dirty data</li>
+          <li>Spreadsheets to database</li>
+        </ul>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-icon">Pipeline Failures</div>
+        <h4>CI/CD &amp; infra stabilization</h4>
+        <ul>
+          <li>Broken CI/CD pipelines</li>
+          <li>Failing AWS deployments</li>
+          <li>Terraform drift</li>
+          <li>Python scripts breaking</li>
+        </ul>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-icon">Vendor Exits</div>
+        <h4>Failed vendor implementations</h4>
+        <ul>
+          <li>Contractor left mid-project</li>
+          <li>Agency delivered unusable work</li>
+          <li>No documentation on handoff</li>
+          <li>System live but broken</li>
+        </ul>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-icon">Scattered Ops</div>
+        <h4>Notes, tasks &amp; ops cleanup</h4>
+        <ul>
+          <li>Meeting notes → action items</li>
+          <li>Notion / ClickUp buildouts</li>
+          <li>SOPs that don&#8217;t exist yet</li>
+          <li>Untracked operational debt</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fix-stack reveal rd3">
+      <div class="fix-stack-label">Systems &amp; tools we commonly work inside</div>
+      <div class="fix-stack-tags">
+        <span class="fix-tag">Zapier</span><span class="fix-tag">Make (Integromat)</span>
+        <span class="fix-tag">n8n</span><span class="fix-tag">Airtable</span>
+        <span class="fix-tag">Notion</span><span class="fix-tag">ClickUp</span>
+        <span class="fix-tag">HubSpot</span><span class="fix-tag">Salesforce</span>
+        <span class="fix-tag">Python</span><span class="fix-tag">AWS</span>
+        <span class="fix-tag">Terraform</span><span class="fix-tag">GitHub Actions</span>
+        <span class="fix-tag">REST APIs</span><span class="fix-tag">Webhooks</span>
+        <span class="fix-tag">SQL</span><span class="fix-tag">Google Sheets</span>
+        <span class="fix-tag">Supabase</span><span class="fix-tag">PostgreSQL</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -590,7 +721,7 @@ var SUPA = (function(){
           <button type="submit" class="btn-submit" id="submitBtn"><div class="spinner"></div><span class="btn-text">Submit Request &#8594;</span></button>
         </form>
         <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">&#10003;</div>
+          <div class="form-success-icon">✓</div>
           <h3 style="font-family:var(--display);font-weight:700;margin-bottom:0.5rem">Request Received</h3>
           <p style="font-size:0.88rem;color:var(--muted)">Saved to our system. We&#8217;ll respond within 2 business days.</p>
         </div>
@@ -638,7 +769,7 @@ var SUPA = (function(){
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <span>&#169; 2026 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
     <div class="footer-links">
       <a href="/cdn-cgi/l/email-protection#f784828787988583b7809e8d9392818392949fd994989a">Technical Support</a>
       <a href="policies.html">Privacy &amp; Legal</a>
