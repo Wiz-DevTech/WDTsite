@@ -87,31 +87,9 @@
         }
       }</script>
 
-  <script type="application/ld+json">{
-        "@context":"https://schema.org",
-        "@type":"Person",
-        "name":"Teri Massey",
-        "jobTitle":"Founder & Executive Director",
-        "worksFor":{"@type":"Organization","name":"WizDevTech","url":"https://wizdevtech.com"},
-        "knowsAbout":["operational systems","embedded delivery","workflow automation","systems stabilization","software project completion","data migration"],
-        "url":"https://wizdevtech.com/#leadership"
-      }</script>
-
-  <script type="application/ld+json">{
-        "@context":"https://schema.org",
-        "@type":"ProfessionalService",
-        "name":"WizDevTech",
-        "url":"https://wizdevtech.com",
-        "description":"Embedded execution firm specializing in completing stalled software projects, repairing broken automation workflows, data migrations, and systems stabilization. Fixed-scope 2–6 week engagements with documented handoff.",
-        "serviceType":["stalled project rescue","broken workflow repair","data migration","software project completion","systems stabilization","automation repair","devops execution"],
-        "areaServed":"United States",
-        "priceRange":"$$$",
-        "email":"sales@wizdevtech.com",
-        "founder":{"@type":"Person","name":"Teri Massey"},
-        "knowsAbout":["Zapier","Make","n8n","Notion","Airtable","CI/CD pipelines","AWS","Terraform","Python","SaaS builds","CRM migration","data cleanup"]
-      }</script>
-
-  <!-- Google Analytics GA4 -->
+  <!-- Google Analytics GA4
+       Replace G-2FF7SSE1TL with your G-XXXXXXXXXX
+       Get it at: analytics.google.com → Admin → Data Streams -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FF7SSE1TL"></script>
   <script>
     window.dataLayer=window.dataLayer||[];
@@ -339,7 +317,7 @@ textarea.form-control{resize:vertical;min-height:100px;}
 .form-aside h3{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:1.25rem;}
 .aside-checks{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;}
 .aside-check{display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:var(--muted);}
-.aside-check::before{content:'\2713';color:var(--accent);font-family:var(--mono);font-size:0.7rem;flex-shrink:0;}
+.aside-check::before{content:'&#10003;';color:var(--accent);font-family:var(--mono);font-size:0.7rem;flex-shrink:0;}
 .aside-contact{border-top:1px solid var(--rule);padding-top:1.5rem;}
 .aside-contact-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.9rem;}
 .aside-contact-link{display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.78rem;color:var(--muted);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;}
@@ -435,7 +413,6 @@ var SUPA = (function(){
     <div class="hero-tag">Embedded Execution</div>
     <h1>Teams who need things <em>finished.</em></h1>
     <p class="hero-sub">We enter your existing systems, complete what&#8217;s half-done, stabilize what&#8217;s breaking, and exit cleanly. No vision, no teaching&#8212;just execution.</p>
-    <p class="hero-sub" style="margin-top:0.75rem;font-size:0.82rem;color:var(--ghost);">Zapier &middot; Make &middot; Notion &middot; Airtable &middot; Python &middot; AWS &middot; CI/CD &middot; CRM migrations &middot; SaaS builds &middot; data cleanup</p>
     <div class="hero-actions">
       <a href="#form" class="btn btn-primary">Start Execution &#8594;</a>
       <a href="#what" class="btn btn-outline">See What We Do</a>
@@ -481,21 +458,21 @@ var SUPA = (function(){
     <h2 class="sec-title reveal rd1">Right fit. Wrong fit.</h2>
     <div class="who-cols reveal rd2">
       <div class="who-col">
-        <span class="who-col-label yes-label">✓ Good Fit</span>
+        <span class="who-col-label yes-label">&#10003; Good Fit</span>
         <ul class="who-list">
-          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire.</span></div></li>
-          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Teams with defined problems</strong><span>You know what&#8217;s broken, just not how to fix it.</span></div></li>
-          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Leaders who want outcomes</strong><span>You care about results, not process theater.</span></div></li>
-          <li class="who-item"><div class="who-check yes">✓</div><div><strong>Organizations mid-execution</strong><span>Something was started and stalled. We finish it.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Budget-approved decision makers</strong><span>Allocated budget, authority to hire.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Teams with defined problems</strong><span>You know what&#8217;s broken, just not how to fix it.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Leaders who want outcomes</strong><span>You care about results, not process theater.</span></div></li>
+          <li class="who-item"><div class="who-check yes">&#10003;</div><div><strong>Organizations mid-execution</strong><span>Something was started and stalled. We finish it.</span></div></li>
         </ul>
       </div>
       <div class="who-col">
-        <span class="who-col-label no-label">✕ Not a Fit</span>
+        <span class="who-col-label no-label">&#10005; Not a Fit</span>
         <ul class="who-list">
-          <li class="who-item"><div class="who-check no">✕</div><div><strong>Teams still exploring options</strong><span>We execute against defined scope, not open-ended discovery.</span></div></li>
-          <li class="who-item"><div class="who-check no">✕</div><div><strong>Organizations needing strategy</strong><span>We implement strategy. We don&#8217;t create it.</span></div></li>
-          <li class="who-item"><div class="who-check no">✕</div><div><strong>Clients who need hand-holding</strong><span>We work best with teams that can operate independently post-handoff.</span></div></li>
-          <li class="who-item"><div class="who-check no">✕</div><div><strong>No defined budget or timeline</strong><span>Every engagement requires scoped commitment before we start.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Teams still exploring options</strong><span>We execute against defined scope, not open-ended discovery.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Organizations needing strategy</strong><span>We implement strategy. We don&#8217;t create it.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>Clients who need hand-holding</strong><span>We work best with teams that can operate independently post-handoff.</span></div></li>
+          <li class="who-item"><div class="who-check no">&#10005;</div><div><strong>No defined budget or timeline</strong><span>Every engagement requires scoped commitment before we start.</span></div></li>
         </ul>
       </div>
     </div>
@@ -513,26 +490,7 @@ var SUPA = (function(){
         <div class="leader-name">Teri Massey</div>
         <div class="leader-title">Founder &amp; Executive Director</div>
         <p class="leader-bio">Teri built WizDevTech around a single observation: most organizations don&#8217;t fail from lack of strategy&#8212;they fail from lack of execution. With a background in operational systems and embedded delivery, she created an engagement model built entirely around completing defined work within defined windows. No retainers, no ambiguity, no scope creep.</p>
-        <p class="leader-bio" style="margin-top:0.75rem;">Her work spans rescuing stalled software builds, repairing broken automation stacks, completing abandoned vendor implementations, and stabilizing data migrations for small businesses and scaling teams across the United States.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- WHAT WE FIX — SEO/AI clarity section -->
-<section id="fix" style="background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
-  <div class="sec">
-    <div class="sec-label reveal">Systems &amp; Problems We Solve</div>
-    <h2 class="sec-title reveal rd1">What we commonly fix.</h2>
-    <p class="sec-desc reveal rd2">We specialize in completing and stabilizing the following types of stalled or broken work. If your situation appears below, we can likely help.</p>
-    <div class="constraints reveal rd2" style="margin-top:2rem;">
-      <div class="constraint"><h4>Stalled Software Projects</h4><p>Half-built apps, incomplete SaaS builds, and abandoned development projects that need a team to finish them on a fixed timeline.</p></div>
-      <div class="constraint"><h4>Broken Automation Workflows</h4><p>Failed or fragile automations in Zapier, Make, n8n, or custom scripts. We repair broken workflow logic, reconnect integrations, and document how everything works.</p></div>
-      <div class="constraint"><h4>Data Migrations Gone Wrong</h4><p>Incomplete or messy data migrations between CRMs, databases, spreadsheets, or platforms. We clean, structure, and complete the move with a documented handoff.</p></div>
-      <div class="constraint"><h4>Abandoned Vendor Implementations</h4><p>Implementations started by a vendor or contractor who disengaged. We pick up mid-stream and complete the defined scope.</p></div>
-      <div class="constraint"><h4>Failing CI/CD Pipelines</h4><p>Broken deployment pipelines, infrastructure drift, and unstable DevOps setups. We stabilize and document so your team can maintain it independently.</p></div>
-      <div class="constraint"><h4>Notion, Airtable &amp; Ops Stack Buildouts</h4><p>Unfinished internal tools — Notion workspaces, Airtable bases, dashboards — started but never fully configured or handed off.</p></div>
     </div>
   </div>
 </section>
@@ -586,7 +544,7 @@ var SUPA = (function(){
       <div class="survey-submit-row reveal rd3">
         <button type="submit" class="btn btn-primary">Submit Feedback &#8594;</button>
         <span class="survey-note">Anonymous &#183; No account needed</span>
-        <span id="surveyThanks">✓ Thanks &#8212; your feedback was recorded.</span>
+        <span id="surveyThanks">&#10003; Thanks &#8212; your feedback was recorded.</span>
       </div>
     </form>
   </div>
@@ -632,7 +590,7 @@ var SUPA = (function(){
           <button type="submit" class="btn-submit" id="submitBtn"><div class="spinner"></div><span class="btn-text">Submit Request &#8594;</span></button>
         </form>
         <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">✓</div>
+          <div class="form-success-icon">&#10003;</div>
           <h3 style="font-family:var(--display);font-weight:700;margin-bottom:0.5rem">Request Received</h3>
           <p style="font-size:0.88rem;color:var(--muted)">Saved to our system. We&#8217;ll respond within 2 business days.</p>
         </div>
@@ -680,7 +638,7 @@ var SUPA = (function(){
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2025 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
+    <span>&#169; 2024 WizDevTech. All rights reserved. &nbsp;&middot;&nbsp; D-U-N-S: 144936954</span>
     <div class="footer-links">
       <a href="/cdn-cgi/l/email-protection#f784828787988583b7809e8d9392818392949fd994989a">Technical Support</a>
       <a href="policies.html">Privacy &amp; Legal</a>
