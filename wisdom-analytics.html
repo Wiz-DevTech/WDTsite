@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wisdom Analytics & Consulting</title>
+<style>
+  :root{
+    --navy: #0A1628;
+    --navy-light: #132238;
+    --navy-lighter: #1B2E48;
+    --gold: #C9A84C;
+    --gold-bright: #E0C275;
+    --silver: #8E9BB5;
+    --off-white: #F5F6F4;
+    --ink: #10151F;
+    --unit: 8px;
+    --serif: Georgia, 'Times New Roman', Times, serif;
+    --sans: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+    --mono: 'Courier New', Courier, monospace;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--off-white);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; text-decoration: none; }
+  ::selection{ background: var(--gold); color: var(--navy); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  @media (max-width: 640px){ .wrap{ padding: 0 24px; } }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color: var(--off-white);
+  }
+  .mark{
+    width: 34px; height: 34px;
+    flex-shrink:0;
+  }
+  .brand-text{
+    font-family: var(--serif);
+    font-size: 18px;
+    letter-spacing: 0.04em;
+  }
+  .brand-text .sub{
+    display:block;
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    color: var(--silver);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .navlinks{
+    display:flex;
+    gap: 36px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+  .navlinks a{ transition: color 0.2s ease; position:relative; }
+  .navlinks a:hover, .navlinks a:focus-visible{ color: var(--gold-bright); }
+  .nav-cta{
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 9px 18px;
+    font-size: 12px;
+  }
+  .nav-cta:hover{ background: var(--gold); color: var(--navy) !important; }
+  .navlinks{ }
+  @media (max-width: 860px){
+    .navlinks{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    background: var(--navy);
+    color: var(--off-white);
+    padding: 190px 0 140px;
+    overflow: hidden;
+  }
+  .blueprint-grid{
+    position:absolute; inset:0;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .hero-inner{
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before{
+    content:'';
+    width: 40px; height: 1px;
+    background: var(--gold);
+    display:inline-block;
+  }
+  h1.hero-headline{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.05;
+    max-width: 900px;
+    letter-spacing: -0.01em;
+  }
+  h1.hero-headline em{
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .hero-sub{
+    max-width: 560px;
+    margin-top: 28px;
+    font-size: 17px;
+    color: var(--silver);
+  }
+  .hero-actions{
+    display:flex;
+    gap: 20px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding: 15px 30px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    cursor:pointer;
+  }
+  .btn-primary{
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn-primary:hover{ background: var(--gold-bright); }
+  .btn-ghost{
+    border-color: var(--silver);
+    color: var(--off-white);
+  }
+  .btn-ghost:hover{ border-color: var(--gold); color: var(--gold-bright); }
+
+  .hero-docket{
+    margin-top: 90px;
+    display:flex;
+    gap: 0;
+    border-top: 1px solid rgba(142,155,181,0.3);
+    padding-top: 22px;
+    flex-wrap: wrap;
+  }
+  .hero-docket div{
+    padding-right: 40px;
+    margin-right: 40px;
+    border-right: 1px solid rgba(142,155,181,0.2);
+  }
+  .hero-docket div:last-child{ border-right:none; }
+  .hero-docket .num{
+    font-family: var(--mono);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .hero-docket .label{
+    font-size: 13px;
+    color: var(--silver);
+    margin-top: 4px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding: 120px 0; }
+  .section-alt{ background: var(--navy); color: var(--off-white); }
+  .section-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 64px;
+    border-bottom: 1px solid rgba(10,22,40,0.15);
+    padding-bottom: 28px;
+  }
+  .section-alt .section-head{ border-color: rgba(201,168,76,0.25); }
+  .section-eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display:block;
+  }
+  .section-head h2{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 42px);
+    max-width: 620px;
+    letter-spacing: -0.01em;
+  }
+  .section-head p{
+    max-width: 320px;
+    font-size: 14.5px;
+    color: #56607a;
+    padding-bottom: 4px;
+  }
+  .section-alt .section-head p{ color: var(--silver); }
+
+  /* ---------- DIVISIONS (signature docket element) ---------- */
+  .docket-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .docket-entry{
+    position: relative;
+    display:grid;
+    grid-template-columns: 140px 1fr 1fr;
+    gap: 32px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(10,22,40,0.12);
+    transition: background 0.25s ease;
+  }
+  .docket-entry:last-child{ border-bottom: 1px solid rgba(10,22,40,0.12); }
+  .docket-entry:hover{ background: rgba(201,168,76,0.05); }
+  .docket-entry .corner{
+    position:absolute; width:9px; height:9px;
+    border-color: var(--gold);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .docket-entry:hover .corner{ opacity: 1; }
+  .corner.tl{ top:34px; left:-1px; border-top:1.5px solid; border-left:1.5px solid; }
+  .corner.br{ bottom:34px; right:-1px; border-bottom:1.5px solid; border-right:1.5px solid; }
+
+  .docket-num{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    padding-top: 3px;
+  }
+  .docket-title{
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .docket-desc{
+    font-size: 14.5px;
+    color: #4a5468;
+  }
+  @media (max-width: 780px){
+    .docket-entry{ grid-template-columns: 1fr; gap: 12px; }
+    .docket-num{ padding-top:0; }
+  }
+
+  /* ---------- METHOD ---------- */
+  .method-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.25);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+  .method-card{
+    background: var(--navy);
+    padding: 48px 36px;
+    position: relative;
+  }
+  .method-index{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 46px;
+    color: var(--gold);
+    line-height:1;
+  }
+  .method-card h3{
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin: 22px 0 14px;
+    color: var(--off-white);
+  }
+  .method-card p{
+    font-size: 14px;
+    color: var(--silver);
+  }
+  @media (max-width: 780px){
+    .method-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- CAPABILITIES ---------- */
+  .cap-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(10,22,40,0.1);
+  }
+  .cap-card{
+    background: var(--off-white);
+    padding: 36px 32px;
+    transition: background 0.2s ease;
+  }
+  .cap-card:hover{ background: #ECE8DA; }
+  .cap-icon{ width: 30px; height:30px; margin-bottom: 20px; }
+  .cap-card h4{
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight:400;
+    margin-bottom: 8px;
+  }
+  .cap-card p{ font-size: 13.5px; color: #56607a; }
+  @media (max-width: 780px){
+    .cap-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px){
+    .cap-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+  }
+  @media (max-width: 860px){
+    .contact-grid{ grid-template-columns: 1fr; gap: 56px; }
+  }
+  .contact-info h2{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(30px, 3.6vw, 44px);
+    color: var(--off-white);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+  .contact-info p{
+    color: var(--silver);
+    max-width: 420px;
+    margin-bottom: 36px;
+  }
+  .contact-line{
+    display:flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(142,155,181,0.2);
+    font-size: 14px;
+  }
+  .contact-line:last-of-type{ border-bottom: 1px solid rgba(142,155,181,0.2); }
+  .contact-line .k{
+    width: 110px;
+    flex-shrink:0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11.5px;
+    color: var(--gold);
+    padding-top:2px;
+  }
+  .contact-line .v{ color: var(--off-white); }
+
+  form.filing{
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 40px;
+  }
+  .filing-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display:block;
+    margin-bottom: 10px;
+  }
+  .field{ margin-bottom: 26px; }
+  .field input, .field select, .field textarea{
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(142,155,181,0.4);
+    color: var(--off-white);
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 10px 2px;
+    transition: border-color 0.2s ease;
+  }
+  .field select option{ color: var(--ink); }
+  .field textarea{ resize: vertical; min-height: 80px; }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;
+    border-bottom-color: var(--gold);
+  }
+  .field input::placeholder, .field textarea::placeholder{ color: #566079; }
+  .filing .btn-primary{ width: 100%; border:none; margin-top: 6px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--navy);
+    color: var(--silver);
+    padding: 56px 0 40px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .footer-top{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(142,155,181,0.15);
+    margin-bottom: 28px;
+  }
+  .footer-divisions{
+    display:flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+  }
+  .footer-divisions span{ color: var(--gold); font-family: var(--mono); margin-right: 6px; }
+  .footer-bottom{
+    display:flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #56607a;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 34 34" fill="none">
+        <rect x="1" y="1" width="32" height="32" stroke="#C9A84C" stroke-width="1"/>
+        <path d="M17 6 L28 17 L17 28 L6 17 Z" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="17" cy="17" r="3" fill="#C9A84C"/>
+      </svg>
+      <span class="brand-text">Wisdom Analytics
+        <span class="sub">&amp; Consulting</span>
+      </span>
+    </div>
+    <div class="navlinks">
+      <a href="#divisions">Divisions</a>
+      <a href="#method">Method</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#contact" class="nav-cta">Request Consultation</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg class="blueprint-grid" viewBox="0 0 1180 700" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <pattern id="grid" width="58" height="58" patternUnits="userSpaceOnUse">
+        <path d="M 58 0 L 0 0 0 58" fill="none" stroke="#8E9BB5" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="1180" height="700" fill="url(#grid)"/>
+    <line x1="0" y1="0" x2="1180" y2="700" stroke="#C9A84C" stroke-width="0.4"/>
+    <line x1="1180" y1="0" x2="0" y2="700" stroke="#C9A84C" stroke-width="0.4"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Wisdom Analytics &amp; Consulting — Est. Practice Divisions 100–500</span>
+    <h1 class="hero-headline">Structure is <em>the argument.</em></h1>
+    <p class="hero-sub">We build the systems, governance, and defense that hold an enterprise together — in the org chart, the ledger, the ERP configuration, and, if it comes to it, the record.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Request a Consultation</a>
+      <a href="#divisions" class="btn btn-ghost">View Practice Divisions</a>
+    </div>
+    <div class="hero-docket">
+      <div>
+        <div class="num">DIV. 100–400</div>
+        <div class="label">Core practice areas</div>
+      </div>
+      <div>
+        <div class="num">DIV. 500</div>
+        <div class="label">Scoped by engagement, not limited to the above</div>
+      </div>
+      <div>
+        <div class="num">ERP · LAW · ARBITRATION · ARCHITECTURE</div>
+        <div class="label">One firm, one file</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="divisions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-eyebrow">The Docket</span>
+        <h2>Five divisions, one file on your business.</h2>
+      </div>
+      <p>Each engagement is filed under a division, but most real problems cross more than one.</p>
+    </div>
+
+    <div class="docket-list">
+      <div class="docket-entry reveal">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <div class="docket-num">DIVISION 100</div>
+        <div class="docket-title">Enterprise Architecture &amp; ERP</div>
+        <div class="docket-desc">Selection, implementation, and governance of ERP and core business systems — sized to how the business actually operates, not to a vendor's default roadmap. Finance, operations, and reporting made to speak one language.</div>
+      </div>
+      <div class="docket-entry reveal">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <div class="docket-num">DIVISION 200</div>
+        <div class="docket-title">Business Law &amp; Corporate Governance</div>
+        <div class="docket-desc">Entity structuring, contracts, and the internal governance instruments — bylaws, operating agreements, trust and board documents — that hold an organization together when circumstances get contested.</div>
+      </div>
+      <div class="docket-entry reveal">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <div class="docket-num">DIVISION 300</div>
+        <div class="docket-title">Arbitration &amp; Dispute Resolution</div>
+        <div class="docket-desc">Case preparation, procedural strategy, and representation in matters resolved outside open court. Built around the record-keeping and evidentiary discipline arbitration demands.</div>
+      </div>
+      <div class="docket-entry reveal">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <div class="docket-num">DIVISION 400</div>
+        <div class="docket-title">Business Architecture &amp; Process Design</div>
+        <div class="docket-desc">The blueprint layer between strategy and execution — process maps, control points, and the operating model a growing business needs before it knows it needs one.</div>
+      </div>
+      <div class="docket-entry reveal">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <div class="docket-num">DIVISION 500</div>
+        <div class="docket-title">Additional Engagements</div>
+        <div class="docket-desc">Financial controls, regulatory questions, and cross-discipline work outside the four divisions above are taken on case by case. Scope follows the problem, not a fixed service menu.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="method">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-eyebrow">Method</span>
+        <h2>Diagnose. Design. Defend.</h2>
+      </div>
+      <p>The same three-phase discipline runs underneath every division, whether the deliverable is a system, a contract, or a filing.</p>
+    </div>
+    <div class="method-grid reveal">
+      <div class="method-card">
+        <div class="method-index">I</div>
+        <h3>Diagnose</h3>
+        <p>Audit the current structure — systems, contracts, controls, org design — and identify exactly where they conflict, duplicate, or fail to hold up under scrutiny.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-index">II</div>
+        <h3>Design</h3>
+        <p>Architect the fix: ERP configuration, governance documents, process maps, and the operating model that closes the gaps the diagnosis found.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-index">III</div>
+        <h3>Defend</h3>
+        <p>Carry the design through implementation, and if it's contested, through arbitration or dispute resolution — with the documentation to back it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="capabilities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-eyebrow">Capabilities</span>
+        <h2>Where the divisions do the work.</h2>
+      </div>
+      <p>A working list, not a ceiling — engagements are scoped to the actual problem.</p>
+    </div>
+    <div class="cap-grid reveal">
+      <div class="cap-card">
+        <svg class="cap-icon" viewBox="0 0 30 30" fill="none"><rect x="2" y="2" width="26" height="26" stroke="#C9A84C" stroke-width="1"/><path d="M2 11h26M11 2v26" stroke="#C9A84C" stroke-width="1"/></svg>
+        <h4>ERP Selection &amp; Implementation</h4>
+        <p>Platform evaluation, configuration, and rollout across finance, operations, and reporting.</p>
+      </div>
+      <div class="cap-card">
+        <svg class="cap-icon" viewBox="0 0 30 30" fill="none"><path d="M15 3v24M6 9h18M9 9l-6 12h12L9 9zM21 9l-6 12h12L21 9z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg>
+        <h4>Corporate Governance</h4>
+        <p>Entity structuring, board and trust documents, bylaws, and operating agreements.</p>
+      </div>
+      <div class="cap-card">
+        <svg class="cap-icon" viewBox="0 0 30 30" fill="none"><rect x="4" y="6" width="22" height="18" stroke="#C9A84C" stroke-width="1"/><path d="M4 12h22M10 6v-2M20 6v-2" stroke="#C9A84C" stroke-width="1"/></svg>
+        <h4>Arbitration Representation</h4>
+        <p>Filings, procedural strategy, and case preparation for out-of-court dispute resolution.</p>
+      </div>
+      <div class="cap-card">
+        <svg class="cap-icon" viewBox="0 0 30 30" fill="none"><path d="M15 27c6-4 10-9 10-15a10 10 0 10-20 0c0 6 4 11 10 15z" stroke="#C9A84C" stroke-width="1" fill="none"/><circle cx="15" cy="12" r="3.5" stroke="#C9A84C" stroke-width="1"/></svg>
+        <h4>Business Process Architecture</h4>
+        <p>Process mapping, control point design, and operating model documentation.</p>
+      </div>
+      <div class="cap-card">
+        <svg class="cap-icon" viewBox="0 0 30 30" fill="none"><path d="M4 24V6M4 24h22M9 20v-8M15 20v-12M21 20v-5" stroke="#C9A84C" stroke-width="1" fill="none"/></svg>
+        <h4>Financial Controls</h4>
+        <p>Accrual accounting structures, ledger design, and internal control frameworks.</p>
+      </div>
+      <div class="cap-card">
+        <svg class="cap-icon" viewBox="0 0 30 30" fill="none"><path d="M15 3l11 5v7c0 7-4.7 11.6-11 13-6.3-1.4-11-6-11-13V8l11-5z" stroke="#C9A84C" stroke-width="1" fill="none"/></svg>
+        <h4>Regulatory &amp; Compliance</h4>
+        <p>Compliance review and structuring support across regulated business activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="section-eyebrow">Open a File</span>
+        <h2>Tell us what's not holding up.</h2>
+        <p>Most engagements start with a single system, contract, or dispute that's exposed a larger structural problem. Start there — we'll tell you which division it belongs in.</p>
+        <div class="contact-line">
+          <div class="k">Email</div>
+          <div class="v">consulting@wizdevtech.com</div>
+        </div>
+        <div class="contact-line">
+          <div class="k">Phone</div>
+          <div class="v">Available upon request</div>
+        </div>
+        <div class="contact-line">
+          <div class="k">Response</div>
+          <div class="v">Within two business days</div>
+        </div>
+      </div>
+      <form class="filing reveal" id="filingForm">
+        <span class="filing-label">New Client Intake</span>
+        <div class="field">
+          <input type="text" name="name" placeholder="Full name" required>
+        </div>
+        <div class="field">
+          <input type="text" name="org" placeholder="Organization">
+        </div>
+        <div class="field">
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <div class="field">
+          <select name="division" required>
+            <option value="" disabled selected>Division of interest</option>
+            <option>Division 100 — Enterprise Architecture &amp; ERP</option>
+            <option>Division 200 — Business Law &amp; Corporate Governance</option>
+            <option>Division 300 — Arbitration &amp; Dispute Resolution</option>
+            <option>Division 400 — Business Architecture &amp; Process Design</option>
+            <option>Division 500 — Additional Engagement</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <textarea name="message" placeholder="Briefly describe the matter" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Intake</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="brand" style="color:var(--off-white)">
+        <svg class="mark" viewBox="0 0 34 34" fill="none">
+          <rect x="1" y="1" width="32" height="32" stroke="#C9A84C" stroke-width="1"/>
+          <path d="M17 6 L28 17 L17 28 L6 17 Z" stroke="#C9A84C" stroke-width="1"/>
+          <circle cx="17" cy="17" r="3" fill="#C9A84C"/>
+        </svg>
+        <span class="brand-text">Wisdom Analytics<span class="sub">&amp; Consulting</span></span>
+      </div>
+      <div class="footer-divisions">
+        <div><span>100</span>ERP &amp; Architecture</div>
+        <div><span>200</span>Business Law</div>
+        <div><span>300</span>Arbitration</div>
+        <div><span>400</span>Process Design</div>
+        <div><span>500</span>Additional</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Wisdom Analytics &amp; Consulting. All rights reserved.</span>
+      <span>Structure is the argument.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el=>io.observe(el));
+
+  // Intake form -> mailto fallback (no backend available)
+  const form = document.getElementById('filingForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name') || '';
+    const org = data.get('org') || '';
+    const email = data.get('email') || '';
+    const division = data.get('division') || '';
+    const message = data.get('message') || '';
+    const subject = encodeURIComponent('New Client Intake: ' + name);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Organization: ' + org + '\n' +
+      'Email: ' + email + '\n' +
+      'Division of interest: ' + division + '\n\n' +
+      'Message:\n' + message
+    );
+    window.location.href = 'mailto:consulting@wizdevtech.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
